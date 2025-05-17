@@ -1,0 +1,14 @@
+{
+  "id": 3,
+  "description": "Create a directory named `images` in the root of the file system.",
+  "type": "mkdir",
+  "check": {
+    "dirExists": "images"
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {}
+  },
+  "startDirectory": "/"
+}

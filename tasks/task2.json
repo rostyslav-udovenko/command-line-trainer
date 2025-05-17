@@ -1,0 +1,20 @@
+{
+  "id": 2,
+  "description": "Create a file named `index.html` inside the `projects` directory.",
+  "type": "touch",
+  "check": {
+    "fileExists": "index.html"
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {}
+      }
+    }
+  },
+  "startDirectory": "/projects"
+}
