@@ -60,3 +60,19 @@ body {
   text-align: center;
   padding: 10px 0;
 }
+
+.footer__menu {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #888;
+}
+
+.footer__menu a {
+  color: #888;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+.footer__menu a:hover {
+  text-decoration: underline;
+}
