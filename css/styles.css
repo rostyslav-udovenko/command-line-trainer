@@ -1,0 +1,62 @@
+body {
+  font-family: "Courier New", monospace;
+  background-color: #1e1e1e;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#terminal {
+  width: 80%;
+  height: 80%;
+  background-color: black;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+#input-wrapper {
+  display: flex;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: "Courier New", monospace;
+  margin-bottom: 4px;
+}
+
+.prompt-symbol {
+  display: inline-block;
+  margin-right: 0.3em;
+  vertical-align: baseline;
+  line-height: inherit;
+}
+
+#input {
+  font-family: "Courier New", monospace;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  line-height: 1.4;
+  width: 100%;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer {
+  font-size: 14px;
+  color: #aaa;
+  text-align: center;
+  padding: 10px 0;
+}
