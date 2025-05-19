@@ -1,0 +1,24 @@
+{
+  "id": 4,
+  "description": "Use the `ls` command to list the contents of the current directory.",
+  "type": "ls",
+  "check": {
+    "expectedOutputIncludes": ["project.txt", "images"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "project.txt": {
+        "name": "project.txt",
+        "type": "file"
+      },
+      "images": {
+        "name": "images",
+        "type": "dir",
+        "children": {}
+      }
+    }
+  },
+  "startDirectory": "/"
+}
