@@ -1,0 +1,26 @@
+{
+  "id": 5,
+  "description": "Use the `pwd` command to display the current directory.",
+  "type": "pwd",
+  "check": {
+    "currentDirectoryIs": "/projects/images"
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {
+          "images": {
+            "name": "images",
+            "type": "dir",
+            "children": {}
+          }
+        }
+      }
+    }
+  },
+  "startDirectory": "/projects/images"
+}
