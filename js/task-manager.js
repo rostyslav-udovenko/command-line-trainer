@@ -23,7 +23,13 @@ export function handleWelcomeInput(command, loadTasksCallback) {
 
 export async function loadTasks() {
   try {
-    const files = ["/tasks/task1.json", "/tasks/task2.json", "/tasks/task3.json"];
+    const files = [
+      "/tasks/task1.json",
+      "/tasks/task2.json",
+      "/tasks/task3.json",
+      "/tasks/task4.json",
+      "/tasks/task5.json",
+    ];
     for (let i = 0; i < files.length; i++) {
       const res = await fetch(files[i]);
       const taskData = await res.json();
@@ -52,7 +58,9 @@ export function checkTaskCompletion() {
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
   if (check.currentDirectoryEndsWith) {
-    success = virtualFileSystem.currentDirectory.endsWith(check.currentDirectoryEndsWith);
+    success = virtualFileSystem.currentDirectory.endsWith(
+      check.currentDirectoryEndsWith
+    );
   }
 
   if (check.currentDirectoryIs) {
@@ -69,7 +77,9 @@ export function checkTaskCompletion() {
 
   if (check.expectedOutputIncludes) {
     const children = Object.keys(currentDir?.children || {});
-    success = check.expectedOutputIncludes.every((item) => children.includes(item));
+    success = check.expectedOutputIncludes.every((item) =>
+      children.includes(item)
+    );
   }
 
   if (success) {
@@ -77,10 +87,13 @@ export function checkTaskCompletion() {
     currentTaskIndex++;
     if (currentTaskIndex < tasks.length) {
       setupFileSystem(tasks[currentTaskIndex].fs);
-      virtualFileSystem.currentDirectory = tasks[currentTaskIndex].startDirectory || "/";
+      virtualFileSystem.currentDirectory =
+        tasks[currentTaskIndex].startDirectory || "/";
       showCurrentTask();
     } else {
-      printOutput("<strong>Congratulations!</strong> You have completed all tasks.");
+      printOutput(
+        "<strong>Congratulations!</strong> You have completed all tasks."
+      );
     }
   } else {
     printOutput("<strong>Incorrect action!</strong> Try again.");
