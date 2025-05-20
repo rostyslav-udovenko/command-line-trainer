@@ -49,15 +49,27 @@ export function checkTaskCompletion() {
   const check = task.check;
 
   let success = false;
-
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
   if (check.currentDirectoryEndsWith) {
     success = virtualFileSystem.currentDirectory.endsWith(check.currentDirectoryEndsWith);
-  } else if (check.fileExists) {
+  }
+
+  if (check.currentDirectoryIs) {
+    success = virtualFileSystem.currentDirectory === check.currentDirectoryIs;
+  }
+
+  if (check.fileExists) {
     success = currentDir?.children[check.fileExists]?.type === "file";
-  } else if (check.dirExists) {
+  }
+
+  if (check.dirExists) {
     success = currentDir?.children[check.dirExists]?.type === "dir";
+  }
+
+  if (check.expectedOutputIncludes) {
+    const children = Object.keys(currentDir?.children || {});
+    success = check.expectedOutputIncludes.every((item) => children.includes(item));
   }
 
   if (success) {
