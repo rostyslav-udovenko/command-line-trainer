@@ -24,11 +24,11 @@ export function handleWelcomeInput(command, loadTasksCallback) {
 export async function loadTasks() {
   try {
     const files = [
-      "/tasks/task1.json",
-      "/tasks/task2.json",
-      "/tasks/task3.json",
-      "/tasks/task4.json",
-      "/tasks/task5.json",
+      "/tasks/task-1.json",
+      "/tasks/task-2.json",
+      "/tasks/task-3.json",
+      "/tasks/task-4.json",
+      "/tasks/task-5.json",
     ];
     for (let i = 0; i < files.length; i++) {
       const res = await fetch(files[i]);
