@@ -23,9 +23,15 @@ export function setupInputHandler(loadTasks) {
 
 export function showWelcomeMessage() {
   output.innerHTML += `
-    <div><strong>Welcome to the Command Line Trainer!</strong></div>
-    <div>You will learn the basics of UNIX-like terminal commands.</div>
-    <div>Start training? (y/n)</div>
+    <div class="terminal-line"> 
+      <strong>Welcome to the Command Line Trainer!</strong>
+    </div>
+    <div class="terminal-line"> 
+      You will learn the basics of UNIX-like terminal commands.
+    </div>
+    <div class="terminal-line">
+      Start training? (y/n)
+    </div>
   `;
 }
 
@@ -38,7 +44,11 @@ export function printCommand(command) {
 }
 
 export function printOutput(text) {
-  output.innerHTML += `<div>${text}</div>`;
+  output.innerHTML += `
+    <div class="terminal-line">
+      ${text}
+    </div>
+  `;
 }
 
 export function scrollToBottom() {
