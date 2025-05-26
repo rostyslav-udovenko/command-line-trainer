@@ -20,5 +20,6 @@
       }
     }
   },
-  "startDirectory": "/"
+  "startDirectory": "/",
+  "hint": "Try `ls`"
 }

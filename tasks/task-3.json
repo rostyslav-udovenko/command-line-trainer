@@ -10,5 +10,6 @@
     "type": "dir",
     "children": {}
   },
-  "startDirectory": "/"
+  "startDirectory": "/",
+  "hint": "Try `mkdir images`"
 }
