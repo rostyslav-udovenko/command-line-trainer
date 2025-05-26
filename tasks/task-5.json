@@ -22,5 +22,6 @@
       }
     }
   },
-  "startDirectory": "/projects/images"
+  "startDirectory": "/projects/images",
+  "hint": "Try `pwd`"
 }

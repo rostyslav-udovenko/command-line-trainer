@@ -16,5 +16,6 @@
       }
     }
   },
-  "startDirectory": "/"
+  "startDirectory": "/",
+  "hint": "Try `cd projects`"
 }
