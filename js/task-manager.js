@@ -47,7 +47,7 @@ export async function loadTasks() {
 
 function showCurrentTask() {
   const task = tasks[currentTaskIndex];
-  printOutput(`<strong>New Task:</strong> ${task.description}`);
+  printOutput(`<strong>New Task:</strong>&nbsp;${task.description}`);
 }
 
 export function checkTaskCompletion() {
