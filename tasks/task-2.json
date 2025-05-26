@@ -16,5 +16,6 @@
       }
     }
   },
-  "startDirectory": "/projects"
+  "startDirectory": "/projects",
+  "hint": "Try `touch index.html`"
 }
