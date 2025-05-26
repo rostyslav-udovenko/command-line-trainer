@@ -83,7 +83,7 @@ export function checkTaskCompletion() {
   }
 
   if (success) {
-    printOutput(`<strong>Task completed!</strong> ${task.description}`);
+    printOutput(`<strong>Task completed!</strong>&nbsp;${task.description}`);
     currentTaskIndex++;
     if (currentTaskIndex < tasks.length) {
       setupFileSystem(tasks[currentTaskIndex].fs);
