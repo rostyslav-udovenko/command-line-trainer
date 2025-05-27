@@ -1,9 +1,12 @@
-import { virtualFileSystem, getDirectory, normalizePath } from "./file-system.js";
+import { virtualFileSystem, getDirectory,normalizePath } from "./file-system.js";
 import { printCommand, printOutput, scrollToBottom } from "./terminal-ui.js";
 import { checkTaskCompletion } from "./task-manager.js";
 
 export function executeCommand(command) {
   const [cmd, ...args] = command.split(" ");
+
+  printCommand(command);
+
   let result;
 
   if (commands[cmd]) {
@@ -12,9 +15,14 @@ export function executeCommand(command) {
     result = `Command not found: ${cmd}`;
   }
 
-  printCommand(command);
-  printOutput(result);
-  checkTaskCompletion(command);
+  if (result) {
+    printOutput(result);
+  }
+
+  if (cmd !== "help" && cmd !== "man") {
+    checkTaskCompletion(command);
+  }
+
   scrollToBottom();
 }
 
@@ -56,7 +64,25 @@ const commands = {
       ? Object.keys(currentDir.children).join(" ") || "No files or directories"
       : "Directory not found";
   },
-  cd: ([dir]) => dir ? changeDirectory(dir) : "Usage: cd <directory>",
-  mkdir: ([name]) => name ? createDirectory(name) : "Usage: mkdir <directory>",
-  touch: ([name]) => name ? createFile(name) : "Usage: touch <filename>",
+  cd: ([dir]) => (dir ? changeDirectory(dir) : "Usage: cd <directory>"),
+  mkdir: ([name]) =>
+    name ? createDirectory(name) : "Usage: mkdir <directory>",
+  touch: ([name]) => (name ? createFile(name) : "Usage: touch <filename>"),
+  help: () => {
+    printOutput("Available commands: pwd, ls, cd, mkdir, touch, help, man");
+    printOutput("Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong> for more information.");
+  },
 };
+
+const manualPages = {
+  pwd: "pwd — print working directory",
+  ls: "ls — list directory contents",
+  cd: "cd — change directory",
+  mkdir: "mkdir — make directory",
+  touch: "touch — create a new file",
+  help: "help — show general command help",
+  man: "man — show command manual, usage: man &lt;command&gt;",
+};
+
+commands.man = ([cmd]) =>
+  cmd && manualPages[cmd] ? manualPages[cmd] : "Usage: man &lt;command&gt;";
