@@ -96,7 +96,7 @@ export function checkTaskCompletion() {
       );
     }
   } else {
-    printOutput("<strong>Incorrect action!</strong> Try again.");
+    printOutput("<strong>Incorrect action!&nbsp;</strong>Try again.");
     if (task.hint) {
       printOutput(`<em>Hint:</em>&nbsp;${task.hint}`);
     }
