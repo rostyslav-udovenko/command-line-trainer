@@ -92,7 +92,7 @@ export function checkTaskCompletion() {
       showCurrentTask();
     } else {
       printOutput(
-        "<strong>Congratulations!</strong> You have completed all tasks."
+        "<strong>Congratulations!&nbsp;</strong>You have completed all tasks."
       );
     }
   } else {
