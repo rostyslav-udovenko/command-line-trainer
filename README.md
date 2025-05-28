@@ -1,16 +1,16 @@
 # Сommand Line Trainer
 
-A simple in-browser terminal simulator to help you learn basic UNIX-like commands using a virtual file system.
+An easy-to-use terminal simulator that operates within your web browser, designed to assist you in mastering fundamental UNIX-like commands through a virtual file system.
 
-This project is built to **teach beginners how to use terminal commands** step-by-step in a friendly, interactive environment — directly in the browser.
+This initiative aims to guide newcomers in learning terminal commands progressively, all within a welcoming and interactive online setting.
 
 ## 🧠 Features
 
-- Interactive command-line input (`cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`)
-- Real-time task validation with feedback and per-task hints
-- Built-in virtual file system that resets per task (via JSON)
-- Modular codebase (ES modules)
-- Fully keyboard-based UX — no mouse required
+- Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, and `man`
+- Immediate task validation accompanied by feedback and hints for each task
+- An integrated virtual file system that refreshes with each task, utilizing JSON
+- A modular architecture based on ES modules
+- A user experience designed entirely for keyboard navigation, eliminating the need for a mouse
 
 ## 🔡 Example Commands
 
@@ -51,7 +51,7 @@ Each task is described as a JSON file and includes:
 
 ## 📦 Modular JavaScript Structure
 
-The application code is split into clean ES module files for scalability and clarity:
+The application code is organized into well-structured ES module files to enhance both scalability and clarity:
 ```
 js/ 
  ├── main.js                # Entry point, initializes everything 
