@@ -1,6 +1,6 @@
-import { virtualFileSystem, getDirectory,normalizePath } from "./file-system.js";
+import { virtualFileSystem, getDirectory, normalizePath } from "./file-system.js";
 import { printCommand, printOutput, scrollToBottom } from "./terminal-ui.js";
-import { checkTaskCompletion } from "./task-manager.js";
+import { checkTaskCompletion, tasks, currentTaskIndex } from "./task-manager.js";
 
 export function executeCommand(command) {
   const [cmd, ...args] = command.split(" ");
@@ -19,7 +19,7 @@ export function executeCommand(command) {
     printOutput(result);
   }
 
-  if (cmd !== "help" && cmd !== "man") {
+  if (cmd !== "help" && cmd !== "man" && cmd !== "hint") {
     checkTaskCompletion(command);
   }
 
@@ -70,7 +70,15 @@ const commands = {
   touch: ([name]) => (name ? createFile(name) : "Usage: touch <filename>"),
   help: () => {
     printOutput("Available commands: pwd, ls, cd, mkdir, touch, help, man");
-    printOutput("Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong> for more information.");
+    printOutput(
+      "Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong> for more information."
+    );
+  },
+  hint: () => {
+    const task = tasks[currentTaskIndex];
+    return task.hint
+      ? `${task.hint}`
+      : "No hint available for this task.";
   },
 };
 
