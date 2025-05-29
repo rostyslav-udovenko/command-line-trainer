@@ -16,7 +16,7 @@ export function handleWelcomeInput(command, loadTasksCallback) {
     disableInput();
     return false;
   } else {
-    printOutput('Please enter "y" or "n".');
+    printOutput('Please enter `y` or `n`.');
     return false;
   }
 }
