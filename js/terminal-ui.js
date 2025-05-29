@@ -27,10 +27,19 @@ export function showWelcomeMessage() {
       <strong>Welcome to the Command Line Trainer!</strong>
     </div>
     <div class="terminal-line"> 
-      You will learn the basics of UNIX-like terminal commands.
+      In this interactive simulation, you will gradually familiarize yourself with the fundamentals of UNIX-like terminal commands.
+    </div>
+    <div class="terminal-line"> 
+      You will receive guidance on straightforward tasks such as moving through directories, generating files, and additional activities.
+    </div>
+    <div class="terminal-line"> 
+      At any moment, you can type &#96;help&#96; to see a list of available commands.
+    </div>
+    <div class="terminal-line"> 
+      For in-depth information on a particular command, simply enter &#96;man &lt;command&gt;&#96;.
     </div>
     <div class="terminal-line">
-      Start training? (y/n)
+      Are you prepared to get started? Type &#96;y&#96; to begin or &#96;n&#96; to exit.
     </div>
   `;
 }
