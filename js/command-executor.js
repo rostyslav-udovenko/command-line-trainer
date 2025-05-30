@@ -64,10 +64,10 @@ const commands = {
       ? Object.keys(currentDir.children).join(" ") || "No files or directories"
       : "Directory not found";
   },
-  cd: ([dir]) => (dir ? changeDirectory(dir) : "Usage: cd <directory>"),
+  cd: ([dir]) => (dir ? changeDirectory(dir) : "Usage: cd &lt;directory&gt;"),
   mkdir: ([name]) =>
-    name ? createDirectory(name) : "Usage: mkdir <directory>",
-  touch: ([name]) => (name ? createFile(name) : "Usage: touch <filename>"),
+    name ? createDirectory(name) : "Usage: mkdir &lt;directory&gt;",
+  touch: ([name]) => (name ? createFile(name) : "Usage: touch &lt;filename&gt;"),
   help: () => {
     printOutput("Available commands: pwd, ls, cd, mkdir, touch, help, man");
     printOutput(
