@@ -4,6 +4,7 @@ import { printCommand, printOutput, disableInput } from "./terminal-ui.js";
 
 export let tasks = [];
 export let currentTaskIndex = 0;
+let currentAttemptCount = 0;
 
 export function handleWelcomeInput(command, loadTasksCallback) {
   printCommand(command);
@@ -16,7 +17,7 @@ export function handleWelcomeInput(command, loadTasksCallback) {
     disableInput();
     return false;
   } else {
-    printOutput('Please enter `y` or `n`.');
+    printOutput("Please enter `y` or `n`.");
     return false;
   }
 }
@@ -83,6 +84,7 @@ export function checkTaskCompletion() {
   }
 
   if (success) {
+    currentAttemptCount = 0;
     printOutput(`<strong>Task completed!</strong>&nbsp;${task.description}`);
     currentTaskIndex++;
     if (currentTaskIndex < tasks.length) {
@@ -97,5 +99,10 @@ export function checkTaskCompletion() {
     }
   } else {
     printOutput("<strong>Incorrect action!&nbsp;</strong>Try again.");
+    currentAttemptCount++;
+
+    if (task.hint && currentAttemptCount >= 3) {
+      printOutput(`<strong>Hint:</strong>&nbsp;${task.hint}`);
+    }
   }
 }
