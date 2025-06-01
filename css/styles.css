@@ -19,6 +19,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   overflow-y: auto;
   margin-bottom: 10px;
+  position: relative
 }
 
 #input-wrapper {
@@ -74,4 +75,13 @@ body {
 
 .footer__menu a:hover {
   text-decoration: underline;
+}
+
+#matrix-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
 }
