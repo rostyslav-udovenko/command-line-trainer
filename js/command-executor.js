@@ -1,6 +1,7 @@
 import { virtualFileSystem, getDirectory, normalizePath } from "./file-system.js";
 import { printCommand, printOutput, scrollToBottom } from "./terminal-ui.js";
 import { checkTaskCompletion, tasks, currentTaskIndex } from "./task-manager.js";
+import { activateMatrixMode } from "./matrix-mode.js";
 
 export function executeCommand(command) {
   const [cmd, ...args] = command.split(" ");
@@ -79,6 +80,10 @@ const commands = {
     return task.hint
       ? `${task.hint}`
       : "No hint available for this task.";
+  },
+  neo: () => {
+  activateMatrixMode();
+  return null;
   },
 };
 
