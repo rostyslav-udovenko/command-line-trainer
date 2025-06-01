@@ -11,6 +11,11 @@ This initiative aims to guide newcomers in learning terminal commands progressiv
 - An integrated virtual file system that refreshes with each task, utilizing JSON
 - A modular architecture based on ES modules
 - A user experience designed entirely for keyboard navigation, eliminating the need for a mouse
+- Hidden "Matrix Mode" easter egg (`neo` command)
+
+## 🥚 Easter Egg: Matrix Mode
+
+To enable **Matrix Rain** mode, simply enter the command `neo` in the terminal whenever you wish. This action will transform the terminal display into a captivating animated green rain effect reminiscent of *The Matrix*. 
 
 ## 🔡 Example Commands
 
@@ -58,7 +63,8 @@ js/
  ├── terminal-ui.js         # Handles UI: output, input, scrolling
  ├── file-system.js         # Virtual file system operations
  ├── command-executor.js    # Command definitions and execution logic 
- └── task-manager.js        # Task loading, validation and flow control
+ ├── task-manager.js        # Task loading, validation and flow control
+ └── matrix-mode.js         # Matrix Rain mode
  ```
 
  ## 🗂 File Structure
@@ -73,7 +79,8 @@ project-root/
 │   ├── terminal-ui.js
 │   ├── file-system.js
 │   ├── command-executor.js
-│   └── task-manager.js
+│   ├── task-manager.js
+│   └── matrix-mode.js
 ├── tasks/
 │   ├── task-1.json
 │   ├── task-2.json
