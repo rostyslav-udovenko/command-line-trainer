@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+    <header class="header">
+      <div class="header__inner">
+        <a href="index.html" class="header__title">Command Line Trainer</a>
+        <nav class="header__menu">
+          <a href="cheatsheet.html">Cheat Sheet</a>
+        </nav>
+      </div>
+    </header>
+
     <div id="terminal">
       <div id="output"></div>
       <div id="input-wrapper" class="terminal-line">
@@ -16,21 +25,23 @@
     </div>
 
     <footer class="footer">
-      <p class="footer__text">
-        © 2025 Command Line Trainer. Built for learning basic UNIX-like terminal
-        commands by Rostyslav Udovenko.
-      </p>
-      <div class="footer__menu">
-        <a
-          href="https://github.com/rostyslav-udovenko/command-line-trainer"
-          target="_blank"
-          >GitHub</a
-        >
-        <span>·</span>
-        <a href="mailto:rostyslav.udovenko@gmail.com">Contact me</a>
+      <div class="footer__inner">
+        <div class="footer__text">
+          © 2025 Command Line Trainer. Built for learning basic UNIX-like
+          terminal commands by Rostyslav Udovenko.
+        </div>
+        <div class="footer__menu">
+          <a
+            href="https://github.com/rostyslav-udovenko/command-line-trainer"
+            target="_blank"
+            >GitHub</a
+          >
+          <span>·</span>
+          <a href="mailto:rostyslav.udovenko@gmail.com">Contact me</a>
+        </div>
       </div>
     </footer>
 
-   <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
