@@ -1,0 +1,41 @@
+.header {
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-muted);
+  padding: 10px 0;
+  font-size: 12px;
+}
+
+.header__inner {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  font-family: var(--font-main);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.header__title:hover {
+  text-decoration: underline;
+}
+
+.header__menu {
+  display: flex;
+  gap: 6px;
+  font-size: inherit;
+}
+
+.header__menu a {
+  color: var(--color-accent);
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.header__menu a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,15 @@
+.terminal-line {
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  line-height: 1.4;
+  font-family: inherit;
+  flex-wrap: wrap;
+}
+
+.prompt-symbol {
+  display: inline-block;
+  margin-right: 0.3em;
+  vertical-align: baseline;
+  line-height: inherit;
+}

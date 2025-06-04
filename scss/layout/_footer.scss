@@ -1,0 +1,39 @@
+.footer {
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-muted);
+  font-size: 12px;
+  padding: 10px 0;
+}
+
+.footer__inner {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.footer__text {
+  color: var(--color-muted);
+  text-align: left;
+}
+
+.footer__menu {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  font-size: inherit;
+}
+
+.footer__menu a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.footer__menu a:hover {
+  text-decoration: underline;
+}
