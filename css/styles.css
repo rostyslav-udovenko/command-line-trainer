@@ -1,3 +1,26 @@
+:root {
+  --color-bg: #1e1e1e;
+  --color-fg: #fff;
+  --color-muted: #aaa;
+  --color-accent: #888;
+  --font-main: "Courier New", monospace;
+  --font-size-base: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 html,
 body {
   height: 100%;
@@ -11,16 +34,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  font-family: "Courier New", monospace;
-  background-color: #1e1e1e;
-  color: #fff;
-  font-size: 14px;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-size: var(--font-size-base);
 }
 
 .header {
   width: 100%;
-  background-color: #1e1e1e;
-  color: #aaa;
+  background-color: var(--color-bg);
+  color: var(--color-muted);
   padding: 10px 0;
   font-size: 12px;
 }
@@ -31,12 +54,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .header__title {
-  font-family: "Courier New", monospace;
-  color: #888;
+  font-family: var(--font-main);
+  color: var(--color-accent);
   text-decoration: none;
 }
 
@@ -51,12 +73,52 @@ body {
 }
 
 .header__menu a {
-  color: #888;
-  text-decoration: none;
+  color: var(--color-accent);
   font-weight: normal;
+  text-decoration: none;
 }
 
 .header__menu a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-muted);
+  font-size: 12px;
+  padding: 10px 0;
+}
+
+.footer__inner {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.footer__text {
+  color: var(--color-muted);
+  text-align: left;
+}
+
+.footer__menu {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  font-size: inherit;
+}
+
+.footer__menu a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.footer__menu a:hover {
   text-decoration: underline;
 }
 
@@ -69,13 +131,35 @@ body {
   overflow-y: auto;
   position: relative;
   box-sizing: border-box;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
+}
+
+#matrix-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
 }
 
 #input-wrapper {
   display: flex;
   width: 100%;
+}
+
+#input {
+  flex: 1;
+  font-family: inherit;
+  background: none;
+  border: none;
+  color: white;
+  font-size: inherit;
+  line-height: 1.4;
+  width: 100%;
+  outline: none;
+  padding: 0;
+  margin: 0;
 }
 
 .terminal-line {
@@ -94,103 +178,26 @@ body {
   line-height: inherit;
 }
 
-#input {
-  flex: 1;
-  font-family: inherit;
-  background: none;
-  border: none;
-  color: white;
-  font-size: inherit;
-  line-height: 1.4;
-  width: 100%;
-  outline: none;
-  padding: 0;
-  margin: 0;
-}
-
-#matrix-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
-}
-
-.footer {
-  width: 100%;
-  background-color: #1e1e1e;
-  color: #aaa;
-  font-size: 12px;
-  padding: 10px 0;
-}
-
-.footer__inner {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-}
-
-.footer__text {
-  color: #aaa;
-  text-align: left;
-  font-size: inherit;
-}
-
-.footer__menu {
-  display: flex;
-  gap: 6px;
-  font-size: inherit;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.footer__menu a {
-  color: #888;
-  text-decoration: none;
-}
-
-.footer__menu a:hover {
-  text-decoration: underline;
-}
-
 @media (min-width: 768px) {
   body {
     font-size: 16px;
   }
-
-  .header {
+  .header,
+  .header__menu,
+  .footer,
+  .footer__menu {
     font-size: 14px;
   }
-
-  .header__menu {
-    font-size: 14px;
-  }
-
   #terminal {
     width: 80%;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   }
-
-  .terminal-line {
-    font-size: 16px;
-  }
-
+  .terminal-line,
   #input {
     font-size: 16px;
   }
-
-  .footer {
-    font-size: 14px;
-  }
-
-  .footer__menu {
-    font-size: 14px;
-  }
 }
+
+/*# sourceMappingURL=styles.css.map */
