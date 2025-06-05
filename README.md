@@ -67,7 +67,61 @@ js/
  └── matrix-mode.js         # Matrix Rain mode
  ```
 
- ## 🗂 File Structure
+## 🎨 SCSS Structure
+
+This project uses a modular SCSS structure for better scalability and organization.
+
+```
+css/
+└── styles.css              # Generated from SCSS (do not edit manually)
+
+scss/
+├── main.scss               # UI Entry point
+├── base/                   # Base settings and resets
+│   ├── _globals.scss       # Global element styles
+│   ├── _reset.scss         # Reset and normalize styles
+│   ├── _typography.scss    # Typography rules
+│   └── _variables.scss     # SCSS variables
+├── components/             # Reusable UI components
+│   ├── _input.scss         # Input field styling
+│   └── _prompt.scss        # Prompt symbol and input wrapper
+├── layout/                 # Structural layout sections
+│   ├── _footer.scss        # Footer styling
+│   ├── _header.scss        # Header styling
+│   └── _terminal.scss      # Terminal area styling
+└── media/                  # Media queries and breakpoints
+    └── _responsive.scss    # Responsive adjustments
+```
+
+## ⚙️ Install Sass
+
+You can install Sass globally using npm:
+
+```
+npm install -g sass
+```
+
+## 🔁 Compile SCSS to CSS
+
+From the root directory of the project, run:
+
+```
+sass --watch scss/main.scss:css/styles.css
+```
+
+This will **watch** for changes and automatically update the `styles.css` file in the `css/` folder.
+
+## 🛠️ One-time Compile
+
+If you just want to compile SCSS once without watching:
+
+```
+sass scss/main.scss css/styles.css
+```
+
+⚠️ **Do not** edit `css/styles.css` manually — all changes should be made in SCSS files.
+
+## 🗂 File Structure
 
 ```
 project-root/
@@ -81,12 +135,29 @@ project-root/
 │   ├── command-executor.js
 │   ├── task-manager.js
 │   └── matrix-mode.js
+├── scss/
+│   ├── main.scss
+│   ├── base/
+│   │   ├── _globals.scss
+│   │   ├── _reset.scss
+│   │   ├── _typography.scss
+│   │   └── _variables.scss
+│   ├── components/
+│   │   ├── _input.scss
+│   │   └── _prompt.scss
+│   ├── layout/
+│   │   ├── _footer.scss
+│   │   ├── _header.scss
+│   │   └── _terminal.scss
+│   └── media/
+│       └── _responsive.scss
 ├── tasks/
 │   ├── task-1.json
 │   ├── task-2.json
 │   └── ...
 └── README.md
 ```
+
 ## 📄 License
 
 Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
