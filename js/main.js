@@ -1,5 +1,8 @@
-import { setupInputHandler, showWelcomeMessage } from "./terminal-ui.js";
+import { setupInputHandler, showWelcomeMessage, enableInput } from "./terminal-ui.js";
 import { loadTasks } from "./task-manager.js";
 
-showWelcomeMessage();
-setupInputHandler(loadTasks);
+document.addEventListener("DOMContentLoaded", () => {
+  showWelcomeMessage();
+  enableInput();
+  setupInputHandler(loadTasks);
+});

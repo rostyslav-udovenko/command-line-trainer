@@ -1,12 +1,12 @@
 import { executeCommand } from "./command-executor.js";
 import { handleWelcomeInput } from "./task-manager.js";
 
-const output = document.getElementById("output");
-const inputField = document.getElementById("input");
-
 let started = false;
 
 export function setupInputHandler(loadTasks) {
+  const inputField = document.getElementById("input");
+  if (!inputField) return;
+
   inputField.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       const command = inputField.value.trim();
@@ -22,6 +22,9 @@ export function setupInputHandler(loadTasks) {
 }
 
 export function showWelcomeMessage() {
+  const output = document.getElementById("output");
+  if (!output) return;
+
   output.innerHTML += `
     <div class="terminal-line"> 
       <strong>Welcome to the Command Line Trainer!</strong>
@@ -45,6 +48,9 @@ export function showWelcomeMessage() {
 }
 
 export function printCommand(command) {
+  const output = document.getElementById("output");
+  if (!output) return;
+
   output.innerHTML += `
     <div class="terminal-line">
       <span class="prompt-symbol">$&nbsp;</span>${command}
@@ -53,6 +59,9 @@ export function printCommand(command) {
 }
 
 export function printOutput(text) {
+  const output = document.getElementById("output");
+  if (!output) return;
+
   output.innerHTML += `
     <div class="terminal-line">
       ${text}
@@ -62,9 +71,21 @@ export function printOutput(text) {
 
 export function scrollToBottom() {
   const terminal = document.getElementById("terminal");
-  terminal.scrollTop = terminal.scrollHeight;
+  if (terminal) terminal.scrollTop = terminal.scrollHeight;
 }
 
 export function disableInput() {
-  inputField.disabled = true;
+  const inputField = document.getElementById("input");
+  if (inputField) inputField.disabled = true;
+}
+
+export function enableInput() {
+  const inputWrapper = document.getElementById("input-wrapper");
+  const inputField = document.getElementById("input");
+
+  if (inputWrapper) inputWrapper.style.display = "flex";
+  if (inputField) {
+    inputField.disabled = false;
+    inputField.focus();
+  }
 }
