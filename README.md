@@ -155,6 +155,9 @@ project-root/
 │   ├── task-1.json
 │   ├── task-2.json
 │   └── ...
+├── 404.html
+├── 500.html
+├── LICENSE
 └── README.md
 ```
 
