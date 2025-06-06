@@ -102,7 +102,7 @@ body {
 
 .footer__text {
   color: var(--color-muted);
-  text-align: left;
+  text-align: center;
 }
 
 .footer__menu {
