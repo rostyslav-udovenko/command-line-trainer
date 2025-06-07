@@ -49,7 +49,7 @@ body {
 }
 
 .header__inner {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -187,6 +187,9 @@ body {
   .footer,
   .footer__menu {
     font-size: 14px;
+  }
+  .header__inner {
+    width: 80%;
   }
   #terminal {
     width: 80%;
