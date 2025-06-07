@@ -178,6 +178,16 @@ body {
   line-height: inherit;
 }
 
+@media (max-width: 359px) {
+  .header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .header__menu {
+    margin-left: 0;
+  }
+}
 @media (min-width: 768px) {
   body {
     font-size: 16px;
