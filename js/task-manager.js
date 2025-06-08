@@ -98,7 +98,6 @@ export function checkTaskCompletion() {
       );
     }
   } else {
-    printOutput("<strong>Incorrect action!&nbsp;</strong>Try again.");
     currentAttemptCount++;
 
     if (task.hint && currentAttemptCount >= 3) {
