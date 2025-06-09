@@ -1,6 +1,15 @@
-import { virtualFileSystem, getDirectory, normalizePath } from "./file-system.js";
+import {
+  virtualFileSystem,
+  getDirectory,
+  normalizePath,
+} from "./file-system.js";
 import { printCommand, printOutput, scrollToBottom } from "./terminal-ui.js";
-import { checkTaskCompletion, tasks, currentTaskIndex } from "./task-manager.js";
+import {
+  checkTaskCompletion,
+  tasks,
+  currentTaskIndex,
+  setHintsEnabled,
+} from "./task-manager.js";
 import { activateMatrixMode } from "./matrix-mode.js";
 
 export function executeCommand(command) {
@@ -68,22 +77,34 @@ const commands = {
   cd: ([dir]) => (dir ? changeDirectory(dir) : "Usage: cd &lt;directory&gt;"),
   mkdir: ([name]) =>
     name ? createDirectory(name) : "Usage: mkdir &lt;directory&gt;",
-  touch: ([name]) => (name ? createFile(name) : "Usage: touch &lt;filename&gt;"),
+  touch: ([name]) =>
+    name ? createFile(name) : "Usage: touch &lt;filename&gt;",
   help: () => {
     printOutput("Available commands: pwd, ls, cd, mkdir, touch, help, man");
     printOutput(
       "Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong> for more information."
     );
   },
-  hint: () => {
-    const task = tasks[currentTaskIndex];
-    return task.hint
-      ? `${task.hint}`
-      : "No hint available for this task.";
+  hint: ([arg]) => {
+    if (!arg) {
+      return tasks[currentTaskIndex].hint || "No hint available for this task.";
+    }
+
+    const option = arg.toLowerCase();
+    if (option === "off" || option === "disable") {
+      setHintsEnabled(false);
+      return "Hints have been disabled.";
+    }
+    if (option === "on" || option === "enable") {
+      setHintsEnabled(true);
+      return "Hints have been enabled.";
+    }
+
+    return "Usage: hint [on|off]";
   },
   neo: () => {
-  activateMatrixMode();
-  return null;
+    activateMatrixMode();
+    return null;
   },
 };
 
