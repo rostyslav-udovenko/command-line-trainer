@@ -5,11 +5,15 @@ import { printCommand, printOutput, disableInput } from "./terminal-ui.js";
 export let tasks = [];
 export let currentTaskIndex = 0;
 let currentAttemptCount = 0;
+let hintsEnabled = true;
 
 export function handleWelcomeInput(command, loadTasksCallback) {
   printCommand(command);
   if (command.toLowerCase() === "y") {
     printOutput("Training started!");
+    printOutput(
+      "Hints are enabled by default. Use `hint off` to disable or `hint on` to re-enable them."
+    );
     loadTasksCallback();
     return true;
   } else if (command.toLowerCase() === "n") {
@@ -48,7 +52,9 @@ export async function loadTasks() {
 
 function showCurrentTask() {
   const task = tasks[currentTaskIndex];
-  printOutput(`<strong>Task&nbsp;${task.id}:</strong>&nbsp;${task.description}`);
+  printOutput(
+    `<strong>Task&nbsp;${task.id}:</strong>&nbsp;${task.description}`
+  );
 }
 
 export function checkTaskCompletion() {
@@ -100,8 +106,12 @@ export function checkTaskCompletion() {
   } else {
     currentAttemptCount++;
 
-    if (task.hint && currentAttemptCount >= 3) {
+    if (task.hint && currentAttemptCount >= 3 && hintsEnabled) {
       printOutput(`<strong>Hint:</strong>&nbsp;${task.hint}`);
     }
   }
+}
+
+export function setHintsEnabled(value) {
+  hintsEnabled = value;
 }
