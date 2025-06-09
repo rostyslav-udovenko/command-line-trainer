@@ -3,7 +3,8 @@
   "description": "Create a file named `index.html` inside the `projects` directory.",
   "type": "touch",
   "check": {
-    "fileExists": "index.html"
+    "fileExists": "index.html",
+    "currentDirectoryIs": "/projects"
   },
   "fs": {
     "name": "/",
@@ -12,7 +13,12 @@
       "projects": {
         "name": "projects",
         "type": "dir",
-        "children": {}
+        "children": {
+          "readme.txt": {
+            "name": "readme.txt",
+            "type": "file"
+          }
+        }
       }
     }
   },
