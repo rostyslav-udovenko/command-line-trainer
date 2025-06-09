@@ -11,6 +11,7 @@ import {
   setHintsEnabled,
 } from "./task-manager.js";
 import { activateMatrixMode } from "./matrix-mode.js";
+import { manualPages } from "./manual-pages.js";
 
 export function executeCommand(command) {
   const [cmd, ...args] = command.split(" ");
@@ -106,16 +107,6 @@ const commands = {
     activateMatrixMode();
     return null;
   },
-};
-
-const manualPages = {
-  pwd: "pwd — print working directory",
-  ls: "ls — list directory contents",
-  cd: "cd — change directory",
-  mkdir: "mkdir — make directory",
-  touch: "touch — create a new file",
-  help: "help — show general command help",
-  man: "man — show command manual, usage: man &lt;command&gt;",
 };
 
 commands.man = ([cmd]) =>
