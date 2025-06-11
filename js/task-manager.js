@@ -102,6 +102,7 @@ export function checkTaskCompletion() {
       printOutput(
         "<strong>Congratulations!&nbsp;</strong>You have completed all tasks."
       );
+      disableInput();
     }
   } else {
     currentAttemptCount++;
