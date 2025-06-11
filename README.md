@@ -65,6 +65,7 @@ js/
  ├── file-system.js         # Virtual file system operations
  ├── command-executor.js    # Command definitions and execution logic 
  ├── task-manager.js        # Task loading, validation and flow control
+ ├── manualPages.js         # Manual entries for use by the `man` command
  └── matrix-mode.js         # Matrix Rain mode
  ```
 
@@ -135,6 +136,7 @@ project-root/
 │   ├── file-system.js
 │   ├── command-executor.js
 │   ├── task-manager.js
+│   ├── manualPages.js
 │   └── matrix-mode.js
 ├── scss/
 │   ├── main.scss
