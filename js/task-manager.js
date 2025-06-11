@@ -1,6 +1,6 @@
 import { setupFileSystem, getDirectory } from "./file-system.js";
 import { virtualFileSystem } from "./file-system.js";
-import { printCommand, printOutput, disableInput } from "./terminal-ui.js";
+import { printOutput, disableInput } from "./terminal-ui.js";
 
 export let tasks = [];
 export let currentTaskIndex = 0;
@@ -8,7 +8,6 @@ let currentAttemptCount = 0;
 let hintsEnabled = true;
 
 export function handleWelcomeInput(command, loadTasksCallback) {
-  printCommand(command);
   if (command.toLowerCase() === "y") {
     printOutput("Training started!");
     printOutput(

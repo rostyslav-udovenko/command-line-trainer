@@ -9,14 +9,20 @@ export function setupInputHandler(loadTasks) {
 
   inputField.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-      const command = inputField.value.trim();
-      inputField.value = "";
+      event.preventDefault();
+
+      const command = inputField.innerText.trim();
+      inputField.innerText = "";
+
+      printCommand(command);
 
       if (!started) {
         started = handleWelcomeInput(command, loadTasks);
       } else {
         executeCommand(command);
       }
+
+      scrollToBottom();
     }
   });
 }

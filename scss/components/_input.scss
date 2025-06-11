@@ -4,15 +4,24 @@
 }
 
 #input {
-  flex: 1;
+  display: inline-block;
+  min-width: 1px;
+  max-width: 100%;
   font-family: inherit;
   background: none;
   border: none;
   color: white;
   font-size: inherit;
   line-height: 1.4;
-  width: 100%;
   outline: none;
   padding: 0;
   margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  caret-color: transparent;
+}
+
+#input:focus {
+  border-right: 10px solid var(--color-fg);
+  outline: none;
 }

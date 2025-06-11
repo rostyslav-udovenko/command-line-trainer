@@ -3,7 +3,7 @@ import {
   getDirectory,
   normalizePath,
 } from "./file-system.js";
-import { printCommand, printOutput, scrollToBottom } from "./terminal-ui.js";
+import { printOutput, scrollToBottom } from "./terminal-ui.js";
 import {
   checkTaskCompletion,
   tasks,
@@ -15,8 +15,6 @@ import { manualPages } from "./manual-pages.js";
 
 export function executeCommand(command) {
   const [cmd, ...args] = command.split(" ");
-
-  printCommand(command);
 
   let result;
 
@@ -81,7 +79,9 @@ const commands = {
   touch: ([name]) =>
     name ? createFile(name) : "Usage: touch &lt;filename&gt;",
   help: () => {
-    printOutput("Available commands: pwd, ls, cd, mkdir, touch, help, man. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong> for more information.");
+    printOutput(
+      "Available commands: pwd, ls, cd, mkdir, touch, help, man. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong> for more information."
+    );
     printOutput("System commands: hint [on|off]");
   },
   hint: ([arg]) => {
