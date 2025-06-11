@@ -26,9 +26,14 @@
         </div>
       </noscript>
       <div id="output"></div>
-      <div id="input-wrapper" class="terminal-line" style="display: none">
+      <div id="input-wrapper" class="terminal-line">
         <span class="prompt-symbol">$&nbsp;</span>
-        <input type="text" id="input" autofocus />
+        <span
+          id="input"
+          contenteditable="true"
+          spellcheck="false"
+          aria-label="Terminal input"
+        ></span>
       </div>
     </main>
 
