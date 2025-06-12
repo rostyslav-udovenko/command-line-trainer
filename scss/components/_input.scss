@@ -10,6 +10,7 @@
   font-family: inherit;
   background: none;
   border: none;
+  border-right: 10px solid var(--color-fg);
   color: white;
   font-size: inherit;
   line-height: 1.4;
@@ -19,9 +20,4 @@
   white-space: pre-wrap;
   word-break: break-word;
   caret-color: transparent;
-}
-
-#input:focus {
-  border-right: 10px solid var(--color-fg);
-  outline: none;
 }
