@@ -7,6 +7,21 @@ export function setupInputHandler(loadTasks) {
   const inputField = document.getElementById("input");
   if (!inputField) return;
 
+  inputField.focus();
+  placeCaretAtEnd(inputField);
+
+  document.addEventListener("keydown", (event) => {
+    const isPrintableKey = event.key.length === 1;
+
+    if (document.activeElement !== inputField && isPrintableKey) {
+      event.preventDefault();
+
+      inputField.focus();
+      placeCaretAtEnd(input);
+      document.execCommand("insertText", false, event.key);
+    }
+  });
+
   inputField.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -23,6 +38,7 @@ export function setupInputHandler(loadTasks) {
       }
 
       scrollToBottom();
+      placeCaretAtEnd(input);
     }
   });
 }
@@ -94,4 +110,13 @@ export function enableInput() {
     inputField.disabled = false;
     inputField.focus();
   }
+}
+
+function placeCaretAtEnd(el) {
+  const range = document.createRange();
+  const sel = window.getSelection();
+  range.selectNodeContents(el);
+  range.collapse(false);
+  sel.removeAllRanges();
+  sel.addRange(range);
 }
