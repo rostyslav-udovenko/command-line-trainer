@@ -143,30 +143,69 @@ body {
   z-index: 999;
 }
 
-#input-wrapper {
-  display: flex;
-  width: 100%;
+#hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  width: 0;
 }
 
-#input {
-  display: inline-block;
-  min-width: 1px;
-  max-width: 100%;
-  font-family: inherit;
-  background: none;
-  border: none;
-  border-right: 10px solid var(--color-fg);
-  color: white;
-  font-size: inherit;
-  line-height: 1.4;
-  outline: none;
-  padding: 0;
-  margin: 0;
+.custom-rendered-input {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   white-space: pre-wrap;
   word-break: break-word;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1;
   caret-color: transparent;
+  min-height: 1em;
 }
 
+.custom-rendered-input span {
+  display: inline-block;
+  width: 1ch;
+  height: 1em;
+  text-align: center;
+  line-height: 1;
+  font-family: inherit;
+  font-size: inherit;
+  vertical-align: baseline;
+}
+
+.custom-caret {
+  display: inline-block;
+  width: 1ch;
+  height: 1em;
+  line-height: 1;
+  vertical-align: baseline;
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+  animation: caret-blink 1s step-end infinite;
+  text-align: center;
+  font-family: inherit;
+  font-size: inherit;
+  overflow: hidden;
+}
+
+.custom-caret--selected {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  outline: none;
+}
+
+@keyframes caret-blink {
+  0%, 100% {
+    background-color: var(--color-fg);
+    color: var(--color-bg);
+  }
+  50% {
+    background-color: transparent;
+    color: var(--color-fg);
+  }
+}
 .terminal-line {
   display: flex;
   align-items: center;
