@@ -1,8 +1,13 @@
-import { setupInputHandler, showWelcomeMessage, enableInput } from "./terminal-ui.js";
-import { loadTasks } from "./task-manager.js";
+import { TerminalCaret, showWelcomeMessage } from "./terminal-ui.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  showWelcomeMessage();
-  enableInput();
-  setupInputHandler(loadTasks);
+showWelcomeMessage();
+
+  const caret = new TerminalCaret({
+    inputId: "hidden-input",
+    renderedId: "custom-rendered-input",
+    outputId: "output",
+  });
+
+  caret.focus();
 });
