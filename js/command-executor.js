@@ -80,7 +80,7 @@ const commands = {
     name ? createFile(name) : "Usage: touch &lt;filename&gt;",
   help: () => {
     printOutput(
-      "Available commands: pwd, ls, cd, mkdir, touch, help, man. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong> for more information."
+      "Available commands: pwd, ls, cd, mkdir, touch, help, man. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
     );
     printOutput("System commands: hint [on|off]");
   },
