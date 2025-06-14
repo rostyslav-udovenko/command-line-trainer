@@ -52,7 +52,7 @@ export async function loadTasks() {
 function showCurrentTask() {
   const task = tasks[currentTaskIndex];
   printOutput(
-    `<strong>Task&nbsp;${task.id}:</strong>&nbsp;${task.description}`
+    `<strong>Task ${task.id}:</strong> ${task.description}`
   );
 }
 
@@ -90,7 +90,7 @@ export function checkTaskCompletion() {
 
   if (success) {
     currentAttemptCount = 0;
-    printOutput(`<strong>Task completed!</strong>&nbsp;${task.description}`);
+    printOutput(`<strong>Task completed!</strong> ${task.description}`);
     currentTaskIndex++;
     if (currentTaskIndex < tasks.length) {
       setupFileSystem(tasks[currentTaskIndex].fs);
@@ -99,7 +99,7 @@ export function checkTaskCompletion() {
       showCurrentTask();
     } else {
       printOutput(
-        "<strong>Congratulations!&nbsp;</strong>You have completed all tasks."
+        "<strong>Congratulations! </strong>You have completed all tasks."
       );
       disableInput();
     }
@@ -107,7 +107,7 @@ export function checkTaskCompletion() {
     currentAttemptCount++;
 
     if (task.hint && currentAttemptCount >= 3 && hintsEnabled) {
-      printOutput(`<strong>Hint:</strong>&nbsp;${task.hint}`);
+      printOutput(`<strong>Hint:</strong> ${task.hint}`);
     }
   }
 }
