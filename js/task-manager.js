@@ -1,6 +1,6 @@
 import { setupFileSystem, getDirectory } from "./file-system.js";
 import { virtualFileSystem } from "./file-system.js";
-import { printOutput, disableInput } from "./terminal-ui.js";
+import { printOutput, disableInput, hideCaret } from "./terminal-ui.js";
 
 export let tasks = [];
 export let currentTaskIndex = 0;
@@ -18,6 +18,7 @@ export function handleWelcomeInput(command, loadTasksCallback) {
   } else if (command.toLowerCase() === "n") {
     printOutput("Training canceled. See you next time!");
     disableInput();
+    hideCaret();
     return false;
   } else {
     printOutput("Please enter `y` or `n`.");
@@ -51,9 +52,7 @@ export async function loadTasks() {
 
 function showCurrentTask() {
   const task = tasks[currentTaskIndex];
-  printOutput(
-    `<strong>Task ${task.id}:</strong> ${task.description}`
-  );
+  printOutput(`<strong>Task ${task.id}:</strong> ${task.description}`);
 }
 
 export function checkTaskCompletion() {
@@ -102,6 +101,7 @@ export function checkTaskCompletion() {
         "<strong>Congratulations! </strong>You have completed all tasks."
       );
       disableInput();
+      hideCaret();
     }
   } else {
     currentAttemptCount++;
