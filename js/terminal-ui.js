@@ -82,12 +82,11 @@ export class TerminalCaret {
     return this.inputField.value.trim();
   }
 
-clear() {
-  this.inputField.value = "";
-  this._render();
-  this.inputField.focus();
-}
-
+  clear() {
+    this.inputField.value = "";
+    this._render();
+    this.inputField.focus();
+  }
 
   focus() {
     this.inputField.focus();
@@ -150,4 +149,15 @@ export function scrollToBottom() {
 export function disableInput() {
   const input = document.getElementById("hidden-input");
   if (input) input.disabled = true;
+}
+
+export function hideCaret() {
+  const rendered = document.getElementById("custom-rendered-input");
+  if (!rendered) return;
+
+  rendered.querySelectorAll(".custom-caret").forEach((el) => {
+    el.classList.remove("custom-caret", "custom-caret--selected");
+    el.style.backgroundColor = "transparent";
+    el.style.color = "inherit";
+  });
 }
