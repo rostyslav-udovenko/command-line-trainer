@@ -4,7 +4,33 @@ import { loadTasks } from "./task-manager.js";
 
 let started = false;
 
+/**
+ * TerminalCaret handles user input rendering in a simulated terminal interface.
+ * It separates visual caret display from the actual input logic using a hidden input field.
+ * This allows for a more flexible and visually appealing terminal experience.
+ *
+ * @class TerminalCaret
+ * @param {Object} options - Configuration options for the terminal caret.
+ * @param {string} options.inputId - ID of the hidden input field.
+ * @param {string} options.renderedId - ID of the container where the custom caret and input are rendered.
+ * @param {string} options.outputId - ID of the terminal output container.
+ *
+ * @method _bindEvents - Binds event listeners for handling keyboard input and rendering the caret.
+ * @method _render - Renders the visual representation of input text with a custom caret.
+ * @method getValue - Returns the trimmed current input value.
+ * @method clear - Clears the input and caret, refocuses the field.
+ * @method focus - Sets focus on the hidden input field.
+ * @method printToOutput - Prints the typed command into the terminal output area.
+ * @method _scrollToBottom - Scrolls the terminal to the bottom.
+ */
 export class TerminalCaret {
+  /**
+   * Creates an instance of TerminalCaret.
+   * @param {Object} options
+   * @param {string} options.inputId - ID of the hidden input field.
+   * @param {string} options.renderedId - ID of the container where the custom caret and input are rendered.
+   * @param {string} options.outputId - ID of the terminal output container.
+   */
   constructor({ inputId, renderedId, outputId }) {
     this.inputField = document.getElementById(inputId);
     this.rendered = document.getElementById(renderedId);
@@ -14,6 +40,10 @@ export class TerminalCaret {
     this._render();
   }
 
+  /**
+   * @private
+   * Binds event listeners for handling keyboard input and rendering the caret.
+   */
   _bindEvents() {
     if (!this.inputField || !this.rendered) return;
 
@@ -26,6 +56,7 @@ export class TerminalCaret {
     );
     this.inputField.addEventListener("focus", () => this._render());
 
+    // Capture printable characters even when input is not focused
     document.addEventListener("keydown", (e) => {
       if (e.key.length === 1 && document.activeElement !== this.inputField) {
         e.preventDefault();
@@ -33,6 +64,7 @@ export class TerminalCaret {
       }
     });
 
+    // Handle command submission on Enter key
     this.inputField.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -52,6 +84,10 @@ export class TerminalCaret {
     });
   }
 
+  /**
+   * @private
+   * Renders the visual representation of input text with a custom caret.
+   */
   _render() {
     const value = this.inputField.value;
     const start = this.inputField.selectionStart || 0;
@@ -78,20 +114,34 @@ export class TerminalCaret {
     }
   }
 
+  /**
+   * Returns the trimmed current input value.
+   * @returns {string} The user input with surrounding whitespace removed.
+   */
   getValue() {
     return this.inputField.value.trim();
   }
 
+  /**
+   * Clears the input and caret, refocuses the field.
+   */
   clear() {
     this.inputField.value = "";
     this._render();
     this.inputField.focus();
   }
 
+  /**
+   * Sets focus on the hidden input field.
+   */
   focus() {
     this.inputField.focus();
   }
 
+  /**
+   * Prints the typed command into the terminal output area.
+   * @param {string} command - The command string to be printed.
+   */
   printToOutput(command) {
     const div = document.createElement("div");
     div.className = "terminal-line";
@@ -106,12 +156,19 @@ export class TerminalCaret {
     this.output.appendChild(div);
   }
 
+  /**
+   * @private
+   * Scrolls the terminal to the bottom.
+   */
   _scrollToBottom() {
     const terminal = document.getElementById("terminal");
     if (terminal) terminal.scrollTop = terminal.scrollHeight;
   }
 }
 
+/**
+ * Displays the initial welcome instructions in the terminal.
+ */
 export function showWelcomeMessage() {
   printOutput("<strong>Welcome to the Command Line Trainer!</strong>");
   printOutput(
@@ -131,6 +188,10 @@ export function showWelcomeMessage() {
   );
 }
 
+/**
+ * Prints a string (HTML-safe) to the output container.
+ * @param {string} html - Raw HTML string to insert directly into output.
+ */
 export function printOutput(html) {
   const output = document.getElementById("output");
   if (!output) return;
@@ -141,16 +202,25 @@ export function printOutput(html) {
   output.appendChild(div);
 }
 
+/**
+ * Scrolls the terminal container to the bottom.
+ */
 export function scrollToBottom() {
   const terminal = document.getElementById("terminal");
   if (terminal) terminal.scrollTop = terminal.scrollHeight;
 }
 
+/**
+ * Disables the hidden input field (e.g. after training is completed).
+ */
 export function disableInput() {
   const input = document.getElementById("hidden-input");
   if (input) input.disabled = true;
 }
 
+/**
+ * Visually hides the custom caret (e.g. after training is completed).
+ */
 export function hideCaret() {
   const rendered = document.getElementById("custom-rendered-input");
   if (!rendered) return;
