@@ -2,11 +2,37 @@ import { setupFileSystem, getDirectory } from "./file-system.js";
 import { virtualFileSystem } from "./file-system.js";
 import { printOutput, disableInput, hideCaret } from "./terminal-ui.js";
 
+/**
+ * Loaded task definitions.
+ * @type {Array<Object>}
+ */
 export let tasks = [];
+
+/**
+ * Current task index being evaluated.
+ * @type {number}
+ */
 export let currentTaskIndex = 0;
+
+/**
+ * Number of attempts made for the current task.
+ * @type {number}
+ */
 let currentAttemptCount = 0;
+
+/**
+ * Flag to indicate if hints are enabled.
+ * @type {boolean}
+ */
 let hintsEnabled = true;
 
+/**
+ * Handles user input in the welcome prompt to either start or cancel the training.
+ *
+ * @param {string} command - User-entered command (usually `y` or `n`).
+ * @param {Function} loadTasksCallback - Callback to invoke if training is started.
+ * @returns {boolean} - Whether the training was started.
+ */
 export function handleWelcomeInput(command, loadTasksCallback) {
   if (command.toLowerCase() === "y") {
     printOutput("Training started!");
@@ -26,6 +52,9 @@ export function handleWelcomeInput(command, loadTasksCallback) {
   }
 }
 
+/**
+ * Loads task definitions from the server, initializes file system and displays the first task.
+ */
 export async function loadTasks() {
   try {
     const files = [
@@ -50,11 +79,19 @@ export async function loadTasks() {
   }
 }
 
+/**
+ * Prints the current task to the terminal.
+ */
 function showCurrentTask() {
   const task = tasks[currentTaskIndex];
   printOutput(`<strong>Task ${task.id}:</strong> ${task.description}`);
 }
 
+/**
+ * Checks whether the current task is completed based on defined conditions.
+ * If successful, moves to the next task or finishes the training.
+ * Otherwise, increases the attempt count and shows a hint if needed.
+ */
 export function checkTaskCompletion() {
   const task = tasks[currentTaskIndex];
   const check = task.check;
@@ -62,6 +99,7 @@ export function checkTaskCompletion() {
   let success = false;
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
+  // Task condition checks
   if (check.currentDirectoryEndsWith) {
     success = virtualFileSystem.currentDirectory.endsWith(
       check.currentDirectoryEndsWith
@@ -87,6 +125,7 @@ export function checkTaskCompletion() {
     );
   }
 
+  // Success case
   if (success) {
     currentAttemptCount = 0;
     printOutput(`<strong>Task completed!</strong> ${task.description}`);
@@ -103,6 +142,8 @@ export function checkTaskCompletion() {
       disableInput();
       hideCaret();
     }
+
+    // Failure case
   } else {
     currentAttemptCount++;
 
@@ -112,6 +153,11 @@ export function checkTaskCompletion() {
   }
 }
 
+/**
+ * Toggles hint visibility for tasks.
+ *
+ * @param {boolean} value - Whether to enable or disable hints.
+ */
 export function setHintsEnabled(value) {
   hintsEnabled = value;
 }
