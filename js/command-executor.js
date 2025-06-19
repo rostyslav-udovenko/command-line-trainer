@@ -35,7 +35,7 @@ export function executeCommand(command) {
   }
 
   // Only check task completion for non-system commands
-  if (cmd !== "help" && cmd !== "man" && cmd !== "hint") {
+  if (cmd !== "help" && cmd !== "man" && cmd !== "hint" && cmd !== "theme") {
     checkTaskCompletion(command);
   }
 
@@ -142,7 +142,7 @@ const commands = {
     printOutput(
       "Available commands: pwd, ls, cd, mkdir, touch, help, man. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
     );
-    printOutput("System commands: hint [on|off]");
+    printOutput("System commands: hint [on|off], theme [light|dark]");
   },
 
   /**
@@ -156,10 +156,12 @@ const commands = {
     }
 
     const option = arg.toLowerCase();
+
     if (option === "off" || option === "disable") {
       setHintsEnabled(false);
       return "Hints have been disabled.";
     }
+    
     if (option === "on" || option === "enable") {
       setHintsEnabled(true);
       return "Hints have been enabled.";
@@ -175,6 +177,34 @@ const commands = {
     activateMatrixMode();
     return null;
   },
+
+
+  /**
+   * Handles the `theme` command input to toggle between dark and light themes.
+   * Applies the selected theme by calling `switchTheme`.
+   *
+   * @param {string[]} arg - The argument passed to the theme command.
+   * @returns {string} Status message or usage hint.
+   */
+  theme: ([arg]) => {
+    if (!arg) {
+      return "Usage: theme [light|dark]";
+    }
+
+    const option = arg.toLowerCase();
+
+    if (option === "light") {
+      switchTheme("light");
+      return "Switched to light theme.";
+    }
+
+    if (option === "dark") {
+      switchTheme("dark");
+      return "Switched to dark theme.";
+    }
+
+    return "Usage: theme [light|dark]";
+  },
 };
 
 /**
@@ -185,3 +215,13 @@ const commands = {
  */
 commands.man = ([cmd]) =>
   cmd && manualPages[cmd] ? manualPages[cmd] : "Usage: man &lt;command&gt;";
+
+/**
+ * Updates the document's theme by setting the `data-theme` attribute on <html>.
+ * This attribute triggers CSS theme variables defined under :root[data-theme=...].
+ *
+ * @param {string} themeName - The name of the theme to apply (e.g. "light" or "dark").
+ */
+function switchTheme(themeName) {
+  document.documentElement.setAttribute("data-theme", themeName);
+}
