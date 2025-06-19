@@ -1,12 +1,46 @@
 :root {
   --color-bg: #1e1e1e;
-  --color-fg: #fff;
-  --color-muted: #aaa;
-  --color-accent: #888;
+  --color-fg: #ffffff;
+  --color-muted: #aaaaaa;
+  --color-accent: #888888;
+  --color-terminal-bg: #000;
   --font-main: "Courier New", monospace;
   --font-size-base: 14px;
 }
 
+:root[data-theme=light] {
+  --color-bg: #fdfdfd;
+  --color-fg: #111111;
+  --color-muted: #666666;
+  --color-accent: #007acc;
+  --color-terminal-bg: #f3f3f3;
+}
+
+#terminal {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+.custom-caret {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.custom-caret--selected {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+@keyframes caret-blink {
+  0%, 100% {
+    background-color: var(--color-fg);
+    color: var(--color-bg);
+  }
+  50% {
+    background-color: transparent;
+    color: var(--color-fg);
+  }
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -126,7 +160,7 @@ body {
   width: 100%;
   flex: 1 1 auto;
   min-height: 0;
-  background-color: black;
+  background-color: var(--color-terminal-bg);
   padding: 8px;
   overflow-y: auto;
   position: relative;
