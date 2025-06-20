@@ -13,6 +13,7 @@ This initiative aims to guide newcomers in learning terminal commands progressiv
 - A modular architecture based on ES modules
 - A user experience designed entirely for keyboard navigation, eliminating the need for a mouse
 - Hidden "Matrix Mode" easter egg (`neo` command)
+- Supports **dark** and **light** themes via `theme dark/light` command
 
 ## 🥚 Easter Egg: Matrix Mode
 
@@ -60,13 +61,13 @@ Each task is described as a JSON file and includes:
 The application code is organized into well-structured ES module files to enhance both scalability and clarity:
 ```
 js/ 
- ├── main.js                # Entry point, initializes everything 
- ├── terminal-ui.js         # Handles UI: output, input, scrolling
- ├── file-system.js         # Virtual file system operations
  ├── command-executor.js    # Command definitions and execution logic 
+ ├── file-system.js         # Virtual file system operations
+ ├── main.js                # Entry point, initializes everything
+ ├── manual-pages.js        # Manual entries for use by the `man` command
+ ├── matrix-mode.js         # Matrix Rain mode
  ├── task-manager.js        # Task loading, validation and flow control
- ├── manualPages.js         # Manual entries for use by the `man` command
- └── matrix-mode.js         # Matrix Rain mode
+ └── terminal-ui.js         # Handles UI: output, input, scrolling
  ```
 
 ## 🎨 SCSS Structure
@@ -82,8 +83,7 @@ scss/
 ├── base/                   # Base settings and resets
 │   ├── _globals.scss       # Global element styles
 │   ├── _reset.scss         # Reset and normalize styles
-│   ├── _typography.scss    # Typography rules
-│   └── _variables.scss     # SCSS variables
+│   └── _typography.scss    # Typography rules
 ├── components/             # Reusable UI components
 │   ├── _input.scss         # Input field styling
 │   └── _prompt.scss        # Prompt symbol and input wrapper
@@ -91,6 +91,8 @@ scss/
 │   ├── _footer.scss        # Footer styling
 │   ├── _header.scss        # Header styling
 │   └── _terminal.scss      # Terminal area styling
+├── themes/                 # Theme system with CSS variables
+│   └── _themes.scss        # Defines dark and light theme variables using :root and [data-theme]
 └── media/                  # Media queries and breakpoints
     └── _responsive.scss    # Responsive adjustments
 ```
@@ -127,24 +129,23 @@ sass scss/main.scss css/styles.css
 
 ```
 project-root/
-├── index.html               # UI shell and entry point
+├── index.html              # UI shell and entry point
 ├── css/
 │   └── styles.css
 ├── js/
-│   ├── main.js
-│   ├── terminal-ui.js
-│   ├── file-system.js
-│   ├── command-executor.js
-│   ├── task-manager.js
-│   ├── manualPages.js
-│   └── matrix-mode.js
+│   ├── command-executor.js # Command definitions and execution logic
+│   ├── file-system.js      # Virtual file system operations
+│   ├── main.js             # Entry point, initializes everything
+│   ├── manual-pages.js     # Manual entries for use by the `man` command
+│   ├── matrix-mode.js      # Matrix Rain mode
+│   ├── task-manager.js     # Task loading, validation and flow control
+│   └── terminal-ui.js      # Handles UI: output, input, scrolling
 ├── scss/
 │   ├── main.scss
 │   ├── base/
 │   │   ├── _globals.scss
 │   │   ├── _reset.scss
-│   │   ├── _typography.scss
-│   │   └── _variables.scss
+│   │   └── _typography.scss
 │   ├── components/
 │   │   ├── _input.scss
 │   │   └── _prompt.scss
@@ -152,6 +153,8 @@ project-root/
 │   │   ├── _footer.scss
 │   │   ├── _header.scss
 │   │   └── _terminal.scss
+│   ├── themes/
+│   │   └── _themes.scss
 │   └── media/
 │       └── _responsive.scss
 ├── tasks/
