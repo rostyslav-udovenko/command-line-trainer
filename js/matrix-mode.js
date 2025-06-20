@@ -55,7 +55,7 @@ export function activateMatrixMode() {
    */
   function draw() {
     // Slightly fade the canvas
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-matrix-bg') || "rgba(0, 0, 0, 0.05)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Set character color and font
