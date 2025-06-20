@@ -217,11 +217,11 @@ commands.man = ([cmd]) =>
   cmd && manualPages[cmd] ? manualPages[cmd] : "Usage: man &lt;command&gt;";
 
 /**
- * Updates the document's theme by setting the `data-theme` attribute on <html>.
- * This attribute triggers CSS theme variables defined under :root[data-theme=...].
- *
- * @param {string} themeName - The name of the theme to apply (e.g. "light" or "dark").
+ * Sets the current theme by applying a data attribute and saving to localStorage.
+ * 
+ * @param {string} themeName - The name of the theme to apply ("light" or "dark").
  */
 function switchTheme(themeName) {
   document.documentElement.setAttribute("data-theme", themeName);
+  localStorage.setItem("theme", themeName);
 }
