@@ -37,7 +37,7 @@ You can type `help` at any time to get a list of available commands:
 ```
 $ help
 Available commands: pwd, ls, cd, mkdir, touch, help, man. Use man <command> for more information.
-System commands: hint [on|off]
+System commands: hint [on|off], theme [light|dark]
 ```
 
 Each command also has its own manual page via `man`:
