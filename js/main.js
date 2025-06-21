@@ -1,3 +1,4 @@
+import { setupThemeSwitcher } from "./theme-switcher.js";
 import { TerminalCaret, showWelcomeMessage } from "./terminal-ui.js";
 
 /**
@@ -9,6 +10,9 @@ import { TerminalCaret, showWelcomeMessage } from "./terminal-ui.js";
  * - Focuses the input field for immediate user interaction.
  */
 document.addEventListener("DOMContentLoaded", () => {
+  // Set up the theme switcher functionality
+  setupThemeSwitcher();
+
   // Print welcome instructions to the terminal
   showWelcomeMessage();
 
