@@ -1,3 +1,4 @@
+import { applyTheme } from "./theme-switcher.js";
 import {
   virtualFileSystem,
   getDirectory,
@@ -161,7 +162,7 @@ const commands = {
       setHintsEnabled(false);
       return "Hints have been disabled.";
     }
-    
+
     if (option === "on" || option === "enable") {
       setHintsEnabled(true);
       return "Hints have been enabled.";
@@ -178,13 +179,13 @@ const commands = {
     return null;
   },
 
-
   /**
-   * Handles the `theme` command input to toggle between dark and light themes.
-   * Applies the selected theme by calling `switchTheme`.
+   * Changes the visual theme of the terminal interface.
+   * Accepts either "light" or "dark" as valid arguments and applies the theme accordingly.
+   * Updates both the UI and the saved preference in localStorage.
    *
-   * @param {string[]} arg - The argument passed to the theme command.
-   * @returns {string} Status message or usage hint.
+   * @param {[string]} arg - An array with a single argument: the desired theme.
+   * @returns {string} - Confirmation message or usage hint.
    */
   theme: ([arg]) => {
     if (!arg) {
@@ -193,14 +194,9 @@ const commands = {
 
     const option = arg.toLowerCase();
 
-    if (option === "light") {
-      switchTheme("light");
-      return "Switched to light theme.";
-    }
-
-    if (option === "dark") {
-      switchTheme("dark");
-      return "Switched to dark theme.";
+    if (option === "light" || option === "dark") {
+      applyTheme(option);
+      return `Switched to ${option} theme.`;
     }
 
     return "Usage: theme [light|dark]";
@@ -218,7 +214,7 @@ commands.man = ([cmd]) =>
 
 /**
  * Sets the current theme by applying a data attribute and saving to localStorage.
- * 
+ *
  * @param {string} themeName - The name of the theme to apply ("light" or "dark").
  */
 function switchTheme(themeName) {

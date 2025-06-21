@@ -167,6 +167,10 @@ project-root/
 └── README.md
 ```
 
+## 🧩 Third-party Assets
+
+Icons by [Tabler Icons](https://github.com/tabler/tabler-icons), used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
+
 ## 📄 License
 
 Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

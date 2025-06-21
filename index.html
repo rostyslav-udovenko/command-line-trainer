@@ -21,10 +21,22 @@
   <body>
     <header class="header">
       <div class="header__inner">
-        <a href="index.html" class="header__title">Command Line Trainer</a>
-        <nav class="header__menu">
-          <a href="cheatsheet.html">Cheat Sheet</a>
-        </nav>
+        <div class="header__left">
+          <a href="index.html" class="header__title">Command Line Trainer</a>
+          <span>·</span>
+          <a href="cheat-sheet.html" class="header__link">Cheat Sheet</a>
+        </div>
+
+        <div class="header__theme-switcher">
+          <img
+            src="icons/dark.svg"
+            alt="Toggle theme"
+            id="theme-toggle-btn"
+            class="theme-btn"
+            role="button"
+            tabindex="0"
+          />
+        </div>
       </div>
     </header>
 
