@@ -128,7 +128,24 @@ export function checkTaskCompletion() {
   // Success case
   if (success) {
     currentAttemptCount = 0;
-    printOutput(`<strong>Task completed!</strong> ${task.description}`);
+
+    // Array of success messages to display
+    const successMessages = [
+      "Well done!",
+      "Task complete!",
+      "Nice job!",
+      "You nailed it!",
+      "Task solved!",
+      "Great work!",
+      "You did it!",
+    ];
+
+    // Randomly select a success message
+    const randomMessage =
+      successMessages[Math.floor(Math.random() * successMessages.length)];
+
+    printOutput(`<strong>${randomMessage}</strong>`);
+
     currentTaskIndex++;
     if (currentTaskIndex < tasks.length) {
       setupFileSystem(tasks[currentTaskIndex].fs);
