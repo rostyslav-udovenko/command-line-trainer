@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .header__right {
@@ -34,21 +35,4 @@
 
 .header__menu a:hover {
   text-decoration: underline;
-}
-
-.header__theme-switcher {
-  display: flex;
-  gap: 6px;
-}
-
-.theme-btn {
-  width: 15px;
-  height: 15px;
-  cursor: pointer;
-  filter: var(--icon-filter);
-  transition: filter 0.2s;
-}
-
-.theme-btn:hover {
-  filter: var(--icon-filter) brightness(1.2);
 }
