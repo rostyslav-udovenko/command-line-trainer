@@ -10,6 +10,33 @@
   margin: 10px 0;
 }
 
+#terminal {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+.custom-caret {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.custom-caret--selected {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+@keyframes caret-blink {
+  0%,
+  100% {
+    background-color: var(--color-fg);
+    color: var(--color-bg);
+  }
+  50% {
+    background-color: transparent;
+    color: var(--color-fg);
+  }
+}
+
 #matrix-canvas {
   position: absolute;
   top: 0;

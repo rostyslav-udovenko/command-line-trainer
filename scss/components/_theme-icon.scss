@@ -1,0 +1,22 @@
+.theme-icon-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  right: 0;
+  align-items: center;
+  z-index: 10;
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  filter: var(--icon-filter);
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.theme-icon:hover {
+  filter: var(--icon-filter) brightness(1.2);
+  transform: scale(1.1);
+}
