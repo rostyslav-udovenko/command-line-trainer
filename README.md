@@ -156,7 +156,8 @@ project-root/
 │   │   └── _typography.scss    # Typography rules
 │   ├── components/             # Reusable UI components
 │   │   ├── _input.scss         # Input field styling
-│   │   └── _prompt.scss        # Prompt symbol and input wrapper
+│   │   ├── _prompt.scss        # Prompt symbol and input wrapper
+│   │   └── _theme-icon.scss    # Styles for theme toggle icon
 │   ├── layout/                 # Structural layout sections
 │   │   ├── _footer.scss        # Footer styling
 │   │   ├── _header.scss        # Header styling
