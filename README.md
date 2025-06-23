@@ -61,13 +61,15 @@ Each task is described as a JSON file and includes:
 The application code is organized into well-structured ES module files to enhance both scalability and clarity:
 ```
 js/ 
- ├── command-executor.js    # Command definitions and execution logic 
- ├── file-system.js         # Virtual file system operations
- ├── main.js                # Entry point, initializes everything
- ├── manual-pages.js        # Manual entries for use by the `man` command
- ├── matrix-mode.js         # Matrix Rain mode
- ├── task-manager.js        # Task loading, validation and flow control
- └── terminal-ui.js         # Handles UI: output, input, scrolling
+ ├── command-executor.js        # Command definitions and execution logic 
+ ├── file-system.js             # Virtual file system operations
+ ├── main.js                    # Entry point, initializes everything
+ ├── manual-pages.js            # Manual entries for use by the `man` command
+ ├── matrix-mode.js             # Matrix Rain mode
+ ├── task-manager.js            # Task loading, validation and flow control
+ ├── terminal-ui.js             # Handles UI: output, input, scrolling
+ ├── theme-switcher-init.js     # Sets initial theme on first page load based on localStorage
+ └── theme-switcher.js          # Manages the switching of themes and the toggling of icons
  ```
 
 ## 🎨 SCSS Structure
@@ -76,25 +78,27 @@ This project uses a modular SCSS structure for better scalability and organizati
 
 ```
 css/
-└── styles.css              # Generated from SCSS (do not edit manually)
+├── styles.css                  # Generated from SCSS (do not edit manually)
+└── styles.css.map              # Source map for dev tools
 
 scss/
-├── main.scss               # UI Entry point
-├── base/                   # Base settings and resets
-│   ├── _globals.scss       # Global element styles
-│   ├── _reset.scss         # Reset and normalize styles
-│   └── _typography.scss    # Typography rules
-├── components/             # Reusable UI components
-│   ├── _input.scss         # Input field styling
-│   └── _prompt.scss        # Prompt symbol and input wrapper
-├── layout/                 # Structural layout sections
-│   ├── _footer.scss        # Footer styling
-│   ├── _header.scss        # Header styling
-│   └── _terminal.scss      # Terminal area styling
-├── themes/                 # Theme system with CSS variables
-│   └── _themes.scss        # Defines dark and light theme variables using :root and [data-theme]
-└── media/                  # Media queries and breakpoints
-    └── _responsive.scss    # Responsive adjustments
+├── base/                       # Base settings and resets
+│   ├── _globals.scss           # Global element styles
+│   ├── _reset.scss             # Reset and normalize styles
+│   └── _typography.scss        # Typography rules
+├── components/                 # Reusable UI components
+│   ├── _input.scss             # Input field styling
+│   ├── _prompt.scss            # Prompt symbol and input wrapper
+│   └── _theme-icon.scss        # Styles for theme toggle icon
+├── layout/                     # Structural layout sections
+│   ├── _footer.scss            # Footer styling
+│   ├── _header.scss            # Header styling
+│   └── _terminal.scss          # Terminal area styling
+├── media/                      # Media queries and breakpoints
+│   └── _responsive.scss        # Responsive adjustments
+├── themes/                     # Theme system with CSS variables
+│   └── _themes.scss            # Defines dark and light theme variables using :root and [data-theme]
+└── main.scss                   # UI Entry point
 ```
 
 ## ⚙️ Install Sass
@@ -129,40 +133,46 @@ sass scss/main.scss css/styles.css
 
 ```
 project-root/
-├── index.html              # UI shell and entry point
 ├── css/
-│   └── styles.css
+│   ├── styles.css              # Generated from SCSS (do not edit manually)
+│   └── styles.css.map          # Source map for dev tools
+├── icons/
+│   ├── dark.svg                # Icon representing dark theme
+│   └── light.svg               # Icon representing light theme
 ├── js/
-│   ├── command-executor.js # Command definitions and execution logic
-│   ├── file-system.js      # Virtual file system operations
-│   ├── main.js             # Entry point, initializes everything
-│   ├── manual-pages.js     # Manual entries for use by the `man` command
-│   ├── matrix-mode.js      # Matrix Rain mode
-│   ├── task-manager.js     # Task loading, validation and flow control
-│   └── terminal-ui.js      # Handles UI: output, input, scrolling
+│   ├── command-executor.js     # Command definitions and execution logic
+│   ├── file-system.js          # Virtual file system operations
+│   ├── main.js                 # Entry point, initializes everything
+│   ├── manual-pages.js         # Manual entries for use by the `man` command
+│   ├── matrix-mode.js          # Matrix Rain mode
+│   ├── task-manager.js         # Task loading, validation and flow control
+│   ├── terminal-ui.js          # Handles UI: output, input, scrolling
+│   ├── theme-switcher-init.js  # Sets initial theme on first page load based on localStorage
+│   └── theme-switcher.js       # Manages the switching of themes and the toggling of icons
 ├── scss/
-│   ├── main.scss
-│   ├── base/
-│   │   ├── _globals.scss
-│   │   ├── _reset.scss
-│   │   └── _typography.scss
-│   ├── components/
-│   │   ├── _input.scss
-│   │   └── _prompt.scss
-│   ├── layout/
-│   │   ├── _footer.scss
-│   │   ├── _header.scss
-│   │   └── _terminal.scss
-│   ├── themes/
-│   │   └── _themes.scss
-│   └── media/
-│       └── _responsive.scss
+│   ├── base/                   # Base settings and resets
+│   │   ├── _globals.scss       # Global element styles
+│   │   ├── _reset.scss         # Reset and normalize styles
+│   │   └── _typography.scss    # Typography rules
+│   ├── components/             # Reusable UI components
+│   │   ├── _input.scss         # Input field styling
+│   │   └── _prompt.scss        # Prompt symbol and input wrapper
+│   ├── layout/                 # Structural layout sections
+│   │   ├── _footer.scss        # Footer styling
+│   │   ├── _header.scss        # Header styling
+│   │   └── _terminal.scss      # Terminal area styling
+│   ├── media/                  # Media queries and breakpoints
+│   │   └── _responsive.scss    # Responsive adjustments
+│   ├── themes/                 # Theme system with CSS variables
+│   │   └── _themes.scss        # Defines dark and light theme variables using :root and [data-theme]
+│   └── main.scss               # UI Entry point
 ├── tasks/
 │   ├── task-1.json
 │   ├── task-2.json
 │   └── ...
 ├── 404.html
 ├── 500.html
+├── index.html                  # UI shell and entry point
 ├── LICENSE
 └── README.md
 ```
