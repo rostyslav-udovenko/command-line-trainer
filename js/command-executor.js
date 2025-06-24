@@ -211,13 +211,3 @@ const commands = {
  */
 commands.man = ([cmd]) =>
   cmd && manualPages[cmd] ? manualPages[cmd] : "Usage: man &lt;command&gt;";
-
-/**
- * Sets the current theme by applying a data attribute and saving to localStorage.
- *
- * @param {string} themeName - The name of the theme to apply ("light" or "dark").
- */
-function switchTheme(themeName) {
-  document.documentElement.setAttribute("data-theme", themeName);
-  localStorage.setItem("theme", themeName);
-}
