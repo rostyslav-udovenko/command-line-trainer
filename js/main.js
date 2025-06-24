@@ -1,5 +1,6 @@
 import { setupThemeSwitcher } from "./theme-switcher.js";
 import { TerminalCaret, showWelcomeMessage } from "./terminal-ui.js";
+import { executeCommand } from "./command-executor.js";
 
 /**
  * Entry point for initializing the Command Line Trainer interface.
@@ -25,4 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Set focus so the user can start typing immediately
   caret.focus();
+
+  const helpBtn = document.getElementById("help-btn");
+  if (helpBtn) {
+    helpBtn.addEventListener("click", () => {
+      executeCommand("help");
+    });
+  }
 });
