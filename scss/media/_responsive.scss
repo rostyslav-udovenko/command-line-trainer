@@ -22,9 +22,9 @@
     font-size: 14px;
   }
 
-.header__inner {
-  width: 80%;
-}
+  .header__inner {
+    width: 80%;
+  }
 
   #terminal {
     width: 80%;
@@ -38,8 +38,12 @@
     font-size: 16px;
   }
 
-  .theme-icon {
-  width: 24px;
-  height: 24px;
+.icon-button-container {
+  gap: 10px;
 }
+
+  .icon-button {
+    width: 24px;
+    height: 24px;
+  }
 }

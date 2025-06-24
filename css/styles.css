@@ -155,6 +155,30 @@ body {
   z-index: 999;
 }
 
+.icon-button-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  right: 0;
+  align-items: center;
+  z-index: 10;
+  gap: 6px;
+}
+
+.icon-button {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  filter: var(--icon-filter);
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.icon-button:hover {
+  filter: var(--icon-filter) brightness(1.2);
+  transform: scale(1.1);
+}
+
 #input-wrapper {
   display: flex;
   align-items: baseline;
@@ -234,29 +258,6 @@ body {
   line-height: inherit;
 }
 
-.theme-icon-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  right: 0;
-  align-items: center;
-  z-index: 10;
-}
-
-.theme-icon {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  filter: var(--icon-filter);
-  transition: filter 0.2s, transform 0.2s;
-}
-
-.theme-icon:hover {
-  filter: var(--icon-filter) brightness(1.2);
-  transform: scale(1.1);
-}
-
 @media (max-width: 359px) {
   .header__inner {
     flex-direction: column;
@@ -290,7 +291,10 @@ body {
   #input {
     font-size: 16px;
   }
-  .theme-icon {
+  .icon-button-container {
+    gap: 10px;
+  }
+  .icon-button {
     width: 24px;
     height: 24px;
   }
