@@ -178,3 +178,12 @@ export function checkTaskCompletion() {
 export function setHintsEnabled(value) {
   hintsEnabled = value;
 }
+
+/**
+ * Checks if all tasks have been completed.
+ *
+ * @returns {boolean} - True if all tasks are done, false otherwise.
+ */
+export function hasCompletedAllTasks() {
+  return currentTaskIndex >= tasks.length;
+}
