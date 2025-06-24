@@ -13,6 +13,7 @@ import {
 } from "./task-manager.js";
 import { activateMatrixMode } from "./matrix-mode.js";
 import { manualPages } from "./manual-pages.js";
+import { hasCompletedAllTasks } from "./task-manager.js";
 
 /**
  * Parses and executes a terminal command, prints result,
@@ -21,6 +22,12 @@ import { manualPages } from "./manual-pages.js";
  * @param {string} command - Full command string entered by user.
  */
 export function executeCommand(command) {
+  // If all tasks are completed, ignore further commands
+  // to prevent any further interaction.
+  if (hasCompletedAllTasks()) {
+    return;
+  }
+
   const [cmd, ...args] = command.split(" ");
 
   let result;
