@@ -1,4 +1,4 @@
-.theme-icon-container {
+.icon-button-container {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -6,9 +6,10 @@
   right: 0;
   align-items: center;
   z-index: 10;
+  gap: 6px;
 }
 
-.theme-icon {
+.icon-button {
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -16,7 +17,7 @@
   transition: filter 0.2s, transform 0.2s;
 }
 
-.theme-icon:hover {
+.icon-button:hover {
   filter: var(--icon-filter) brightness(1.2);
   transform: scale(1.1);
 }
