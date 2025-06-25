@@ -39,7 +39,7 @@ export function setupFileSystem(fs) {
       }
       return { name: node.name, type: "dir", children };
     }
-    return { name: node.name, type: "file" };
+    return { name: node.name, type: "file", content: node.content || "" };
   }
 
   virtualFileSystem.root = clone(fs);
