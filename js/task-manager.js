@@ -65,7 +65,7 @@ export async function loadTasks() {
     {
       name: "Module 2 - File Operations",
       path: "tasks/module-2",
-      count: 1,
+      count: 2,
     },
   ];
 
@@ -96,10 +96,27 @@ export async function loadTasks() {
  * If successful, moves to the next task or finishes the training.
  * Otherwise, increases the attempt count and shows a hint if needed.
  */
-export function checkTaskCompletion() {
+export function checkTaskCompletion(
+  command,
+  cmd,
+  result,
+  isErrorOutput = false
+) {
   const task = tasks[currentTaskIndex];
-  const check = task.check;
 
+  if (typeof task.type === "string" && cmd !== task.type) {
+    return;
+  }
+
+  if (isErrorOutput) {
+    currentAttemptCount++;
+    if (task.hint && currentAttemptCount >= 3 && hintsEnabled) {
+      printOutput(`<strong>Hint:</strong> ${task.hint}`);
+    }
+    return;
+  }
+
+  const check = task.check;
   let success = false;
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
@@ -153,7 +170,7 @@ export function checkTaskCompletion() {
     currentTaskIndex++;
     if (currentTaskIndex < tasks.length) {
       const nextTask = tasks[currentTaskIndex];
-      
+
       // If the module name changes, print it
       if (task.moduleName !== nextTask.moduleName) {
         printOutput(`<strong>${nextTask.moduleName}</strong>`);
