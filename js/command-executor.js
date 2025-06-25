@@ -22,13 +22,18 @@ import { hasCompletedAllTasks } from "./task-manager.js";
  * @param {string} command - Full command string entered by user.
  */
 export function executeCommand(command) {
-  // If all tasks are completed, ignore further commands
-  // to prevent any further interaction.
-  if (hasCompletedAllTasks()) {
+  const [cmd, ...args] = command.trim().split(" ");
+
+  if (!cmd) {
+    printOutput("Please enter a command.");
+    scrollToBottom();
     return;
   }
 
-  const [cmd, ...args] = command.split(" ");
+  // If all tasks are completed, ignore further commands
+  if (hasCompletedAllTasks()) {
+    return;
+  }
 
   let result;
 
@@ -42,9 +47,17 @@ export function executeCommand(command) {
     printOutput(result);
   }
 
-  // Only check task completion for non-system commands
-  if (cmd !== "help" && cmd !== "man" && cmd !== "hint" && cmd !== "theme") {
-    checkTaskCompletion(command);
+  // Only check task completion if the command is valid and not an error/usage response
+  const isSystemCmd = ["help", "man", "hint", "theme"].includes(cmd);
+  const isErrorOutput =
+    typeof result === "string" &&
+    (result.startsWith("Usage:") ||
+      result.startsWith("Command not found") ||
+      result.startsWith("No such file") ||
+      result.startsWith("No such directory"));
+
+  if (!isSystemCmd) {
+    checkTaskCompletion(command, cmd, result, isErrorOutput);
   }
 
   scrollToBottom();
@@ -92,7 +105,7 @@ function createDirectory(name) {
 function createFile(name) {
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
   if (currentDir && !currentDir.children[name]) {
-    currentDir.children[name] = { name, type: "file" };
+    currentDir.children[name] = { name, type: "file", content: "" };
     return `File ${name} created`;
   }
   return `File ${name} already exists or invalid path`;
@@ -144,11 +157,31 @@ const commands = {
     name ? createFile(name) : "Usage: touch &lt;filename&gt;",
 
   /**
+   * Outputs file contents using `cat`.
+   * @param {[string]} args - Array with one file name.
+   * @returns {string}
+   */
+  cat: ([name]) => {
+    if (!name) {
+      return "Usage: cat <filename>";
+    }
+
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[name];
+
+    if (file?.type === "file") {
+      return file.content || ""; // If content is missing, show empty string
+    }
+
+    return `No such file: ${name}`;
+  },
+
+  /**
    * Prints available commands and usage.
    */
   help: () => {
     printOutput(
-      "Available commands: pwd, ls, cd, mkdir, touch, help, man. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
+      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
     );
     printOutput("System commands: hint [on|off], theme [light|dark]");
   },

@@ -16,4 +16,5 @@ export const manualPages = {
   touch: "touch — create a new file",
   help: "help — show general command help",
   man: "man — show command manual, usage: man &lt;command&gt;",
+  cat: "cat — concatenate and print files",
 };
