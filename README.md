@@ -168,9 +168,14 @@ project-root/
 │   │   └── _themes.scss        # Defines dark and light theme variables using :root and [data-theme]
 │   └── main.scss               # UI Entry point
 ├── tasks/
-│   ├── task-1.json
-│   ├── task-2.json
-│   └── ...
+│   ├── module-1                # Directory Operations
+│   │   ├── task-1.json
+│   │   ├── task-2.json
+│   │   ├── task-3.json
+│   │   └── task-4.json
+│   └── module-2                # File Operations
+│       ├── task-1.json
+│       └── task-2.json
 ├── 404.html
 ├── 500.html
 ├── index.html                  # UI shell and entry point
