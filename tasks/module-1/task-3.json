@@ -1,5 +1,5 @@
 {
-  "id": 4,
+  "id": 3,
   "description": "Use the `ls` command to list the contents of the current directory.",
   "type": "ls",
   "check": {

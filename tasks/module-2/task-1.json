@@ -1,5 +1,5 @@
 {
-  "id": 2,
+  "id": 1,
   "description": "Create a file named `index.html` inside the `projects` directory.",
   "type": "touch",
   "check": {

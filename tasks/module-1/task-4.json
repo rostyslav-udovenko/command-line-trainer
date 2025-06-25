@@ -1,5 +1,5 @@
 {
-  "id": 5,
+  "id": 4,
   "description": "Use the `pwd` command to display the current directory.",
   "type": "pwd",
   "check": {
