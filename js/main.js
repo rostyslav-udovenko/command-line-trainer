@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (helpBtn) {
     helpBtn.addEventListener("click", () => {
       executeCommand("help");
+      
+      // Ensure the caret is focused after showing help
       caret.focus();
     });
   }

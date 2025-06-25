@@ -56,35 +56,39 @@ export function handleWelcomeInput(command, loadTasksCallback) {
  * Loads task definitions from the server, initializes file system and displays the first task.
  */
 export async function loadTasks() {
+  const modules = [
+    {
+      name: "Module 1 - Directory Operations",
+      path: "tasks/module-1",
+      count: 4,
+    },
+    {
+      name: "Module 2 - File Operations",
+      path: "tasks/module-2",
+      count: 1,
+    },
+  ];
+
   try {
-    const files = [
-      "/tasks/task-1.json",
-      "/tasks/task-2.json",
-      "/tasks/task-3.json",
-      "/tasks/task-4.json",
-      "/tasks/task-5.json",
-    ];
-    for (let i = 0; i < files.length; i++) {
-      const res = await fetch(files[i]);
-      const taskData = await res.json();
-      tasks.push(taskData);
-      if (i === 0) {
-        setupFileSystem(taskData.fs);
-        virtualFileSystem.currentDirectory = taskData.startDirectory || "/";
-        showCurrentTask();
+    for (const module of modules) {
+      for (let i = 1; i <= module.count; i++) {
+        const url = `${module.path}/task-${i}.json`;
+        const response = await fetch(url);
+        const task = await response.json();
+        task.moduleName = module.name;
+        tasks.push(task);
+
+        if (tasks.length === 1) {
+          setupFileSystem(task.fs);
+          virtualFileSystem.currentDirectory = task.startDirectory || "/";
+          printOutput(`<strong>${task.moduleName}</strong>`);
+          printOutput(`<strong>Task ${task.id}:</strong> ${task.description}`);
+        }
       }
     }
   } catch (error) {
     printOutput(`Failed to load tasks: ${error}`);
   }
-}
-
-/**
- * Prints the current task to the terminal.
- */
-function showCurrentTask() {
-  const task = tasks[currentTaskIndex];
-  printOutput(`<strong>Task ${task.id}:</strong> ${task.description}`);
 }
 
 /**
@@ -148,10 +152,18 @@ export function checkTaskCompletion() {
 
     currentTaskIndex++;
     if (currentTaskIndex < tasks.length) {
-      setupFileSystem(tasks[currentTaskIndex].fs);
-      virtualFileSystem.currentDirectory =
-        tasks[currentTaskIndex].startDirectory || "/";
-      showCurrentTask();
+      const nextTask = tasks[currentTaskIndex];
+      
+      // If the module name changes, print it
+      if (task.moduleName !== nextTask.moduleName) {
+        printOutput(`<strong>${nextTask.moduleName}</strong>`);
+      }
+
+      setupFileSystem(nextTask.fs);
+      virtualFileSystem.currentDirectory = nextTask.startDirectory || "/";
+      printOutput(
+        `<strong>Task ${nextTask.id}:</strong> ${nextTask.description}`
+      );
     } else {
       printOutput(
         "<strong>Congratulations! </strong>You have completed all tasks."
