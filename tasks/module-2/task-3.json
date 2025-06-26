@@ -1,0 +1,22 @@
+{
+  "id": 3,
+  "description": "Use the `less` command to view `log.txt`.",
+  "type": "less",
+  "check": {
+    "fileExists": "log.txt",
+    "expectedOutputIncludes": ["Error log:"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "log.txt": {
+        "name": "log.txt",
+        "type": "file",
+        "content": "Error log:\n- line 1\n- line 2"
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `less log.txt`"
+}

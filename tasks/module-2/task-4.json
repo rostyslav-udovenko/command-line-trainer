@@ -1,0 +1,22 @@
+{
+  "id": 4,
+  "description": "Use the `file` command to inspect `script.sh`.",
+  "type": "file",
+  "check": {
+    "fileExists": "script.sh",
+    "expectedOutputIncludes": ["script.sh: regular file"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "script.sh": {
+        "name": "script.sh",
+        "type": "file",
+        "content": "#!/bin/bash\necho Hello"
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `file script.sh`"
+}
