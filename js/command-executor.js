@@ -10,10 +10,10 @@ import {
   tasks,
   currentTaskIndex,
   setHintsEnabled,
+  hasCompletedAllTasks,
 } from "./task-manager.js";
 import { activateMatrixMode } from "./matrix-mode.js";
 import { manualPages } from "./manual-pages.js";
-import { hasCompletedAllTasks } from "./task-manager.js";
 
 /**
  * Parses and executes a terminal command, prints result,
