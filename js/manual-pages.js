@@ -17,4 +17,6 @@ export const manualPages = {
   help: "help — show general command help",
   man: "man — show command manual, usage: man &lt;command&gt;",
   cat: "cat — concatenate and print files",
+  less: "less — opposite of more",
+  file: "file — determine file type",
 };
