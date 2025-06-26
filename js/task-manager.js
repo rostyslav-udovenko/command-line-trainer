@@ -65,7 +65,7 @@ export async function loadTasks() {
     {
       name: "Module 2 - File Operations",
       path: "tasks/module-2",
-      count: 2,
+      count: 4,
     },
   ];
 
@@ -105,6 +105,10 @@ export function checkTaskCompletion(
   const task = tasks[currentTaskIndex];
 
   if (typeof task.type === "string" && cmd !== task.type) {
+    currentAttemptCount++;
+    if (task.hint && currentAttemptCount >= 3 && hintsEnabled) {
+      printOutput(`<strong>Hint:</strong> ${task.hint}`);
+    }
     return;
   }
 
@@ -140,10 +144,13 @@ export function checkTaskCompletion(
   }
 
   if (check.expectedOutputIncludes) {
-    const children = Object.keys(currentDir?.children || {});
-    success = check.expectedOutputIncludes.every((item) =>
-      children.includes(item)
-    );
+    if (typeof result === "string") {
+      success = check.expectedOutputIncludes.every((item) =>
+        result.includes(item)
+      );
+    } else {
+      success = false;
+    }
   }
 
   // Success case

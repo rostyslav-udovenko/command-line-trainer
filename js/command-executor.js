@@ -177,6 +177,50 @@ const commands = {
   },
 
   /**
+   * Displays file contents in a simulated pager using `less`.
+   * @param {[string]} args - Array with one file name.
+   * @returns {string}
+   */
+  less: ([name]) => {
+    if (!name) {
+      return "Usage: less <filename>";
+    }
+
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[name];
+
+    if (file?.type === "file") {
+      return file.content || "";
+    }
+
+    return `No such file: ${name}`;
+  },
+
+  /**
+   * Simulates inspecting a file type using `file`.
+   * @param {[string]} args - Array with one file name.
+   * @returns {string}
+   */
+  file: ([name]) => {
+    if (!name) {
+      return "Usage: file <filename>";
+    }
+
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const node = currentDir?.children[name];
+
+    if (!node) {
+      return `No such file: ${name}`;
+    }
+
+    if (node.type === "dir") {
+      return `${name}: directory`;
+    }
+
+    return `${name}: regular file`;
+  },
+
+  /**
    * Prints available commands and usage.
    */
   help: () => {
