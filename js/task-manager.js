@@ -65,7 +65,7 @@ export async function loadTasks() {
     {
       name: "Module 2 - File Operations",
       path: "tasks/module-2",
-      count: 4,
+      count: 5,
     },
   ];
 
@@ -95,57 +95,51 @@ export async function loadTasks() {
  * Checks whether the current task is completed based on defined conditions.
  * If successful, moves to the next task or finishes the training.
  * Otherwise, increases the attempt count and shows a hint if needed.
+ *
+ * Combines all conditions; all must pass to complete the task.
+ *
+ * @param {string} command - The full command entered by the user.
+ * @param {string} cmd - The command keyword.
+ * @param {string|null} result - The output of the command.
+ * @param {boolean} isErrorOutput - Whether the command produced an error.
  */
-export function checkTaskCompletion(
-  command,
-  cmd,
-  result,
-  isErrorOutput = false
-) {
+export function checkTaskCompletion(command, cmd, result, isErrorOutput = false) {
   const task = tasks[currentTaskIndex];
-
-  if (typeof task.type === "string" && cmd !== task.type) {
-    currentAttemptCount++;
-    if (task.hint && currentAttemptCount >= 3 && hintsEnabled) {
-      printOutput(`<strong>Hint:</strong> ${task.hint}`);
-    }
-    return;
-  }
-
-  if (isErrorOutput) {
-    currentAttemptCount++;
-    if (task.hint && currentAttemptCount >= 3 && hintsEnabled) {
-      printOutput(`<strong>Hint:</strong> ${task.hint}`);
-    }
-    return;
-  }
-
   const check = task.check;
-  let success = false;
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
-  // Task condition checks
+  // Combine all conditions; start with true, fail if any check fails
+  let success = true;
+
+  // Verify command type matches task type
+  if (typeof task.type === "string" && cmd !== task.type) {
+    success = false;
+  }
+
+  // Check current directory path endings
   if (check.currentDirectoryEndsWith) {
-    success = virtualFileSystem.currentDirectory.endsWith(
-      check.currentDirectoryEndsWith
-    );
+    success = success && virtualFileSystem.currentDirectory.endsWith(check.currentDirectoryEndsWith);
   }
 
+  // Check current directory exact match
   if (check.currentDirectoryIs) {
-    success = virtualFileSystem.currentDirectory === check.currentDirectoryIs;
+    success = success && virtualFileSystem.currentDirectory === check.currentDirectoryIs;
   }
 
+  // Check if specified file exists
   if (check.fileExists) {
-    success = currentDir?.children[check.fileExists]?.type === "file";
+    success = success && currentDir?.children[check.fileExists]?.type === "file";
   }
 
+  // Check if specified directory exists
   if (check.dirExists) {
-    success = currentDir?.children[check.dirExists]?.type === "dir";
+    success = success && currentDir?.children[check.dirExists]?.type === "dir";
   }
 
+  // Check if output includes expected strings
   if (check.expectedOutputIncludes) {
     if (typeof result === "string") {
-      success = check.expectedOutputIncludes.every((item) =>
+      success = success && check.expectedOutputIncludes.every((item) =>
         result.includes(item)
       );
     } else {
@@ -153,7 +147,12 @@ export function checkTaskCompletion(
     }
   }
 
-  // Success case
+  // If command output had an error, mark as failed
+  if (isErrorOutput) {
+    success = false;
+  }
+
+  // Success case: all checks passed
   if (success) {
     currentAttemptCount = 0;
 
@@ -165,7 +164,7 @@ export function checkTaskCompletion(
       "You nailed it!",
       "Task solved!",
       "Great work!",
-      "You did it!",
+      "You did it!"
     ];
 
     // Randomly select a success message
@@ -196,7 +195,7 @@ export function checkTaskCompletion(
       hideCaret();
     }
 
-    // Failure case
+  // Failure case: some checks failed
   } else {
     currentAttemptCount++;
 
@@ -205,6 +204,7 @@ export function checkTaskCompletion(
     }
   }
 }
+
 
 /**
  * Toggles hint visibility for tasks.

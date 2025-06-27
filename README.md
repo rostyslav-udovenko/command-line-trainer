@@ -6,7 +6,7 @@ This initiative aims to guide newcomers in learning terminal commands progressiv
 
 ## 🧠 Features
 
-- Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less` and `file`
+- Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file` and `cp`
 - System command such as `hint on/off` to enable or disable task hints
 - Immediate task validation accompanied by feedback and hints for each task
 - An integrated virtual file system that refreshes with each task, utilizing JSON
@@ -36,7 +36,7 @@ You can type `help` at any time to get a list of available commands:
 
 ```
 $ help
-Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file. Use man <command> for more information.
+Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp. Use man <command> for more information.
 System commands: hint [on|off], theme [light|dark]
 ```
 

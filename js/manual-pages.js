@@ -19,4 +19,5 @@ export const manualPages = {
   cat: "cat — concatenate and print files",
   less: "less — opposite of more",
   file: "file — determine file type",
+  cp: "cp — copy files",
 };
