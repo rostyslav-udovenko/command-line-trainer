@@ -253,11 +253,57 @@ const commands = {
   },
 
   /**
+   * Moves or renames a file in the current directory.
+   *
+   * If the destination is a new name, the file is renamed.
+   * If the destination is an existing directory, the file is moved inside.
+   *
+   * @param {[string]} args - Array with source and destination.
+   * @returns {string} - Status message.
+   */
+  mv: (args) => {
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+
+    if (args.length !== 2) {
+      return "Usage: mv <source> <destination>";
+    }
+
+    const [src, dest] = args;
+    const sourceFile = currentDir?.children[src];
+
+    if (!sourceFile || sourceFile.type !== "file") {
+      return `Source file not found: ${src}`;
+    }
+
+    const destinationNode = currentDir.children[dest];
+
+    // If destination is an existing directory -> move file into it
+    if (destinationNode?.type === "dir") {
+      destinationNode.children[src] = {
+        name: src,
+        type: "file",
+        content: sourceFile.content || "",
+      };
+      delete currentDir.children[src];
+      return `Moved ${src} to ${dest}/`;
+    }
+
+    // Otherwise: rename file in current directory
+    currentDir.children[dest] = {
+      name: dest,
+      type: "file",
+      content: sourceFile.content || "",
+    };
+    delete currentDir.children[src];
+    return `Renamed ${src} to ${dest}`;
+  },
+
+  /**
    * Prints available commands and usage.
    */
   help: () => {
     printOutput(
-      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
+      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
     );
     printOutput("System commands: hint [on|off], theme [light|dark]");
   },

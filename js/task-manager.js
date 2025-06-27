@@ -65,7 +65,7 @@ export async function loadTasks() {
     {
       name: "Module 2 - File Operations",
       path: "tasks/module-2",
-      count: 5,
+      count: 7,
     },
   ];
 
@@ -103,7 +103,12 @@ export async function loadTasks() {
  * @param {string|null} result - The output of the command.
  * @param {boolean} isErrorOutput - Whether the command produced an error.
  */
-export function checkTaskCompletion(command, cmd, result, isErrorOutput = false) {
+export function checkTaskCompletion(
+  command,
+  cmd,
+  result,
+  isErrorOutput = false
+) {
   const task = tasks[currentTaskIndex];
   const check = task.check;
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
@@ -118,17 +123,24 @@ export function checkTaskCompletion(command, cmd, result, isErrorOutput = false)
 
   // Check current directory path endings
   if (check.currentDirectoryEndsWith) {
-    success = success && virtualFileSystem.currentDirectory.endsWith(check.currentDirectoryEndsWith);
+    success =
+      success &&
+      virtualFileSystem.currentDirectory.endsWith(
+        check.currentDirectoryEndsWith
+      );
   }
 
   // Check current directory exact match
   if (check.currentDirectoryIs) {
-    success = success && virtualFileSystem.currentDirectory === check.currentDirectoryIs;
+    success =
+      success &&
+      virtualFileSystem.currentDirectory === check.currentDirectoryIs;
   }
 
   // Check if specified file exists
   if (check.fileExists) {
-    success = success && currentDir?.children[check.fileExists]?.type === "file";
+    success =
+      success && currentDir?.children[check.fileExists]?.type === "file";
   }
 
   // Check if specified directory exists
@@ -136,12 +148,19 @@ export function checkTaskCompletion(command, cmd, result, isErrorOutput = false)
     success = success && currentDir?.children[check.dirExists]?.type === "dir";
   }
 
+  // Check if a file exists in a specific directory
+  if (check.fileInDir) {
+    const dirNode = currentDir?.children[check.fileInDir.dir];
+    const fileNode = dirNode?.children?.[check.fileInDir.file];
+    success = success && fileNode?.type === "file";
+  }
+
   // Check if output includes expected strings
   if (check.expectedOutputIncludes) {
     if (typeof result === "string") {
-      success = success && check.expectedOutputIncludes.every((item) =>
-        result.includes(item)
-      );
+      success =
+        success &&
+        check.expectedOutputIncludes.every((item) => result.includes(item));
     } else {
       success = false;
     }
@@ -164,7 +183,7 @@ export function checkTaskCompletion(command, cmd, result, isErrorOutput = false)
       "You nailed it!",
       "Task solved!",
       "Great work!",
-      "You did it!"
+      "You did it!",
     ];
 
     // Randomly select a success message
@@ -195,7 +214,7 @@ export function checkTaskCompletion(command, cmd, result, isErrorOutput = false)
       hideCaret();
     }
 
-  // Failure case: some checks failed
+    // Failure case: some checks failed
   } else {
     currentAttemptCount++;
 
@@ -204,7 +223,6 @@ export function checkTaskCompletion(command, cmd, result, isErrorOutput = false)
     }
   }
 }
-
 
 /**
  * Toggles hint visibility for tasks.
