@@ -1,0 +1,22 @@
+{
+  "id": 5,
+  "description": "Copy the file `a.txt` to `b.txt` using the `cp` command.",
+  "type": "cp",
+  "check": {
+    "fileExists": "b.txt",
+    "expectedOutputIncludes": ["Copied a.txt to b.txt"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "a.txt": {
+        "name": "a.txt",
+        "type": "file",
+        "content": "Copy me!"
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `cp a.txt b.txt`"
+}

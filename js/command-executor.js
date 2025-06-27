@@ -163,7 +163,7 @@ const commands = {
    */
   cat: ([name]) => {
     if (!name) {
-      return "Usage: cat <filename>";
+      return "Usage: cat &lt;filename&gt;";
     }
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
@@ -183,7 +183,7 @@ const commands = {
    */
   less: ([name]) => {
     if (!name) {
-      return "Usage: less <filename>";
+      return "Usage: less &lt;filename&gt;";
     }
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
@@ -203,7 +203,7 @@ const commands = {
    */
   file: ([name]) => {
     if (!name) {
-      return "Usage: file <filename>";
+      return "Usage: file &lt;filename&gt;";
     }
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
@@ -218,6 +218,38 @@ const commands = {
     }
 
     return `${name}: regular file`;
+  },
+
+  /**
+   * Copies a file from one name to another.
+   *
+   * Ensures exactly two arguments are provided: source and destination file names.
+   * Copies both file metadata and content. If source file is not found,
+   * or arguments are incorrect, shows usage or error message.
+   *
+   * @param {[string]} args - Array with command arguments.
+   * @returns {string} - Status message.
+   */
+  cp: (args) => {
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+
+    if (args.length !== 2) {
+      return "Usage: cp &lt;source&gt; &lt;destination&gt;";
+    }
+
+    const [src, dest] = args;
+    const sourceFile = currentDir?.children[src];
+
+    if (sourceFile?.type === "file") {
+      currentDir.children[dest] = {
+        name: dest,
+        type: "file",
+        content: sourceFile.content || "",
+      };
+      return `Copied ${src} to ${dest}`;
+    }
+
+    return `Source file not found: ${src}`;
   },
 
   /**
