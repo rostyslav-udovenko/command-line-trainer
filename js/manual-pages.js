@@ -20,4 +20,5 @@ export const manualPages = {
   less: "less — opposite of more",
   file: "file — determine file type",
   cp: "cp — copy files",
+  mv: "mv — move files",
 };
