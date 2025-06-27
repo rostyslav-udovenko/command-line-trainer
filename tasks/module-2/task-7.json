@@ -1,0 +1,30 @@
+{
+  "id": 7,
+  "description": "Move the file `note.txt` into the `docs/` directory using the `mv` command.",
+  "type": "mv",
+  "check": {
+  "dirExists": "docs",
+  "fileInDir": {
+    "dir": "docs",
+    "file": "note.txt"
+  }
+},
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "note.txt": {
+        "name": "note.txt",
+        "type": "file",
+        "content": "This is a note."
+      },
+      "docs": {
+        "name": "docs",
+        "type": "dir",
+        "children": {}
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `mv note.txt docs`"
+}

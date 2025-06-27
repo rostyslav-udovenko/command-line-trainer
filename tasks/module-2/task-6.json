@@ -1,0 +1,21 @@
+{
+  "id": 6,
+  "description": "Rename `old.txt` to `new.txt` using the `mv` command.",
+  "type": "mv",
+  "check": {
+    "fileExists": "new.txt"
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "old.txt": {
+        "name": "old.txt",
+        "type": "file",
+        "content": "Rename me"
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `mv old.txt new.txt`"
+}
