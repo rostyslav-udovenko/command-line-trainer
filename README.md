@@ -22,12 +22,12 @@ To enable **Matrix Rain** mode, simply enter the command `neo` in the terminal w
 ## 🔡 Example Commands
 
 ```bash
-$ cd projects
-$ mkdir images
-$ touch index.html
-$ pwd
-$ help
-$ man cd
+user@machine:~$ cd projects
+user@machine:~$ mkdir images
+user@machine:~$ touch index.html
+user@machine:~$ pwd
+user@machine:~$ help
+user@machine:~$ man cd
 ```
 
 ## 🆘 Help System
