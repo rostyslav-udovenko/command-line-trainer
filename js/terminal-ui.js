@@ -148,7 +148,7 @@ export class TerminalCaret {
 
     const prompt = document.createElement("span");
     prompt.className = "prompt-symbol";
-    prompt.textContent = "$ ";
+    prompt.textContent = "user@machine:~$ ";
 
     const text = document.createTextNode(command);
 
