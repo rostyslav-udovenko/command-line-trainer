@@ -65,7 +65,7 @@ export async function loadTasks() {
     {
       name: "Module 2 - File Operations",
       path: "tasks/module-2",
-      count: 7,
+      count: 8,
     },
   ];
 
