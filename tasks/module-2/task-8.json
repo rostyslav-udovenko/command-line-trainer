@@ -1,0 +1,21 @@
+{
+  "id": 8,
+  "description": "Remove the file `temp.txt` using the `rm` command.",
+  "type": "rm",
+  "check": {
+    "fileDoesNotExist": "temp.txt"
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "temp.txt": {
+        "name": "temp.txt",
+        "type": "file",
+        "content": "Temporary file"
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `rm temp.txt`"
+}

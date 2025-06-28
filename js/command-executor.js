@@ -265,7 +265,7 @@ const commands = {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
     if (args.length !== 2) {
-      return "Usage: mv <source> <destination>";
+      return "Usage: mv &lt;source&gt; &lt;destination&gt;";
     }
 
     const [src, dest] = args;
@@ -299,11 +299,24 @@ const commands = {
   },
 
   /**
+   * Removes a file from the current directory.
+   */
+  rm: ([name]) => {
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    if (!name) return "Usage: rm &lt;filename&gt;";
+    if (currentDir?.children[name]?.type === "file") {
+      delete currentDir.children[name];
+      return `${name} removed`;
+    }
+    return `No such file: ${name}`;
+  },
+
+  /**
    * Prints available commands and usage.
    */
   help: () => {
     printOutput(
-      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
+      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
     );
     printOutput("System commands: hint [on|off], theme [light|dark]");
   },
