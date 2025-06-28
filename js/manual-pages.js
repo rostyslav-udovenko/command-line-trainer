@@ -21,4 +21,5 @@ export const manualPages = {
   file: "file — determine file type",
   cp: "cp — copy files",
   mv: "mv — move files",
+  rm: "rm — remove files or directories",
 };
