@@ -35,15 +35,15 @@ user@machine:~$ man cd
 You can type `help` at any time to get a list of available commands:
 
 ```
-$ help
-Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp. Use man <command> for more information.
+user@machine:~$ help
+Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, rm. Use man <command> for more information.
 System commands: hint [on|off], theme [light|dark]
 ```
 
 Each command also has its own manual page via `man`:
 
 ```
-$ man touch
+user@machine:~$ man touch
 touch — create a new file
 ```
 
