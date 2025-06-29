@@ -26,7 +26,7 @@ export const virtualFileSystem = {
  */
 export function setupFileSystem(fs) {
   /**
-   * Recursively clones a file or directory node.
+   * Recursively clones a file or directory node, including metadata.
    *
    * @param {FileNode} node - Node to clone.
    * @returns {FileNode} - Deep copy of the node.
@@ -37,9 +37,20 @@ export function setupFileSystem(fs) {
       for (const key in node.children) {
         children[key] = clone(node.children[key]);
       }
-      return { name: node.name, type: "dir", children };
+      return {
+        name: node.name,
+        type: "dir",
+        children,
+        meta: node.meta ? { ...node.meta } : undefined,
+      };
     }
-    return { name: node.name, type: "file", content: node.content || "" };
+
+    return {
+      name: node.name,
+      type: "file",
+      content: node.content || "",
+      meta: node.meta ? { ...node.meta } : undefined,
+    };
   }
 
   virtualFileSystem.root = clone(fs);

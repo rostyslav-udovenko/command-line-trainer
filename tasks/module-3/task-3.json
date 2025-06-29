@@ -1,0 +1,23 @@
+{
+  "id": 3,
+  "description": "Check metadata of `log.txt` using the `stat` command.",
+  "type": "stat",
+  "check": {
+    "expectedOutputIncludes": ["log.txt", "Last modified"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "log.txt": {
+        "name": "log.txt",
+        "type": "file",
+        "meta": {
+          "lastModified": "2024-06-01T12:00:00Z"
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `stat log.txt`"
+}

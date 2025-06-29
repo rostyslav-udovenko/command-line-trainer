@@ -12,7 +12,10 @@
       "temp.txt": {
         "name": "temp.txt",
         "type": "file",
-        "content": "Temporary file"
+        "content": "Temporary file",
+        "meta": {
+          "lastModified": "2025-03-03T03:33:03Z"
+        }
       }
     }
   },

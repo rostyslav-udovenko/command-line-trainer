@@ -12,7 +12,10 @@
       "note.txt": {
         "name": "note.txt",
         "type": "file",
-        "content": "This is a note."
+        "content": "This is a note.",
+        "meta": {
+          "lastModified": "2024-06-25T13:14:15Z"
+        }
       }
     }
   },
