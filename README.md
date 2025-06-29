@@ -36,7 +36,7 @@ You can type `help` at any time to get a list of available commands:
 
 ```
 user@machine:~$ help
-Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, rm. Use man <command> for more information.
+Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat. Use man <command> for more information.
 System commands: hint [on|off], theme [light|dark]
 ```
 
