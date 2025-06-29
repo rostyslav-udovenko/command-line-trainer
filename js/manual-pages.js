@@ -8,18 +8,23 @@
  *
  * Note: HTML entities like &lt; are used to safely render characters like "<" in output.
  */
+
 export const manualPages = {
   pwd: "pwd — print working directory",
   ls: "ls — list directory contents",
+  "ls -l": "ls -l — list directory contents with extra details (e.g. executable flag)",
   cd: "cd — change directory",
   mkdir: "mkdir — make directory",
-  touch: "touch — create a new file",
+  touch: "touch — create a new file or update timestamp",
   help: "help — show general command help",
-  man: "an interface to the system reference manuals",
+  man: "man — an interface to the system reference manuals",
   cat: "cat — concatenate files and print on the standard output",
   less: "less — opposite of more",
   file: "file — determine file type",
   cp: "cp — copy files and directories",
   mv: "mv — move (rename) files",
   rm: "rm — remove files or directories",
+  chmod: "chmod — change file permissions",
+  stat: "stat — display file metadata like last modification time",
 };
+
