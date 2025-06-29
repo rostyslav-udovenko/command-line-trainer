@@ -9,10 +9,12 @@
   "fs": {
     "name": "/",
     "type": "dir",
+    "meta": {},
     "children": {
       "projects": {
         "name": "projects",
         "type": "dir",
+        "meta": {},
         "children": {
           "readme.txt": {
             "name": "readme.txt",

@@ -8,6 +8,7 @@
   "fs": {
     "name": "/",
     "type": "dir",
+    "meta": {},
     "children": {
       "temp.txt": {
         "name": "temp.txt",
