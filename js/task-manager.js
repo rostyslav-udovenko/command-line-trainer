@@ -67,6 +67,11 @@ export async function loadTasks() {
       path: "tasks/module-2",
       count: 8,
     },
+    {
+      name: "Module 3 - File Permissions and Metadata",
+      path: "tasks/module-3",
+      count: 4,
+    },
   ];
 
   try {
@@ -116,8 +121,12 @@ export function checkTaskCompletion(
   // Combine all conditions; start with true, fail if any check fails
   let success = true;
 
-  // Verify command type matches task type
-  if (typeof task.type === "string" && cmd !== task.type) {
+  /**
+   * Check if the entered command matches the expected task type.
+   * We only compare the command keyword, not its arguments.
+   * For example, `ls -l` should still match task type `ls`.
+   */
+  if (typeof task.type === "string" && task.type !== "" && cmd !== task.type) {
     success = false;
   }
 
@@ -155,12 +164,30 @@ export function checkTaskCompletion(
     success = success && fileNode?.type === "file";
   }
 
-  // Check if output includes expected strings
+  // Check if a file is marked as executable
+  if (check.fileExecutable) {
+    const file = currentDir?.children[check.fileExecutable];
+    success =
+      success && file?.type === "file" && file.meta?.isExecutable === true;
+  }
+
+  // Check if output includes expected strings (supports wildcard-style executable suffix)
   if (check.expectedOutputIncludes) {
     if (typeof result === "string") {
       success =
         success &&
-        check.expectedOutputIncludes.every((item) => result.includes(item));
+        check.expectedOutputIncludes.every((expected) => {
+          // If expected ends with *, do prefix match (e.g. run.sh* should match run.sh)
+          if (expected.endsWith("*")) {
+            const prefix = expected.slice(0, -1);
+            return result
+              .split(/\s+/)
+              .some((token) => token.startsWith(prefix));
+          }
+
+          // Exact match fallback
+          return result.includes(expected);
+        });
     } else {
       success = false;
     }

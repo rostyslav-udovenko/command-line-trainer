@@ -1,0 +1,23 @@
+{
+  "id": 4,
+  "description": "Update the timestamp of `todo.txt` using the `touch` command.",
+  "type": "touch",
+  "check": {
+    "fileExists": "todo.txt"
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "todo.txt": {
+        "name": "todo.txt",
+        "type": "file",
+        "meta": {
+          "lastModified": "2022-01-01T00:00:00Z"
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `touch todo.txt`"
+}

@@ -16,7 +16,10 @@
         "children": {
           "readme.txt": {
             "name": "readme.txt",
-            "type": "file"
+            "type": "file",
+            "meta": {
+              "lastModified": "2020-05-22T12:00:00Z"
+            }
           }
         }
       }

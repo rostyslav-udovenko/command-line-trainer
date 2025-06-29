@@ -16,11 +16,14 @@
           "images": {
             "name": "images",
             "type": "dir",
-            "children": {}
+            "children": {},
+            "meta": {}
           }
-        }
+        },
+        "meta": {}
       }
-    }
+    },
+    "meta": {}
   },
   "startDirectory": "/projects/images",
   "hint": "Try `pwd`"

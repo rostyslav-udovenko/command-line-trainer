@@ -12,9 +12,13 @@
       "projects": {
         "name": "projects",
         "type": "dir",
-        "children": {}
+        "children": {},
+        "meta": {
+          "lastModified": "2023-01-23T10:30:40Z"
+        }
       }
-    }
+    },
+    "meta": {}
   },
   "startDirectory": "/",
   "hint": "Try `cd projects`"

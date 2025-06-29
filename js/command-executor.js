@@ -149,12 +149,38 @@ const commands = {
     name ? createDirectory(name) : "Usage: mkdir &lt;directory&gt;",
 
   /**
-   * Creates a new file.
+   * Creates a new file or updates last modified time if it exists.
    * @param {[string]} args - Array with one file name.
    * @returns {string}
    */
-  touch: ([name]) =>
-    name ? createFile(name) : "Usage: touch &lt;filename&gt;",
+  touch: ([name]) => {
+    if (!name) return "Usage: touch <filename>";
+
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    if (!currentDir) return "Directory not found";
+
+    const now = new Date().toISOString();
+    const file = currentDir.children[name];
+
+    // Update lastModified if file exists
+    if (file?.type === "file") {
+      file.meta = file.meta || {};
+      file.meta.lastModified = now;
+      return `Touched ${name}`;
+    }
+
+    // Create new file with meta
+    currentDir.children[name] = {
+      name,
+      type: "file",
+      content: "",
+      meta: {
+        lastModified: now,
+      },
+    };
+
+    return `File ${name} created`;
+  },
 
   /**
    * Outputs file contents using `cat`.
@@ -312,11 +338,64 @@ const commands = {
   },
 
   /**
+   * Changes file permissions to executable using `chmod +x`.
+   */
+  chmod: ([flag, name]) => {
+    if (flag !== "+x" || !name) return "Usage: chmod +x <filename>";
+
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[name];
+
+    if (file?.type === "file") {
+      file.meta = file.meta || {};
+      file.meta.isExecutable = true;
+      return `Added executable permission to ${name}`;
+    }
+
+    return `No such file: ${name}`;
+  },
+
+  /**
+   * Lists files in the current directory, marking executables with *.
+   */
+  "ls-l": () => {
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    if (!currentDir) return "Directory not found";
+
+    const entries = Object.values(currentDir.children || {});
+    if (!entries.length) return "No files or directories";
+
+    return entries
+      .map((item) => {
+        const isExec = item.meta?.isExecutable ? "*" : "";
+        return item.name + isExec;
+      })
+      .join("\n");
+  },
+
+  /**
+   * Shows metadata of a file including last modification date.
+   */
+  stat: ([name]) => {
+    if (!name) return "Usage: stat <filename>";
+
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[name];
+
+    if (file?.type === "file") {
+      const modified = file.meta?.lastModified || "unknown";
+      return `${name}\nType: file\nLast modified: ${modified}`;
+    }
+
+    return `No such file: ${name}`;
+  },
+
+  /**
    * Prints available commands and usage.
    */
   help: () => {
     printOutput(
-      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
+      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
     );
     printOutput("System commands: hint [on|off], theme [light|dark]");
   },

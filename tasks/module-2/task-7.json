@@ -3,12 +3,12 @@
   "description": "Move the file `note.txt` into the `docs/` directory using the `mv` command.",
   "type": "mv",
   "check": {
-  "dirExists": "docs",
-  "fileInDir": {
-    "dir": "docs",
-    "file": "note.txt"
-  }
-},
+    "dirExists": "docs",
+    "fileInDir": {
+      "dir": "docs",
+      "file": "note.txt"
+    }
+  },
   "fs": {
     "name": "/",
     "type": "dir",
@@ -16,7 +16,10 @@
       "note.txt": {
         "name": "note.txt",
         "type": "file",
-        "content": "This is a note."
+        "content": "This is a note.",
+        "meta": {
+          "lastModified": "2024-08-18T23:59:59Z"
+        }
       },
       "docs": {
         "name": "docs",

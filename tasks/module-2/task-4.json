@@ -13,7 +13,10 @@
       "script.sh": {
         "name": "script.sh",
         "type": "file",
-        "content": "#!/bin/bash\necho Hello"
+        "content": "#!/bin/bash\necho Hello",
+        "meta": {
+          "lastModified": "2025-03-03T03:03:03Z"
+        }
       }
     }
   },

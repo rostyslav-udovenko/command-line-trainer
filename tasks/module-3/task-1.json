@@ -1,0 +1,24 @@
+{
+  "id": 1,
+  "description": "Make the file `run.sh` executable using the `chmod` command.",
+  "type": "chmod",
+  "check": {
+    "fileExecutable": "run.sh"
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "run.sh": {
+        "name": "run.sh",
+        "type": "file",
+        "content": "#!/bin/bash\necho Running",
+        "meta": {
+          "isExecutable": false
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `chmod +x run.sh`"
+}
