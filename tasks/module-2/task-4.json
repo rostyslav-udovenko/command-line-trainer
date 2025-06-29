@@ -9,6 +9,7 @@
   "fs": {
     "name": "/",
     "type": "dir",
+    "meta": {},
     "children": {
       "script.sh": {
         "name": "script.sh",

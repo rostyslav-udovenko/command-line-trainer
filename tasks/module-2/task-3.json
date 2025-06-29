@@ -9,6 +9,7 @@
   "fs": {
     "name": "/",
     "type": "dir",
+    "meta": {},
     "children": {
       "log.txt": {
         "name": "log.txt",
