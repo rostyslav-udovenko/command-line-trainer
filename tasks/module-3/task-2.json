@@ -1,0 +1,27 @@
+{
+  "id": 2,
+  "description": "List details of files using `ls -l` and find the name of the executable.",
+  "type": "ls",
+  "check": {
+    "expectedOutputIncludes": ["run.sh*"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "run.sh": {
+        "name": "run.sh",
+        "type": "file",
+        "meta": {
+          "isExecutable": true
+        }
+      },
+      "notes.txt": {
+        "name": "notes.txt",
+        "type": "file"
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "Try `ls -l` and look for the executable."
+}

@@ -11,14 +11,20 @@
     "children": {
       "project.txt": {
         "name": "project.txt",
-        "type": "file"
+        "type": "file",
+        "content": "",
+        "meta": {
+          "lastModified": "2020-05-22T12:00:00Z"
+        }
       },
       "images": {
         "name": "images",
         "type": "dir",
-        "children": {}
+        "children": {},
+        "meta": {}
       }
-    }
+    },
+    "meta": {}
   },
   "startDirectory": "/",
   "hint": "Try `ls`"

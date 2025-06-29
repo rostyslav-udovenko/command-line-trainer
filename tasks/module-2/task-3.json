@@ -13,7 +13,10 @@
       "log.txt": {
         "name": "log.txt",
         "type": "file",
-        "content": "Error log:\n- line 1\n- line 2"
+        "content": "Error log:\n- line 1\n- line 2",
+        "meta": {
+          "lastModified": "2023-07-04T08:15:45Z"
+        }
       }
     }
   },

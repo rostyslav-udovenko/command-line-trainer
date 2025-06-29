@@ -13,7 +13,10 @@
       "a.txt": {
         "name": "a.txt",
         "type": "file",
-        "content": "Copy me!"
+        "content": "Copy me!",
+        "meta": {
+          "lastModified": "2024-08-18T23:59:59Z"
+        }
       }
     }
   },

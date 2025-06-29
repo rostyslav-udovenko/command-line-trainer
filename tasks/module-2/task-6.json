@@ -12,7 +12,10 @@
       "old.txt": {
         "name": "old.txt",
         "type": "file",
-        "content": "Rename me"
+        "content": "Rename me",
+        "meta": {
+          "lastModified": "2020-11-05T05:05:05Z"
+        }
       }
     }
   },
