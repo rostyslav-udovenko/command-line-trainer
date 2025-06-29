@@ -12,6 +12,7 @@
   "fs": {
     "name": "/",
     "type": "dir",
+    "meta": {},
     "children": {
       "note.txt": {
         "name": "note.txt",
@@ -24,6 +25,7 @@
       "docs": {
         "name": "docs",
         "type": "dir",
+        "meta": {},
         "children": {}
       }
     }
