@@ -6,7 +6,7 @@ This initiative aims to guide newcomers in learning terminal commands progressiv
 
 ## 🧠 Features
 
-- Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file`, `cp`, `mv` and `rm`
+- Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file`, `cp`, `mv`, `rm`, `chmod`, `ls -l` and `stat`
 - System command such as `hint on/off` to enable or disable task hints
 - Immediate task validation accompanied by feedback and hints for each task
 - An integrated virtual file system that refreshes with each task, utilizing JSON
