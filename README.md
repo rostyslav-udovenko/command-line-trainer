@@ -173,15 +173,20 @@ project-root/
 │   │   ├── task-2.json
 │   │   ├── task-3.json
 │   │   └── task-4.json
-│   └── module-2                # File Operations
+│   ├── module-2                # File Operations
+│   │   ├── task-1.json
+│   │   ├── task-2.json
+│   │   ├── task-3.json
+│   │   ├── task-4.json
+│   │   ├── task-5.json
+│   │   ├── task-6.json
+│   │   ├── task-7.json
+│   │   └── task-8.json
+│   └── module-3                # File Permissions and Metadata
 │       ├── task-1.json
 │       ├── task-2.json
 │       ├── task-3.json
 │       ├── task-4.json
-│       ├── task-5.json
-│       ├── task-6.json
-│       ├── task-7.json
-│       └── task-8.json
 ├── 404.html
 ├── 500.html
 ├── index.html                  # UI shell and entry point
