@@ -124,13 +124,34 @@ const commands = {
 
   /**
    * Lists files and directories in the current directory.
-   * @returns {string}
+   *
+   * If called with the -l flag, lists each entry on a new line and
+   * marks executable files with an asterisk (*).
+   * Returns usage message on unexpected arguments.
+   *
+   * @param {[string]} args - Optional array of command-line arguments (e.g., ["-l"]).
+   * @returns {string} - Formatted directory listing or usage/error message.
    */
-  ls: () => {
+  ls: (args) => {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
-    return currentDir
-      ? Object.keys(currentDir.children).join(" ") || "No files or directories"
-      : "Directory not found";
+    if (!currentDir) return "Directory not found";
+
+    const entries = Object.values(currentDir.children || {});
+    if (!entries.length) return "No files or directories";
+
+    // Only allow no args or a single "-l" flag
+    if (args.length > 1 || (args.length === 1 && args[0] !== "-l")) {
+      return "Usage: ls [-l]";
+    }
+
+    const isLongFormat = args[0] === "-l";
+
+    return entries
+      .map((item) => {
+        const isExec = item.meta?.isExecutable ? "*" : "";
+        return isLongFormat ? item.name + isExec : item.name;
+      })
+      .join(isLongFormat ? "\n" : " ");
   },
 
   /**
@@ -353,24 +374,6 @@ const commands = {
     }
 
     return `No such file: ${name}`;
-  },
-
-  /**
-   * Lists files in the current directory, marking executables with *.
-   */
-  "ls-l": () => {
-    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
-    if (!currentDir) return "Directory not found";
-
-    const entries = Object.values(currentDir.children || {});
-    if (!entries.length) return "No files or directories";
-
-    return entries
-      .map((item) => {
-        const isExec = item.meta?.isExecutable ? "*" : "";
-        return item.name + isExec;
-      })
-      .join("\n");
   },
 
   /**
