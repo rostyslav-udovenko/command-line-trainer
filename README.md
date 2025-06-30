@@ -194,6 +194,31 @@ project-root/
 └── README.md
 ```
 
+## 🚀 How to Run Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/rostyslav-udovenko/command-line-trainer.git
+cd command-line-trainer
+```
+
+Start a local web server using the built-in static server from Node.js:
+
+```
+npx serve .
+```
+
+> On first run, this will install the serve package temporarily.
+
+Then open your browser and navigate to:
+
+```
+http://localhost:3000
+```
+
+> Or whichever port is printed in your terminal
+
 ## 🧩 Third-party Assets
 
 Icons by [Tabler Icons](https://github.com/tabler/tabler-icons), used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
