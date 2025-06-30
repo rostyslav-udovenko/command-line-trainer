@@ -97,21 +97,6 @@ function createDirectory(name) {
 }
 
 /**
- * Creates a new file in the current directory.
- *
- * @param {string} name - File name.
- * @returns {string} - Status message.
- */
-function createFile(name) {
-  const currentDir = getDirectory(virtualFileSystem.currentDirectory);
-  if (currentDir && !currentDir.children[name]) {
-    currentDir.children[name] = { name, type: "file", content: "" };
-    return `File ${name} created`;
-  }
-  return `File ${name} already exists or invalid path`;
-}
-
-/**
  * Supported command implementations.
  * Each command is a function that returns output (or null).
  */
