@@ -72,6 +72,11 @@ export async function loadTasks() {
       path: "tasks/module-3",
       count: 4,
     },
+    {
+      name: "Module 4 - Bash Commands",
+      path: "tasks/module-4",
+      count: 4,
+    },
   ];
 
   try {

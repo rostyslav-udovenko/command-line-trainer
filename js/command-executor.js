@@ -347,7 +347,7 @@ const commands = {
    * Changes file permissions to executable using `chmod +x`.
    */
   chmod: ([flag, name]) => {
-    if (flag !== "+x" || !name) return "Usage: chmod +x <filename>";
+    if (flag !== "+x" || !name) return "Usage: chmod +x &lt;filename&gt;";
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     const file = currentDir?.children[name];
@@ -365,7 +365,7 @@ const commands = {
    * Shows metadata of a file including last modification date.
    */
   stat: ([name]) => {
-    if (!name) return "Usage: stat <filename>";
+    if (!name) return "Usage: stat &lt;filename&gt;";
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     const file = currentDir?.children[name];
@@ -379,11 +379,85 @@ const commands = {
   },
 
   /**
+   * Displays the current date and time.
+   *
+   * @param {[string]} args - Optional arguments (should be empty).
+   * @returns {string} - Current date or usage message.
+   */
+  date: (args) => {
+    if (args.length > 0) {
+      return "Usage: &lt;date&gt;";
+    }
+    return new Date().toString();
+  },
+
+  /**
+   * Displays the current user name.
+   *
+   * @param {[string]} args - Optional arguments (should be empty).
+   * @returns {string}
+   */
+  whoami: (args) => {
+    if (args.length > 0) {
+      return "Usage: &lt;whoami&gt;";
+    }
+    return "user";
+  },
+
+  /**
+   * Simulates the `uptime` command by showing current time, uptime duration, users, and load average.
+   *
+   * @param {[string]} args - Optional arguments (should be empty).
+   * @returns {string}
+   */
+  uptime: (args) => {
+    if (args.length > 0) {
+      return "Usage: &lt;uptime&gt;";
+    }
+
+    const now = new Date();
+    const pad = (n) => n.toString().padStart(2, "0");
+
+    const time = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(
+      now.getSeconds()
+    )}`;
+    const uptimeHours = Math.floor(Math.random() * 5);
+    const uptimeMinutes = Math.floor(Math.random() * 60);
+    const users = 1;
+    const load1 = (Math.random() * 1).toFixed(2);
+    const load5 = (Math.random() * 0.8).toFixed(2);
+    const load15 = (Math.random() * 0.5).toFixed(2);
+
+    return `${time} up ${uptimeHours}:${pad(
+      uptimeMinutes
+    )},  ${users} user,  load average: ${load1}, ${load5}, ${load15}`;
+  },
+
+  /**
+   * Simulates the `mount` command output with realistic-looking mount points.
+   *
+   * @param {[string]} args - Optional arguments (should be empty).
+   * @returns {string}
+   */
+  mount: (args) => {
+    if (args.length > 0) {
+      return "Usage: &lt;mount&gt;";
+    }
+
+    return [
+      "/dev/sda1 on / type ext4 (rw,relatime,data=ordered)",
+      "proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)",
+      "sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)",
+      "tmpfs on /run type tmpfs (rw,nosuid,nodev,size=1638400k,mode=755)",
+    ].join("\n");
+  },
+
+  /**
    * Prints available commands and usage.
    */
   help: () => {
     printOutput(
-      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
+      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
     );
     printOutput("System commands: hint [on|off], theme [light|dark]");
   },

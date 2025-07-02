@@ -11,8 +11,7 @@
 
 export const manualPages = {
   pwd: "pwd — print working directory",
-  ls: "ls — list directory contents",
-  "ls -l": "ls -l — list directory contents with extra details (e.g. executable flag)",
+  ls: "ls — list directory contents, ls -l — list directory contents with extra details (e.g. executable flag)",
   cd: "cd — change directory",
   mkdir: "mkdir — make directory",
   touch: "touch — create a new file or update timestamp",
@@ -26,5 +25,8 @@ export const manualPages = {
   rm: "rm — remove files or directories",
   chmod: "chmod — change file permissions",
   stat: "stat — display file metadata like last modification time",
+  date: "date — display or set the system date and time",
+  whoami: "whoami — print effective user ID",
+  uptime: "uptime — tell how long the system has been running",
+  mount: "mount — mount a filesystem",
 };
-

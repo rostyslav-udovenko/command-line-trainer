@@ -1,0 +1,16 @@
+{
+  "id": 3,
+  "description": "Use the `uptime` command to check how long the system has been running.",
+  "type": "uptime",
+  "check": {
+    "expectedOutputIncludes": ["load average"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "Try `uptime`"
+}

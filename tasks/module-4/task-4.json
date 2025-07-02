@@ -1,0 +1,16 @@
+{
+  "id": 4,
+  "description": "Use the `mount` command to list mounted filesystems.",
+  "type": "mount",
+  "check": {
+    "expectedOutputIncludes": ["/dev/sda1", "/"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "Try `mount`"
+}
