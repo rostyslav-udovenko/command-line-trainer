@@ -1,0 +1,16 @@
+{
+  "id": 2,
+  "description": "Use the `whoami` command to show the current username.",
+  "type": "whoami",
+  "check": {
+    "expectedOutputIncludes": ["user"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "Try `whoami`"
+}

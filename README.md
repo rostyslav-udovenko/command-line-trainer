@@ -6,7 +6,7 @@ This initiative aims to guide newcomers in learning terminal commands progressiv
 
 ## 🧠 Features
 
-- Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file`, `cp`, `mv`, `rm`, `chmod`, `ls -l` and `stat`
+- Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file`, `cp`, `mv`, `rm`, `chmod`, `ls -l`, `stat`, `date`, `whoami`, `uptime` and `mount`
 - System command such as `hint on/off` to enable or disable task hints
 - Immediate task validation accompanied by feedback and hints for each task
 - An integrated virtual file system that refreshes with each task, utilizing JSON
@@ -36,7 +36,7 @@ You can type `help` at any time to get a list of available commands:
 
 ```
 user@machine:~$ help
-Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat. Use man <command> for more information.
+Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount. Use man <command> for more information.
 System commands: hint [on|off], theme [light|dark]
 ```
 
@@ -182,7 +182,12 @@ project-root/
 │   │   ├── task-6.json
 │   │   ├── task-7.json
 │   │   └── task-8.json
-│   └── module-3                # File Permissions and Metadata
+│   ├── module-3                # File Permissions and Metadata
+│   │   ├── task-1.json
+│   │   ├── task-2.json
+│   │   ├── task-3.json
+│   │   └── task-4.json
+│   └── module-4                # Bash Commands
 │       ├── task-1.json
 │       ├── task-2.json
 │       ├── task-3.json

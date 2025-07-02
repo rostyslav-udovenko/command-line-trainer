@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "description": "Use the `date` command to display the current system time.",
+  "type": "date",
+  "check": {
+    "expectedOutputIncludes": ["202"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "Try `date`"
+}
