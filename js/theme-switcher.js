@@ -1,35 +1,41 @@
 /**
- * Applies the given theme by setting a data attribute,
- * updating localStorage and the theme icon.
+ * Applies the selected theme by updating DOM attribute, localStorage, and icon.
  *
- * @param {string} theme - Either "light" or "dark"
+ * @param {string} theme - "light" or "dark"
  */
 export function applyTheme(theme) {
-  const root = document.documentElement;
-  root.setAttribute("data-theme", theme);
+  // Set theme on root element
+  document.documentElement.setAttribute("data-theme", theme);
+
+  // Persist preference
   localStorage.setItem("theme", theme);
 
-  const toggleBtn = document.getElementById("theme-toggle-btn");
-  if (toggleBtn) {
-    toggleBtn.src = theme === "light" ? "icons/light.svg" : "icons/dark.svg";
+  // Update toggle icon image
+  const icon = document.getElementById("theme-toggle-btn");
+  if (icon) {
+    icon.src = theme === "light" ? "icons/light.svg" : "icons/dark.svg";
   }
 }
 
 /**
- * Sets up the theme switcher by binding event listeners
- * and initializing the icon and theme from storage.
+ * Initializes theme from localStorage and binds toggle click handler.
  */
 export function setupThemeSwitcher() {
-  const saved = localStorage.getItem("theme");
-  const initialTheme = saved === "light" || saved === "dark" ? saved : "dark";
-  applyTheme(initialTheme);
+  const icon = document.getElementById("theme-toggle-btn");
 
-  const toggleBtn = document.getElementById("theme-toggle-btn");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      const newTheme = currentTheme === "light" ? "dark" : "light";
-      applyTheme(newTheme);
+  // Load saved theme or fallback to "dark"
+  const saved = localStorage.getItem("theme");
+  const initial = saved === "light" || saved === "dark" ? saved : "dark";
+
+  // Apply theme immediately
+  applyTheme(initial);
+
+  // Toggle theme on icon click
+  if (icon) {
+    icon.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "light" ? "dark" : "light";
+      applyTheme(next);
     });
   }
 }

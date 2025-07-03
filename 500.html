@@ -8,11 +8,13 @@
     <script>
       (() => {
         const theme = localStorage.getItem("theme");
-        if (theme === "light" || theme === "dark") {
-          document.documentElement.setAttribute("data-theme", theme);
-        } else {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
+        const applied = theme === "light" || theme === "dark" ? theme : "dark";
+        document.documentElement.setAttribute("data-theme", applied);
+
+        document.documentElement.style.visibility = "hidden";
+        document.addEventListener("DOMContentLoaded", () => {
+          document.documentElement.style.visibility = "visible";
+        });
       })();
     </script>
 
