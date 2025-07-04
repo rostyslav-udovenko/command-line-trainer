@@ -61,15 +61,19 @@ Each task is described as a JSON file and includes:
 The application code is organized into well-structured ES module files to enhance both scalability and clarity:
 ```
 js/ 
- ├── command-executor.js        # Command definitions and execution logic 
- ├── file-system.js             # Virtual file system operations
- ├── main.js                    # Entry point, initializes everything
- ├── manual-pages.js            # Manual entries for use by the `man` command
- ├── matrix-mode.js             # Matrix Rain mode
- ├── task-manager.js            # Task loading, validation and flow control
- ├── terminal-ui.js             # Handles UI: output, input, scrolling
- ├── theme-switcher-init.js     # Sets initial theme on first page load based on localStorage
- └── theme-switcher.js          # Manages the switching of themes and the toggling of icons
+├── core/                       # Core logic and virtual file system operations
+│   ├── command-executor.js     # Command definitions and execution logic
+│   ├── file-system.js          # Virtual file system operations
+│   └── task-manager.js         # Task loading, validation and flow control
+├── data/                       # Static data for internal commands
+│   └── manual-pages.js         # Manual entries for use by the `man` command
+├── effects/                    # Visual effects and easter eggs
+│   └── matrix-mode.js          # Matrix Rain mode
+├── ui/                         # Terminal user interface logic
+│   ├── terminal-ui.js          # Handles UI: output, input, scrolling
+│   ├── theme-switcher-init.js  # Sets initial theme on first page load based on localStorage
+│   └── theme-switcher.js       # Manages the switching of themes and the toggling of icons
+└── main.js                     # Entry point, initializes everything
  ```
 
 ## 🎨 SCSS Structure
