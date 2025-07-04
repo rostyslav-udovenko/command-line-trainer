@@ -1,10 +1,10 @@
-import { applyTheme } from "./theme-switcher.js";
+import { applyTheme } from "../ui/theme-switcher.js";
 import {
   virtualFileSystem,
   getDirectory,
   normalizePath,
 } from "./file-system.js";
-import { printOutput, scrollToBottom } from "./terminal-ui.js";
+import { printOutput, scrollToBottom } from "../ui/terminal-ui.js";
 import {
   checkTaskCompletion,
   tasks,
@@ -12,8 +12,8 @@ import {
   setHintsEnabled,
   hasCompletedAllTasks,
 } from "./task-manager.js";
-import { activateMatrixMode } from "./matrix-mode.js";
-import { manualPages } from "./manual-pages.js";
+import { activateMatrixMode } from "../effects/matrix-mode.js";
+import { manualPages } from "../data/manual-pages.js";
 
 /**
  * Parses and executes a terminal command, prints result,

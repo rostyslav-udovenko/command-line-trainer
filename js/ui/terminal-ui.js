@@ -1,6 +1,5 @@
-import { executeCommand } from "./command-executor.js";
-import { handleWelcomeInput } from "./task-manager.js";
-import { loadTasks } from "./task-manager.js";
+import { executeCommand } from "../core/command-executor.js";
+import { handleWelcomeInput, loadTasks } from "../core/task-manager.js";
 
 let started = false;
 
