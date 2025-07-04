@@ -1,6 +1,6 @@
-import { setupThemeSwitcher } from "./theme-switcher.js";
-import { TerminalCaret, showWelcomeMessage } from "./terminal-ui.js";
-import { executeCommand } from "./command-executor.js";
+import { setupThemeSwitcher } from "./ui/theme-switcher.js";
+import { TerminalCaret, showWelcomeMessage } from "./ui/terminal-ui.js";
+import { executeCommand } from "./core/command-executor.js";
 
 /**
  * Entry point for initializing the Command Line Trainer interface.

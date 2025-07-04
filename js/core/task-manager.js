@@ -1,6 +1,9 @@
-import { setupFileSystem, getDirectory } from "./file-system.js";
-import { virtualFileSystem } from "./file-system.js";
-import { printOutput, disableInput, hideCaret } from "./terminal-ui.js";
+import {
+  setupFileSystem,
+  getDirectory,
+  virtualFileSystem,
+} from "./file-system.js";
+import { printOutput, disableInput, hideCaret } from "../ui/terminal-ui.js";
 
 /**
  * Loaded task definitions.
