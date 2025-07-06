@@ -51,10 +51,53 @@ touch — create a new file
 
 Each task is described as a JSON file and includes:
 
-- `description` – what you need to do
-- `fs` – starting virtual file system structure
-- `check` – validation rule (e.g. directory exists, file created, current path)
-- `hint` – helpful tip if your command is incorrect
+- `id` – unique task identifier within the module
+- `description` – short instruction for the user
+- `type` – expected command (e.g. `cd`, `mkdir`, `touch`, etc.)
+- `fs` – starting virtual file system structure with directories and files
+- `startDirectory` – path where the user starts the task
+- `check` – validation rules to determine if the task is complete
+- `hint` – helpful tip shown after several failed attempts
+
+Tasks are organized into modules in the `tasks/` directory:
+```
+tasks/
+├── module-1/                   # Directory Operations
+│   ├── task-1.json
+│   ├── task-2.json
+│   ├── task-3.json
+│   └── task-4.json
+├── module-2/                   # File Operations
+│   ├── task-1.json
+│   ├── task-2.json
+│   ├── task-3.json
+│   ├── task-4.json
+│   ├── task-5.json
+│   ├── task-6.json
+│   ├── task-7.json
+│   └── task-8.json
+├── module-3/                   # File Permissions and Metadata
+│   ├── task-1.json
+│   ├── task-2.json
+│   ├── task-3.json
+│   └── task-4.json
+└──module-4/                    # Bash Commands
+    ├── task-1.json
+    ├── task-2.json
+    ├── task-3.json
+    └── task-4.json
+ ```
+
+ Validation rules (`check`) may include:
+
+- `currentDirectoryIs` – matches the current path exactly
+- `currentDirectoryEndsWith` – ends with a specific folder
+- `fileExists` – checks for presence of a file
+- `dirExists` – checks for presence of a directory
+- `fileInDir` – checks that a file exists inside a specific directory
+- `fileExecutable` – verifies that a file is marked as executable
+- `fileDoesNotExist` – confirms that a file has been removed
+- `expectedOutputIncludes` – output must include specific strings
 
 ## 📦 Modular JavaScript Structure
 
@@ -172,12 +215,12 @@ project-root/
 │   │   └── _themes.scss        # Defines dark and light theme variables using :root and [data-theme]
 │   └── main.scss               # UI Entry point
 ├── tasks/
-│   ├── module-1                # Directory Operations
+│   ├── module-1/               # Directory Operations
 │   │   ├── task-1.json
 │   │   ├── task-2.json
 │   │   ├── task-3.json
 │   │   └── task-4.json
-│   ├── module-2                # File Operations
+│   ├── module-2/               # File Operations
 │   │   ├── task-1.json
 │   │   ├── task-2.json
 │   │   ├── task-3.json
@@ -186,12 +229,12 @@ project-root/
 │   │   ├── task-6.json
 │   │   ├── task-7.json
 │   │   └── task-8.json
-│   ├── module-3                # File Permissions and Metadata
+│   ├── module-3/               # File Permissions and Metadata
 │   │   ├── task-1.json
 │   │   ├── task-2.json
 │   │   ├── task-3.json
 │   │   └── task-4.json
-│   └── module-4                # Bash Commands
+│   └── module-4/               # Bash Commands
 │       ├── task-1.json
 │       ├── task-2.json
 │       ├── task-3.json
