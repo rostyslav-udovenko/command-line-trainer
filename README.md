@@ -63,29 +63,29 @@ Tasks are organized into modules in the `tasks/` directory:
 ```
 tasks/
 ├── module-1/                   # Directory Operations
-│   ├── task-1.json
-│   ├── task-2.json
-│   ├── task-3.json
-│   └── task-4.json
+│   ├── task-1.json             # Navigate to the `projects` directory
+│   ├── task-2.json             # Create a directory named `images`
+│   ├── task-3.json             # List contents using `ls`
+│   └── task-4.json             # Display current path using `pwd`
 ├── module-2/                   # File Operations
-│   ├── task-1.json
-│   ├── task-2.json
-│   ├── task-3.json
-│   ├── task-4.json
-│   ├── task-5.json
-│   ├── task-6.json
-│   ├── task-7.json
-│   └── task-8.json
+│   ├── task-1.json             # Create `index.html` in `projects`
+│   ├── task-2.json             # Read `note.txt` using `cat`
+│   ├── task-3.json             # View `log.txt` using `less`
+│   ├── task-4.json             # Inspect `script.sh` using `file`
+│   ├── task-5.json             # Copy `a.txt` to `b.txt` using `cp`
+│   ├── task-6.json             # Rename `old.txt` to `new.txt` using `mv`
+│   ├── task-7.json             # Move `note.txt` into `docs/` using `mv`
+│   └── task-8.json             # Remove `temp.txt` using `rm`
 ├── module-3/                   # File Permissions and Metadata
-│   ├── task-1.json
-│   ├── task-2.json
-│   ├── task-3.json
-│   └── task-4.json
+│   ├── task-1.json             # Make `run.sh` executable using `chmod`
+│   ├── task-2.json             # Find executable with `ls -l`
+│   ├── task-3.json             # Show `log.txt` metadata using `stat`
+│   └── task-4.json             # Update `todo.txt` timestamp using `touch`
 └──module-4/                    # Bash Commands
-    ├── task-1.json
-    ├── task-2.json
-    ├── task-3.json
-    └── task-4.json
+    ├── task-1.json             # Show current time using `date`
+    ├── task-2.json             # Display current username using `whoami`
+    ├── task-3.json             # Check system uptime using `uptime`
+    └── task-4.json             # List mounted filesystems using `mount`
  ```
 
  Validation rules (`check`) may include:
