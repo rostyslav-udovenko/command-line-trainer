@@ -28,5 +28,6 @@
     }
   },
   "startDirectory": "/projects",
-  "hint": "Try `touch index.html`"
+  "hint": "Try `touch index.html`",
+  "explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it creates `index.html` in the `projects` directory."
 }

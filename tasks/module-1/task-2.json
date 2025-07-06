@@ -12,5 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `mkdir images`"
+  "hint": "Try `mkdir images`",
+  "explanation": "The `mkdir` (make directory) command allows you to create a new directory in the filesystem."
 }

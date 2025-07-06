@@ -19,5 +19,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `stat log.txt`"
+  "hint": "Try `stat log.txt`",
+  "explanation": "The `stat` command displays detailed information about a file, including its size, permissions, and last modification time. In this case, it shows the metadata of `log.txt`."
 }

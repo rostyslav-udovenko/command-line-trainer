@@ -21,5 +21,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `rm temp.txt`"
+  "hint": "Try `rm temp.txt`",
+  "explanation": "The `rm` command is used to remove files or directories. In this case, it deletes the file `temp.txt`. Be cautious when using `rm`, as it permanently deletes files without moving them to a trash or recycle bin."
 }

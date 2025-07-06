@@ -27,5 +27,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `ls`"
+  "hint": "Try `ls`",
+  "explanation": "The `ls` command lists the contents of the current directory, showing files and subdirectories."
 }

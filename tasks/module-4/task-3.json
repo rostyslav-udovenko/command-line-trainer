@@ -12,5 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `uptime`"
+  "hint": "Try `uptime`",
+  "explanation": "The `uptime` command shows how long the system has been running since the last boot, along with the current time, number of users logged in, and system load averages. It is useful for monitoring system performance and stability."
 }

@@ -12,5 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `whoami`"
+  "hint": "Try `whoami`",
+  "explanation": "The `whoami` command displays the username of the current user logged into the system. It is useful for confirming which user account you are operating under."
 }

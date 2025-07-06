@@ -225,7 +225,12 @@ export function checkTaskCompletion(
     const randomMessage =
       successMessages[Math.floor(Math.random() * successMessages.length)];
 
-    printOutput(`<strong>${randomMessage}</strong>`);
+    // Print the success message with optional explanation
+    let message = `<strong>${randomMessage}</strong>`;
+    if (task.explanation) {
+      message += ` ${task.explanation}`;
+    }
+    printOutput(message);
 
     currentTaskIndex++;
     if (currentTaskIndex < tasks.length) {

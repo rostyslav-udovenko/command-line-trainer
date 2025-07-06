@@ -20,5 +20,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `chmod +x run.sh`"
+  "hint": "Try `chmod +x run.sh`",
+  "explanation": "The `chmod` command changes the file mode (permissions) of a file. In this case, it makes `run.sh` executable by adding the execute permission for the user."
 }

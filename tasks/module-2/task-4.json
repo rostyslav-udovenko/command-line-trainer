@@ -22,5 +22,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `file script.sh`"
+  "hint": "Try `file script.sh`",
+  "explanation": "The `file` command determines the type of a file. In this case, it identifies `script.sh` as a regular file containing a shell script."
 }

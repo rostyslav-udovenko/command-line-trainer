@@ -12,5 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `date`"
+  "hint": "Try `date`",
+  "explanation": "The `date` command displays the current date and time of the system. It is useful for checking the system's clock and timezone settings."
 }
