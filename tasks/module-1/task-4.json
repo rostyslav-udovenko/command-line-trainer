@@ -26,5 +26,6 @@
     "meta": {}
   },
   "startDirectory": "/projects/images",
-  "hint": "Try `pwd`"
+  "hint": "Try `pwd`",
+  "explanation": "The `pwd` (print working directory) command displays the full path of the current directory you are in."
 }

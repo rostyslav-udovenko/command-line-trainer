@@ -22,5 +22,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `cp a.txt b.txt`"
+  "hint": "Try `cp a.txt b.txt`",
+  "explanation": "The `cp` command is used to copy files or directories. In this case, it copies the contents of `a.txt` to a new file `b.txt`. If `b.txt` already exists, it will be overwritten."
 }

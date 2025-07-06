@@ -31,5 +31,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `mv note.txt docs`"
+  "hint": "Try `mv note.txt docs`",
+  "explanation": "The `mv` command is used to move or rename files and directories. In this case, it moves `note.txt` into the `docs/` directory. If `docs/` does not exist, you need to create it first using `mkdir docs`."
 }

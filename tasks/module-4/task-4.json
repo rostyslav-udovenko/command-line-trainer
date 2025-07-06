@@ -12,5 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `mount`"
+  "hint": "Try `mount`",
+  "explanation": "The `mount` command displays all currently mounted filesystems, showing their device names and mount points. This is useful for understanding how storage devices are connected to the system and where they are accessible."
 }

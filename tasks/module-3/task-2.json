@@ -23,5 +23,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `ls -l` and look for the executable."
+  "hint": "Try `ls -l` and look for the executable.",
+  "explanation": "The `ls -l` command lists files in long format, showing details like permissions, ownership, size, and modification date. The `*` at the end of the file name indicates that it is executable."
 }

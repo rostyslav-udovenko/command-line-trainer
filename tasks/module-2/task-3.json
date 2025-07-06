@@ -22,5 +22,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `less log.txt`"
+  "hint": "Try `less log.txt`",
+  "explanation": "The `less` command allows you to view the contents of a file one screen at a time. It is useful for reading large files without opening them in an editor."
 }
