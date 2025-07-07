@@ -93,24 +93,24 @@ export class TerminalCaret {
     const end = this.inputField.selectionEnd || 0;
     const isSelected = start !== end;
 
-    this.rendered.innerHTML = value
-      .split("")
-      .map((char, index) => {
-        if (isSelected && index >= start && index < end) {
-          return `<span class="custom-caret custom-caret--selected">${char}</span>`;
-        }
+    const chars = [];
 
-        if (!isSelected && index === start) {
-          return `<span class="custom-caret">${char || "&nbsp;"}</span>`;
-        }
-
-        return `<span>${char}</span>`;
-      })
-      .join("");
+    for (let i = 0; i < value.length; i++) {
+      const char = value[i] || " ";
+      if (isSelected && i >= start && i < end) {
+        chars.push(`<span class="selected">${char}</span>`);
+      } else if (!isSelected && i === start) {
+        chars.push(`<span class="custom-caret">${char || "&nbsp;"}</span>`);
+      } else {
+        chars.push(`<span>${char}</span>`);
+      }
+    }
 
     if (start === value.length && !isSelected) {
-      this.rendered.innerHTML += `<span class="custom-caret">&nbsp;</span>`;
+      chars.push(`<span class="custom-caret">&nbsp;</span>`);
     }
+
+    this.rendered.innerHTML = chars.join("");
   }
 
   /**
