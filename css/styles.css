@@ -231,6 +231,11 @@ body {
   color: var(--color-bg);
 }
 
+.selected {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
 @keyframes caret-blink {
   0%, 100% {
     background-color: var(--color-fg);
