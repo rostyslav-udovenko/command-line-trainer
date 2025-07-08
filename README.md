@@ -7,7 +7,8 @@ This initiative aims to guide newcomers in learning terminal commands progressiv
 ## 🧠 Features
 
 - Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file`, `cp`, `mv`, `rm`, `chmod`, `ls -l`, `stat`, `date`, `whoami`, `uptime` and `mount`
-- System command such as `hint on/off` to enable or disable task hints
+- System command such as `hint on/off` to enable or disable task hints, `progress reset` to reset progress
+- Progress saving - completed tasks are automatically saved to localStorage and restored when the user returns
 - Immediate task validation accompanied by feedback and hints for each task
 - An integrated virtual file system that refreshes with each task, utilizing JSON
 - A modular architecture based on ES modules
@@ -37,7 +38,7 @@ You can type `help` at any time to get a list of available commands:
 ```
 user@machine:~$ help
 Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount. Use man <command> for more information.
-System commands: hint [on|off], theme [light|dark]
+System commands: hint [on|off], theme [light|dark], progress reset
 ```
 
 Each command also has its own manual page via `man`:
@@ -281,6 +282,6 @@ Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
-Created by **Rostyslav Udovenko**  
+Developed by **Rostyslav Udovenko**  
 📧 Contact: [rostyslav.udovenko@gmail.com](mailto:rostyslav.udovenko@gmail.com)  
 🔗 GitHub: [github.com/rostyslav-udovenko](https://github.com/rostyslav-udovenko)
