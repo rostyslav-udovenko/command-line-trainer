@@ -12,10 +12,11 @@ import { printOutput, disableInput, hideCaret } from "../ui/terminal-ui.js";
 export let tasks = [];
 
 /**
- * Current task index being evaluated.
+ * Current task index (restored from localStorage if available)
  * @type {number}
  */
-export let currentTaskIndex = 0;
+export let currentTaskIndex =
+  JSON.parse(localStorage.getItem("trainerProgress"))?.currentTaskIndex || 0;
 
 /**
  * Number of attempts made for the current task.
@@ -24,10 +25,63 @@ export let currentTaskIndex = 0;
 let currentAttemptCount = 0;
 
 /**
- * Flag to indicate if hints are enabled.
+ * Whether hints are enabled (restored from localStorage if available)
  * @type {boolean}
  */
-let hintsEnabled = true;
+let hintsEnabled =
+  JSON.parse(localStorage.getItem("trainerProgress"))?.hintsEnabled ?? true;
+
+/**
+ * Sets the current task index
+ * @param {number} index - The new task index
+ */
+export function setCurrentTaskIndex(index) {
+  if (typeof index === "number" && index >= 0 && index < tasks.length) {
+    currentTaskIndex = index;
+    saveProgress();
+  }
+}
+
+/**
+ * Gets the current task index
+ * @returns {number} - The current task index
+ */
+export function getCurrentTaskIndex() {
+  return currentTaskIndex;
+}
+
+/**
+ * Saves current progress to localStorage
+ */
+function saveProgress() {
+  localStorage.setItem(
+    "trainerProgress",
+    JSON.stringify({
+      currentTaskIndex,
+      hintsEnabled,
+    })
+  );
+}
+
+/**
+ * Shows a task from given index
+ * @param {number} index
+ */
+function showTask(index) {
+  const task = tasks[index];
+  setupFileSystem(task.fs);
+  virtualFileSystem.currentDirectory = task.startDirectory || "/";
+  printOutput(`<strong>${task.moduleName}</strong>`);
+  printOutput(`<strong>Task ${task.id}:</strong> ${task.description}`);
+}
+
+/**
+ * Resets progress and reloads page
+ */
+export function resetProgress() {
+  localStorage.removeItem("trainerProgress");
+  location.reload();
+}
 
 /**
  * Handles user input in the welcome prompt to either start or cancel the training.
@@ -90,14 +144,13 @@ export async function loadTasks() {
         const task = await response.json();
         task.moduleName = module.name;
         tasks.push(task);
-
-        if (tasks.length === 1) {
-          setupFileSystem(task.fs);
-          virtualFileSystem.currentDirectory = task.startDirectory || "/";
-          printOutput(`<strong>${task.moduleName}</strong>`);
-          printOutput(`<strong>Task ${task.id}:</strong> ${task.description}`);
-        }
       }
+    }
+
+    if (tasks.length > 0 && currentTaskIndex < tasks.length) {
+      showTask(currentTaskIndex);
+    } else {
+      printOutput("No tasks available or progress is invalid.");
     }
   } catch (error) {
     printOutput(`Failed to load tasks: ${error}`);
@@ -233,6 +286,7 @@ export function checkTaskCompletion(
     printOutput(message);
 
     currentTaskIndex++;
+    saveProgress();
     if (currentTaskIndex < tasks.length) {
       const nextTask = tasks[currentTaskIndex];
 
@@ -271,6 +325,7 @@ export function checkTaskCompletion(
  */
 export function setHintsEnabled(value) {
   hintsEnabled = value;
+  saveProgress();
 }
 
 /**
