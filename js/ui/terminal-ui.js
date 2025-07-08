@@ -1,7 +1,7 @@
 import { executeCommand } from "../core/command-executor.js";
 import { handleWelcomeInput, loadTasks } from "../core/task-manager.js";
 
-let started = false;
+export let started = false;
 
 /**
  * TerminalCaret handles user input rendering in a simulated terminal interface.
@@ -229,4 +229,23 @@ export function hideCaret() {
     el.style.backgroundColor = "transparent";
     el.style.color = "inherit";
   });
+}
+
+/**
+ * Sets the started flag for the terminal session.
+ * Used to determine if training has been initiated.
+ *
+ * @param {boolean} value - True if training has started, false otherwise.
+ */
+export function setStarted(value) {
+  started = value;
+}
+
+/**
+ * Returns whether the training has been started.
+ *
+ * @returns {boolean} - True if training has started, false otherwise.
+ */
+export function getStarted() {
+  return started;
 }

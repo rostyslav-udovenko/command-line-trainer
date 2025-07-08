@@ -4,13 +4,15 @@ import {
   getDirectory,
   normalizePath,
 } from "./file-system.js";
-import { printOutput, scrollToBottom } from "../ui/terminal-ui.js";
+import { printOutput, scrollToBottom, setStarted } from "../ui/terminal-ui.js";
 import {
   checkTaskCompletion,
   tasks,
   currentTaskIndex,
+  setCurrentTaskIndex,
   setHintsEnabled,
   hasCompletedAllTasks,
+  loadTasks,
 } from "./task-manager.js";
 import { activateMatrixMode } from "../effects/matrix-mode.js";
 import { manualPages } from "../data/manual-pages.js";
@@ -493,6 +495,26 @@ const commands = {
   neo: () => {
     activateMatrixMode();
     return null;
+  },
+
+  /**
+   * Resets training progress (removes localStorage entry)
+   * Usage: progress reset
+   */
+  progress: ([arg]) => {
+    if (arg === "reset") {
+      localStorage.removeItem("trainerProgress");
+      setCurrentTaskIndex(0);
+      setHintsEnabled(true);
+      tasks.length = 0;
+      setStarted(true);
+
+      printOutput("Training progress has been reset. Restarting training...");
+      loadTasks();
+      return null;
+    }
+
+    return "Usage: progress reset";
   },
 
   /**
