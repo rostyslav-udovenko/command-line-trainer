@@ -170,21 +170,25 @@ export class TerminalCaret {
  */
 export function showWelcomeMessage() {
   printOutput("<strong>Welcome to the Command Line Trainer!</strong>");
+  printOutput("&nbsp;");
+  printOutput("This interactive simulation will help you master");
   printOutput(
-    "In this interactive simulation, you will gradually familiarize yourself with the fundamentals of UNIX-like terminal commands."
+    "the basics of UNIX-like terminal commands through hands-on tasks."
   );
+  printOutput("&nbsp;");
+  printOutput("Getting started:");
+  printOutput("  Type `help` to see available commands");
   printOutput(
-    "You will receive guidance on straightforward tasks such as moving through directories, generating files, and additional activities."
+    "  Type `man &lt;command&gt;` for detailed information"
   );
-  printOutput(
-    "At any moment, you can type `help` to see a list of available commands."
-  );
-  printOutput(
-    "For in-depth information on a particular command, simply enter `man &lt;command&gt;`."
-  );
-  printOutput(
-    "Are you prepared to get started? Type `y` to begin or `n` to exit."
-  );
+  printOutput("  Follow the task instructions to progress through modules");
+  printOutput("&nbsp;");
+  printOutput("System features:");
+  printOutput("  hint [on|off] - Toggle task hints");
+  printOutput("  theme [light|dark] - Switch color theme");
+  printOutput("  progress reset - Reset learning progress");
+  printOutput("&nbsp;");
+  printOutput("Ready to begin? Type `y` to begin or `n` to exit.");
 }
 
 /**
