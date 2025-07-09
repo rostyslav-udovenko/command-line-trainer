@@ -458,10 +458,17 @@ const commands = {
    * Prints available commands and usage.
    */
   help: () => {
+    printOutput("Available commands:");
     printOutput(
-      "Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount. Use&nbsp;<strong>man &lt;command&gt;&nbsp;</strong>for more information."
+      "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount"
     );
-    printOutput("System commands: hint [on|off], theme [light|dark]");
+    printOutput("&nbsp;");
+    printOutput("System commands:");
+    printOutput("  hint [on|off] - Toggle task hints");
+    printOutput("  theme [light|dark] - Switch color theme");
+    printOutput("  progress reset - Reset learning progress");
+    printOutput("&nbsp;");
+    printOutput("Use man &lt;command&gt; for more information.");
   },
 
   /**
