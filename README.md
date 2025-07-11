@@ -4,7 +4,7 @@ An easy-to-use terminal simulator that operates within your web browser, designe
 
 This initiative aims to guide newcomers in learning terminal commands progressively, all within a welcoming and interactive online setting.
 
-## 🧠 Features
+## Features
 
 - Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file`, `cp`, `mv`, `rm`, `chmod`, `ls -l`, `stat`, `date`, `whoami`, `uptime` and `mount`
 - System command such as `hint on/off` to enable or disable task hints, `progress reset` to reset progress
@@ -16,11 +16,11 @@ This initiative aims to guide newcomers in learning terminal commands progressiv
 - Hidden "Matrix Mode" easter egg (`neo` command)
 - Supports **dark** and **light** themes via `theme dark/light` command
 
-## 🥚 Easter Egg: Matrix Mode
+## Easter Egg: Matrix Mode
 
 To enable **Matrix Rain** mode, simply enter the command `neo` in the terminal whenever you wish. This action will transform the terminal display into a captivating animated green rain effect reminiscent of *The Matrix*. 
 
-## 🔡 Example Commands
+## Example Commands
 
 ```bash
 user@machine:~$ cd projects
@@ -31,14 +31,21 @@ user@machine:~$ help
 user@machine:~$ man cd
 ```
 
-## 🆘 Help System
+## Help System
 
 You can type `help` at any time to get a list of available commands:
 
 ```
 user@machine:~$ help
-Available commands: pwd, ls, cd, mkdir, touch, help, man, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount. Use man <command> for more information.
-System commands: hint [on|off], theme [light|dark], progress reset
+Available commands:
+  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount
+ 
+System commands:
+  hint [on|off] - Toggle task hints
+  theme [light|dark] - Switch color theme
+  progress reset - Reset learning progress
+ 
+Use man <command> for more information.
 ```
 
 Each command also has its own manual page via `man`:
@@ -48,7 +55,7 @@ user@machine:~$ man touch
 touch — create a new file
 ```
 
-## 🧪 Tasks
+## Tasks
 
 Each task is described as a JSON file and includes:
 
@@ -100,7 +107,7 @@ tasks/
 - `fileDoesNotExist` – confirms that a file has been removed
 - `expectedOutputIncludes` – output must include specific strings
 
-## 📦 Modular JavaScript Structure
+## Modular JavaScript Structure
 
 The application code is organized into well-structured ES module files to enhance both scalability and clarity:
 ```
@@ -120,7 +127,7 @@ js/
 └── main.js                     # Entry point, initializes everything
  ```
 
-## 🎨 SCSS Structure
+## SCSS Structure
 
 This project uses a modular SCSS structure for better scalability and organization.
 
@@ -149,7 +156,7 @@ scss/
 └── main.scss                   # UI Entry point
 ```
 
-## ⚙️ Install Sass
+## Install Sass
 
 You can install Sass globally using npm:
 
@@ -157,7 +164,7 @@ You can install Sass globally using npm:
 npm install -g sass
 ```
 
-## 🔁 Compile SCSS to CSS
+## Compile SCSS to CSS
 
 From the root directory of the project, run:
 
@@ -167,7 +174,7 @@ sass --watch scss/main.scss:css/styles.css
 
 This will **watch** for changes and automatically update the `styles.css` file in the `css/` folder.
 
-## 🛠️ One-time Compile
+## One-time Compile
 
 If you just want to compile SCSS once without watching:
 
@@ -175,9 +182,9 @@ If you just want to compile SCSS once without watching:
 sass scss/main.scss css/styles.css
 ```
 
-⚠️ **Do not** edit `css/styles.css` manually — all changes should be made in SCSS files.
+**Do not** edit `css/styles.css` manually — all changes should be made in SCSS files.
 
-## 🗂 File Structure
+## File Structure
 
 ```
 project-root/
@@ -247,7 +254,7 @@ project-root/
 └── README.md
 ```
 
-## 🚀 How to Run Locally
+## How to Run Locally
 
 Clone the repository:
 
@@ -272,15 +279,15 @@ http://localhost:3000
 
 > Or whichever port is printed in your terminal
 
-## 🧩 Third-party Assets
+## Third-party Assets
 
 Icons by [Tabler Icons](https://github.com/tabler/tabler-icons), used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
 
-## 📄 License
+## License
 
 Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+## Author
 
 Developed by **Rostyslav Udovenko**  
 📧 Contact: [rostyslavudovenko@icloud.com](mailto:rostyslavudovenko@icloud.com)  
