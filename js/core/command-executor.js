@@ -23,7 +23,7 @@ import { manualPages } from "../data/manual-pages.js";
  *
  * @param {string} command - Full command string entered by user.
  */
-export function executeCommand(command) {
+export async function executeCommand(command) {
   const [cmd, ...args] = command.trim().split(" ");
 
   if (!cmd) {
@@ -40,7 +40,7 @@ export function executeCommand(command) {
   let result;
 
   if (commands[cmd]) {
-    result = commands[cmd](args);
+    result = await commands[cmd](args);
   } else {
     result = `Command not found: ${cmd}`;
   }
@@ -505,20 +505,22 @@ const commands = {
   },
 
   /**
-   * Resets training progress (removes localStorage entry)
+   * Resets training progress by clearing localStorage, resetting index,
+   * and reloading tasks from the server so user can start fresh.
    * Usage: progress reset
+   *
+   * @param {[string]} args - Command arguments (should be ['reset'])
+   * @returns {string|null} - Status message or null if handled asynchronously
    */
-  progress: ([arg]) => {
+  progress: async ([arg]) => {
     if (arg === "reset") {
       localStorage.removeItem("trainerProgress");
       setCurrentTaskIndex(0);
       setHintsEnabled(true);
       tasks.length = 0;
-
       printOutput("Training progress has been reset. Restarting training...");
-
-      setStarted(false);
-
+      await loadTasks();
+      setStarted(true);
       return null;
     }
     return "Usage: progress reset";
