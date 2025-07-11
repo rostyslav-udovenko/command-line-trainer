@@ -33,7 +33,7 @@ let hintsEnabled =
 
 /**
  * Sets the current task index
- * @param {number} index - The new task index
+ * @param {number} index - New task index to set
  */
 export function setCurrentTaskIndex(index) {
   if (typeof index === "number" && index >= 0 && index < tasks.length) {
@@ -51,7 +51,7 @@ export function getCurrentTaskIndex() {
 }
 
 /**
- * Saves current progress to localStorage
+ * Saves the current progress to localStorage.
  */
 function saveProgress() {
   localStorage.setItem(
@@ -64,11 +64,16 @@ function saveProgress() {
 }
 
 /**
- * Shows a task from given index
+ * Shows a task by its index: sets up file system and prints task description
  * @param {number} index
  */
 function showTask(index) {
   const task = tasks[index];
+  if (!task) {
+    printOutput("Error: task data is missing.");
+    return;
+  }
+
   setupFileSystem(task.fs);
   virtualFileSystem.currentDirectory = task.startDirectory || "/";
   printOutput(`<strong>${task.moduleName}</strong>`);
@@ -84,19 +89,21 @@ export function resetProgress() {
 }
 
 /**
- * Handles user input in the welcome prompt to either start or cancel the training.
- *
+ * Handles welcome input from the user.
+ * If 'y', starts training and loads tasks.
+ * If 'n', cancels training and disables input.
+ * If invalid input, prompts again.
  * @param {string} command - User-entered command (usually `y` or `n`).
  * @param {Function} loadTasksCallback - Callback to invoke if training is started.
  * @returns {boolean} - Whether the training was started.
  */
-export function handleWelcomeInput(command, loadTasksCallback) {
+export async function handleWelcomeInput(command, loadTasksCallback) {
   if (command.toLowerCase() === "y") {
     printOutput("Training started!");
     printOutput(
       "Hints are enabled by default. Use `hint off` to disable or `hint on` to re-enable them."
     );
-    loadTasksCallback();
+    await loadTasksCallback();
     return true;
   } else if (command.toLowerCase() === "n") {
     printOutput("Training canceled. See you next time!");
@@ -110,7 +117,14 @@ export function handleWelcomeInput(command, loadTasksCallback) {
 }
 
 /**
- * Loads task definitions from the server, initializes file system and displays the first task.
+ * Loads all task definitions from the server.
+ * Immediately shows the current task; others load in background.
+ * Always keeps tasks array ordered by global index.
+ */
+/**
+ * Loads all tasks from the server before training starts.
+ * Waits for all tasks to finish loading, then displays the current task.
+ * This prevents race conditions when user types the first command too fast.
  */
 export async function loadTasks() {
   const modules = [
@@ -119,38 +133,55 @@ export async function loadTasks() {
       path: "tasks/module-1",
       count: 4,
     },
-    {
-      name: "Module 2 - File Operations",
-      path: "tasks/module-2",
-      count: 8,
-    },
+    { name: "Module 2 - File Operations", path: "tasks/module-2", count: 8 },
     {
       name: "Module 3 - File Permissions and Metadata",
       path: "tasks/module-3",
       count: 4,
     },
-    {
-      name: "Module 4 - Bash Commands",
-      path: "tasks/module-4",
-      count: 4,
-    },
+    { name: "Module 4 - Bash Commands", path: "tasks/module-4", count: 4 },
   ];
 
   try {
+    // Array to collect all fetch promises
+    const allTaskPromises = [];
+
     for (const module of modules) {
       for (let i = 1; i <= module.count; i++) {
         const url = `${module.path}/task-${i}.json`;
-        const response = await fetch(url);
-        const task = await response.json();
-        task.moduleName = module.name;
-        tasks.push(task);
+        const promise = fetch(url)
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error(`Failed to load task: ${url}`);
+            }
+            return res.json();
+          })
+          .then((task) => {
+            task.moduleName = module.name;
+            return task;
+          })
+          .catch((error) => {
+            console.error(`Error loading task ${url}:`, error);
+            return null; // return null if failed
+          });
+        allTaskPromises.push(promise);
       }
     }
 
+    // Wait until all fetches complete
+    const loadedTasks = await Promise.all(allTaskPromises);
+
+    // Filter out failed ones
+    const validTasks = loadedTasks.filter(Boolean);
+
+    // Clear tasks array and fill with valid tasks
+    tasks.splice(0, tasks.length, ...validTasks);
+
     if (tasks.length > 0 && currentTaskIndex < tasks.length) {
+      // Show the current task (usually the first)
       showTask(currentTaskIndex);
     } else {
-      printOutput("No tasks available or progress is invalid.");
+      printOutput("Error: No tasks loaded or invalid progress.");
     }
   } catch (error) {
     printOutput(`Failed to load tasks: ${error}`);
@@ -176,6 +207,11 @@ export function checkTaskCompletion(
   isErrorOutput = false
 ) {
   const task = tasks[currentTaskIndex];
+  if (!task) {
+    printOutput("Error: task data missing.");
+    return;
+  }
+
   const check = task.check;
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
@@ -287,7 +323,9 @@ export function checkTaskCompletion(
 
     currentTaskIndex++;
     saveProgress();
-    if (currentTaskIndex < tasks.length) {
+
+    // Safely show next task if it exists and is loaded
+    if (currentTaskIndex < tasks.length && tasks[currentTaskIndex]) {
       const nextTask = tasks[currentTaskIndex];
 
       // If the module name changes, print it

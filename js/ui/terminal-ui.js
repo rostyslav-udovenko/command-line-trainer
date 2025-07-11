@@ -73,7 +73,9 @@ export class TerminalCaret {
         this.printToOutput(command);
 
         if (!started) {
-          started = handleWelcomeInput(command, loadTasks);
+          handleWelcomeInput(command, loadTasks).then((didStart) => {
+            started = didStart;
+          });
         } else {
           executeCommand(command);
         }
@@ -178,9 +180,7 @@ export function showWelcomeMessage() {
   printOutput("&nbsp;");
   printOutput("Getting started:");
   printOutput("  Type `help` to see available commands");
-  printOutput(
-    "  Type `man &lt;command&gt;` for detailed information"
-  );
+  printOutput("  Type `man &lt;command&gt;` for detailed information");
   printOutput("  Follow the task instructions to progress through modules");
   printOutput("&nbsp;");
   printOutput("System features:");
