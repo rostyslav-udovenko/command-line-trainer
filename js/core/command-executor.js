@@ -514,13 +514,13 @@ const commands = {
       setCurrentTaskIndex(0);
       setHintsEnabled(true);
       tasks.length = 0;
-      setStarted(true);
 
       printOutput("Training progress has been reset. Restarting training...");
-      loadTasks();
+
+      setStarted(false);
+
       return null;
     }
-
     return "Usage: progress reset";
   },
 
