@@ -290,5 +290,5 @@ Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 ## Author
 
 Developed by **Rostyslav Udovenko**  
-📧 Contact: [rostyslavudovenko@icloud.com](mailto:rostyslavudovenko@icloud.com)  
-🔗 GitHub: [github.com/rostyslavudovenko](https://github.com/rostyslavudovenko)
+Contact: [rostyslavudovenko@icloud.com](mailto:rostyslavudovenko@icloud.com)  
+GitHub: [github.com/rostyslavudovenko](https://github.com/rostyslavudovenko)

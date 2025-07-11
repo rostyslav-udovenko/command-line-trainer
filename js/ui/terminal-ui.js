@@ -183,7 +183,7 @@ export function showWelcomeMessage() {
   printOutput("  Type `man &lt;command&gt;` for detailed information");
   printOutput("  Follow the task instructions to progress through modules");
   printOutput("&nbsp;");
-  printOutput("System features:");
+  printOutput("System commands:");
   printOutput("  hint [on|off] - Toggle task hints");
   printOutput("  theme [light|dark] - Switch color theme");
   printOutput("  progress reset - Reset learning progress");
