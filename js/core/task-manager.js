@@ -177,9 +177,14 @@ export async function loadTasks() {
     // Clear tasks array and fill with valid tasks
     tasks.splice(0, tasks.length, ...validTasks);
 
-    if (tasks.length > 0 && currentTaskIndex < tasks.length) {
-      // Show the current task (usually the first)
-      showTask(currentTaskIndex);
+    if (tasks.length > 0) {
+      if (currentTaskIndex >= tasks.length) {
+        printOutput(
+          "<strong>All tasks completed!</strong> Type `progress reset` to start again."
+        );
+      } else {
+        showTask(currentTaskIndex);
+      }
     } else {
       printOutput("Error: No tasks loaded or invalid progress.");
     }
