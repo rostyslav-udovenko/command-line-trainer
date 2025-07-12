@@ -32,8 +32,8 @@ export async function executeCommand(command) {
     return;
   }
 
-  // If all tasks are completed, ignore further commands
-  if (hasCompletedAllTasks()) {
+  // allow "progress reset" to work even if all tasks completed
+  if (hasCompletedAllTasks() && cmd !== "progress") {
     return;
   }
 
