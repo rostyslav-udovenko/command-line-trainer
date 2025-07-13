@@ -100,9 +100,17 @@ export function resetProgress() {
 export async function handleWelcomeInput(command, loadTasksCallback) {
   if (command.toLowerCase() === "y") {
     printOutput("Training started!");
-    printOutput(
-      "Hints are enabled by default. Use `hint off` to disable or `hint on` to re-enable them."
-    );
+
+    if (hintsEnabled) {
+      printOutput(
+        "Hints are enabled. Use `hint off` to disable them if you like."
+      );
+    } else {
+      printOutput(
+        "Hints are disabled. Use `hint on` to enable them if you like."
+      );
+    }
+
     await loadTasksCallback();
     return true;
   } else if (command.toLowerCase() === "n") {
