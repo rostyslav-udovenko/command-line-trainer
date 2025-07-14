@@ -4,6 +4,7 @@ import {
   virtualFileSystem,
 } from "./file-system.js";
 import { printOutput, disableInput, hideCaret } from "../ui/terminal-ui.js";
+import { t } from "./i18n.js";
 
 /**
  * Loaded task definitions.
@@ -70,14 +71,18 @@ function saveProgress() {
 function showTask(index) {
   const task = tasks[index];
   if (!task) {
-    printOutput("Error: task data is missing.");
+    printOutput(`${t("task.manager.error.taskDataMissing")}`);
     return;
   }
 
   setupFileSystem(task.fs);
   virtualFileSystem.currentDirectory = task.startDirectory || "/";
   printOutput(`<strong>${task.moduleName}</strong>`);
-  printOutput(`<strong>Task ${task.id}:</strong> ${task.description}`);
+  printOutput(
+    `<strong>${t("task.manager.task.label")} ${task.id}:</strong> ${
+      task.description
+    }`
+  );
 }
 
 /**
@@ -93,13 +98,9 @@ export function resetProgress() {
  */
 function printHintsStatus() {
   if (hintsEnabled) {
-    printOutput(
-      "Hints are enabled. Use `hint off` to disable them if you like."
-    );
+    printOutput(`${t("task.manager.hints.enabled")}`);
   } else {
-    printOutput(
-      "Hints are disabled. Use `hint on` to enable them if you like."
-    );
+    printOutput(`${t("task.manager.hints.disabled")}`);
   }
 }
 
@@ -114,17 +115,17 @@ function printHintsStatus() {
  */
 export async function handleWelcomeInput(command, loadTasksCallback) {
   if (command.toLowerCase() === "y") {
-    printOutput("Training started!");
+    printOutput(`${t("task.manager.training.started")}`);
     printHintsStatus();
     await loadTasksCallback();
     return true;
   } else if (command.toLowerCase() === "n") {
-    printOutput("Training canceled. See you next time!");
+    printOutput(`${t("task.manager.training.canceled")}`);
     disableInput();
     hideCaret();
     return false;
   } else {
-    printOutput("Please enter `y` or `n`.");
+    printOutput(`${t("task.manager.training.enterYorN")}`);
     return false;
   }
 }
@@ -142,17 +143,25 @@ export async function handleWelcomeInput(command, loadTasksCallback) {
 export async function loadTasks() {
   const modules = [
     {
-      name: "Module 1 - Directory Operations",
+      name: t("modules.1"),
       path: "tasks/module-1",
       count: 4,
     },
-    { name: "Module 2 - File Operations", path: "tasks/module-2", count: 8 },
     {
-      name: "Module 3 - File Permissions and Metadata",
+      name: t("modules.2"),
+      path: "tasks/module-2",
+      count: 8,
+    },
+    {
+      name: t("modules.3"),
       path: "tasks/module-3",
       count: 4,
     },
-    { name: "Module 4 - Bash Commands", path: "tasks/module-4", count: 4 },
+    {
+      name: t("modules.4"),
+      path: "tasks/module-4",
+      count: 4,
+    },
   ];
 
   try {
@@ -193,16 +202,18 @@ export async function loadTasks() {
     if (tasks.length > 0) {
       if (currentTaskIndex >= tasks.length) {
         printOutput(
-          "<strong>All tasks completed!</strong> Type `progress reset` to start again."
+          `<strong>${t(
+            "task.manager.training.allTasksCompleted.1"
+          )}</strong> ${t("task.manager.training.allTasksCompleted.2")}`
         );
       } else {
         showTask(currentTaskIndex);
       }
     } else {
-      printOutput("Error: No tasks loaded or invalid progress.");
+      printOutput(`${t("task.manager.error.noTasksLoaded")}`);
     }
   } catch (error) {
-    printOutput(`Failed to load tasks: ${error}`);
+    printOutput(`${t("task.manager.error.failedToLoadTasks")} ${error}`);
   }
 }
 
@@ -226,7 +237,7 @@ export function checkTaskCompletion(
 ) {
   const task = tasks[currentTaskIndex];
   if (!task) {
-    printOutput("Error: task data missing.");
+    printOutput(`${t("task.manager.error.taskDataMissingCheck")}`);
     return;
   }
 
@@ -319,13 +330,13 @@ export function checkTaskCompletion(
 
     // Array of success messages to display
     const successMessages = [
-      "Well done!",
-      "Task complete!",
-      "Nice job!",
-      "You nailed it!",
-      "Task solved!",
-      "Great work!",
-      "You did it!",
+      t("task.manager.success.wellDone"),
+      t("task.manager.success.taskComplete"),
+      t("task.manager.success.niceJob"),
+      t("task.manager.success.youNailedIt"),
+      t("task.manager.success.taskSolved"),
+      t("task.manager.success.greatWork"),
+      t("task.manager.success.youDidIt"),
     ];
 
     // Randomly select a success message
@@ -354,15 +365,17 @@ export function checkTaskCompletion(
       setupFileSystem(nextTask.fs);
       virtualFileSystem.currentDirectory = nextTask.startDirectory || "/";
       printOutput(
-        `<strong>Task ${nextTask.id}:</strong> ${nextTask.description}`
+        `<strong>${t("task.manager.task.label")} ${nextTask.id}:</strong> ${
+          nextTask.description
+        }`
       );
     } else {
       printOutput(
-        "<strong>Congratulations! </strong>You have completed all tasks."
+        `<strong>${t("task.manager.training.congratulations.1")}</strong> ${t(
+          "task.manager.training.congratulations.2"
+        )}`
       );
-      printOutput("Type `progress reset` to start again.");
-      //disableInput();
-      //hideCaret();
+      printOutput(`${t("task.manager.training.resetToStart")}`);
     }
 
     // Failure case: some checks failed
@@ -370,7 +383,9 @@ export function checkTaskCompletion(
     currentAttemptCount++;
 
     if (task.hint && currentAttemptCount >= 3 && hintsEnabled) {
-      printOutput(`<strong>Hint:</strong> ${task.hint}`);
+      printOutput(
+        `<strong>${t("task.manager.hints.label")}</strong> ${task.hint}`
+      );
     }
   }
 }

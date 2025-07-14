@@ -1,3 +1,5 @@
+import { t } from "../core/i18n.js";
+
 /**
  * A map of available manual pages for built-in terminal commands.
  * Each key represents a command name, and each value provides a short description.
@@ -10,23 +12,23 @@
  */
 
 export const manualPages = {
-  pwd: "pwd — print working directory",
-  ls: "ls — list directory contents, ls -l — list directory contents with extra details (e.g. executable flag)",
-  cd: "cd — change directory",
-  mkdir: "mkdir — make directory",
-  touch: "touch — create a new file or update timestamp",
-  help: "help — show general command help",
-  man: "man — an interface to the system reference manuals",
-  cat: "cat — concatenate files and print on the standard output",
-  less: "less — opposite of more",
-  file: "file — determine file type",
-  cp: "cp — copy files and directories",
-  mv: "mv — move (rename) files",
-  rm: "rm — remove files or directories",
-  chmod: "chmod — change file permissions",
-  stat: "stat — display file metadata like last modification time",
-  date: "date — display or set the system date and time",
-  whoami: "whoami — print effective user ID",
-  uptime: "uptime — tell how long the system has been running",
-  mount: "mount — mount a filesystem",
+  pwd: t("manual.pwd"),
+  ls: t("manual.ls"),
+  cd: t("manual.cd"),
+  mkdir: t("manual.mkdir"),
+  touch: t("manual.touch"),
+  help: t("manual.help"),
+  man: t("manual.man"),
+  cat: t("manual.cat"),
+  less: t("manual.less"),
+  file: t("manual.file"),
+  cp: t("manual.cp"),
+  mv: t("manual.mv"),
+  rm: t("manual.rm"),
+  chmod: t("manual.chmod"),
+  stat: t("manual.stat"),
+  date: t("manual.date"),
+  whoami: t("manual.whoami"),
+  uptime: t("manual.uptime"),
+  mount: t("manual.mount")
 };
