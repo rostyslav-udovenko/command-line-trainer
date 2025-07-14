@@ -360,8 +360,9 @@ export function checkTaskCompletion(
       printOutput(
         "<strong>Congratulations! </strong>You have completed all tasks."
       );
-      disableInput();
-      hideCaret();
+      printOutput("Type `progress reset` to start again.");
+      //disableInput();
+      //hideCaret();
     }
 
     // Failure case: some checks failed
