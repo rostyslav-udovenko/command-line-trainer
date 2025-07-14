@@ -1,5 +1,6 @@
 import { executeCommand } from "../core/command-executor.js";
 import { handleWelcomeInput, loadTasks } from "../core/task-manager.js";
+import { t } from "../core/i18n.js";
 
 export let started = false;
 
@@ -171,24 +172,22 @@ export class TerminalCaret {
  * Displays the initial welcome instructions in the terminal.
  */
 export function showWelcomeMessage() {
-  printOutput("<strong>Welcome to the Command Line Trainer!</strong>");
+  printOutput(`<strong>${t("terminal.ui.welcome.title")}</strong>`);
   printOutput("&nbsp;");
-  printOutput("This interactive simulation will help you master");
-  printOutput(
-    "the basics of UNIX-like terminal commands through hands-on tasks."
-  );
+  printOutput(`${t("terminal.ui.welcome.intro.1")}`);
+  printOutput(`${t("terminal.ui.welcome.intro.2")}`);
   printOutput("&nbsp;");
-  printOutput("Getting started:");
-  printOutput("  Type `help` to see available commands");
-  printOutput("  Type `man &lt;command&gt;` for detailed information");
-  printOutput("  Follow the task instructions to progress through modules");
+  printOutput(`${t("terminal.ui.welcome.gettingStarted")}`);
+  printOutput(`${t("terminal.ui.welcome.help")}`);
+  printOutput(`${t("terminal.ui.welcome.man")}`);
+  printOutput(`${t("terminal.ui.welcome.followTasks")}`);
   printOutput("&nbsp;");
-  printOutput("System commands:");
-  printOutput("  hint [on|off] - Toggle task hints");
-  printOutput("  theme [light|dark] - Switch color theme");
-  printOutput("  progress reset - Reset learning progress");
+  printOutput(`${t("terminal.ui.welcome.systemCommands")}`);
+  printOutput(`${t("terminal.ui.welcome.hint")}`);
+  printOutput(`${t("terminal.ui.welcome.theme")}`);
+  printOutput(`${t("terminal.ui.welcome.reset")}`);
   printOutput("&nbsp;");
-  printOutput("Ready to begin? Type `y` to begin or `n` to exit.");
+  printOutput(`${t("terminal.ui.welcome.ready")}`);
 }
 
 /**

@@ -16,6 +16,7 @@ import {
 } from "./task-manager.js";
 import { activateMatrixMode } from "../effects/matrix-mode.js";
 import { manualPages } from "../data/manual-pages.js";
+import { loadLocale, t } from "./i18n.js";
 
 /**
  * Parses and executes a terminal command, prints result,
@@ -50,7 +51,9 @@ export async function executeCommand(command) {
   }
 
   // Only check task completion if the command is valid and not an error/usage response
-  const isSystemCmd = ["help", "man", "hint", "theme"].includes(cmd);
+  const isSystemCmd = ["help", "man", "hint", "theme", "language"].includes(
+    cmd
+  );
   const isErrorOutput =
     typeof result === "string" &&
     (result.startsWith("Usage:") ||
@@ -524,6 +527,30 @@ const commands = {
       return null;
     }
     return "Usage: progress reset";
+  },
+
+  /**
+   * Changes the application language.
+   * Accepts either "en" or "uk" as valid arguments and reloads translations.
+   * Updates localStorage so preference persists.
+   *
+   * @param {[string]} args - An array with a single argument: the desired locale.
+   * @returns {string} - Confirmation message or usage hint.
+   */
+  language: async ([arg]) => {
+    if (!arg) {
+      return "Usage: language [en|uk]";
+    }
+
+    const locale = arg.toLowerCase();
+
+    if (locale === "en" || locale === "uk") {
+      await loadLocale(locale);
+      localStorage.setItem("locale", locale);
+      return `Switched language to ${locale}. Please refresh the page to apply changes.`;
+    }
+
+    return "Usage: language [en|uk]";
   },
 
   /**
