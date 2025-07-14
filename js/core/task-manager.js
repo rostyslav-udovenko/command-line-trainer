@@ -89,6 +89,21 @@ export function resetProgress() {
 }
 
 /**
+ * Prints the current hints status to the terminal.
+ */
+function printHintsStatus() {
+  if (hintsEnabled) {
+    printOutput(
+      "Hints are enabled. Use `hint off` to disable them if you like."
+    );
+  } else {
+    printOutput(
+      "Hints are disabled. Use `hint on` to enable them if you like."
+    );
+  }
+}
+
+/**
  * Handles welcome input from the user.
  * If 'y', starts training and loads tasks.
  * If 'n', cancels training and disables input.
@@ -100,17 +115,7 @@ export function resetProgress() {
 export async function handleWelcomeInput(command, loadTasksCallback) {
   if (command.toLowerCase() === "y") {
     printOutput("Training started!");
-
-    if (hintsEnabled) {
-      printOutput(
-        "Hints are enabled. Use `hint off` to disable them if you like."
-      );
-    } else {
-      printOutput(
-        "Hints are disabled. Use `hint on` to enable them if you like."
-      );
-    }
-
+    printHintsStatus();
     await loadTasksCallback();
     return true;
   } else if (command.toLowerCase() === "n") {
