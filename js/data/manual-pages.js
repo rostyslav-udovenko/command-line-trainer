@@ -1,5 +1,3 @@
-import { t } from "../core/i18n.js";
-
 /**
  * A map of available manual pages for built-in terminal commands.
  * Each key represents a command name, and each value provides a short description.
@@ -12,23 +10,23 @@ import { t } from "../core/i18n.js";
  */
 
 export const manualPages = {
-  pwd: t("manual.pwd"),
-  ls: t("manual.ls"),
-  cd: t("manual.cd"),
-  mkdir: t("manual.mkdir"),
-  touch: t("manual.touch"),
-  help: t("manual.help"),
-  man: t("manual.man"),
-  cat: t("manual.cat"),
-  less: t("manual.less"),
-  file: t("manual.file"),
-  cp: t("manual.cp"),
-  mv: t("manual.mv"),
-  rm: t("manual.rm"),
-  chmod: t("manual.chmod"),
-  stat: t("manual.stat"),
-  date: t("manual.date"),
-  whoami: t("manual.whoami"),
-  uptime: t("manual.uptime"),
-  mount: t("manual.mount")
+  cd: "manual.cd",
+  ls: "manual.ls",
+  pwd: "manual.pwd",
+  mkdir: "manual.mkdir",
+  touch: "manual.touch",
+  help: "manual.help",
+  man: "manual.man",
+  cat: "manual.cat",
+  less: "manual.less",
+  file: "manual.file",
+  cp: "manual.cp",
+  mv: "manual.mv",
+  rm: "manual.rm",
+  chmod: "manual.chmod",
+  stat: "manual.stat",
+  date: "manual.date",
+  whoami: "manual.whoami",
+  uptime: "manual.uptime",
+  mount: "manual.mount"
 };
