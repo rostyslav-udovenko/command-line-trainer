@@ -584,4 +584,4 @@ const commands = {
  * @returns {string}
  */
 commands.man = ([cmd]) =>
-  cmd && manualPages[cmd] ? manualPages[cmd] : "Usage: man &lt;command&gt;";
+  cmd && manualPages[cmd] ? t(manualPages[cmd]) : "Usage: man &lt;command&gt;";
