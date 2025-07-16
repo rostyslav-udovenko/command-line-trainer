@@ -1,6 +1,6 @@
 {
   "id": 2,
-  "description": "Use the `cat` command to read the contents of `note.txt`.",
+  "description": "module2.task2.description",
   "type": "cat",
   "check": {
     "fileExists": "note.txt"
@@ -21,6 +21,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `cat note.txt`",
-  "explanation": "The `cat` command reads the contents of a file and displays it in the terminal. In this case, it shows the contents of `note.txt`."
+  "hint": "module2.task2.hint",
+  "explanation": "module2.task2.explanation"
 }

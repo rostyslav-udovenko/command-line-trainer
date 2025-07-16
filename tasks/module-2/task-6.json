@@ -1,6 +1,6 @@
 {
   "id": 6,
-  "description": "Rename `old.txt` to `new.txt` using the `mv` command.",
+  "description": "module2.task6.description",
   "type": "mv",
   "check": {
     "fileExists": "new.txt"
@@ -21,6 +21,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `mv old.txt new.txt`",
-  "explanation": "The `mv` command is used to move or rename files and directories. In this case, it renames `old.txt` to `new.txt`. If `new.txt` already exists, it will be overwritten."
+  "hint": "module2.task6.hint",
+  "explanation": "module2.task6.explanation"
 }

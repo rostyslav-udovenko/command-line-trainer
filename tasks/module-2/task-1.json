@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "description": "Create a file named `index.html` inside the `projects` directory.",
+  "description": "module2.task1.description",
   "type": "touch",
   "check": {
     "fileExists": "index.html",
@@ -28,6 +28,6 @@
     }
   },
   "startDirectory": "/projects",
-  "hint": "Try `touch index.html`",
-  "explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it creates `index.html` in the `projects` directory."
+  "hint": "module2.task1.hint",
+  "explanation": "module2.task1.explanation"
 }

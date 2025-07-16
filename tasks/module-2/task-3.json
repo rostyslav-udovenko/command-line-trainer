@@ -1,6 +1,6 @@
 {
   "id": 3,
-  "description": "Use the `less` command to view `log.txt`.",
+  "description": "module2.task3.description",
   "type": "less",
   "check": {
     "fileExists": "log.txt",
@@ -22,6 +22,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `less log.txt`",
-  "explanation": "The `less` command allows you to view the contents of a file one screen at a time. It is useful for reading large files without opening them in an editor."
+  "hint": "module2.task3.hint",
+  "explanation": "module2.task3.explanation"
 }

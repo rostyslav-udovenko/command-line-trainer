@@ -79,9 +79,9 @@ function showTask(index) {
   virtualFileSystem.currentDirectory = task.startDirectory || "/";
   printOutput(`<strong>${task.moduleName}</strong>`);
   printOutput(
-    `<strong>${t("task.manager.task.label")} ${task.id}:</strong> ${
+    `<strong>${t("task.manager.task.label")} ${task.id}:</strong> ${t(
       task.description
-    }`
+    )}`
   );
 }
 
@@ -297,22 +297,14 @@ export function checkTaskCompletion(
       success && file?.type === "file" && file.meta?.isExecutable === true;
   }
 
-  // Check if output includes expected strings (supports wildcard-style executable suffix)
-  if (check.expectedOutputIncludes) {
+  // Check if output includes expected localized strings (using keys + params)
+  if (check.expectedOutputIncludesKeys) {
     if (typeof result === "string") {
       success =
         success &&
-        check.expectedOutputIncludes.every((expected) => {
-          // If expected ends with *, do prefix match (e.g. run.sh* should match run.sh)
-          if (expected.endsWith("*")) {
-            const prefix = expected.slice(0, -1);
-            return result
-              .split(/\s+/)
-              .some((token) => token.startsWith(prefix));
-          }
-
-          // Exact match fallback
-          return result.includes(expected);
+        check.expectedOutputIncludesKeys.every(({ key, params }) => {
+          const expectedText = t(key, params || {});
+          return result.includes(expectedText);
         });
     } else {
       success = false;
@@ -346,7 +338,7 @@ export function checkTaskCompletion(
     // Print the success message with optional explanation
     let message = `<strong>${randomMessage}</strong>`;
     if (task.explanation) {
-      message += ` ${task.explanation}`;
+      message += ` ${t(task.explanation)}`;
     }
     printOutput(message);
 
@@ -365,9 +357,9 @@ export function checkTaskCompletion(
       setupFileSystem(nextTask.fs);
       virtualFileSystem.currentDirectory = nextTask.startDirectory || "/";
       printOutput(
-        `<strong>${t("task.manager.task.label")} ${nextTask.id}:</strong> ${
+        `<strong>${t("task.manager.task.label")} ${nextTask.id}:</strong> ${t(
           nextTask.description
-        }`
+        )}`
       );
     } else {
       printOutput(
@@ -384,7 +376,7 @@ export function checkTaskCompletion(
 
     if (task.hint && currentAttemptCount >= 3 && hintsEnabled) {
       printOutput(
-        `<strong>${t("task.manager.hints.label")}</strong> ${task.hint}`
+        `<strong>${t("task.manager.hints.label")}</strong> ${t(task.hint)}`
       );
     }
   }

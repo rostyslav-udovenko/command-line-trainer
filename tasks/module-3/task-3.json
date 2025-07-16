@@ -1,6 +1,6 @@
 {
   "id": 3,
-  "description": "Check metadata of `log.txt` using the `stat` command.",
+  "description": "module3.task3.description",
   "type": "stat",
   "check": {
     "expectedOutputIncludes": ["log.txt", "Last modified"]
@@ -19,6 +19,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `stat log.txt`",
-  "explanation": "The `stat` command displays detailed information about a file, including its size, permissions, and last modification time. In this case, it shows the metadata of `log.txt`."
+  "hint": "module3.task3.hint",
+  "explanation": "module3.task3.explanation"
 }

@@ -1,6 +1,6 @@
 {
   "id": 4,
-  "description": "Use the `pwd` command to display the current directory.",
+  "description": "module1.task4.description",
   "type": "pwd",
   "check": {
     "currentDirectoryIs": "/projects/images"
@@ -26,6 +26,6 @@
     "meta": {}
   },
   "startDirectory": "/projects/images",
-  "hint": "Try `pwd`",
-  "explanation": "The `pwd` (print working directory) command displays the full path of the current directory you are in."
+  "hint": "module1.task4.hint",
+  "explanation": "module1.task4.explanation"
 }

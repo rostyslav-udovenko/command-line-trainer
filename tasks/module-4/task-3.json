@@ -1,6 +1,6 @@
 {
   "id": 3,
-  "description": "Use the `uptime` command to check how long the system has been running.",
+  "description": "module4.task3.description",
   "type": "uptime",
   "check": {
     "expectedOutputIncludes": ["load average"]
@@ -12,6 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `uptime`",
-  "explanation": "The `uptime` command shows how long the system has been running since the last boot, along with the current time, number of users logged in, and system load averages. It is useful for monitoring system performance and stability."
+  "hint": "module4.task3.hint",
+  "explanation": "module4.task3.explanation"
 }
