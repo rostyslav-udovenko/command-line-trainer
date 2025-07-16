@@ -63,5 +63,134 @@
   "manual.date": "date — показати або встановити дату та час системи",
   "manual.whoami": "whoami — показати ім’я поточного користувача",
   "manual.uptime": "uptime — показати час роботи системи",
-  "manual.mount": "mount — змонтувати файлову систему"
+  "manual.mount": "mount — змонтувати файлову систему",
+
+  "command.error.enterCommand": "Будь ласка, введіть команду.",
+  "command.error.notFound": "Команду не знайдено:",
+  "command.error.dirNotFound": "Каталог не знайдено",
+  "command.error.sourceNotFound": "Файл джерела не знайдено: {{src}}",
+  "command.error.noSuchFile": "Файл не знайдено: {{name}}",
+
+  "command.ls.empty": "Немає файлів або каталогів",
+  "command.ls.usage": "Використання: ls [-l]",
+
+  "command.man.usage": "Використання: man <команда>",
+  "command.cd.usage": "Використання: cd <каталог>",
+  "command.mkdir.usage": "Використання: mkdir <каталог>",
+  "command.touch.usage": "Використання: touch <файл>",
+  "command.cp.usage": "Використання: cp <джерело> <призначення>",
+  "command.mv.usage": "Використання: mv <джерело> <призначення>",
+  "command.rm.usage": "Використання: rm <файл>",
+  "command.chmod.usage": "Використання: chmod +x <файл>",
+  "command.stat.usage": "Використання: stat <файл>",
+  "command.date.usage": "Використання: date",
+  "command.whoami.usage": "Використання: whoami",
+  "command.uptime.usage": "Використання: uptime",
+  "command.mount.usage": "Використання: mount",
+  "command.theme.usage": "Використання: theme [light|dark]",
+  "command.language.usage": "Використання: language [en|uk]",
+  "command.progress.usage": "Використання: progress reset",
+  "command.cat.usage": "Використання: cat <файл>",
+  "command.less.usage": "Використання: less <файл>",
+  "command.file.usage": "Використання: file <файл>",
+
+  "command.mkdir.success": "Каталог {{name}} створено",
+  "command.mkdir.exists": "Каталог {{name}} вже існує або неправильний шлях",
+  "command.touch.touched": "Оновлено час зміни для {{name}}",
+  "command.touch.created": "Файл {{name}} створено",
+  "command.cp.copied": "Скопійовано {{src}} у {{dest}}",
+  "command.mv.moved": "Переміщено {{src}} у {{dest}}/",
+  "command.mv.renamed": "Перейменовано {{src}} у {{dest}}",
+  "command.rm.removed": "{{name}} видалено",
+  "command.chmod.success": "Додано дозвіл на виконання для {{name}}",
+
+  "command.file.isDirectory": "{{name}}: каталог",
+  "command.file.isFile": "{{name}}: звичайний файл",
+
+  "command.stat.type": "Тип: файл",
+  "command.stat.lastModified": "Остання зміна: {{modified}}",
+
+  "command.theme.switched": "Переключено на тему {{option}}.",
+  "command.language.switched": "Мову змінено на {{locale}}. Оновіть сторінку, щоб застосувати зміни.",
+  "command.progress.reset": "Прогрес навчання скинуто. Перезапуск...",
+
+  "module1.task1.description": "Перейдіть у каталог `projects`.",
+  "module1.task1.hint": "Спробуйте `cd projects`",
+  "module1.task1.explanation": "Команда `cd` (change directory) дозволяє перейти в інший каталог файлової системи.",
+
+  "module1.task2.description": "Створіть каталог з назвою `images` у корені файлової системи.",
+  "module1.task2.hint": "Спробуйте `mkdir images`",
+  "module1.task2.explanation": "Команда `mkdir` (make directory) дозволяє створити новий каталог у файловій системі.",
+
+  "module1.task3.description": "Використайте команду `ls` для перегляду вмісту поточного каталогу.",
+  "module1.task3.hint": "Спробуйте `ls`",
+  "module1.task3.explanation": "Команда `ls` виводить список файлів та підкаталогів поточного каталогу.",
+
+  "module1.task4.description": "Використайте команду `pwd` для відображення поточного каталогу.",
+  "module1.task4.hint": "Спробуйте `pwd`",
+  "module1.task4.explanation": "Команда `pwd` (print working directory) показує повний шлях до поточного каталогу.",
+
+  "module2.task1.description": "Створіть файл з назвою `index.html` у каталозі `projects`.",
+  "module2.task1.hint": "Спробуйте `touch index.html`",
+  "module2.task1.explanation": "Команда `touch` створює новий порожній файл або оновлює час модифікації існуючого. У цьому випадку вона створює `index.html` у каталозі `projects`.",
+
+  "module2.task2.description": "Скористайтеся командою `cat`, щоб переглянути вміст файлу `note.txt`.",
+  "module2.task2.hint": "Спробуйте `cat note.txt`",
+  "module2.task2.explanation": "Команда `cat` читає вміст файлу і виводить його в терміналі. У цьому випадку показує вміст файлу `note.txt`.",
+
+  "module2.task3.description": "Скористайтеся командою `less`, щоб переглянути файл `log.txt`.",
+  "module2.task3.hint": "Спробуйте `less log.txt`",
+  "module2.task3.explanation": "Команда `less` дозволяє переглядати вміст файлу по екрану. Це зручно для великих файлів без відкривання в редакторі.",
+
+  "module2.task4.description": "Скористайтеся командою `file`, щоб перевірити `script.sh`.",
+  "module2.task4.hint": "Спробуйте `file script.sh`",
+  "module2.task4.explanation": "Команда `file` визначає тип файлу. У цьому випадку вона визначає, що `script.sh` є звичайним файлом, що містить shell-скрипт.",
+
+  "module2.task5.description": "Скопіюйте файл `a.txt` у `b.txt` за допомогою команди `cp`.",
+  "module2.task5.hint": "Спробуйте `cp a.txt b.txt`",
+  "module2.task5.explanation": "Команда `cp` використовується для копіювання файлів або каталогів. У цьому випадку вона копіює вміст `a.txt` у новий файл `b.txt`. Якщо `b.txt` вже існує, він буде перезаписаний.",
+
+  "module2.task6.description": "Перейменуйте `old.txt` у `new.txt` за допомогою команди `mv`.",
+  "module2.task6.hint": "Спробуйте `mv old.txt new.txt`",
+  "module2.task6.explanation": "Команда `mv` використовується для переміщення або перейменування файлів і каталогів. У цьому випадку вона перейменовує `old.txt` у `new.txt`. Якщо `new.txt` вже існує, він буде перезаписаний.",
+
+  "module2.task7.description": "Перемістіть файл `note.txt` у каталог `docs/` за допомогою команди `mv`.",
+  "module2.task7.hint": "Спробуйте `mv note.txt docs`",
+  "module2.task7.explanation": "Команда `mv` використовується для переміщення або перейменування файлів і каталогів. У цьому випадку вона переміщує `note.txt` у каталог `docs/`. Якщо каталогу `docs/` немає, створіть його спочатку за допомогою `mkdir docs`.",
+
+  "module2.task8.description": "Видаліть файл `temp.txt` за допомогою команди `rm`.",
+  "module2.task8.hint": "Спробуйте `rm temp.txt`",
+  "module2.task8.explanation": "Команда `rm` використовується для видалення файлів або каталогів. У цьому випадку вона видаляє файл `temp.txt`. Будьте обережні: `rm` назавжди видаляє файли без переміщення до кошика.",
+
+  "module3.task1.description": "Зробіть файл `run.sh` виконуваним за допомогою команди `chmod`.",
+  "module3.task1.hint": "Спробуйте `chmod +x run.sh`",
+  "module3.task1.explanation": "Команда `chmod` змінює режим доступу (права) файлу. У цьому випадку вона робить `run.sh` виконуваним, додаючи дозвіл на виконання для користувача.",
+
+  "module3.task2.description": "Перегляньте деталі файлів за допомогою `ls -l` і знайдіть назву виконуваного файлу.",
+  "module3.task2.hint": "Спробуйте `ls -l` і подивіться, де є зірочка.",
+  "module3.task2.explanation": "Команда `ls -l` показує файли у розширеному форматі, включаючи права доступу, власника, розмір та дату зміни. Зірочка `*` в кінці імені файлу вказує, що файл є виконуваним.",
+
+  "module3.task3.description": "Перегляньте метадані файлу `log.txt` за допомогою команди `stat`.",
+  "module3.task3.hint": "Спробуйте `stat log.txt`",
+  "module3.task3.explanation": "Команда `stat` показує детальну інформацію про файл, зокрема розмір, права доступу та час останньої зміни. У цьому випадку вона показує метадані файлу `log.txt`.",
+
+  "module3.task4.description": "Оновіть часову мітку файлу `todo.txt` за допомогою команди `touch`.",
+  "module3.task4.hint": "Спробуйте `touch todo.txt`",
+  "module3.task4.explanation": "Команда `touch` створює новий порожній файл або оновлює часову мітку існуючого файлу. У цьому випадку вона оновлює дату зміни файлу `todo.txt` на поточний час.",
+
+  "module4.task1.description": "Скористайтеся командою `date`, щоб вивести поточний системний час.",
+  "module4.task1.hint": "Спробуйте `date`",
+  "module4.task1.explanation": "Команда `date` відображає поточну дату та час системи. Корисно для перевірки системного часу та налаштувань часової зони.",
+
+  "module4.task2.description": "Скористайтеся командою `whoami`, щоб дізнатися ім’я поточного користувача.",
+  "module4.task2.hint": "Спробуйте `whoami`",
+  "module4.task2.explanation": "Команда `whoami` показує ім’я користувача, під яким ви зараз увійшли в систему. Це зручно для перевірки, під яким обліковим записом ви працюєте.",
+
+  "module4.task3.description": "Скористайтеся командою `uptime`, щоб дізнатися, скільки часу працює система.",
+  "module4.task3.hint": "Спробуйте `uptime`",
+  "module4.task3.explanation": "Команда `uptime` показує, скільки часу система працює з моменту останнього завантаження, поточний час, кількість користувачів і середнє навантаження на систему. Це корисно для моніторингу стабільності та продуктивності системи.",
+
+  "module4.task4.description": "Скористайтеся командою `mount`, щоб переглянути змонтовані файлові системи.",
+  "module4.task4.hint": "Спробуйте `mount`",
+  "module4.task4.explanation": "Команда `mount` відображає всі поточно змонтовані файлові системи, показуючи назви пристроїв і точки монтування. Це корисно для розуміння того, як підключені носії та де вони доступні."
 }

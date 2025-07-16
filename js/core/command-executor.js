@@ -28,7 +28,7 @@ export async function executeCommand(command) {
   const [cmd, ...args] = command.trim().split(" ");
 
   if (!cmd) {
-    printOutput("Please enter a command.");
+    printOutput(t("command.error.enterCommand"));
     scrollToBottom();
     return;
   }
@@ -43,7 +43,7 @@ export async function executeCommand(command) {
   if (commands[cmd]) {
     result = await commands[cmd](args);
   } else {
-    result = `Command not found: ${cmd}`;
+    result = `${t("command.error.notFound")} ${cmd}`;
   }
 
   if (result) {
@@ -57,9 +57,9 @@ export async function executeCommand(command) {
   const isErrorOutput =
     typeof result === "string" &&
     (result.startsWith("Usage:") ||
-      result.startsWith("Command not found") ||
-      result.startsWith("No such file") ||
-      result.startsWith("No such directory"));
+      result.startsWith(t("command.error.notFound")) ||
+      result.startsWith(t("command.error.noSuchFile")) ||
+      result.startsWith(t("command.error.dirNotFound")));
 
   if (!isSystemCmd) {
     checkTaskCompletion(command, cmd, result, isErrorOutput);
@@ -82,7 +82,7 @@ function changeDirectory(dir) {
     virtualFileSystem.currentDirectory = newPath;
     return `Changed directory to ${newPath}`;
   } else {
-    return `No such directory: ${dir}`;
+    return t("command.error.dirNotFound", { dir });
   }
 }
 
@@ -96,9 +96,9 @@ function createDirectory(name) {
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
   if (currentDir && !currentDir.children[name]) {
     currentDir.children[name] = { name, type: "dir", children: {} };
-    return `Directory ${name} created`;
+    return t("command.mkdir.success", { name });
   }
-  return `Directory ${name} already exists or invalid path`;
+  return t("command.mkdir.exists", { name });
 }
 
 /**
@@ -124,14 +124,14 @@ const commands = {
    */
   ls: (args) => {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
-    if (!currentDir) return "Directory not found";
+    if (!currentDir) return t("command.error.dirNotFound");
 
     const entries = Object.values(currentDir.children || {});
-    if (!entries.length) return "No files or directories";
+    if (!entries.length) return t("command.ls.empty");
 
     // Only allow no args or a single "-l" flag
     if (args.length > 1 || (args.length === 1 && args[0] !== "-l")) {
-      return "Usage: ls [-l]";
+      return t("command.ls.usage");
     }
 
     const isLongFormat = args[0] === "-l";
@@ -149,7 +149,7 @@ const commands = {
    * @param {[string]} args - Array with one directory name or path.
    * @returns {string}
    */
-  cd: ([dir]) => (dir ? changeDirectory(dir) : "Usage: cd &lt;directory&gt;"),
+  cd: ([dir]) => (dir ? changeDirectory(dir) : t("command.cd.usage")),
 
   /**
    * Creates a new directory.
@@ -157,7 +157,7 @@ const commands = {
    * @returns {string}
    */
   mkdir: ([name]) =>
-    name ? createDirectory(name) : "Usage: mkdir &lt;directory&gt;",
+    name ? createDirectory(name) : t("command.mkdir.usage"),
 
   /**
    * Creates a new file or updates last modified time if it exists.
@@ -165,10 +165,10 @@ const commands = {
    * @returns {string}
    */
   touch: ([name]) => {
-    if (!name) return "Usage: touch <filename>";
+    if (!name) return t("command.touch.usage");
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
-    if (!currentDir) return "Directory not found";
+    if (!currentDir) return t("command.error.dirNotFound");
 
     const now = new Date().toISOString();
     const file = currentDir.children[name];
@@ -177,7 +177,7 @@ const commands = {
     if (file?.type === "file") {
       file.meta = file.meta || {};
       file.meta.lastModified = now;
-      return `Touched ${name}`;
+      return t("command.touch.touched", { name });
     }
 
     // Create new file with meta
@@ -190,7 +190,7 @@ const commands = {
       },
     };
 
-    return `File ${name} created`;
+    return t("command.touch.created", { name });
   },
 
   /**
@@ -200,7 +200,7 @@ const commands = {
    */
   cat: ([name]) => {
     if (!name) {
-      return "Usage: cat &lt;filename&gt;";
+      return t("command.cat.usage");
     }
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
@@ -210,7 +210,7 @@ const commands = {
       return file.content || ""; // If content is missing, show empty string
     }
 
-    return `No such file: ${name}`;
+    return t("command.error.noSuchFile", { name });
   },
 
   /**
@@ -220,7 +220,7 @@ const commands = {
    */
   less: ([name]) => {
     if (!name) {
-      return "Usage: less &lt;filename&gt;";
+      return t("command.less.usage");
     }
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
@@ -230,7 +230,7 @@ const commands = {
       return file.content || "";
     }
 
-    return `No such file: ${name}`;
+    return t("command.error.noSuchFile", { name });
   },
 
   /**
@@ -240,21 +240,21 @@ const commands = {
    */
   file: ([name]) => {
     if (!name) {
-      return "Usage: file &lt;filename&gt;";
+      return t("command.file.usage");
     }
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     const node = currentDir?.children[name];
 
     if (!node) {
-      return `No such file: ${name}`;
+      return t("command.error.noSuchFile", { name });
     }
 
     if (node.type === "dir") {
-      return `${name}: directory`;
+      return t("command.file.isDirectory", { name })
     }
 
-    return `${name}: regular file`;
+    return t("command.file.isFile", { name });
   },
 
   /**
@@ -271,7 +271,7 @@ const commands = {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
     if (args.length !== 2) {
-      return "Usage: cp &lt;source&gt; &lt;destination&gt;";
+      return t("command.cp.usage");
     }
 
     const [src, dest] = args;
@@ -283,10 +283,10 @@ const commands = {
         type: "file",
         content: sourceFile.content || "",
       };
-      return `Copied ${src} to ${dest}`;
+      return t("command.cp.copied", { src, dest });
     }
 
-    return `Source file not found: ${src}`;
+    return t("command.error.sourceNotFound", { src });
   },
 
   /**
@@ -302,14 +302,14 @@ const commands = {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
     if (args.length !== 2) {
-      return "Usage: mv &lt;source&gt; &lt;destination&gt;";
+      return t("command.mv.usage");
     }
 
     const [src, dest] = args;
     const sourceFile = currentDir?.children[src];
 
     if (!sourceFile || sourceFile.type !== "file") {
-      return `Source file not found: ${src}`;
+      return t("command.error.sourceNotFound", { src });
     }
 
     const destinationNode = currentDir.children[dest];
@@ -322,7 +322,7 @@ const commands = {
         content: sourceFile.content || "",
       };
       delete currentDir.children[src];
-      return `Moved ${src} to ${dest}/`;
+      return t("command.mv.moved", { src, dest });
     }
 
     // Otherwise: rename file in current directory
@@ -332,7 +332,7 @@ const commands = {
       content: sourceFile.content || "",
     };
     delete currentDir.children[src];
-    return `Renamed ${src} to ${dest}`;
+    return t("command.mv.renamed", { src, dest });
   },
 
   /**
@@ -340,19 +340,19 @@ const commands = {
    */
   rm: ([name]) => {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
-    if (!name) return "Usage: rm &lt;filename&gt;";
+    if (!name) return t("command.rm.usage");
     if (currentDir?.children[name]?.type === "file") {
       delete currentDir.children[name];
-      return `${name} removed`;
+      return t("command.rm.removed", { name });
     }
-    return `No such file: ${name}`;
+    return t("command.error.noSuchFile", { name });
   },
 
   /**
    * Changes file permissions to executable using `chmod +x`.
    */
   chmod: ([flag, name]) => {
-    if (flag !== "+x" || !name) return "Usage: chmod +x &lt;filename&gt;";
+    if (flag !== "+x" || !name) return t("command.chmod.usage");
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     const file = currentDir?.children[name];
@@ -360,27 +360,27 @@ const commands = {
     if (file?.type === "file") {
       file.meta = file.meta || {};
       file.meta.isExecutable = true;
-      return `Added executable permission to ${name}`;
+      return t("command.chmod.success", { name });
     }
 
-    return `No such file: ${name}`;
+    return t("command.error.noSuchFile", { name });
   },
 
   /**
    * Shows metadata of a file including last modification date.
    */
   stat: ([name]) => {
-    if (!name) return "Usage: stat &lt;filename&gt;";
+    if (!name) return t("command.stat.usage");
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     const file = currentDir?.children[name];
 
     if (file?.type === "file") {
       const modified = file.meta?.lastModified || "unknown";
-      return `${name}\nType: file\nLast modified: ${modified}`;
+      return `${name}\n${t("command.stat.type")}\n${t("command.stat.lastModified", { modified })}`;
     }
 
-    return `No such file: ${name}`;
+    return t("command.error.noSuchFile", { name });
   },
 
   /**
@@ -391,7 +391,7 @@ const commands = {
    */
   date: (args) => {
     if (args.length > 0) {
-      return "Usage: &lt;date&gt;";
+      return t("command.date.usage");
     }
     return new Date().toString();
   },
@@ -404,7 +404,7 @@ const commands = {
    */
   whoami: (args) => {
     if (args.length > 0) {
-      return "Usage: &lt;whoami&gt;";
+      return t("command.whoami.usage");
     }
     return "user";
   },
@@ -417,7 +417,7 @@ const commands = {
    */
   uptime: (args) => {
     if (args.length > 0) {
-      return "Usage: &lt;uptime&gt;";
+      return t("command.uptime.usage");
     }
 
     const now = new Date();
@@ -446,7 +446,7 @@ const commands = {
    */
   mount: (args) => {
     if (args.length > 0) {
-      return "Usage: &lt;mount&gt;";
+      return t("command.mount.usage");
     }
 
     return [
@@ -488,12 +488,12 @@ const commands = {
 
     if (option === "off" || option === "disable") {
       setHintsEnabled(false);
-      return "Hints have been disabled.";
+      return t("task.manager.hints.disabled");
     }
 
     if (option === "on" || option === "enable") {
       setHintsEnabled(true);
-      return "Hints have been enabled.";
+      return t("task.manager.hints.enabled");
     }
 
     return "Usage: hint [on|off]";
@@ -521,12 +521,12 @@ const commands = {
       setCurrentTaskIndex(0);
       setHintsEnabled(true);
       tasks.length = 0;
-      printOutput("Training progress has been reset. Restarting training...");
+      printOutput(t("command.progress.reset"));
       await loadTasks();
       setStarted(true);
       return null;
     }
-    return "Usage: progress reset";
+    return t("command.progress.usage");
   },
 
   /**
@@ -539,7 +539,7 @@ const commands = {
    */
   language: async ([arg]) => {
     if (!arg) {
-      return "Usage: language [en|uk]";
+      return t("command.language.usage");
     }
 
     const locale = arg.toLowerCase();
@@ -547,10 +547,10 @@ const commands = {
     if (locale === "en" || locale === "uk") {
       await loadLocale(locale);
       localStorage.setItem("locale", locale);
-      return `Switched language to ${locale}. Please refresh the page to apply changes.`;
+      return t("command.language.switched", { locale });
     }
 
-    return "Usage: language [en|uk]";
+    return t("command.language.usage");
   },
 
   /**
@@ -563,17 +563,17 @@ const commands = {
    */
   theme: ([arg]) => {
     if (!arg) {
-      return "Usage: theme [light|dark]";
+      return t("command.theme.usage");
     }
 
     const option = arg.toLowerCase();
 
     if (option === "light" || option === "dark") {
       applyTheme(option);
-      return `Switched to ${option} theme.`;
+      return t("command.theme.switched", { option });
     }
 
-    return "Usage: theme [light|dark]";
+    return t("command.theme.usage");
   },
 };
 
@@ -584,4 +584,4 @@ const commands = {
  * @returns {string}
  */
 commands.man = ([cmd]) =>
-  cmd && manualPages[cmd] ? t(manualPages[cmd]) : "Usage: man &lt;command&gt;";
+  cmd && manualPages[cmd] ? t(manualPages[cmd]) : t("command.man.usage");

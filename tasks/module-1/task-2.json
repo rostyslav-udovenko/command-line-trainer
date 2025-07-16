@@ -1,6 +1,6 @@
 {
   "id": 2,
-  "description": "Create a directory named `images` in the root of the file system.",
+  "description": "module1.task2.description",
   "type": "mkdir",
   "check": {
     "dirExists": "images"
@@ -12,6 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `mkdir images`",
-  "explanation": "The `mkdir` (make directory) command allows you to create a new directory in the filesystem."
+  "hint": "module1.task2.hint",
+  "explanation": "module1.task2.explanation"
 }

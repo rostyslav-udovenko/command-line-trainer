@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "description": "Make the file `run.sh` executable using the `chmod` command.",
+  "description": "module3.task1.description",
   "type": "chmod",
   "check": {
     "fileExecutable": "run.sh"
@@ -20,6 +20,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `chmod +x run.sh`",
-  "explanation": "The `chmod` command changes the file mode (permissions) of a file. In this case, it makes `run.sh` executable by adding the execute permission for the user."
+  "hint": "module3.task1.hint",
+  "explanation": "module3.task1.explanation"
 }

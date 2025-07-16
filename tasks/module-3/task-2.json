@@ -1,6 +1,6 @@
 {
   "id": 2,
-  "description": "List details of files using `ls -l` and find the name of the executable.",
+  "description": "module3.task2.description",
   "type": "ls",
   "check": {
     "expectedOutputIncludes": ["run.sh*"]
@@ -23,6 +23,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `ls -l` and look for the executable.",
-  "explanation": "The `ls -l` command lists files in long format, showing details like permissions, ownership, size, and modification date. The `*` at the end of the file name indicates that it is executable."
+  "hint": "module3.task2.hint",
+  "explanation": "module3.task2.explanation"
 }

@@ -1,9 +1,12 @@
 {
   "id": 3,
-  "description": "Use the `ls` command to list the contents of the current directory.",
+  "description": "module1.task3.description",
   "type": "ls",
   "check": {
-    "expectedOutputIncludes": ["project.txt", "images"]
+    "expectedOutputIncludesKeys": [
+      { "key": "project.txt" },
+      { "key": "images" }
+    ]
   },
   "fs": {
     "name": "/",
@@ -27,6 +30,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `ls`",
-  "explanation": "The `ls` command lists the contents of the current directory, showing files and subdirectories."
+  "hint": "module1.task3.hint",
+  "explanation": "module1.task3.explanation"
 }

@@ -1,6 +1,6 @@
 {
   "id": 2,
-  "description": "Use the `whoami` command to show the current username.",
+  "description": "module4.task2.description",
   "type": "whoami",
   "check": {
     "expectedOutputIncludes": ["user"]
@@ -12,6 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `whoami`",
-  "explanation": "The `whoami` command displays the username of the current user logged into the system. It is useful for confirming which user account you are operating under."
+  "hint": "module4.task2.hint",
+  "explanation": "module4.task2.explanation"
 }

@@ -1,10 +1,15 @@
 {
   "id": 4,
-  "description": "Use the `file` command to inspect `script.sh`.",
+  "description": "module2.task4.description",
   "type": "file",
   "check": {
     "fileExists": "script.sh",
-    "expectedOutputIncludes": ["script.sh: regular file"]
+    "expectedOutputIncludesKeys": [
+      {
+        "key": "command.file.isFile",
+        "params": { "name": "script.sh" }
+      }
+    ]
   },
   "fs": {
     "name": "/",
@@ -22,6 +27,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `file script.sh`",
-  "explanation": "The `file` command determines the type of a file. In this case, it identifies `script.sh` as a regular file containing a shell script."
+  "hint": "module2.task4.hint",
+  "explanation": "module2.task4.explanation"
 }

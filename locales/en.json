@@ -44,7 +44,7 @@
   "task.manager.success.youDidIt": "You did it!",
 
   "task.manager.task.label": "Task",
-  
+
   "manual.pwd": "pwd — print working directory",
   "manual.ls": "ls — list directory contents, ls -l — list directory contents with extra details (e.g. executable flag)",
   "manual.cd": "cd — change directory",
@@ -63,5 +63,134 @@
   "manual.date": "date — display or set the system date and time",
   "manual.whoami": "whoami — print effective user ID",
   "manual.uptime": "uptime — tell how long the system has been running",
-  "manual.mount": "mount — mount a filesystem"
+  "manual.mount": "mount — mount a filesystem",
+
+  "command.error.enterCommand": "Please enter a command.",
+  "command.error.notFound": "Command not found:",
+  "command.error.dirNotFound": "Directory not found",
+  "command.error.sourceNotFound": "Source file not found: {{src}}",
+  "command.error.noSuchFile": "No such file: {{name}}",
+
+  "command.ls.empty": "No files or directories",
+  "command.ls.usage": "Usage: ls [-l]",
+
+  "command.man.usage": "Usage: man <command>",
+  "command.cd.usage": "Usage: cd <directory>",
+  "command.mkdir.usage": "Usage: mkdir <directory>",
+  "command.touch.usage": "Usage: touch <filename>",
+  "command.cp.usage": "Usage: cp <source> <destination>",
+  "command.mv.usage": "Usage: mv <source> <destination>",
+  "command.rm.usage": "Usage: rm <filename>",
+  "command.chmod.usage": "Usage: chmod +x <filename>",
+  "command.stat.usage": "Usage: stat <filename>",
+  "command.date.usage": "Usage: date",
+  "command.whoami.usage": "Usage: whoami",
+  "command.uptime.usage": "Usage: uptime",
+  "command.mount.usage": "Usage: mount",
+  "command.theme.usage": "Usage: theme [light|dark]",
+  "command.language.usage": "Usage: language [en|uk]",
+  "command.progress.usage": "Usage: progress reset",
+  "command.cat.usage": "Usage: cat <filename>",
+  "command.less.usage": "Usage: less <filename>",
+  "command.file.usage": "Usage: file <filename>",
+
+  "command.mkdir.success": "Directory {{name}} created",
+  "command.mkdir.exists": "Directory {{name}} already exists or invalid path",
+  "command.touch.touched": "Touched {{name}}",
+  "command.touch.created": "File {{name}} created",
+  "command.cp.copied": "Copied {{src}} to {{dest}}",
+  "command.mv.moved": "Moved {{src}} to {{dest}}/",
+  "command.mv.renamed": "Renamed {{src}} to {{dest}}",
+  "command.rm.removed": "{{name}} removed",
+  "command.chmod.success": "Added executable permission to {{name}}",
+
+  "command.file.isDirectory": "{{name}}: directory",
+  "command.file.isFile": "{{name}}: regular file",
+
+  "command.stat.type": "Type: file",
+  "command.stat.lastModified": "Last modified: {{modified}}",
+
+  "command.theme.switched": "Switched to {{option}} theme.",
+  "command.language.switched": "Switched language to {{locale}}. Please refresh the page to apply changes.",
+  "command.progress.reset": "Training progress has been reset. Restarting training...",
+
+  "module1.task1.description": "Navigate to the `projects` directory.",
+  "module1.task1.hint": "Try `cd projects`",
+  "module1.task1.explanation": "The `cd` (change directory) command allows you to move into a different directory in the filesystem.",
+
+  "module1.task2.description": "Create a directory named `images` in the root of the file system.",
+  "module1.task2.hint": "Try `mkdir images`",
+  "module1.task2.explanation": "The `mkdir` (make directory) command allows you to create a new directory in the filesystem.",
+
+  "module1.task3.description": "Use the `ls` command to list the contents of the current directory.",
+  "module1.task3.hint": "Try `ls`",
+  "module1.task3.explanation": "The `ls` command lists the contents of the current directory, showing files and subdirectories.",
+
+  "module1.task4.description": "Use the `pwd` command to display the current directory.",
+  "module1.task4.hint": "Try `pwd`",
+  "module1.task4.explanation": "The `pwd` (print working directory) command displays the full path of the current directory you are in.",
+
+  "module2.task1.description": "Create a file named `index.html` inside the `projects` directory.",
+  "module2.task1.hint": "Try `touch index.html`",
+  "module2.task1.explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it creates `index.html` in the `projects` directory.",
+
+  "module2.task2.description": "Use the `cat` command to read the contents of `note.txt`.",
+  "module2.task2.hint": "Try `cat note.txt`",
+  "module2.task2.explanation": "The `cat` command reads the contents of a file and displays it in the terminal. In this case, it shows the contents of `note.txt`.",
+
+  "module2.task3.description": "Use the `less` command to view `log.txt`.",
+  "module2.task3.hint": "Try `less log.txt`",
+  "module2.task3.explanation": "The `less` command allows you to view the contents of a file one screen at a time. It is useful for reading large files without opening them in an editor.",
+
+  "module2.task4.description": "Use the `file` command to inspect `script.sh`.",
+  "module2.task4.hint": "Try `file script.sh`",
+  "module2.task4.explanation": "The `file` command determines the type of a file. In this case, it identifies `script.sh` as a regular file containing a shell script.",
+
+  "module2.task5.description": "Copy the file `a.txt` to `b.txt` using the `cp` command.",
+  "module2.task5.hint": "Try `cp a.txt b.txt`",
+  "module2.task5.explanation": "The `cp` command is used to copy files or directories. In this case, it copies the contents of `a.txt` to a new file `b.txt`. If `b.txt` already exists, it will be overwritten.",
+
+  "module2.task6.description": "Rename `old.txt` to `new.txt` using the `mv` command.",
+  "module2.task6.hint": "Try `mv old.txt new.txt`",
+  "module2.task6.explanation": "The `mv` command is used to move or rename files and directories. In this case, it renames `old.txt` to `new.txt`. If `new.txt` already exists, it will be overwritten.",
+
+  "module2.task7.description": "Move the file `note.txt` into the `docs/` directory using the `mv` command.",
+  "module2.task7.hint": "Try `mv note.txt docs`",
+  "module2.task7.explanation": "The `mv` command is used to move or rename files and directories. In this case, it moves `note.txt` into the `docs/` directory. If `docs/` does not exist, you need to create it first using `mkdir docs`.",
+
+  "module2.task8.description": "Remove the file `temp.txt` using the `rm` command.",
+  "module2.task8.hint": "Try `rm temp.txt`",
+  "module2.task8.explanation": "The `rm` command is used to remove files or directories. In this case, it deletes the file `temp.txt`. Be cautious when using `rm`, as it permanently deletes files without moving them to a trash or recycle bin.",
+
+  "module3.task1.description": "Make the file `run.sh` executable using the `chmod` command.",
+  "module3.task1.hint": "Try `chmod +x run.sh`",
+  "module3.task1.explanation": "The `chmod` command changes the file mode (permissions) of a file. In this case, it makes `run.sh` executable by adding the execute permission for the user.",
+
+  "module3.task2.description": "List details of files using `ls -l` and find the name of the executable.",
+  "module3.task2.hint": "Try `ls -l` and look for the executable.",
+  "module3.task2.explanation": "The `ls -l` command lists files in long format, showing details like permissions, ownership, size, and modification date. The `*` at the end of the file name indicates that it is executable.",
+
+  "module3.task3.description": "Check metadata of `log.txt` using the `stat` command.",
+  "module3.task3.hint": "Try `stat log.txt`",
+  "module3.task3.explanation": "The `stat` command displays detailed information about a file, including its size, permissions, and last modification time. In this case, it shows the metadata of `log.txt`.",
+
+  "module3.task4.description": "Update the timestamp of `todo.txt` using the `touch` command.",
+  "module3.task4.hint": "Try `touch todo.txt`",
+  "module3.task4.explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it updates the timestamp of `todo.txt` to the current time.",
+
+  "module4.task1.description": "Use the `date` command to display the current system time.",
+  "module4.task1.hint": "Try `date`",
+  "module4.task1.explanation": "The `date` command displays the current date and time of the system. It is useful for checking the system's clock and timezone settings.",
+
+  "module4.task2.description": "Use the `whoami` command to show the current username.",
+  "module4.task2.hint": "Try `whoami`",
+  "module4.task2.explanation": "The `whoami` command displays the username of the current user logged into the system. It is useful for confirming which user account you are operating under.",
+
+  "module4.task3.description": "Use the `uptime` command to check how long the system has been running.",
+  "module4.task3.hint": "Try `uptime`",
+  "module4.task3.explanation": "The `uptime` command shows how long the system has been running since the last boot, along with the current time, number of users logged in, and system load averages. It is useful for monitoring system performance and stability.",
+
+  "module4.task4.description": "Use the `mount` command to list mounted filesystems.",
+  "module4.task4.hint": "Try `mount`",
+  "module4.task4.explanation": "The `mount` command displays all currently mounted filesystems, showing their device names and mount points. This is useful for understanding how storage devices are connected to the system and where they are accessible."
 }

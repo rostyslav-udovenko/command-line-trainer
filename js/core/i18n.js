@@ -28,13 +28,22 @@ export async function loadLocale(locale) {
 
 /**
  * Returns translation for the given key
+ * Supports optional params for {{placeholders}}
  * Falls back to the key itself if translation is missing
  *
  * @param {string} key - translation key
- * @returns {string} - translated text or the key itself
+ * @param {Object} [params] - object with placeholders to replace
+ * @returns {string} - translated text
  */
-export function t(key) {
-  return translations[key] || key;
+export function t(key, params = {}) {
+  let text = translations[key] || key;
+
+  // Replace placeholders like {{name}} with values from params
+  for (const [param, value] of Object.entries(params)) {
+    text = text.replace(new RegExp(`{{\\s*${param}\\s*}}`, 'g'), value);
+  }
+
+  return text;
 }
 
 /**

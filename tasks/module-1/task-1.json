@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "description": "Navigate to the `projects` directory.",
+  "description": "module1.task1.description",
   "type": "cd",
   "check": {
     "currentDirectoryEndsWith": "/projects"
@@ -21,6 +21,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `cd projects`",
-  "explanation": "The `cd` (change directory) command allows you to move into a different directory in the filesystem."
+  "hint": "module1.task1.hint",
+  "explanation": "module1.task1.explanation"
 }

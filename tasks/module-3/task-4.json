@@ -1,6 +1,6 @@
 {
   "id": 4,
-  "description": "Update the timestamp of `todo.txt` using the `touch` command.",
+  "description": "module3.task4.description",
   "type": "touch",
   "check": {
     "fileExists": "todo.txt"
@@ -19,6 +19,6 @@
     }
   },
   "startDirectory": "/",
-  "hint": "Try `touch todo.txt`",
-  "explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it updates the timestamp of `todo.txt` to the current time."
+  "hint": "module3.task4.hint",
+  "explanation": "module3.task4.explanation"
 }

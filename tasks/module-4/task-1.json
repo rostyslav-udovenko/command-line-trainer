@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "description": "Use the `date` command to display the current system time.",
+  "description": "module4.task1.description",
   "type": "date",
   "check": {
     "expectedOutputIncludes": ["202"]
@@ -12,6 +12,6 @@
     "meta": {}
   },
   "startDirectory": "/",
-  "hint": "Try `date`",
-  "explanation": "The `date` command displays the current date and time of the system. It is useful for checking the system's clock and timezone settings."
+  "hint": "module4.task1.hint",
+  "explanation": "module4.task1.explanation"
 }
