@@ -114,6 +114,14 @@
   "command.language.switched": "Switched language to {{locale}}. Please refresh the page to apply changes.",
   "command.progress.reset": "Training progress has been reset. Restarting training...",
 
+  "command.help.availableCommands": "Available commands:",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
+  "command.help.systemCommands": "System commands:",
+  "command.help.systemCommandsList.1": "  hint [on|off] - Toggle task hints",
+  "command.help.systemCommandsList.2": "  theme [light|dark] - Switch color theme",
+  "command.help.systemCommandsList.3": "  progress reset - Reset learning progress",
+  "command.help.moreInfo": "Use man <command> for more information.",
+
   "module1.task1.description": "Navigate to the `projects` directory.",
   "module1.task1.hint": "Try `cd projects`",
   "module1.task1.explanation": "The `cd` (change directory) command allows you to move into a different directory in the filesystem.",
