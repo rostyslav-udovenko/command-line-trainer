@@ -6,10 +6,6 @@
   "terminal.ui.welcome.help": "  Введіть `help` для перегляду доступних команд",
   "terminal.ui.welcome.man": "  Введіть `man <команда>` для детальної інформації",
   "terminal.ui.welcome.followTasks": "  Слідуйте інструкціям завдань для проходження модулів",
-  "terminal.ui.welcome.systemCommands": "Системні команди:",
-  "terminal.ui.welcome.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
-  "terminal.ui.welcome.theme": "  theme [light|dark] - Переключити кольорову тему",
-  "terminal.ui.welcome.reset": "  progress reset - Скинути прогрес навчання",
   "terminal.ui.welcome.ready": "Готові розпочати? Введіть `y` для початку або `n` для виходу.",
 
   "modules.1": "Модуль 1 - Операції з директоріями",
@@ -93,7 +89,9 @@
   "command.cat.usage": "Використання: cat <файл>",
   "command.less.usage": "Використання: less <файл>",
   "command.file.usage": "Використання: file <файл>",
+  "command.hint.usage": "Використання: hint [on|off]",
 
+  "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Каталог {{name}} створено",
   "command.mkdir.exists": "Каталог {{name}} вже існує або неправильний шлях",
   "command.touch.touched": "Оновлено час зміни для {{name}}",
@@ -103,7 +101,7 @@
   "command.mv.renamed": "Перейменовано {{src}} у {{dest}}",
   "command.rm.removed": "{{name}} видалено",
   "command.chmod.success": "Додано дозвіл на виконання для {{name}}",
-
+  "command.cd.changed": "Перейдено до каталогу {{path}}",
   "command.file.isDirectory": "{{name}}: каталог",
   "command.file.isFile": "{{name}}: звичайний файл",
 
@@ -117,9 +115,9 @@
   "command.help.availableCommands": "Доступні команди:",
   "command.help.userCommandsList": "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
   "command.help.systemCommands": "Системні команди:",
-  "command.help.systemCommandsList.1": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
-  "command.help.systemCommandsList.2": "  theme [light|dark] - Перемкнути кольорову тему",
-  "command.help.systemCommandsList.3": "  progress reset - Скинути прогрес навчання",
+  "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
+  "command.help.systemCommandsList.theme": "  theme [light|dark] - Перемкнути кольорову тему",
+  "command.help.systemCommandsList.progress.reset": "  progress reset - Скинути прогрес навчання",
   "command.help.moreInfo": "Використовуйте man <команда> для детальної інформації.",
 
   "module1.task1.description": "Перейдіть у каталог `projects`.",

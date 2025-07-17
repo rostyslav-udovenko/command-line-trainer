@@ -182,10 +182,10 @@ export function showWelcomeMessage() {
   printOutput(`${t("terminal.ui.welcome.man")}`);
   printOutput(`${t("terminal.ui.welcome.followTasks")}`);
   printOutput("&nbsp;");
-  printOutput(`${t("terminal.ui.welcome.systemCommands")}`);
-  printOutput(`${t("terminal.ui.welcome.hint")}`);
-  printOutput(`${t("terminal.ui.welcome.theme")}`);
-  printOutput(`${t("terminal.ui.welcome.reset")}`);
+  printOutput(`${t("command.help.systemCommands")}`);
+  printOutput(`${t("command.help.systemCommandsList.hint")}`);
+  printOutput(`${t("command.help.systemCommandsList.theme")}`);
+  printOutput(`${t("command.help.systemCommandsList.progress.reset")}`);
   printOutput("&nbsp;");
   printOutput(`${t("terminal.ui.welcome.ready")}`);
 }
