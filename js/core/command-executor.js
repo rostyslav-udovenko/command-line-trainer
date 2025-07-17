@@ -470,6 +470,7 @@ const commands = {
     printOutput(t("command.help.systemCommandsList.hint"));
     printOutput(t("command.help.systemCommandsList.theme"));
     printOutput(t("command.help.systemCommandsList.progress.reset"));
+    printOutput(t("command.help.systemCommandsList.language"));
     printOutput("&nbsp;");
     printOutput(t("command.help.moreInfo"));
   },
