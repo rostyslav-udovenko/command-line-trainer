@@ -6,10 +6,6 @@
   "terminal.ui.welcome.help": "  Type `help` to see available commands",
   "terminal.ui.welcome.man": "  Type `man <command>` for detailed information",
   "terminal.ui.welcome.followTasks": "  Follow the task instructions to progress through modules",
-  "terminal.ui.welcome.systemCommands": "System commands:",
-  "terminal.ui.welcome.hint": "  hint [on|off] - Toggle task hints",
-  "terminal.ui.welcome.theme": "  theme [light|dark] - Switch color theme",
-  "terminal.ui.welcome.reset": "  progress reset - Reset learning progress",
   "terminal.ui.welcome.ready": "Ready to begin? Type `y` to begin or `n` to exit.",
 
   "modules.1": "Module 1 - Directory Operations",
@@ -93,7 +89,9 @@
   "command.cat.usage": "Usage: cat <filename>",
   "command.less.usage": "Usage: less <filename>",
   "command.file.usage": "Usage: file <filename>",
+  "command.hint.usage": "Usage: hint [on|off]",
 
+  "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
   "command.mkdir.exists": "Directory {{name}} already exists or invalid path",
   "command.touch.touched": "Touched {{name}}",
@@ -103,7 +101,7 @@
   "command.mv.renamed": "Renamed {{src}} to {{dest}}",
   "command.rm.removed": "{{name}} removed",
   "command.chmod.success": "Added executable permission to {{name}}",
-
+  "command.cd.changed": "Changed directory to {{path}}",
   "command.file.isDirectory": "{{name}}: directory",
   "command.file.isFile": "{{name}}: regular file",
 
@@ -117,9 +115,9 @@
   "command.help.availableCommands": "Available commands:",
   "command.help.userCommandsList": "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
   "command.help.systemCommands": "System commands:",
-  "command.help.systemCommandsList.1": "  hint [on|off] - Toggle task hints",
-  "command.help.systemCommandsList.2": "  theme [light|dark] - Switch color theme",
-  "command.help.systemCommandsList.3": "  progress reset - Reset learning progress",
+  "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
+  "command.help.systemCommandsList.theme": "  theme [light|dark] - Switch color theme",
+  "command.help.systemCommandsList.progress.reset": "  progress reset - Reset learning progress",
   "command.help.moreInfo": "Use man <command> for more information.",
 
   "module1.task1.description": "Navigate to the `projects` directory.",

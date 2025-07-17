@@ -80,7 +80,7 @@ function changeDirectory(dir) {
 
   if (dirNode) {
     virtualFileSystem.currentDirectory = newPath;
-    return `Changed directory to ${newPath}`;
+    return t("command.cd.changed", { path: newPath });
   } else {
     return t("command.error.dirNotFound", { dir });
   }
@@ -467,9 +467,9 @@ const commands = {
     printOutput(t("command.help.userCommandsList"));
     printOutput("&nbsp;");
     printOutput(t("command.help.systemCommands"));
-    printOutput(t("command.help.systemCommandsList.1"));
-    printOutput(t("command.help.systemCommandsList.2"));
-    printOutput(t("command.help.systemCommandsList.3"));
+    printOutput(t("command.help.systemCommandsList.hint"));
+    printOutput(t("command.help.systemCommandsList.theme"));
+    printOutput(t("command.help.systemCommandsList.progress.reset"));
     printOutput("&nbsp;");
     printOutput(t("command.help.moreInfo"));
   },
@@ -481,7 +481,7 @@ const commands = {
    */
   hint: ([arg]) => {
     if (!arg) {
-      return tasks[currentTaskIndex].hint || "No hint available for this task.";
+      return tasks[currentTaskIndex].hint || t("command.hint.noHint");
     }
 
     const option = arg.toLowerCase();
@@ -496,7 +496,7 @@ const commands = {
       return t("task.manager.hints.enabled");
     }
 
-    return "Usage: hint [on|off]";
+    return t("command.hint.usage");
   },
 
   /**
