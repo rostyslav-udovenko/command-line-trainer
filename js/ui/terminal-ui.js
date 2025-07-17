@@ -186,6 +186,7 @@ export function showWelcomeMessage() {
   printOutput(`${t("command.help.systemCommandsList.hint")}`);
   printOutput(`${t("command.help.systemCommandsList.theme")}`);
   printOutput(`${t("command.help.systemCommandsList.progress.reset")}`);
+  printOutput(`${t("command.help.systemCommandsList.language")}`);
   printOutput("&nbsp;");
   printOutput(`${t("terminal.ui.welcome.ready")}`);
 }
