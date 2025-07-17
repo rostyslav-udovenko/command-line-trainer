@@ -156,8 +156,7 @@ const commands = {
    * @param {[string]} args - Array with one directory name.
    * @returns {string}
    */
-  mkdir: ([name]) =>
-    name ? createDirectory(name) : t("command.mkdir.usage"),
+  mkdir: ([name]) => (name ? createDirectory(name) : t("command.mkdir.usage")),
 
   /**
    * Creates a new file or updates last modified time if it exists.
@@ -251,7 +250,7 @@ const commands = {
     }
 
     if (node.type === "dir") {
-      return t("command.file.isDirectory", { name })
+      return t("command.file.isDirectory", { name });
     }
 
     return t("command.file.isFile", { name });
@@ -377,7 +376,10 @@ const commands = {
 
     if (file?.type === "file") {
       const modified = file.meta?.lastModified || "unknown";
-      return `${name}\n${t("command.stat.type")}\n${t("command.stat.lastModified", { modified })}`;
+      return `${name}\n${t("command.stat.type")}\n${t(
+        "command.stat.lastModified",
+        { modified }
+      )}`;
     }
 
     return t("command.error.noSuchFile", { name });
@@ -461,17 +463,15 @@ const commands = {
    * Prints available commands and usage.
    */
   help: () => {
-    printOutput("Available commands:");
-    printOutput(
-      "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount"
-    );
+    printOutput(t("command.help.availableCommands"));
+    printOutput(t("command.help.userCommandsList"));
     printOutput("&nbsp;");
-    printOutput("System commands:");
-    printOutput("  hint [on|off] - Toggle task hints");
-    printOutput("  theme [light|dark] - Switch color theme");
-    printOutput("  progress reset - Reset learning progress");
+    printOutput(t("command.help.systemCommands"));
+    printOutput(t("command.help.systemCommandsList.1"));
+    printOutput(t("command.help.systemCommandsList.2"));
+    printOutput(t("command.help.systemCommandsList.3"));
     printOutput("&nbsp;");
-    printOutput("Use man &lt;command&gt; for more information.");
+    printOutput(t("command.help.moreInfo"));
   },
 
   /**

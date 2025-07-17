@@ -114,6 +114,14 @@
   "command.language.switched": "Мову змінено на {{locale}}. Оновіть сторінку, щоб застосувати зміни.",
   "command.progress.reset": "Прогрес навчання скинуто. Перезапуск...",
 
+  "command.help.availableCommands": "Доступні команди:",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
+  "command.help.systemCommands": "Системні команди:",
+  "command.help.systemCommandsList.1": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
+  "command.help.systemCommandsList.2": "  theme [light|dark] - Перемкнути кольорову тему",
+  "command.help.systemCommandsList.3": "  progress reset - Скинути прогрес навчання",
+  "command.help.moreInfo": "Використовуйте man <команда> для детальної інформації.",
+
   "module1.task1.description": "Перейдіть у каталог `projects`.",
   "module1.task1.hint": "Спробуйте `cd projects`",
   "module1.task1.explanation": "Команда `cd` (change directory) дозволяє перейти в інший каталог файлової системи.",
