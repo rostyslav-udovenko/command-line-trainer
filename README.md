@@ -7,7 +7,7 @@ This initiative aims to guide newcomers in learning terminal commands progressiv
 ## Features
 
 - Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file`, `cp`, `mv`, `rm`, `chmod`, `ls -l`, `stat`, `date`, `whoami`, `uptime` and `mount`
-- System command such as `hint on/off` to enable or disable task hints, `progress reset` to reset progress
+- System command such as `hint on/off` to enable or disable task hints, `progress reset` to reset progress, `language en/uk` to switch interface language
 - Progress saving - completed tasks are automatically saved to localStorage and restored when the user returns
 - Immediate task validation accompanied by feedback and hints for each task
 - An integrated virtual file system that refreshes with each task, utilizing JSON
@@ -44,6 +44,7 @@ System commands:
   hint [on|off] - Toggle task hints
   theme [light|dark] - Switch color theme
   progress reset - Reset learning progress
+  language [en|uk] - Switch interface language
  
 Use man <command> for more information.
 ```
@@ -70,30 +71,30 @@ Each task is described as a JSON file and includes:
 Tasks are organized into modules in the `tasks/` directory:
 ```
 tasks/
-├── module-1/                   # Directory Operations
-│   ├── task-1.json             # Navigate to the `projects` directory
-│   ├── task-2.json             # Create a directory named `images`
-│   ├── task-3.json             # List contents using `ls`
-│   └── task-4.json             # Display current path using `pwd`
-├── module-2/                   # File Operations
-│   ├── task-1.json             # Create `index.html` in `projects`
-│   ├── task-2.json             # Read `note.txt` using `cat`
-│   ├── task-3.json             # View `log.txt` using `less`
-│   ├── task-4.json             # Inspect `script.sh` using `file`
-│   ├── task-5.json             # Copy `a.txt` to `b.txt` using `cp`
-│   ├── task-6.json             # Rename `old.txt` to `new.txt` using `mv`
-│   ├── task-7.json             # Move `note.txt` into `docs/` using `mv`
-│   └── task-8.json             # Remove `temp.txt` using `rm`
-├── module-3/                   # File Permissions and Metadata
-│   ├── task-1.json             # Make `run.sh` executable using `chmod`
-│   ├── task-2.json             # Find executable with `ls -l`
-│   ├── task-3.json             # Show `log.txt` metadata using `stat`
-│   └── task-4.json             # Update `todo.txt` timestamp using `touch`
-└──module-4/                    # Bash Commands
-    ├── task-1.json             # Show current time using `date`
-    ├── task-2.json             # Display current username using `whoami`
-    ├── task-3.json             # Check system uptime using `uptime`
-    └── task-4.json             # List mounted filesystems using `mount`
+├── module-1/                       # Directory Operations
+│   ├── task-1.json                 # Navigate to the `projects` directory
+│   ├── task-2.json                 # Create a directory named `images`
+│   ├── task-3.json                 # List contents using `ls`
+│   └── task-4.json                 # Display current path using `pwd`
+├── module-2/                       # File Operations
+│   ├── task-1.json                 # Create `index.html` in `projects`
+│   ├── task-2.json                 # Read `note.txt` using `cat`
+│   ├── task-3.json                 # View `log.txt` using `less`
+│   ├── task-4.json                 # Inspect `script.sh` using `file`
+│   ├── task-5.json                 # Copy `a.txt` to `b.txt` using `cp`
+│   ├── task-6.json                 # Rename `old.txt` to `new.txt` using `mv`
+│   ├── task-7.json                 # Move `note.txt` into `docs/` using `mv`
+│   └── task-8.json                 # Remove `temp.txt` using `rm`
+├── module-3/                       # File Permissions and Metadata
+│   ├── task-1.json                 # Make `run.sh` executable using `chmod`
+│   ├── task-2.json                 # Find executable with `ls -l`
+│   ├── task-3.json                 # Show `log.txt` metadata using `stat`
+│   └── task-4.json                 # Update `todo.txt` timestamp using `touch`
+└──module-4/                        # System Commands
+    ├── task-1.json                 # Show current time using `date`
+    ├── task-2.json                 # Display current username using `whoami`
+    ├── task-3.json                 # Check system uptime using `uptime`
+    └── task-4.json                 # List mounted filesystems using `mount`
  ```
 
  Validation rules (`check`) may include:
@@ -106,25 +107,27 @@ tasks/
 - `fileExecutable` – verifies that a file is marked as executable
 - `fileDoesNotExist` – confirms that a file has been removed
 - `expectedOutputIncludes` – output must include specific strings
+- `expectedOutputIncludesKeys` – output must include translated strings resolved from localization keys (for multi-language support)
 
 ## Modular JavaScript Structure
 
 The application code is organized into well-structured ES module files to enhance both scalability and clarity:
 ```
 js/ 
-├── core/                       # Core logic and virtual file system operations
-│   ├── command-executor.js     # Command definitions and execution logic
-│   ├── file-system.js          # Virtual file system operations
-│   └── task-manager.js         # Task loading, validation and flow control
-├── data/                       # Static data for internal commands
-│   └── manual-pages.js         # Manual entries for use by the `man` command
-├── effects/                    # Visual effects and easter eggs
-│   └── matrix-mode.js          # Matrix Rain mode
-├── ui/                         # Terminal user interface logic
-│   ├── terminal-ui.js          # Handles UI: output, input, scrolling
-│   ├── theme-switcher-init.js  # Sets initial theme on first page load based on localStorage
-│   └── theme-switcher.js       # Manages the switching of themes and the toggling of icons
-└── main.js                     # Entry point, initializes everything
+├── core/                           # Core logic and virtual file system operations
+│   ├── command-executor.js         # Command definitions and execution logic
+│   ├── file-system.js              # Virtual file system operations
+│   ├── i18n.js                     # Internationalization (i18n): loads and applies translations
+│   └── task-manager.js             # Task loading, validation and flow control
+├── data/                           # Static data for internal commands
+│   └── manual-pages.js             # Manual entries for use by the `man` command
+├── effects/                        # Visual effects and easter eggs
+│   └── matrix-mode.js              # Matrix Rain mode
+├── ui/                             # Terminal user interface logic
+│   ├── terminal-ui.js              # Handles UI: output, input, scrolling
+│   ├── theme-switcher-init.js      # Sets initial theme on first page load based on localStorage
+│   └── theme-switcher.js           # Manages the switching of themes and the toggling of icons
+└── main.js                         # Entry point, initializes everything
  ```
 
 ## SCSS Structure
@@ -133,27 +136,27 @@ This project uses a modular SCSS structure for better scalability and organizati
 
 ```
 css/
-├── styles.css                  # Generated from SCSS (do not edit manually)
-└── styles.css.map              # Source map for dev tools
+├── styles.css                      # Generated from SCSS (do not edit manually)
+└── styles.css.map                  # Source map for dev tools
 
 scss/
-├── base/                       # Base settings and resets
-│   ├── _globals.scss           # Global element styles
-│   ├── _reset.scss             # Reset and normalize styles
-│   └── _typography.scss        # Typography rules
-├── components/                 # Reusable UI components
-│   ├── _input.scss             # Input field styling
-│   ├── _prompt.scss            # Prompt symbol and input wrapper
-│   └── _theme-icon.scss        # Styles for theme toggle icon
-├── layout/                     # Structural layout sections
-│   ├── _footer.scss            # Footer styling
-│   ├── _header.scss            # Header styling
-│   └── _terminal.scss          # Terminal area styling
-├── media/                      # Media queries and breakpoints
-│   └── _responsive.scss        # Responsive adjustments
-├── themes/                     # Theme system with CSS variables
-│   └── _themes.scss            # Defines dark and light theme variables using :root and [data-theme]
-└── main.scss                   # UI Entry point
+├── base/                           # Base settings and resets
+│   ├── _globals.scss               # Global element styles
+│   ├── _reset.scss                 # Reset and normalize styles
+│   └── _typography.scss            # Typography rules
+├── components/                     # Reusable UI components
+│   ├── _input.scss                 # Input field styling
+│   ├── _prompt.scss                # Prompt symbol and input wrapper
+│   └── _theme-icon.scss            # Styles for theme toggle icon
+├── layout/                         # Structural layout sections
+│   ├── _footer.scss                # Footer styling
+│   ├── _header.scss                # Header styling
+│   └── _terminal.scss              # Terminal area styling
+├── media/                          # Media queries and breakpoints
+│   └── _responsive.scss            # Responsive adjustments
+├── themes/                         # Theme system with CSS variables
+│   └── _themes.scss                # Defines dark and light theme variables using :root and [data-theme]
+└── main.scss                       # UI Entry point
 ```
 
 ## Install Sass
@@ -189,67 +192,76 @@ sass scss/main.scss css/styles.css
 ```
 project-root/
 ├── css/
-│   ├── styles.css              # Generated from SCSS (do not edit manually)
-│   └── styles.css.map          # Source map for dev tools
+│   ├── styles.css                  # Generated from SCSS (do not edit manually)
+│   └── styles.css.map              # Source map for dev tools
 ├── icons/
-│   ├── dark.svg                # Icon representing dark theme
-│   └── light.svg               # Icon representing light theme
+│   ├── dark.svg                    # Icon representing dark theme
+│   ├── help.svg                    # Icon representing help
+│   └── light.svg                   # Icon representing light theme
 ├── js/
-│   ├── command-executor.js     # Command definitions and execution logic
-│   ├── file-system.js          # Virtual file system operations
-│   ├── main.js                 # Entry point, initializes everything
-│   ├── manual-pages.js         # Manual entries for use by the `man` command
-│   ├── matrix-mode.js          # Matrix Rain mode
-│   ├── task-manager.js         # Task loading, validation and flow control
-│   ├── terminal-ui.js          # Handles UI: output, input, scrolling
-│   ├── theme-switcher-init.js  # Sets initial theme on first page load based on localStorage
-│   └── theme-switcher.js       # Manages the switching of themes and the toggling of icons
+│   ├── core/                       # Core logic and virtual file system operations
+│   │   ├── command-executor.js     # Command definitions and execution logic
+│   │   ├── file-system.js          # Virtual file system operations
+│   │   ├── i18n.js                 # Internationalization (i18n): loads and applies
+│   │   └── task-manager.js         # Task loading, validation and flow control
+│   ├── data/                       # Static data for internal commands
+│   │   └── manual-pages.js         # Manual entries for use by the `man` command
+│   ├── effects/                    # Visual effects and easter eggs
+│   │   └── matrix-mode.js          # Matrix Rain mode
+│   ├── ui/                         # Terminal user interface logic
+│   │   ├── terminal-ui.js          # Handles UI: output, input, scrolling
+│   │   ├── theme-switcher-init.js  # Sets initial theme on first page load based on localStorage
+│   │   └── theme-switcher.js       # Manages the switching of themes and the toggling of icons
+│   └── main.js                     # Entry point, initializes everything
+├── locales/
+│   ├── en.json                     # English localization file
+│   └── uk.json                     # Ukrainian localization file
 ├── scss/
-│   ├── base/                   # Base settings and resets
-│   │   ├── _globals.scss       # Global element styles
-│   │   ├── _reset.scss         # Reset and normalize styles
-│   │   └── _typography.scss    # Typography rules
-│   ├── components/             # Reusable UI components
-│   │   ├── _input.scss         # Input field styling
-│   │   ├── _prompt.scss        # Prompt symbol and input wrapper
-│   │   └── _theme-icon.scss    # Styles for theme toggle icon
-│   ├── layout/                 # Structural layout sections
-│   │   ├── _footer.scss        # Footer styling
-│   │   ├── _header.scss        # Header styling
-│   │   └── _terminal.scss      # Terminal area styling
-│   ├── media/                  # Media queries and breakpoints
-│   │   └── _responsive.scss    # Responsive adjustments
-│   ├── themes/                 # Theme system with CSS variables
-│   │   └── _themes.scss        # Defines dark and light theme variables using :root and [data-theme]
-│   └── main.scss               # UI Entry point
+│   ├── base/                       # Base settings and resets
+│   │   ├── _globals.scss           # Global element styles
+│   │   ├── _reset.scss             # Reset and normalize styles
+│   │   └── _typography.scss        # Typography rules
+│   ├── components/                 # Reusable UI components
+│   │   ├── _input.scss             # Input field styling
+│   │   ├── _prompt.scss            # Prompt symbol and input wrapper
+│   │   └── _theme-icon.scss        # Styles for theme toggle icon
+│   ├── layout/                     # Structural layout sections
+│   │   ├── _footer.scss            # Footer styling
+│   │   ├── _header.scss            # Header styling
+│   │   └── _terminal.scss          # Terminal area styling
+│   ├── media/                      # Media queries and breakpoints
+│   │   └── _responsive.scss        # Responsive adjustments
+│   ├── themes/                     # Theme system with CSS variables
+│   │   └── _themes.scss            # Defines dark and light theme variables using :root and [data-theme]
+│   └── main.scss                   # UI Entry point
 ├── tasks/
-│   ├── module-1/               # Directory Operations
-│   │   ├── task-1.json         # Navigate to the `projects` directory
-│   │   ├── task-2.json         # Create a directory named `images`
-│   │   ├── task-3.json         # List contents using `ls`
-│   │   └── task-4.json         # Display current path using `pwd`
-│   ├── module-2/               # File Operations
-│   │   ├── task-1.json         # Create `index.html` in `projects`
-│   │   ├── task-2.json         # Read `note.txt` using `cat`
-│   │   ├── task-3.json         # View `log.txt` using `less`
-│   │   ├── task-4.json         # Inspect `script.sh` using `file`
-│   │   ├── task-5.json         # Copy `a.txt` to `b.txt` using `cp`
-│   │   ├── task-6.json         # Rename `old.txt` to `new.txt` using `mv`
-│   │   ├── task-7.json         # Move `note.txt` into `docs/` using `mv`
-│   │   └── task-8.json         # Remove `temp.txt` using `rm`
-│   ├── module-3/               # File Permissions and Metadata
-│   │   ├── task-1.json         # Make `run.sh` executable using `chmod`
-│   │   ├── task-2.json         # Find executable with `ls -l`
-│   │   ├── task-3.json         # Show `log.txt` metadata using `stat`
-│   │   └── task-4.json         # Update `todo.txt` timestamp using `touch`
-│   └── module-4/               # Bash Commands
-│       ├── task-1.json         # Show current time using `date`
-│       ├── task-2.json         # Display current username using `whoami`
-│       ├── task-3.json         # Check system uptime using `uptime`
-│       └── task-4.json         # List mounted filesystems using `mount`
+│   ├── module-1/                   # Directory Operations
+│   │   ├── task-1.json             # Navigate to the `projects` directory
+│   │   ├── task-2.json             # Create a directory named `images`
+│   │   ├── task-3.json             # List contents using `ls`
+│   │   └── task-4.json             # Display current path using `pwd`
+│   ├── module-2/                   # File Operations
+│   │   ├── task-1.json             # Create `index.html` in `projects`
+│   │   ├── task-2.json             # Read `note.txt` using `cat`
+│   │   ├── task-3.json             # View `log.txt` using `less`
+│   │   ├── task-4.json             # Inspect `script.sh` using `file`
+│   │   ├── task-5.json             # Copy `a.txt` to `b.txt` using `cp`
+│   │   ├── task-6.json             # Rename `old.txt` to `new.txt` using `mv`
+│   │   ├── task-7.json             # Move `note.txt` into `docs/` using `mv`
+│   │   └── task-8.json             # Remove `temp.txt` using `rm`
+│   ├── module-3/                   # File Permissions and Metadata
+│   │   ├── task-1.json             # Make `run.sh` executable using `chmod`
+│   │   ├── task-2.json             # Find executable with `ls -l`
+│   │   ├── task-3.json             # Show `log.txt` metadata using `stat`
+│   │   └── task-4.json             # Update `todo.txt` timestamp using `touch`
+│   └── module-4/                   # System Commands
+│       ├── task-1.json             # Show current time using `date`
+│       ├── task-2.json             # Display current username using `whoami`
+│       ├── task-3.json             # Check system uptime using `uptime`
+│       └── task-4.json             # List mounted filesystems using `mount`
 ├── 404.html
 ├── 500.html
-├── index.html                  # UI shell and entry point
+├── index.html                      # UI shell and entry point
 ├── LICENSE
 └── README.md
 ```
