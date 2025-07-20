@@ -46,4 +46,12 @@
     width: 24px;
     height: 24px;
   }
+
+  .settings-modal,
+  .settings-list button,
+  .settings-list span,
+  .settings-list li.has-submenu > .theme-submenu,
+  .theme-submenu li button {
+    font-size: 14px;
+  }
 }
