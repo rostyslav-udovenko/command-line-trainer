@@ -51,15 +51,43 @@ export async function executeCommand(command) {
   }
 
   // Only check task completion if the command is valid and not an error/usage response
-  const isSystemCmd = ["help", "man", "hint", "theme", "language"].includes(
-    cmd
-  );
+  const systemCommands = [
+    "help",
+    "man",
+    "hint",
+    "theme",
+    "language",
+    "progress",
+  ];
+  const isSystemCmd = systemCommands.includes(cmd);
+
+  const usageKeys = [
+    "command.cat.usage",
+    "command.ls.usage",
+    "command.cd.usage",
+    "command.mkdir.usage",
+    "command.touch.usage",
+    "command.cp.usage",
+    "command.mv.usage",
+    "command.rm.usage",
+    "command.chmod.usage",
+    "command.stat.usage",
+    "command.date.usage",
+    "command.whoami.usage",
+    "command.uptime.usage",
+    "command.mount.usage",
+    "command.theme.usage",
+    "command.language.usage",
+    "command.progress.usage",
+    "command.man.usage",
+  ];
+
   const isErrorOutput =
-    typeof result === "string" &&
-    (result.startsWith("Usage:") ||
-      result.startsWith(t("command.error.notFound")) ||
-      result.startsWith(t("command.error.noSuchFile")) ||
-      result.startsWith(t("command.error.dirNotFound")));
+    (typeof result === "string" &&
+      usageKeys.some((key) => result.startsWith(t(key)))) ||
+    result.startsWith(t("command.error.notFound")) ||
+    result.startsWith(t("command.error.noSuchFile")) ||
+    result.startsWith(t("command.error.dirNotFound"));
 
   if (!isSystemCmd) {
     checkTaskCompletion(command, cmd, result, isErrorOutput);

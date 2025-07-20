@@ -278,6 +278,17 @@ export function checkTaskCompletion(
       success && currentDir?.children[check.fileExists]?.type === "file";
   }
 
+  // Check if the command matches the expected command
+  if (check.expectedCommandArgs) {
+    const enteredArgs = command.trim().split(" ").slice(1);
+    const expectedArgs = check.expectedCommandArgs;
+
+    // Compare entered arguments with expected ones
+    const argsMatch =
+      JSON.stringify(enteredArgs) === JSON.stringify(expectedArgs);
+    success = success && argsMatch;
+  }
+
   // Check if specified directory exists
   if (check.dirExists) {
     success = success && currentDir?.children[check.dirExists]?.type === "dir";
