@@ -3,7 +3,8 @@
   "description": "module2.task2.description",
   "type": "cat",
   "check": {
-    "fileExists": "note.txt"
+    "fileExists": "note.txt",
+    "expectedCommandArgs": ["note.txt"]
   },
   "fs": {
     "name": "/",

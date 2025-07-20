@@ -4,6 +4,7 @@
   "type": "less",
   "check": {
     "fileExists": "log.txt",
+    "expectedCommandArgs": ["log.txt"],
     "expectedOutputIncludes": ["Error log:"]
   },
   "fs": {
