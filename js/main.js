@@ -2,6 +2,7 @@ import { setupThemeSwitcher } from "./ui/theme-switcher.js";
 import { TerminalCaret, showWelcomeMessage } from "./ui/terminal-ui.js";
 import { executeCommand } from "./core/command-executor.js";
 import { loadLocale } from "./core/i18n.js";
+import { setupSettingsModal } from "./ui/settings-modal.js";
 
 /**
  * Entry point for initializing the Command Line Trainer interface.
@@ -20,14 +21,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Set up the theme switcher functionality
   setupThemeSwitcher();
 
+  // Set up settings modal functionality
+  setupSettingsModal();
+
   // Print welcome instructions to the terminal
   showWelcomeMessage();
 
   // Initialize the custom terminal input with caret rendering
   const caret = new TerminalCaret({
-    inputId: "hidden-input",               // ID of the invisible <input> element
-    renderedId: "custom-rendered-input",   // ID of the visual caret/text renderer
-    outputId: "output",                    // ID of the container where output is printed
+    inputId: "hidden-input", // ID of the invisible <input> element
+    renderedId: "custom-rendered-input", // ID of the visual caret/text renderer
+    outputId: "output", // ID of the container where output is printed
   });
 
   // Set focus so the user can start typing immediately
