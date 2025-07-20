@@ -108,6 +108,7 @@ tasks/
 - `fileDoesNotExist` – confirms that a file has been removed
 - `expectedOutputIncludes` – output must include specific strings
 - `expectedOutputIncludesKeys` – output must include translated strings resolved from localization keys (for multi-language support)
+- `expectedCommandArgs` – checks that the user entered specific command-line arguments (e.g., `["note.txt"]`)
 
 ## Modular JavaScript Structure
 
