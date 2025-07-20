@@ -1,12 +1,9 @@
 .settings-modal {
-  position: absolute;
-  top: 40px;
-  right: 10px;
+  position: relative;
   background-color: var(--color-bg);
   border: 1px solid var(--color-accent);
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
   font-family: var(--font-main);
   font-size: 12px;
   color: var(--color-muted);
@@ -103,4 +100,11 @@
       }
     }
   }
+}
+
+.settings-container {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 9999;
 }
