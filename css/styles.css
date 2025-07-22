@@ -6,6 +6,7 @@
   --color-accent: #888888;
   --color-terminal-bg: #000;
   --color-matrix-bg: rgba(0, 0, 0, 0.05);
+  --color-hover-bg: rgba(255, 255, 255, 0.05);
   --font-main: "Courier New", monospace;
   --font-size-base: 14px;
   --icon-filter: invert(100%) brightness(110%);
@@ -18,6 +19,7 @@
   --color-accent: #007acc;
   --color-terminal-bg: #f3f3f3;
   --color-matrix-bg: rgba(255, 255, 255, 0.08);
+  --color-hover-bg: rgba(0, 0, 0, 0.05);
   --icon-filter: invert(0%) brightness(90%);
 }
 
@@ -187,7 +189,7 @@ body {
   height: 1px;
   background-color: var(--color-accent);
   opacity: 0.2;
-  margin: 0;
+  margin: 4px 0;
   border: none;
 }
 .settings-list li.has-submenu > span {
@@ -201,10 +203,11 @@ body {
   cursor: pointer;
   font-family: var(--font-main);
   font-size: 12px;
+  transition: background-color 0.2s;
 }
 .settings-list li.has-submenu > span:hover {
-  background-color: var(--color-matrix-bg);
-  text-decoration: underline;
+  background-color: var(--color-hover-bg);
+  text-decoration: none;
 }
 .settings-list li.has-submenu > span::after {
   content: "◂";
@@ -241,10 +244,11 @@ body {
   cursor: pointer;
   font-family: var(--font-main);
   font-size: 12px;
+  transition: background-color 0.2s;
 }
 .settings-list button:hover {
-  background-color: var(--color-matrix-bg);
-  text-decoration: underline;
+  background-color: var(--color-hover-bg);
+  text-decoration: none;
 }
 
 .theme-submenu {
@@ -266,10 +270,11 @@ body {
   cursor: pointer;
   font-family: var(--font-main);
   font-size: 12px;
+  transition: background-color 0.2s;
 }
 .theme-submenu li button:hover {
-  background-color: var(--color-matrix-bg);
-  text-decoration: underline;
+  background-color: var(--color-hover-bg);
+  text-decoration: none;
 }
 
 .settings-container {

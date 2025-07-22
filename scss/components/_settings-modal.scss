@@ -47,10 +47,11 @@
         cursor: pointer;
         font-family: var(--font-main);
         font-size: 12px;
+        transition: background-color 0.2s;
 
         &:hover {
-          background-color: var(--color-matrix-bg);
-          text-decoration: underline;
+          background-color: var(--color-hover-bg);
+          text-decoration: none;
         }
 
         &::after {
@@ -94,10 +95,11 @@
     cursor: pointer;
     font-family: var(--font-main);
     font-size: 12px;
+    transition: background-color 0.2s;
 
     &:hover {
-      background-color: var(--color-matrix-bg);
-      text-decoration: underline;
+      background-color: var(--color-hover-bg);
+      text-decoration: none;
     }
   }
 }
@@ -121,10 +123,11 @@
       cursor: pointer;
       font-family: var(--font-main);
       font-size: 12px;
+      transition: background-color 0.2s;
 
       &:hover {
-        background-color: var(--color-matrix-bg);
-        text-decoration: underline;
+        background-color: var(--color-hover-bg);
+        text-decoration: none;
       }
     }
   }
