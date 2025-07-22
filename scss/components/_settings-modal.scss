@@ -27,6 +27,14 @@
       margin-bottom: 0;
     }
 
+    &.divider {
+      height: 1px;
+      background-color: var(--color-accent);
+      opacity: 0.2;
+      margin: 4px 0;
+      border: none;
+    }
+
     &.has-submenu {
       > span {
         display: block;

@@ -183,6 +183,13 @@ body {
 .settings-list li:last-child {
   margin-bottom: 0;
 }
+.settings-list li.divider {
+  height: 1px;
+  background-color: var(--color-accent);
+  opacity: 0.2;
+  margin: 0;
+  border: none;
+}
 .settings-list li.has-submenu > span {
   display: block;
   width: 100%;
