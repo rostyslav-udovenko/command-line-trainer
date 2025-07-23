@@ -204,7 +204,6 @@ body {
   font-family: var(--font-main);
   font-size: 12px;
   padding: 6px 8px;
-  transition: background-color 0.2s;
 }
 .settings-list li.has-submenu > span:hover {
   background-color: var(--color-hover-bg);
@@ -245,7 +244,6 @@ body {
   cursor: pointer;
   font-family: var(--font-main);
   font-size: 12px;
-  transition: background-color 0.2s;
 }
 .settings-list button:hover {
   background-color: var(--color-hover-bg);
@@ -272,7 +270,6 @@ body {
   font-family: var(--font-main);
   font-size: 12px;
   padding: 6px 8px;
-  transition: background-color 0.2s;
 }
 .theme-submenu li button:hover {
   background-color: var(--color-hover-bg);
