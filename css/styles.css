@@ -159,7 +159,7 @@ body {
 }
 
 .settings-modal {
-  position: relative;
+  position: fixed;
   background-color: var(--color-bg);
   border: 1px solid var(--color-accent);
   border-radius: 4px;
@@ -168,6 +168,7 @@ body {
   font-family: var(--font-main);
   font-size: 12px;
   color: var(--color-muted);
+  z-index: 10000;
 }
 .settings-modal.hidden {
   display: none;
