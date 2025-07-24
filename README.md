@@ -125,6 +125,7 @@ js/
 ├── effects/                        # Visual effects and easter eggs
 │   └── matrix-mode.js              # Matrix Rain mode
 ├── ui/                             # Terminal user interface logic
+│   ├── settings-modal.js           # Settings modal functionality and event handlers
 │   ├── terminal-ui.js              # Handles UI: output, input, scrolling
 │   ├── theme-switcher-init.js      # Sets initial theme on first page load based on localStorage
 │   └── theme-switcher.js           # Manages the switching of themes and the toggling of icons
@@ -146,9 +147,10 @@ scss/
 │   ├── _reset.scss                 # Reset and normalize styles
 │   └── _typography.scss            # Typography rules
 ├── components/                     # Reusable UI components
+│   ├── _icon-button.scss           # Icon button styles
 │   ├── _input.scss                 # Input field styling
 │   ├── _prompt.scss                # Prompt symbol and input wrapper
-│   └── _theme-icon.scss            # Styles for theme toggle icon
+│   └── _settings-modal.scss        # Settings modal dropdown styles
 ├── layout/                         # Structural layout sections
 │   ├── _footer.scss                # Footer styling
 │   ├── _header.scss                # Header styling
@@ -196,9 +198,7 @@ project-root/
 │   ├── styles.css                  # Generated from SCSS (do not edit manually)
 │   └── styles.css.map              # Source map for dev tools
 ├── icons/
-│   ├── dark.svg                    # Icon representing dark theme
-│   ├── help.svg                    # Icon representing help
-│   └── light.svg                   # Icon representing light theme
+│   └── settings.svg                # Icon representing settings
 ├── js/
 │   ├── core/                       # Core logic and virtual file system operations
 │   │   ├── command-executor.js     # Command definitions and execution logic
@@ -210,6 +210,7 @@ project-root/
 │   ├── effects/                    # Visual effects and easter eggs
 │   │   └── matrix-mode.js          # Matrix Rain mode
 │   ├── ui/                         # Terminal user interface logic
+│   │   ├── settings-modal.js       # Settings modal functionality and event handlers
 │   │   ├── terminal-ui.js          # Handles UI: output, input, scrolling
 │   │   ├── theme-switcher-init.js  # Sets initial theme on first page load based on localStorage
 │   │   └── theme-switcher.js       # Manages the switching of themes and the toggling of icons
@@ -223,9 +224,10 @@ project-root/
 │   │   ├── _reset.scss             # Reset and normalize styles
 │   │   └── _typography.scss        # Typography rules
 │   ├── components/                 # Reusable UI components
+│   │   ├── _icon-button.scss       # Icon button styles
 │   │   ├── _input.scss             # Input field styling
 │   │   ├── _prompt.scss            # Prompt symbol and input wrapper
-│   │   └── _theme-icon.scss        # Styles for theme toggle icon
+│   │   └── _settings-modal.scss    # Settings modal dropdown styles
 │   ├── layout/                     # Structural layout sections
 │   │   ├── _footer.scss            # Footer styling
 │   │   ├── _header.scss            # Header styling
