@@ -181,16 +181,11 @@ body {
 }
 .settings-list li {
   position: relative;
-  margin-bottom: 0;
-}
-.settings-list li:last-child {
-  margin-bottom: 0;
 }
 .settings-list li.divider {
   height: 1px;
   background-color: var(--color-accent);
   opacity: 0.2;
-  margin: 0;
   border: none;
 }
 .settings-list li.has-submenu > span {
@@ -203,12 +198,9 @@ body {
   text-align: left;
   cursor: pointer;
   font-family: var(--font-main);
-  font-size: 12px;
-  padding: 6px 8px;
 }
 .settings-list li.has-submenu > span:hover {
   background-color: var(--color-hover-bg);
-  text-decoration: none;
 }
 .settings-list li.has-submenu > span::after {
   content: "◂";
@@ -227,9 +219,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   min-width: 180px;
   z-index: 10000;
-  font-family: var(--font-main);
-  font-size: 12px;
-  color: var(--color-muted);
 }
 .settings-list li.has-submenu:hover > .submenu {
   display: block;
@@ -248,16 +237,21 @@ body {
 }
 .settings-list button:hover {
   background-color: var(--color-hover-bg);
-  text-decoration: none;
+}
+.settings-list button.selected {
+  font-weight: bold;
+}
+.settings-list button.selected::after {
+  content: "•";
+  float: right;
+  color: var(--color-muted);
+  padding-left: 6px;
 }
 
 .submenu {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-.submenu li {
-  margin: 0;
 }
 .submenu li button {
   display: block;
@@ -270,11 +264,18 @@ body {
   cursor: pointer;
   font-family: var(--font-main);
   font-size: 12px;
-  padding: 6px 8px;
 }
 .submenu li button:hover {
   background-color: var(--color-hover-bg);
-  text-decoration: none;
+}
+.submenu li button.selected {
+  font-weight: bold;
+}
+.submenu li button.selected::after {
+  content: "•";
+  float: right;
+  color: var(--color-muted);
+  padding-left: 6px;
 }
 
 .settings-container {

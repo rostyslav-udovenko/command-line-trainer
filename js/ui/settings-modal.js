@@ -18,8 +18,30 @@ function positionSettingsModal() {
   const settingsModal = document.getElementById("settings-modal");
   const terminalRect = terminal.getBoundingClientRect();
 
-  settingsModal.style.top = terminalRect.top + 0 + "px";
-  settingsModal.style.right = window.innerWidth - terminalRect.right + 0 + "px";
+  settingsModal.style.top = terminalRect.top + "px";
+  settingsModal.style.right = window.innerWidth - terminalRect.right + "px";
+}
+
+/**
+ * Updates the active selection highlighting in the modal
+ * based on current theme and language stored in localStorage.
+ */
+function updateActiveSelections() {
+  const currentTheme = localStorage.getItem("theme") || "dark";
+  document.querySelectorAll("[data-theme]").forEach((btn) => {
+    btn.classList.toggle(
+      "selected",
+      btn.getAttribute("data-theme") === currentTheme
+    );
+  });
+
+  const currentLocale = localStorage.getItem("locale") || "en";
+  document.querySelectorAll("[data-language]").forEach((btn) => {
+    btn.classList.toggle(
+      "selected",
+      btn.getAttribute("data-language") === currentLocale
+    );
+  });
 }
 
 /**
@@ -35,9 +57,10 @@ window.addEventListener("resize", () => {
 /**
  * Initializes the settings modal:
  * - Opens/closes on settings button click
+ * - Updates active selections
  * - Closes when clicking outside
  * - Switches theme
- * - Switches language (and optionally rerenders welcome message)
+ * - Switches language (with optional welcome re-render)
  * - Toggles hints
  * - Resets progress
  * - Shows help
@@ -46,11 +69,12 @@ export function setupSettingsModal() {
   const settingsBtn = document.getElementById("settings-btn");
   const settingsModal = document.getElementById("settings-modal");
 
-  // Toggle modal open/close when clicking the settings button
+  // Toggle modal open/close on button click and update selections
   if (settingsBtn && settingsModal) {
     settingsBtn.addEventListener("click", (event) => {
-      event.stopPropagation(); // prevent document click listener from closing immediately
+      event.stopPropagation();
       if (settingsModal.classList.contains("hidden")) {
+        updateActiveSelections();
         positionSettingsModal();
         settingsModal.classList.remove("hidden");
       } else {
@@ -59,7 +83,7 @@ export function setupSettingsModal() {
     });
   }
 
-  // Close modal when clicking outside of it (but not on the settings button)
+  // Close modal when clicking outside
   document.addEventListener("click", (event) => {
     if (
       !settingsModal.contains(event.target) &&
@@ -69,25 +93,25 @@ export function setupSettingsModal() {
     }
   });
 
-  // Theme switch buttons (use data-theme attribute)
+  // Theme switch buttons
   document.querySelectorAll("[data-theme]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const theme = btn.getAttribute("data-theme");
       applyTheme(theme);
+      localStorage.setItem("theme", theme);
+      updateActiveSelections();
       settingsModal.classList.add("hidden");
     });
   });
 
-  // Language switch buttons (use data-language attribute)
+  // Language switch buttons
   document.querySelectorAll("[data-language]").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const locale = btn.getAttribute("data-language");
       await loadLocale(locale);
-
-      // save to localStorage so it persists
       localStorage.setItem("locale", locale);
+      updateActiveSelections();
 
-      // If training hasn't started yet, re-render the welcome message in new language
       if (!getStarted()) {
         const output = document.getElementById("output");
         if (output) {
@@ -96,16 +120,14 @@ export function setupSettingsModal() {
         }
       }
 
-      // Show confirmation message
       const localeName = locale === "en" ? "English" : "Ukrainian";
       printOutput(t("command.language.switched", { locale: localeName }));
       scrollToBottom();
-
       settingsModal.classList.add("hidden");
     });
   });
 
-  // Toggle hints on/off
+  // Toggle hints
   const toggleHintsBtn = document.getElementById("toggle-hints");
   if (toggleHintsBtn) {
     toggleHintsBtn.addEventListener("click", () => {
@@ -126,7 +148,7 @@ export function setupSettingsModal() {
     });
   }
 
-  // Show help command
+  // Show help
   const showHelpBtn = document.getElementById("show-help");
   if (showHelpBtn) {
     showHelpBtn.addEventListener("click", () => {
