@@ -3,6 +3,15 @@ import { handleWelcomeInput, loadTasks } from "../core/task-manager.js";
 import { t } from "../core/i18n.js";
 
 export let started = false;
+export let caret;
+
+/**
+ * Sets the global caret instance so other modules can access and focus it.
+ * @param {TerminalCaret} instance - The caret instance to store.
+ */
+export function setCaret(instance) {
+  caret = instance;
+}
 
 /**
  * TerminalCaret handles user input rendering in a simulated terminal interface.
@@ -41,8 +50,8 @@ export class TerminalCaret {
   }
 
   /**
-   * @private
-   * Binds event listeners for handling keyboard input and rendering the caret.
+   * Binds events: input, focus, Enter key to execute commands, etc.
+   * Keeps the caret always at the end and focused.
    */
   _bindEvents() {
     if (!this.inputField || !this.rendered) return;
@@ -56,7 +65,7 @@ export class TerminalCaret {
     );
     this.inputField.addEventListener("focus", () => this._render());
 
-    // Capture printable characters even when input is not focused
+    // Focus input if user starts typing anywhere
     document.addEventListener("keydown", (e) => {
       if (e.key.length === 1 && document.activeElement !== this.inputField) {
         e.preventDefault();
@@ -64,7 +73,7 @@ export class TerminalCaret {
       }
     });
 
-    // Handle command submission on Enter key
+    // Handle Enter to run command
     this.inputField.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -87,33 +96,19 @@ export class TerminalCaret {
   }
 
   /**
-   * @private
-   * Renders the visual representation of input text with a custom caret.
+   * Renders all text as spans and always adds custom caret at the end.
+   * This avoids cursor jump when typing.
    */
   _render() {
     const value = this.inputField.value;
-    const start = this.inputField.selectionStart || 0;
-    const end = this.inputField.selectionEnd || 0;
-    const isSelected = start !== end;
+    const chars = value
+      .split("")
+      .map((char) => `<span>${char}</span>`)
+      .join("");
 
-    const chars = [];
-
-    for (let i = 0; i < value.length; i++) {
-      const char = value[i] || " ";
-      if (isSelected && i >= start && i < end) {
-        chars.push(`<span class="selected">${char}</span>`);
-      } else if (!isSelected && i === start) {
-        chars.push(`<span class="custom-caret">${char || "&nbsp;"}</span>`);
-      } else {
-        chars.push(`<span>${char}</span>`);
-      }
-    }
-
-    if (start === value.length && !isSelected) {
-      chars.push(`<span class="custom-caret">&nbsp;</span>`);
-    }
-
-    this.rendered.innerHTML = chars.join("");
+    this.rendered.innerHTML =
+      chars + `<span class="custom-caret">&nbsp;</span>`;
+    this._scrollToBottom();
   }
 
   /**
@@ -159,8 +154,8 @@ export class TerminalCaret {
   }
 
   /**
-   * @private
    * Scrolls the terminal to the bottom.
+   * @private
    */
   _scrollToBottom() {
     const terminal = document.getElementById("terminal");
@@ -169,26 +164,26 @@ export class TerminalCaret {
 }
 
 /**
- * Displays the initial welcome instructions in the terminal.
+ * Shows the initial welcome message in the terminal.
  */
 export function showWelcomeMessage() {
   printOutput(`<strong>${t("terminal.ui.welcome.title")}</strong>`);
   printOutput("&nbsp;");
-  printOutput(`${t("terminal.ui.welcome.intro.1")}`);
-  printOutput(`${t("terminal.ui.welcome.intro.2")}`);
+  printOutput(t("terminal.ui.welcome.intro.1"));
+  printOutput(t("terminal.ui.welcome.intro.2"));
   printOutput("&nbsp;");
-  printOutput(`${t("terminal.ui.welcome.gettingStarted")}`);
-  printOutput(`${t("terminal.ui.welcome.help")}`);
-  printOutput(`${t("terminal.ui.welcome.man")}`);
-  printOutput(`${t("terminal.ui.welcome.followTasks")}`);
+  printOutput(t("terminal.ui.welcome.gettingStarted"));
+  printOutput(t("terminal.ui.welcome.help"));
+  printOutput(t("terminal.ui.welcome.man"));
+  printOutput(t("terminal.ui.welcome.followTasks"));
   printOutput("&nbsp;");
-  printOutput(`${t("command.help.systemCommands")}`);
-  printOutput(`${t("command.help.systemCommandsList.hint")}`);
-  printOutput(`${t("command.help.systemCommandsList.theme")}`);
-  printOutput(`${t("command.help.systemCommandsList.progress.reset")}`);
-  printOutput(`${t("command.help.systemCommandsList.language")}`);
+  printOutput(t("command.help.systemCommands"));
+  printOutput(t("command.help.systemCommandsList.hint"));
+  printOutput(t("command.help.systemCommandsList.theme"));
+  printOutput(t("command.help.systemCommandsList.progress.reset"));
+  printOutput(t("command.help.systemCommandsList.language"));
   printOutput("&nbsp;");
-  printOutput(`${t("terminal.ui.welcome.ready")}`);
+  printOutput(t("terminal.ui.welcome.ready"));
 }
 
 /**

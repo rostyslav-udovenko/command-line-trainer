@@ -7,6 +7,7 @@ import {
   showWelcomeMessage,
   printOutput,
   scrollToBottom,
+  caret,
 } from "./terminal-ui.js";
 
 /**
@@ -124,6 +125,7 @@ export function setupSettingsModal() {
       printOutput(t("command.language.switched", { locale: localeName }));
       scrollToBottom();
       settingsModal.classList.add("hidden");
+      caret?.focus();
     });
   });
 

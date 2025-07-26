@@ -1,5 +1,5 @@
 import { setupThemeSwitcher } from "./ui/theme-switcher.js";
-import { TerminalCaret, showWelcomeMessage } from "./ui/terminal-ui.js";
+import { setCaret, showWelcomeMessage, TerminalCaret } from "./ui/terminal-ui.js";
 import { executeCommand } from "./core/command-executor.js";
 import { loadLocale } from "./core/i18n.js";
 import { setupSettingsModal } from "./ui/settings-modal.js";
@@ -28,14 +28,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   showWelcomeMessage();
 
   // Initialize the custom terminal input with caret rendering
-  const caret = new TerminalCaret({
-    inputId: "hidden-input", // ID of the invisible <input> element
-    renderedId: "custom-rendered-input", // ID of the visual caret/text renderer
-    outputId: "output", // ID of the container where output is printed
+  const caretInstance = new TerminalCaret({
+    inputId: "hidden-input",
+    renderedId: "custom-rendered-input",
+    outputId: "output",
   });
+  setCaret(caretInstance);
 
   // Set focus so the user can start typing immediately
-  caret.focus();
+  caretInstance.focus();
 
   const helpBtn = document.getElementById("help-btn");
   if (helpBtn) {
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       executeCommand("help");
 
       // Ensure the caret is focused after showing help
-      caret.focus();
+      caretInstance.focus();
     });
   }
 });
