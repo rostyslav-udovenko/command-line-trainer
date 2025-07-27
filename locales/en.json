@@ -8,6 +8,8 @@
   "terminal.ui.welcome.followTasks": "  Follow the task instructions to progress through modules",
   "terminal.ui.welcome.ready": "Ready to begin? Type `y` to begin or `n` to exit.",
 
+  "settings.modal.startTrainingHint": "To use commands, please start the training by entering 'y' first. If you want to exit, type `n`.",
+
   "modules.1": "Module 1 - Directory Operations",
   "modules.2": "Module 2 - File Operations",
   "modules.3": "Module 3 - File Permissions and Metadata",

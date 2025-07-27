@@ -151,11 +151,17 @@ export function setupSettingsModal() {
   }
 
   // Show help
-  const showHelpBtn = document.getElementById("show-help");
+  const showHelpBtn = document.getElementById("help-btn");
   if (showHelpBtn) {
     showHelpBtn.addEventListener("click", () => {
-      executeCommand("help");
+      if (getStarted()) {
+        executeCommand("help");
+      } else {
+        printOutput(t("settings.modal.startTrainingHint"));
+        scrollToBottom();
+      }
       settingsModal.classList.add("hidden");
+      caret?.focus();
     });
   }
 }
