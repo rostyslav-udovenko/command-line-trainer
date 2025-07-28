@@ -142,3 +142,17 @@
   right: 8px;
   z-index: 9999;
 }
+
+#toggle-hints.hints-on::after {
+  content: "⏽";
+  float: right;
+  color: var(--color-muted);
+  padding-left: 6px;
+}
+
+#toggle-hints.hints-off::after {
+  content: "⭘";
+  float: right;
+  color: var(--color-muted);
+  padding-left: 6px;
+}

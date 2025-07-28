@@ -43,6 +43,14 @@ function updateActiveSelections() {
       btn.getAttribute("data-language") === currentLocale
     );
   });
+
+  const toggleHintsBtn = document.getElementById("toggle-hints");
+  if (toggleHintsBtn) {
+    const enabled =
+      JSON.parse(localStorage.getItem("trainerProgress"))?.hintsEnabled ?? true;
+    toggleHintsBtn.classList.toggle("hints-on", enabled);
+    toggleHintsBtn.classList.toggle("hints-off", !enabled);
+  }
 }
 
 /**
@@ -136,8 +144,19 @@ export function setupSettingsModal() {
       const enabled =
         JSON.parse(localStorage.getItem("trainerProgress"))?.hintsEnabled ??
         true;
-      setHintsEnabled(!enabled);
+      const newEnabled = !enabled;
+      setHintsEnabled(newEnabled);
+      updateActiveSelections();
+
+      if (newEnabled) {
+        printOutput(t("task.manager.hints.enabled"));
+      } else {
+        printOutput(t("task.manager.hints.disabled"));
+      }
+      scrollToBottom();
+
       settingsModal.classList.add("hidden");
+      caret?.focus();
     });
   }
 
