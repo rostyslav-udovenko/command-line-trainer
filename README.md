@@ -1,5 +1,8 @@
 # Сommand Line Trainer
 
+![GitHub License](https://img.shields.io/github/license/rostyslav-udovenko/command-line-trainer)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+
 An easy-to-use terminal simulator that operates within your web browser, designed to assist you in mastering fundamental UNIX-like commands through a virtual file system.
 
 This initiative aims to guide newcomers in learning terminal commands progressively, all within a welcoming and interactive online setting.
