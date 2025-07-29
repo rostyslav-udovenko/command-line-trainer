@@ -111,7 +111,7 @@
   "command.stat.lastModified": "Остання зміна: {{modified}}",
 
   "command.theme.switched": "Переключено на тему {{option}}.",
-  "command.language.switched": "Мову змінено на {{locale}}. Оновіть сторінку, щоб застосувати зміни.",
+  "command.language.switched": "Мову змінено на {{locale}}.",
   "command.progress.reset": "Прогрес навчання скинуто. Перезапуск...",
 
   "command.help.availableCommands": "Доступні команди:",

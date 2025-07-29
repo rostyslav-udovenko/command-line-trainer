@@ -111,7 +111,7 @@
   "command.stat.lastModified": "Last modified: {{modified}}",
 
   "command.theme.switched": "Switched to {{option}} theme.",
-  "command.language.switched": "Switched language to {{locale}}. Please refresh the page to apply changes.",
+  "command.language.switched": "Switched language to {{locale}}.",
   "command.progress.reset": "Training progress has been reset. Restarting training...",
 
   "command.help.availableCommands": "Available commands:",
