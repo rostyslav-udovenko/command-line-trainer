@@ -122,16 +122,19 @@ export function setupSettingsModal() {
       updateActiveSelections();
 
       if (!getStarted()) {
+        // If training hasn't started yet, show welcome message
         const output = document.getElementById("output");
         if (output) {
           output.innerHTML = "";
           showWelcomeMessage();
         }
+      } else {
+        // If training has started, show language switch confirmation message
+        const localeName = locale === "en" ? "English" : "Ukrainian";
+        printOutput(t("command.language.switched", { locale: localeName }));
+        scrollToBottom();
       }
 
-      const localeName = locale === "en" ? "English" : "Ukrainian";
-      printOutput(t("command.language.switched", { locale: localeName }));
-      scrollToBottom();
       settingsModal.classList.add("hidden");
       caret?.focus();
     });
