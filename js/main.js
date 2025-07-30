@@ -3,6 +3,7 @@ import { setCaret, showWelcomeMessage, TerminalCaret } from "./ui/terminal-ui.js
 import { executeCommand } from "./core/command-executor.js";
 import { loadLocale } from "./core/i18n.js";
 import { setupSettingsModal } from "./ui/settings-modal.js";
+import { updateStaticTranslations } from "./ui/i18n-ui.js";
 
 /**
  * Entry point for initializing the Command Line Trainer interface.
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Load locale from localStorage or fallback to English
   const savedLocale = localStorage.getItem("locale") || "en";
   await loadLocale(savedLocale);
+  updateStaticTranslations();
 
   // Set up the theme switcher functionality
   setupThemeSwitcher();

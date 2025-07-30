@@ -9,6 +9,7 @@ import {
   scrollToBottom,
   caret,
 } from "./terminal-ui.js";
+import { updateStaticTranslations } from "./i18n-ui.js";
 
 /**
  * Calculates and applies the position of the settings modal
@@ -120,6 +121,7 @@ export function setupSettingsModal() {
       await loadLocale(locale);
       localStorage.setItem("locale", locale);
       updateActiveSelections();
+      updateStaticTranslations();
 
       if (!getStarted()) {
         // If training hasn't started yet, show welcome message
