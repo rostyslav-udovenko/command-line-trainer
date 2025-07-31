@@ -73,6 +73,21 @@ export class TerminalCaret {
       }
     });
 
+    // Сlose modal if open when user starts typing
+    document.addEventListener("keydown", (e) => {
+      if (e.key.length === 1 || e.key === "Enter") {
+        const settingsModal = document.getElementById("settings-modal");
+        if (settingsModal && !settingsModal.classList.contains("hidden")) {
+          settingsModal.classList.add("hidden");
+
+          if (e.key.length === 1) {
+            this.inputField.value += e.key;
+            this._render();
+          }
+        }
+      }
+    });
+
     // Handle Enter to run command
     this.inputField.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
