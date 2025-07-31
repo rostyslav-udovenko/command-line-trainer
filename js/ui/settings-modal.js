@@ -100,6 +100,7 @@ export function setupSettingsModal() {
       !settingsBtn.contains(event.target)
     ) {
       settingsModal.classList.add("hidden");
+      caret?.focus();
     }
   });
 
