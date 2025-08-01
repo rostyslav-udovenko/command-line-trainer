@@ -1,4 +1,4 @@
-import { setupThemeSwitcher } from "./ui/theme-switcher.js";
+import { setupTheme } from "./ui/theme-switcher.js";
 import { setCaret, showWelcomeMessage, TerminalCaret } from "./ui/terminal-ui.js";
 import { executeCommand } from "./core/command-executor.js";
 import { loadLocale } from "./core/i18n.js";
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateStaticTranslations();
 
   // Set up the theme switcher functionality
-  setupThemeSwitcher();
+  setupTheme();
 
   // Set up settings modal functionality
   setupSettingsModal();
