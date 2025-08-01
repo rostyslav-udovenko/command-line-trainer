@@ -77,12 +77,23 @@ function showTask(index) {
 
   setupFileSystem(task.fs);
   virtualFileSystem.currentDirectory = task.startDirectory || "/";
-  printOutput(`<strong>${task.moduleName}</strong>`);
-  printOutput(
-    `<strong>${t("task.manager.task.label")} ${task.id}:</strong> ${t(
-      task.description
-    )}`
-  );
+
+  const output = document.getElementById("output");
+  if (output) {
+    const lines = [
+      `<strong>${task.moduleName}</strong>`,
+      `<strong>${t("task.manager.task.label")} ${task.id}:</strong> ${t(
+        task.description
+      )}`,
+    ];
+
+    lines.forEach((html) => {
+      const div = document.createElement("div");
+      div.className = "terminal-line";
+      div.innerHTML = html;
+      output.appendChild(div);
+    });
+  }
 }
 
 /**
@@ -117,6 +128,7 @@ export async function handleWelcomeInput(command, loadTasksCallback) {
   if (command.toLowerCase() === "y") {
     printOutput(`${t("task.manager.training.started")}`);
     printHintsStatus();
+    printOutput(t("task.manager.loadingTasks"));
     await loadTasksCallback();
     return true;
   } else if (command.toLowerCase() === "n") {
@@ -198,6 +210,8 @@ export async function loadTasks() {
 
     // Clear tasks array and fill with valid tasks
     tasks.splice(0, tasks.length, ...validTasks);
+
+    printOutput(t("task.manager.loadingDone"));
 
     if (tasks.length > 0) {
       if (currentTaskIndex >= tasks.length) {
