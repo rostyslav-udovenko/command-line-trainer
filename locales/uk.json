@@ -26,6 +26,9 @@
   "modules.3": "Модуль 3 - Права доступу та метадані",
   "modules.4": "Модуль 4 - Системні команди",
 
+  "task.manager.loadingTasks": "Завантаження завдань...",
+  "task.manager.loadingDone": "Завдання завантажено!",
+
   "task.manager.error.taskDataMissing": "Помилка: дані завдання відсутні.",
   "task.manager.error.noTasksLoaded": "Помилка: Жодне завдання не завантажене або неправильний прогрес.",
   "task.manager.error.taskDataMissingCheck": "Помилка: дані завдання відсутні.",

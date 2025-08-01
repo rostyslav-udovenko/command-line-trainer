@@ -26,6 +26,9 @@
   "modules.3": "Module 3 - File Permissions and Metadata",
   "modules.4": "Module 4 - System Commands",
 
+  "task.manager.loadingTasks": "Loading tasks...",
+  "task.manager.loadingDone": "Tasks loaded!",
+
   "task.manager.error.taskDataMissing": "Error: task data is missing.",
   "task.manager.error.noTasksLoaded": "Error: No tasks loaded or invalid progress.",
   "task.manager.error.taskDataMissingCheck": "Error: task data missing.",
