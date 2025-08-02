@@ -131,7 +131,7 @@ js/
 │   ├── settings-modal.js           # Settings modal functionality and event handlers
 │   ├── terminal-ui.js              # Handles UI: output, input, scrolling
 │   ├── theme-switcher-init.js      # Sets initial theme on first page load based on localStorage
-│   └── theme-switcher.js           # Manages the switching of themes and the toggling of icons
+│   └── theme-manager.js            # Handles theme initialization and application
 └── main.js                         # Entry point, initializes everything
  ```
 
@@ -216,7 +216,7 @@ project-root/
 │   │   ├── settings-modal.js       # Settings modal functionality and event handlers
 │   │   ├── terminal-ui.js          # Handles UI: output, input, scrolling
 │   │   ├── theme-switcher-init.js  # Sets initial theme on first page load based on localStorage
-│   │   └── theme-switcher.js       # Manages the switching of themes and the toggling of icons
+│   │   └── theme-manager.js        # Handles theme initialization and application
 │   └── main.js                     # Entry point, initializes everything
 ├── locales/
 │   ├── en.json                     # English localization file

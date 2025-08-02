@@ -1,3 +1,3 @@
-import { setupTheme } from "./theme-switcher.js";
+import { setupTheme } from "./theme-manager.js";
 
 setupTheme();
