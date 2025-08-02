@@ -1,4 +1,4 @@
-import { applyTheme } from "../ui/theme-switcher.js";
+import { applyTheme } from "../ui/theme-manager.js";
 import {
   virtualFileSystem,
   getDirectory,

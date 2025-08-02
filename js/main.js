@@ -1,4 +1,4 @@
-import { setupTheme } from "./ui/theme-switcher.js";
+import { setupTheme } from "./ui/theme-manager.js";
 import { setCaret, showWelcomeMessage, TerminalCaret } from "./ui/terminal-ui.js";
 import { executeCommand } from "./core/command-executor.js";
 import { loadLocale } from "./core/i18n.js";

@@ -1,4 +1,4 @@
-import { applyTheme } from "./theme-switcher.js";
+import { applyTheme } from "./theme-manager.js";
 import { setHintsEnabled } from "../core/task-manager.js";
 import { executeCommand } from "../core/command-executor.js";
 import { loadLocale, t } from "../core/i18n.js";
