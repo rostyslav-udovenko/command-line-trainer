@@ -6,7 +6,7 @@ import {
 } from "./file-system.js";
 import { printOutput, scrollToBottom, setStarted } from "../ui/terminal-ui.js";
 import {
-  checkTaskCompletion,
+  checkTask,
   tasks,
   currentTaskIndex,
   setCurrentTaskIndex,
@@ -90,7 +90,7 @@ export async function executeCommand(command) {
     result.startsWith(t("command.error.dirNotFound"));
 
   if (!isSystemCmd) {
-    checkTaskCompletion(command, cmd, result, isErrorOutput);
+    checkTask(command, cmd, result, isErrorOutput);
   }
 
   scrollToBottom();
