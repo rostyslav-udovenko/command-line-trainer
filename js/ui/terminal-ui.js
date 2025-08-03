@@ -73,7 +73,7 @@ export class TerminalCaret {
       }
     });
 
-    // Сlose modal if open when user starts typing
+    // Close modal if open when user starts typing
     document.addEventListener("keydown", (e) => {
       if (e.key.length === 1 || e.key === "Enter") {
         const settingsModal = document.getElementById("settings-modal");

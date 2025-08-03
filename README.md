@@ -206,7 +206,7 @@ project-root/
 │   ├── core/                       # Core logic and virtual file system operations
 │   │   ├── command-executor.js     # Command definitions and execution logic
 │   │   ├── file-system.js          # Virtual file system operations
-│   │   ├── i18n.js                 # Internationalization (i18n): loads and applies
+│   │   ├── i18n.js                 # Internationalization (i18n): loads and applies translations
 │   │   └── task-manager.js         # Task loading, validation and flow control
 │   ├── data/                       # Static data for internal commands
 │   │   └── manual-pages.js         # Manual entries for use by the `man` command

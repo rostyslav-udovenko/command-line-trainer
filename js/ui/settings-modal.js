@@ -1,7 +1,7 @@
 import { applyTheme } from "./theme-manager.js";
 import { setHintsEnabled } from "../core/task-manager.js";
 import { executeCommand } from "../core/command-executor.js";
-import { loadLocale, t } from "../core/i18n.js";
+import { switchLocale, t, updateUI } from "../core/i18n.js";
 import {
   getStarted,
   showWelcomeMessage,
@@ -9,7 +9,6 @@ import {
   scrollToBottom,
   caret,
 } from "./terminal-ui.js";
-import { updateStaticTranslations } from "./i18n-ui.js";
 
 /**
  * Calculates and applies the position of the settings modal
@@ -119,10 +118,15 @@ export function setupSettingsModal() {
   document.querySelectorAll("[data-language]").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const locale = btn.getAttribute("data-language");
-      await loadLocale(locale);
-      localStorage.setItem("locale", locale);
+      const success = await switchLocale(locale);
+
+      if (!success) {
+        printOutput(t("command.error.languageSwitch"));
+        scrollToBottom();
+        return;
+      }
+
       updateActiveSelections();
-      updateStaticTranslations();
 
       if (!getStarted()) {
         // If training hasn't started yet, show welcome message
