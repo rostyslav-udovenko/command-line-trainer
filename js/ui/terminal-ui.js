@@ -1,5 +1,5 @@
 import { executeCommand } from "../core/command-executor.js";
-import { handleWelcomeInput, loadTasks } from "../core/task-manager.js";
+import { handleWelcome, loadTasks } from "../core/task-manager.js";
 import { t } from "../core/i18n.js";
 
 export let started = false;
@@ -98,7 +98,7 @@ export class TerminalCaret {
         this.printToOutput(command);
 
         if (!started) {
-          handleWelcomeInput(command, loadTasks).then((didStart) => {
+          handleWelcome(command, loadTasks).then((didStart) => {
             started = didStart;
           });
         } else {
