@@ -16,7 +16,7 @@ import {
 } from "./task-manager.js";
 import { activateMatrixMode } from "../effects/matrix-mode.js";
 import { manualPages } from "../data/manual-pages.js";
-import { loadLocale, t } from "./i18n.js";
+import { switchLocale, t } from "./i18n.js";
 
 /**
  * Parses and executes a terminal command, prints result,
@@ -574,9 +574,12 @@ const commands = {
     const locale = arg.toLowerCase();
 
     if (locale === "en" || locale === "uk") {
-      await loadLocale(locale);
-      localStorage.setItem("locale", locale);
-      return t("command.language.switched", { locale });
+      const success = await switchLocale(locale);
+      if (success) {
+        return t("command.language.switched", { locale });
+      } else {
+        return t("command.error.languageSwitch");
+      }
     }
 
     return t("command.language.usage");

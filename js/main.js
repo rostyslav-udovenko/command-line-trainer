@@ -1,9 +1,12 @@
 import { setupTheme } from "./ui/theme-manager.js";
-import { setCaret, showWelcomeMessage, TerminalCaret } from "./ui/terminal-ui.js";
+import {
+  setCaret,
+  showWelcomeMessage,
+  TerminalCaret,
+} from "./ui/terminal-ui.js";
 import { executeCommand } from "./core/command-executor.js";
-import { loadLocale } from "./core/i18n.js";
+import { setupI18n } from "./core/i18n.js";
 import { setupSettingsModal } from "./ui/settings-modal.js";
-import { updateStaticTranslations } from "./ui/i18n-ui.js";
 
 /**
  * Entry point for initializing the Command Line Trainer interface.
@@ -15,10 +18,8 @@ import { updateStaticTranslations } from "./ui/i18n-ui.js";
  * - Focuses the input field for immediate user interaction.
  */
 document.addEventListener("DOMContentLoaded", async () => {
-  // Load locale from localStorage or fallback to English
-  const savedLocale = localStorage.getItem("locale") || "en";
-  await loadLocale(savedLocale);
-  updateStaticTranslations();
+  // Setup i18n with saved locale or default
+  await setupI18n();
 
   // Set up the theme switcher functionality
   setupTheme();
