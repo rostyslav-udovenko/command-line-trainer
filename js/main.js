@@ -5,7 +5,7 @@ import {
   TerminalCaret,
 } from "./ui/terminal-ui.js";
 import { executeCommand } from "./core/command-executor.js";
-import { setupI18n } from "./core/i18n.js";
+import { setupI18n, updateUI } from "./core/i18n.js";
 import { setupSettingsModal } from "./ui/settings-modal.js";
 
 /**
@@ -20,6 +20,8 @@ import { setupSettingsModal } from "./ui/settings-modal.js";
 document.addEventListener("DOMContentLoaded", async () => {
   // Setup i18n with saved locale or default
   await setupI18n();
+
+  updateUI();
 
   // Set up the theme switcher functionality
   setupTheme();
