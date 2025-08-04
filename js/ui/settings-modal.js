@@ -1,7 +1,7 @@
 import { applyTheme } from "./theme-manager.js";
 import { setHintsEnabled } from "../core/task-manager.js";
 import { executeCommand } from "../core/command-executor.js";
-import { switchLocale, t, updateUI } from "../core/i18n.js";
+import { switchLocale, t } from "../core/i18n.js";
 import {
   getStarted,
   showWelcomeMessage,
@@ -10,114 +10,83 @@ import {
   caret,
 } from "./terminal-ui.js";
 
-/**
- * Calculates and applies the position of the settings modal
- * relative to the terminal element on the page.
- */
-function positionSettingsModal() {
+function positionModal() {
   const terminal = document.getElementById("terminal");
-  const settingsModal = document.getElementById("settings-modal");
-  const terminalRect = terminal.getBoundingClientRect();
+  const modal = document.getElementById("settings-modal");
+  const rect = terminal.getBoundingClientRect();
 
-  settingsModal.style.top = terminalRect.top + "px";
-  settingsModal.style.right = window.innerWidth - terminalRect.right + "px";
+  modal.style.top = rect.top + "px";
+  modal.style.right = window.innerWidth - rect.right + "px";
 }
 
-/**
- * Updates the active selection highlighting in the modal
- * based on current theme and language stored in localStorage.
- */
-function updateActiveSelections() {
+function updateSelections() {
   const currentTheme = localStorage.getItem("theme") || "dark";
   document.querySelectorAll("[data-theme]").forEach((btn) => {
-    btn.classList.toggle(
-      "selected",
-      btn.getAttribute("data-theme") === currentTheme
-    );
+    btn.classList.toggle("selected", btn.dataset.theme === currentTheme);
   });
 
-  const currentLocale = localStorage.getItem("locale") || "en";
+  const currentLang = localStorage.getItem("locale") || "en";
   document.querySelectorAll("[data-language]").forEach((btn) => {
-    btn.classList.toggle(
-      "selected",
-      btn.getAttribute("data-language") === currentLocale
-    );
+    btn.classList.toggle("selected", btn.dataset.language === currentLang);
   });
 
-  const toggleHintsBtn = document.getElementById("toggle-hints");
-  if (toggleHintsBtn) {
-    const enabled =
-      JSON.parse(localStorage.getItem("trainerProgress"))?.hintsEnabled ?? true;
-    toggleHintsBtn.classList.toggle("hints-on", enabled);
-    toggleHintsBtn.classList.toggle("hints-off", !enabled);
+  const hintsBtn = document.getElementById("toggle-hints");
+  if (hintsBtn) {
+    const progress = JSON.parse(localStorage.getItem("trainerProgress"));
+    const hintsOn = progress?.hintsEnabled ?? true;
+    hintsBtn.classList.toggle("hints-on", hintsOn);
+    hintsBtn.classList.toggle("hints-off", !hintsOn);
   }
 }
 
-/**
- * Handles window resize events: repositions the modal if it's visible.
- */
 window.addEventListener("resize", () => {
-  const settingsModal = document.getElementById("settings-modal");
-  if (!settingsModal.classList.contains("hidden")) {
-    positionSettingsModal();
+  const modal = document.getElementById("settings-modal");
+  if (!modal.classList.contains("hidden")) {
+    positionModal();
   }
 });
 
 /**
- * Initializes the settings modal:
- * - Opens/closes on settings button click
- * - Updates active selections
- * - Closes when clicking outside
- * - Switches theme
- * - Switches language (with optional welcome re-render)
- * - Toggles hints
- * - Resets progress
- * - Shows help
+ * Initializes settings modal functionality.
  */
 export function setupSettingsModal() {
-  const settingsBtn = document.getElementById("settings-btn");
-  const settingsModal = document.getElementById("settings-modal");
+  const btn = document.getElementById("settings-btn");
+  const modal = document.getElementById("settings-modal");
 
-  // Toggle modal open/close on button click and update selections
-  if (settingsBtn && settingsModal) {
-    settingsBtn.addEventListener("click", (event) => {
-      event.stopPropagation();
-      if (settingsModal.classList.contains("hidden")) {
-        updateActiveSelections();
-        positionSettingsModal();
-        settingsModal.classList.remove("hidden");
+  if (btn && modal) {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (modal.classList.contains("hidden")) {
+        updateSelections();
+        positionModal();
+        modal.classList.remove("hidden");
       } else {
-        settingsModal.classList.add("hidden");
+        modal.classList.add("hidden");
       }
     });
   }
 
-  // Close modal when clicking outside
-  document.addEventListener("click", (event) => {
-    if (
-      !settingsModal.contains(event.target) &&
-      !settingsBtn.contains(event.target)
-    ) {
-      settingsModal.classList.add("hidden");
+  document.addEventListener("click", (e) => {
+    if (!modal.contains(e.target) && !btn.contains(e.target)) {
+      modal.classList.add("hidden");
       caret?.focus();
     }
   });
 
-  // Theme switch buttons
   document.querySelectorAll("[data-theme]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const theme = btn.getAttribute("data-theme");
+      const theme = btn.dataset.theme;
       applyTheme(theme);
       localStorage.setItem("theme", theme);
-      updateActiveSelections();
-      settingsModal.classList.add("hidden");
+      updateSelections();
+      modal.classList.add("hidden");
+      caret?.focus();
     });
   });
 
-  // Language switch buttons
   document.querySelectorAll("[data-language]").forEach((btn) => {
     btn.addEventListener("click", async () => {
-      const locale = btn.getAttribute("data-language");
+      const locale = btn.dataset.language;
       const success = await switchLocale(locale);
 
       if (!success) {
@@ -126,70 +95,64 @@ export function setupSettingsModal() {
         return;
       }
 
-      updateActiveSelections();
+      updateSelections();
 
       if (!getStarted()) {
-        // If training hasn't started yet, show welcome message
         const output = document.getElementById("output");
         if (output) {
           output.innerHTML = "";
           showWelcomeMessage();
         }
       } else {
-        // If training has started, show language switch confirmation message
-        const localeName = locale === "en" ? "English" : "Ukrainian";
-        printOutput(t("command.language.switched", { locale: localeName }));
+        const name = locale === "en" ? "English" : "Ukrainian";
+        printOutput(t("command.language.switched", { locale: name }));
         scrollToBottom();
       }
 
-      settingsModal.classList.add("hidden");
+      modal.classList.add("hidden");
       caret?.focus();
     });
   });
 
-  // Toggle hints
-  const toggleHintsBtn = document.getElementById("toggle-hints");
-  if (toggleHintsBtn) {
-    toggleHintsBtn.addEventListener("click", () => {
-      const enabled =
-        JSON.parse(localStorage.getItem("trainerProgress"))?.hintsEnabled ??
-        true;
-      const newEnabled = !enabled;
-      setHintsEnabled(newEnabled);
-      updateActiveSelections();
+  const hintsBtn = document.getElementById("toggle-hints");
+  if (hintsBtn) {
+    hintsBtn.addEventListener("click", () => {
+      const progress = JSON.parse(localStorage.getItem("trainerProgress"));
+      const current = progress?.hintsEnabled ?? true;
+      const newValue = !current;
 
-      if (newEnabled) {
-        printOutput(t("task.manager.hints.enabled"));
-      } else {
-        printOutput(t("task.manager.hints.disabled"));
-      }
+      setHintsEnabled(newValue);
+      updateSelections();
+
+      const msg = newValue
+        ? "task.manager.hints.enabled"
+        : "task.manager.hints.disabled";
+      printOutput(t(msg));
       scrollToBottom();
 
-      settingsModal.classList.add("hidden");
+      modal.classList.add("hidden");
       caret?.focus();
     });
   }
 
-  // Reset training progress
-  const resetProgressBtn = document.getElementById("reset-progress");
-  if (resetProgressBtn) {
-    resetProgressBtn.addEventListener("click", () => {
+  const resetBtn = document.getElementById("reset-progress");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
       localStorage.removeItem("trainerProgress");
       location.reload();
     });
   }
 
-  // Show help
-  const showHelpBtn = document.getElementById("help-btn");
-  if (showHelpBtn) {
-    showHelpBtn.addEventListener("click", () => {
+  const helpBtn = document.getElementById("help-btn");
+  if (helpBtn) {
+    helpBtn.addEventListener("click", () => {
       if (getStarted()) {
         executeCommand("help");
       } else {
         printOutput(t("settings.modal.startTrainingHint"));
         scrollToBottom();
       }
-      settingsModal.classList.add("hidden");
+      modal.classList.add("hidden");
       caret?.focus();
     });
   }
