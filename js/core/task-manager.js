@@ -1,5 +1,5 @@
 import {
-  setupFileSystem,
+  initFileSystem,
   getDirectory,
   virtualFileSystem,
 } from "./file-system.js";
@@ -54,7 +54,7 @@ function showTask(index) {
     return;
   }
 
-  setupFileSystem(task.fs);
+  initFileSystem(task.fs);
   virtualFileSystem.currentDirectory = task.startDirectory || "/";
 
   const output = document.getElementById("output");
@@ -286,7 +286,7 @@ export function checkTask(command, cmd, result, isErrorOutput = false) {
         printOutput(`<strong>${nextTask.moduleName}</strong>`);
       }
 
-      setupFileSystem(nextTask.fs);
+      initFileSystem(nextTask.fs);
       virtualFileSystem.currentDirectory = nextTask.startDirectory || "/";
       printOutput(
         `<strong>${t("task.manager.task.label")} ${nextTask.id}:</strong> ${t(

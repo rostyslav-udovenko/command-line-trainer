@@ -2,7 +2,7 @@ import { applyTheme } from "../ui/theme-manager.js";
 import {
   virtualFileSystem,
   getDirectory,
-  normalizePath,
+  resolvePath,
 } from "./file-system.js";
 import { printOutput, scrollToBottom, setStarted } from "../ui/terminal-ui.js";
 import {
@@ -103,7 +103,7 @@ export async function executeCommand(command) {
  * @returns {string} - Status message.
  */
 function changeDirectory(dir) {
-  const newPath = normalizePath(virtualFileSystem.currentDirectory, dir);
+  const newPath = resolvePath(virtualFileSystem.currentDirectory, dir);
   const dirNode = getDirectory(newPath);
 
   if (dirNode) {
