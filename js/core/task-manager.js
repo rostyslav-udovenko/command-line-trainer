@@ -222,6 +222,10 @@ export function checkTask(command, cmd, result, isErrorOutput = false) {
       success && currentDir?.children[check.fileExists]?.type === "file";
   }
 
+  if (check.fileDoesNotExist) {
+    success = success && !currentDir?.children[check.fileDoesNotExist];
+  }
+
   if (check.expectedCommandArgs) {
     const enteredArgs = command.trim().split(" ").slice(1);
     const expectedArgs = check.expectedCommandArgs;
@@ -253,6 +257,18 @@ export function checkTask(command, cmd, result, isErrorOutput = false) {
         success &&
         check.expectedOutputIncludesKeys.every(({ key, params }) => {
           const expectedText = t(key, params || {});
+          return result.includes(expectedText);
+        });
+    } else {
+      success = false;
+    }
+  }
+
+  if (check.expectedOutputIncludes) {
+    if (typeof result === "string") {
+      success =
+        success &&
+        check.expectedOutputIncludes.every((expectedText) => {
           return result.includes(expectedText);
         });
     } else {
