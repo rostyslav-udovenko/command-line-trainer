@@ -1,9 +1,5 @@
 import { applyTheme } from "../ui/theme-manager.js";
-import {
-  virtualFileSystem,
-  getDirectory,
-  resolvePath,
-} from "./file-system.js";
+import { virtualFileSystem, getDirectory, resolvePath } from "./file-system.js";
 import { printOutput, scrollToBottom, setStarted } from "../ui/terminal-ui.js";
 import {
   checkTask,
@@ -15,15 +11,31 @@ import {
   loadTasks,
 } from "./task-manager.js";
 import { activateMatrixMode } from "../effects/matrix-mode.js";
-import { manualPages } from "../data/manual-pages.js";
 import { switchLocale, t } from "./i18n.js";
 
-/**
- * Parses and executes a terminal command, prints result,
- * and optionally checks for task completion.
- *
- * @param {string} command - Full command string entered by user.
- */
+// Manual pages - moved from separate file since it's tightly coupled
+const manPages = {
+  cd: "manual.cd",
+  ls: "manual.ls",
+  pwd: "manual.pwd",
+  mkdir: "manual.mkdir",
+  touch: "manual.touch",
+  help: "manual.help",
+  man: "manual.man",
+  cat: "manual.cat",
+  less: "manual.less",
+  file: "manual.file",
+  cp: "manual.cp",
+  mv: "manual.mv",
+  rm: "manual.rm",
+  chmod: "manual.chmod",
+  stat: "manual.stat",
+  date: "manual.date",
+  whoami: "manual.whoami",
+  uptime: "manual.uptime",
+  mount: "manual.mount",
+};
+
 export async function executeCommand(command) {
   const [cmd, ...args] = command.trim().split(" ");
 
@@ -33,7 +45,7 @@ export async function executeCommand(command) {
     return;
   }
 
-  // allow "progress reset" to work even if all tasks completed
+  // Don't let user continue after finishing all tasks (except reset)
   if (hasCompletedAllTasks() && cmd !== "progress") {
     return;
   }
@@ -50,58 +62,47 @@ export async function executeCommand(command) {
     printOutput(result);
   }
 
-  // Only check task completion if the command is valid and not an error/usage response
-  const systemCommands = [
-    "help",
-    "man",
-    "hint",
-    "theme",
-    "language",
-    "progress",
-  ];
-  const isSystemCmd = systemCommands.includes(cmd);
+  // System commands don't count for task validation
+  const systemCmds = ["help", "man", "hint", "theme", "language", "progress"];
+  const isSystemCmd = systemCmds.includes(cmd);
 
-  const usageKeys = [
-    "command.cat.usage",
-    "command.ls.usage",
-    "command.cd.usage",
-    "command.mkdir.usage",
-    "command.touch.usage",
-    "command.cp.usage",
-    "command.mv.usage",
-    "command.rm.usage",
-    "command.chmod.usage",
-    "command.stat.usage",
-    "command.date.usage",
-    "command.whoami.usage",
-    "command.uptime.usage",
-    "command.mount.usage",
-    "command.theme.usage",
-    "command.language.usage",
-    "command.progress.usage",
-    "command.man.usage",
+  // Check if command failed or showed usage - these don't count as task progress
+  const usageMessages = [
+    t("command.cat.usage"),
+    t("command.ls.usage"),
+    t("command.cd.usage"),
+    t("command.mkdir.usage"),
+    t("command.touch.usage"),
+    t("command.cp.usage"),
+    t("command.mv.usage"),
+    t("command.rm.usage"),
+    t("command.chmod.usage"),
+    t("command.stat.usage"),
+    t("command.date.usage"),
+    t("command.whoami.usage"),
+    t("command.uptime.usage"),
+    t("command.mount.usage"),
+    t("command.theme.usage"),
+    t("command.language.usage"),
+    t("command.progress.usage"),
+    t("command.man.usage"),
   ];
 
-  const isErrorOutput =
+  // Check if command failed or showed usage - these don't count as task progress
+  const isError =
     (typeof result === "string" &&
-      usageKeys.some((key) => result.startsWith(t(key)))) ||
+      usageMessages.some((usage) => result.startsWith(usage))) ||
     result.startsWith(t("command.error.notFound")) ||
     result.startsWith(t("command.error.noSuchFile")) ||
     result.startsWith(t("command.error.dirNotFound"));
 
   if (!isSystemCmd) {
-    checkTask(command, cmd, result, isErrorOutput);
+    checkTask(command, cmd, result, isError);
   }
 
   scrollToBottom();
 }
 
-/**
- * Changes the current working directory if valid.
- *
- * @param {string} dir - Target directory path or relative segment.
- * @returns {string} - Status message.
- */
 function changeDirectory(dir) {
   const newPath = resolvePath(virtualFileSystem.currentDirectory, dir);
   const dirNode = getDirectory(newPath);
@@ -114,12 +115,6 @@ function changeDirectory(dir) {
   }
 }
 
-/**
- * Creates a new directory in the current location.
- *
- * @param {string} name - Directory name.
- * @returns {string} - Status message.
- */
 function createDirectory(name) {
   const currentDir = getDirectory(virtualFileSystem.currentDirectory);
   if (currentDir && !currentDir.children[name]) {
@@ -129,27 +124,9 @@ function createDirectory(name) {
   return t("command.mkdir.exists", { name });
 }
 
-/**
- * Supported command implementations.
- * Each command is a function that returns output (or null).
- */
 const commands = {
-  /**
-   * Prints the current working directory.
-   * @returns {string}
-   */
   pwd: () => virtualFileSystem.currentDirectory,
 
-  /**
-   * Lists files and directories in the current directory.
-   *
-   * If called with the -l flag, lists each entry on a new line and
-   * marks executable files with an asterisk (*).
-   * Returns usage message on unexpected arguments.
-   *
-   * @param {[string]} args - Optional array of command-line arguments (e.g., ["-l"]).
-   * @returns {string} - Formatted directory listing or usage/error message.
-   */
   ls: (args) => {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     if (!currentDir) return t("command.error.dirNotFound");
@@ -157,40 +134,25 @@ const commands = {
     const entries = Object.values(currentDir.children || {});
     if (!entries.length) return t("command.ls.empty");
 
-    // Only allow no args or a single "-l" flag
+    // Only support no args or -l flag
     if (args.length > 1 || (args.length === 1 && args[0] !== "-l")) {
       return t("command.ls.usage");
     }
 
-    const isLongFormat = args[0] === "-l";
+    const longFormat = args[0] === "-l";
 
     return entries
       .map((item) => {
-        const isExec = item.meta?.isExecutable ? "*" : "";
-        return isLongFormat ? item.name + isExec : item.name;
+        const exec = item.meta?.isExecutable ? "*" : "";
+        return longFormat ? item.name + exec : item.name;
       })
-      .join(isLongFormat ? "\n" : " ");
+      .join(longFormat ? "\n" : " ");
   },
 
-  /**
-   * Changes the current directory.
-   * @param {[string]} args - Array with one directory name or path.
-   * @returns {string}
-   */
   cd: ([dir]) => (dir ? changeDirectory(dir) : t("command.cd.usage")),
 
-  /**
-   * Creates a new directory.
-   * @param {[string]} args - Array with one directory name.
-   * @returns {string}
-   */
   mkdir: ([name]) => (name ? createDirectory(name) : t("command.mkdir.usage")),
 
-  /**
-   * Creates a new file or updates last modified time if it exists.
-   * @param {[string]} args - Array with one file name.
-   * @returns {string}
-   */
   touch: ([name]) => {
     if (!name) return t("command.touch.usage");
 
@@ -200,55 +162,25 @@ const commands = {
     const now = new Date().toISOString();
     const file = currentDir.children[name];
 
-    // Update lastModified if file exists
     if (file?.type === "file") {
       file.meta = file.meta || {};
       file.meta.lastModified = now;
       return t("command.touch.touched", { name });
     }
 
-    // Create new file with meta
+    // Create new file
     currentDir.children[name] = {
       name,
       type: "file",
       content: "",
-      meta: {
-        lastModified: now,
-      },
+      meta: { lastModified: now },
     };
 
     return t("command.touch.created", { name });
   },
 
-  /**
-   * Outputs file contents using `cat`.
-   * @param {[string]} args - Array with one file name.
-   * @returns {string}
-   */
   cat: ([name]) => {
-    if (!name) {
-      return t("command.cat.usage");
-    }
-
-    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
-    const file = currentDir?.children[name];
-
-    if (file?.type === "file") {
-      return file.content || ""; // If content is missing, show empty string
-    }
-
-    return t("command.error.noSuchFile", { name });
-  },
-
-  /**
-   * Displays file contents in a simulated pager using `less`.
-   * @param {[string]} args - Array with one file name.
-   * @returns {string}
-   */
-  less: ([name]) => {
-    if (!name) {
-      return t("command.less.usage");
-    }
+    if (!name) return t("command.cat.usage");
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     const file = currentDir?.children[name];
@@ -260,15 +192,21 @@ const commands = {
     return t("command.error.noSuchFile", { name });
   },
 
-  /**
-   * Simulates inspecting a file type using `file`.
-   * @param {[string]} args - Array with one file name.
-   * @returns {string}
-   */
-  file: ([name]) => {
-    if (!name) {
-      return t("command.file.usage");
+  less: ([name]) => {
+    if (!name) return t("command.less.usage");
+
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[name];
+
+    if (file?.type === "file") {
+      return file.content || "";
     }
+
+    return t("command.error.noSuchFile", { name });
+  },
+
+  file: ([name]) => {
+    if (!name) return t("command.file.usage");
 
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     const node = currentDir?.children[name];
@@ -284,16 +222,6 @@ const commands = {
     return t("command.file.isFile", { name });
   },
 
-  /**
-   * Copies a file from one name to another.
-   *
-   * Ensures exactly two arguments are provided: source and destination file names.
-   * Copies both file metadata and content. If source file is not found,
-   * or arguments are incorrect, shows usage or error message.
-   *
-   * @param {[string]} args - Array with command arguments.
-   * @returns {string} - Status message.
-   */
   cp: (args) => {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
@@ -316,15 +244,6 @@ const commands = {
     return t("command.error.sourceNotFound", { src });
   },
 
-  /**
-   * Moves or renames a file in the current directory.
-   *
-   * If the destination is a new name, the file is renamed.
-   * If the destination is an existing directory, the file is moved inside.
-   *
-   * @param {[string]} args - Array with source and destination.
-   * @returns {string} - Status message.
-   */
   mv: (args) => {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
 
@@ -339,11 +258,10 @@ const commands = {
       return t("command.error.sourceNotFound", { src });
     }
 
-    const destinationNode = currentDir.children[dest];
+    const destNode = currentDir.children[dest];
 
-    // If destination is an existing directory -> move file into it
-    if (destinationNode?.type === "dir") {
-      destinationNode.children[src] = {
+    if (destNode?.type === "dir") {
+      destNode.children[src] = {
         name: src,
         type: "file",
         content: sourceFile.content || "",
@@ -352,7 +270,6 @@ const commands = {
       return t("command.mv.moved", { src, dest });
     }
 
-    // Otherwise: rename file in current directory
     currentDir.children[dest] = {
       name: dest,
       type: "file",
@@ -362,9 +279,6 @@ const commands = {
     return t("command.mv.renamed", { src, dest });
   },
 
-  /**
-   * Removes a file from the current directory.
-   */
   rm: ([name]) => {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
     if (!name) return t("command.rm.usage");
@@ -375,9 +289,6 @@ const commands = {
     return t("command.error.noSuchFile", { name });
   },
 
-  /**
-   * Changes file permissions to executable using `chmod +x`.
-   */
   chmod: ([flag, name]) => {
     if (flag !== "+x" || !name) return t("command.chmod.usage");
 
@@ -393,9 +304,6 @@ const commands = {
     return t("command.error.noSuchFile", { name });
   },
 
-  /**
-   * Shows metadata of a file including last modification date.
-   */
   stat: ([name]) => {
     if (!name) return t("command.stat.usage");
 
@@ -413,42 +321,18 @@ const commands = {
     return t("command.error.noSuchFile", { name });
   },
 
-  /**
-   * Displays the current date and time.
-   *
-   * @param {[string]} args - Optional arguments (should be empty).
-   * @returns {string} - Current date or usage message.
-   */
   date: (args) => {
-    if (args.length > 0) {
-      return t("command.date.usage");
-    }
+    if (args.length > 0) return t("command.date.usage");
     return new Date().toString();
   },
 
-  /**
-   * Displays the current user name.
-   *
-   * @param {[string]} args - Optional arguments (should be empty).
-   * @returns {string}
-   */
   whoami: (args) => {
-    if (args.length > 0) {
-      return t("command.whoami.usage");
-    }
+    if (args.length > 0) return t("command.whoami.usage");
     return "user";
   },
 
-  /**
-   * Simulates the `uptime` command by showing current time, uptime duration, users, and load average.
-   *
-   * @param {[string]} args - Optional arguments (should be empty).
-   * @returns {string}
-   */
   uptime: (args) => {
-    if (args.length > 0) {
-      return t("command.uptime.usage");
-    }
+    if (args.length > 0) return t("command.uptime.usage");
 
     const now = new Date();
     const pad = (n) => n.toString().padStart(2, "0");
@@ -468,16 +352,8 @@ const commands = {
     )},  ${users} user,  load average: ${load1}, ${load5}, ${load15}`;
   },
 
-  /**
-   * Simulates the `mount` command output with realistic-looking mount points.
-   *
-   * @param {[string]} args - Optional arguments (should be empty).
-   * @returns {string}
-   */
   mount: (args) => {
-    if (args.length > 0) {
-      return t("command.mount.usage");
-    }
+    if (args.length > 0) return t("command.mount.usage");
 
     return [
       "/dev/sda1 on / type ext4 (rw,relatime,data=ordered)",
@@ -487,9 +363,6 @@ const commands = {
     ].join("\n");
   },
 
-  /**
-   * Prints available commands and usage.
-   */
   help: () => {
     printOutput(t("command.help.availableCommands"));
     printOutput(t("command.help.userCommandsList"));
@@ -503,14 +376,11 @@ const commands = {
     printOutput(t("command.help.moreInfo"));
   },
 
-  /**
-   * Toggles or displays hints for the current task.
-   * @param {[string]} args - Optional argument: 'on' or 'off'
-   * @returns {string}
-   */
   hint: ([arg]) => {
     if (!arg) {
-      return tasks[currentTaskIndex].hint || t("command.hint.noHint");
+      return tasks[currentTaskIndex].hint
+        ? t(tasks[currentTaskIndex].hint)
+        : t("command.hint.noHint");
     }
 
     const option = arg.toLowerCase();
@@ -528,22 +398,11 @@ const commands = {
     return t("command.hint.usage");
   },
 
-  /**
-   * Activates a matrix-mode easter egg.
-   */
   neo: () => {
     activateMatrixMode();
     return null;
   },
 
-  /**
-   * Resets training progress by clearing localStorage, resetting index,
-   * and reloading tasks from the server so user can start fresh.
-   * Usage: progress reset
-   *
-   * @param {[string]} args - Command arguments (should be ['reset'])
-   * @returns {string|null} - Status message or null if handled asynchronously
-   */
   progress: async ([arg]) => {
     if (arg === "reset") {
       localStorage.removeItem("trainerProgress");
@@ -558,18 +417,8 @@ const commands = {
     return t("command.progress.usage");
   },
 
-  /**
-   * Changes the application language.
-   * Accepts either "en" or "uk" as valid arguments and reloads translations.
-   * Updates localStorage so preference persists.
-   *
-   * @param {[string]} args - An array with a single argument: the desired locale.
-   * @returns {string} - Confirmation message or usage hint.
-   */
   language: async ([arg]) => {
-    if (!arg) {
-      return t("command.language.usage");
-    }
+    if (!arg) return t("command.language.usage");
 
     const locale = arg.toLowerCase();
 
@@ -585,18 +434,8 @@ const commands = {
     return t("command.language.usage");
   },
 
-  /**
-   * Changes the visual theme of the terminal interface.
-   * Accepts either "light" or "dark" as valid arguments and applies the theme accordingly.
-   * Updates both the UI and the saved preference in localStorage.
-   *
-   * @param {[string]} arg - An array with a single argument: the desired theme.
-   * @returns {string} - Confirmation message or usage hint.
-   */
   theme: ([arg]) => {
-    if (!arg) {
-      return t("command.theme.usage");
-    }
+    if (!arg) return t("command.theme.usage");
 
     const option = arg.toLowerCase();
 
@@ -607,13 +446,8 @@ const commands = {
 
     return t("command.theme.usage");
   },
-};
 
-/**
- * Shows manual information for a command, if available.
- *
- * @param {[string]} args - Command name to show documentation for.
- * @returns {string}
- */
-commands.man = ([cmd]) =>
-  cmd && manualPages[cmd] ? t(manualPages[cmd]) : t("command.man.usage");
+  man: ([cmd]) => {
+    return cmd && manPages[cmd] ? t(manPages[cmd]) : t("command.man.usage");
+  },
+};

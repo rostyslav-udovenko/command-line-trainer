@@ -123,6 +123,7 @@
 
   "command.stat.type": "Тип: файл",
   "command.stat.lastModified": "Остання зміна: {{modified}}",
+  "log.txt": "log.txt",
 
   "command.theme.switched": "Переключено на тему {{option}}.",
   "command.language.switched": "Мову змінено на {{locale}}.",

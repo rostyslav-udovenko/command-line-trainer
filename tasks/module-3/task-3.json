@@ -3,7 +3,10 @@
   "description": "module3.task3.description",
   "type": "stat",
   "check": {
-    "expectedOutputIncludes": ["log.txt", "Last modified"]
+    "expectedOutputIncludesKeys": [
+      { "key": "log.txt" },
+      { "key": "command.stat.lastModified", "params": { "modified": "2024-06-01T12:00:00Z" } }
+    ]
   },
   "fs": {
     "name": "/",
