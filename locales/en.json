@@ -123,6 +123,7 @@
 
   "command.stat.type": "Type: file",
   "command.stat.lastModified": "Last modified: {{modified}}",
+  "log.txt": "log.txt",
 
   "command.theme.switched": "Switched to {{option}} theme.",
   "command.language.switched": "Switched language to {{locale}}.",

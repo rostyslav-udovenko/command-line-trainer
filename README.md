@@ -123,8 +123,6 @@ js/
 │   ├── file-system.js              # Virtual file system operations
 │   ├── i18n.js                     # Internationalization (i18n): loads and applies translations
 │   └── task-manager.js             # Task loading, validation and flow control
-├── data/                           # Static data for internal commands
-│   └── manual-pages.js             # Manual entries for use by the `man` command
 ├── effects/                        # Visual effects and easter eggs
 │   └── matrix-mode.js              # Matrix Rain mode
 ├── ui/                             # Terminal user interface logic
@@ -208,8 +206,6 @@ project-root/
 │   │   ├── file-system.js          # Virtual file system operations
 │   │   ├── i18n.js                 # Internationalization (i18n): loads and applies translations
 │   │   └── task-manager.js         # Task loading, validation and flow control
-│   ├── data/                       # Static data for internal commands
-│   │   └── manual-pages.js         # Manual entries for use by the `man` command
 │   ├── effects/                    # Visual effects and easter eggs
 │   │   └── matrix-mode.js          # Matrix Rain mode
 │   ├── ui/                         # Terminal user interface logic
