@@ -4,7 +4,6 @@ import {
   showWelcomeMessage,
   TerminalCaret,
 } from "./ui/terminal-ui.js";
-import { executeCommand } from "./core/command-executor.js";
 import { setupI18n, updateUI } from "./core/i18n.js";
 import { setupSettingsModal } from "./ui/settings-modal.js";
 
@@ -42,14 +41,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Set focus so the user can start typing immediately
   caretInstance.focus();
-
-  const helpBtn = document.getElementById("help-btn");
-  if (helpBtn) {
-    helpBtn.addEventListener("click", () => {
-      executeCommand("help");
-
-      // Ensure the caret is focused after showing help
-      caretInstance.focus();
-    });
-  }
 });
