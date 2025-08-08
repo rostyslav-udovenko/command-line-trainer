@@ -10,7 +10,7 @@ import {
   hasCompletedAllTasks,
   loadTasks,
 } from "./task-manager.js";
-import { activateMatrixMode } from "../effects/matrix-mode.js";
+import { showMatrix } from "../effects/matrix-mode.js";
 import { switchLocale, t } from "./i18n.js";
 
 // Manual pages - moved from separate file since it's tightly coupled
@@ -399,7 +399,7 @@ const commands = {
   },
 
   neo: () => {
-    activateMatrixMode();
+    showMatrix();
     return null;
   },
 
