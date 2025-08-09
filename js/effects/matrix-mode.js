@@ -7,14 +7,14 @@ let fontSize, columns, drops;
 export function showMatrix() {
   const terminal = document.getElementById("terminal");
   terminal.innerHTML = "";
-  
+
   canvas = document.createElement("canvas");
-  canvas.id = "matrix-canvas";  
+  canvas.id = "matrix-canvas";
   terminal.appendChild(canvas);
-  
+
   ctx = canvas.getContext("2d");
   setupCanvas();
-  
+
   window.addEventListener("resize", setupCanvas);
   setInterval(drawFrame, 50);
 }
@@ -22,18 +22,20 @@ export function showMatrix() {
 function setupCanvas() {
   canvas.width = document.getElementById("terminal").clientWidth;
   canvas.height = document.getElementById("terminal").clientHeight;
-  
+
   const refEl = document.querySelector(".footer") || document.body;
   fontSize = parseFloat(getComputedStyle(refEl).fontSize) || 14;
-  
+
   columns = Math.floor(canvas.width / fontSize);
   drops = Array(columns).fill(1);
 }
 
 function drawFrame() {
-  const bgColor = getComputedStyle(document.documentElement)
-    .getPropertyValue('--color-matrix-bg') || "rgba(0, 0, 0, 0.05)";
-  
+  const bgColor =
+    getComputedStyle(document.documentElement).getPropertyValue(
+      "--color-matrix-bg"
+    ) || "rgba(0, 0, 0, 0.05)";
+
   ctx.fillStyle = bgColor;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
