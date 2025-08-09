@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const caret = new TerminalCaret({
     inputId: "hidden-input",
-    renderedId: "custom-rendered-input", 
+    renderedId: "custom-rendered-input",
     outputId: "output",
   });
   setCaret(caret);

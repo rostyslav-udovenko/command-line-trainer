@@ -5,7 +5,8 @@ export function applyTheme(theme) {
 
 export function setupTheme() {
   const savedTheme = localStorage.getItem("theme");
-  const theme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark";
-  
+  const theme =
+    savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark";
+
   applyTheme(theme);
 }
