@@ -7,38 +7,21 @@ import {
 import { setupI18n, updateUI } from "./core/i18n.js";
 import { setupSettingsModal } from "./ui/settings-modal.js";
 
-/**
- * Entry point for initializing the Command Line Trainer interface.
- * This script runs once the DOM is fully loaded.
- *
- * - Loads the selected locale translations.
- * - Displays the initial welcome message.
- * - Initializes the TerminalCaret for custom input rendering.
- * - Focuses the input field for immediate user interaction.
- */
 document.addEventListener("DOMContentLoaded", async () => {
-  // Setup i18n with saved locale or default
+  // First load translations
   await setupI18n();
-
   updateUI();
 
-  // Set up the theme switcher functionality
   setupTheme();
-
-  // Set up settings modal functionality
   setupSettingsModal();
-
-  // Print welcome instructions to the terminal
   showWelcomeMessage();
 
-  // Initialize the custom terminal input with caret rendering
-  const caretInstance = new TerminalCaret({
+  const caret = new TerminalCaret({
     inputId: "hidden-input",
-    renderedId: "custom-rendered-input",
+    renderedId: "custom-rendered-input", 
     outputId: "output",
   });
-  setCaret(caretInstance);
+  setCaret(caret);
 
-  // Set focus so the user can start typing immediately
-  caretInstance.focus();
+  caret.focus();
 });
