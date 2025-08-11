@@ -138,11 +138,11 @@
   "command.help.systemCommandsList.language": "  language [en|uk] - Switch interface language",
   "command.help.moreInfo": "Use man &lt;command&gt; for more information.",
 
-  "module1.task1.description": "Navigate to the `projects` directory.",
+  "module1.task1.description": "Navigate to the `projects` directory using the `cd` command.",
   "module1.task1.hint": "Try `cd projects`",
   "module1.task1.explanation": "The `cd` (change directory) command allows you to move into a different directory in the filesystem.",
 
-  "module1.task2.description": "Create a directory named `images` in the root of the file system.",
+  "module1.task2.description": "Create a directory named `images` in the root of the file system using the `mkdir` command.",
   "module1.task2.hint": "Try `mkdir images`",
   "module1.task2.explanation": "The `mkdir` (make directory) command allows you to create a new directory in the filesystem.",
 
@@ -154,7 +154,7 @@
   "module1.task4.hint": "Try `pwd`",
   "module1.task4.explanation": "The `pwd` (print working directory) command displays the full path of the current directory you are in.",
 
-  "module2.task1.description": "Create a file named `index.html` inside the `projects` directory.",
+  "module2.task1.description": "Create a file named `index.html` inside the `projects` directory using the `touch` command.",
   "module2.task1.hint": "Try `touch index.html`",
   "module2.task1.explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it creates `index.html` in the `projects` directory.",
 

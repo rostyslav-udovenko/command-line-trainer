@@ -138,11 +138,11 @@
   "command.help.systemCommandsList.language": "  language [en|uk] - Змінити мову інтерфейсу",
   "command.help.moreInfo": "Використовуйте man &lt;команда&gt; для детальної інформації.",
 
-  "module1.task1.description": "Перейдіть у каталог `projects`.",
+  "module1.task1.description": "Перейдіть у каталог `projects` за допомогою команди `cd`.",
   "module1.task1.hint": "Спробуйте `cd projects`",
   "module1.task1.explanation": "Команда `cd` (change directory) дозволяє перейти в інший каталог файлової системи.",
 
-  "module1.task2.description": "Створіть каталог з назвою `images` у корені файлової системи.",
+  "module1.task2.description": "Створіть каталог з назвою `images` у корені файлової системи за допомогою команди `mkdir`.",
   "module1.task2.hint": "Спробуйте `mkdir images`",
   "module1.task2.explanation": "Команда `mkdir` (make directory) дозволяє створити новий каталог у файловій системі.",
 
@@ -154,7 +154,7 @@
   "module1.task4.hint": "Спробуйте `pwd`",
   "module1.task4.explanation": "Команда `pwd` (print working directory) показує повний шлях до поточного каталогу.",
 
-  "module2.task1.description": "Створіть файл з назвою `index.html` у каталозі `projects`.",
+  "module2.task1.description": "Створіть файл з назвою `index.html` у каталозі `projects` за допомогою команди `touch`.",
   "module2.task1.hint": "Спробуйте `touch index.html`",
   "module2.task1.explanation": "Команда `touch` створює новий порожній файл або оновлює час модифікації існуючого. У цьому випадку вона створює `index.html` у каталозі `projects`.",
 
