@@ -3,25 +3,33 @@
 ![GitHub License](https://img.shields.io/github/license/rostyslav-udovenko/command-line-trainer)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
-An easy-to-use terminal simulator that operates within your web browser, designed to assist you in mastering fundamental UNIX-like commands through a virtual file system.
+A web-based terminal trainer for learning UNIX commands without fear of breaking anything important.
 
-This initiative aims to guide newcomers in learning terminal commands progressively, all within a welcoming and interactive online setting.
+Perfect starting point if you've never touched the command line but always wanted to try.
 
-## Features
+## How It Works
 
-- Command-line interactions that allow for inputs such as `cd`, `ls`, `mkdir`, `touch`, `pwd`, `help`, `man`,  `cat`, `less`, `file`, `cp`, `mv`, `rm`, `chmod`, `ls -l`, `stat`, `date`, `whoami`, `uptime` and `mount`
-- System command such as `hint on/off` to enable or disable task hints, `progress reset` to reset progress, `language en/uk` to switch interface language
-- Progress saving - completed tasks are automatically saved to localStorage and restored when the user returns
-- Immediate task validation accompanied by feedback and hints for each task
-- An integrated virtual file system that refreshes with each task, utilizing JSON
-- A modular architecture based on ES modules
-- A user experience designed entirely for keyboard navigation, eliminating the need for a mouse
-- Hidden "Matrix Mode" easter egg (`neo` command)
-- Supports **dark** and **light** themes via `theme dark/light` command
+20 practical tasks across 4 modules - from basic navigation to system commands.
+
+Each task:
+- Gives you a clear goal
+- Checks your work automatically
+- Shows hints when you're stuck
+- Uses a fresh virtual file system
+
+Start with `cd` and `ls`, end up comfortable with the command line!
+
+## Learning Path
+- **Module 1:** Directory Operations. Learn to navigate: `cd`, `ls`, `pwd`, `mkdir`
+- **Module 2:** File Operations. Create, read, copy, move files: `touch`, `cat`, `cp`, `mv`, `rm`
+- **Module 3:** File Permissions and Metadata. Make files executable and check details: `chmod`, `stat`, `ls -l`
+- **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`
+
+Plus `help` and `man` commands to guide you along the way!
 
 ## Easter Egg: Matrix Mode
 
-To enable **Matrix Rain** mode, simply enter the command `neo` in the terminal whenever you wish. This action will transform the terminal display into a captivating animated green rain effect reminiscent of *The Matrix*. 
+Hidden feature alert! Type `neo` to turn your boring terminal into falling green Matrix rain. Because why not?
 
 ## Example Commands
 
@@ -301,8 +309,5 @@ Icons by [Tabler Icons](https://github.com/tabler/tabler-icons), used under the 
 
 Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Author
-
-Developed by **Rostyslav Udovenko**  
-Contact: [rostyslav.udovenko@gmail.com](mailto:rostyslav.udovenko@gmail.com)  
-GitHub: [github.com/rostyslav-udovenko](https://github.com/rostyslav-udovenko)
+---
+Made with ❤️ by [Rostyslav Udovenko](mailto:rostyslav.udovenko@gmail.com)
