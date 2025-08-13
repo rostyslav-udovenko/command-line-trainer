@@ -7,7 +7,7 @@
   --color-terminal-bg: #000;
   --color-matrix-bg: rgba(0, 0, 0, 0.05);
   --color-hover-bg: rgba(255, 255, 255, 0.05);
-  --font-main: "Courier New", monospace;
+  --font-main: "IBM Plex Mono", monospace;
   --font-size-base: 14px;
   --icon-filter: invert(100%) brightness(110%);
 }

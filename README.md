@@ -303,7 +303,8 @@ http://localhost:3000
 
 ## Third-party Assets
 
-Icons by [Tabler Icons](https://github.com/tabler/tabler-icons), used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
+**Icons:** [Tabler Icons](https://github.com/tabler/tabler-icons) by Paweł Kuna, used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
+**Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) by IBM, used under the [SIL Open Font License](https://scripts.sil.org/OFL).
 
 ## License
 
