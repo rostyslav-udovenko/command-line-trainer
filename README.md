@@ -2,6 +2,7 @@
 
 ![GitHub License](https://img.shields.io/github/license/rostyslav-udovenko/command-line-trainer)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+![GitHub Release](https://img.shields.io/github/v/release/rostyslav-udovenko/command-line-trainer?include_prereleases)
 
 A web-based terminal trainer for learning UNIX commands without fear of breaking anything important.
 
