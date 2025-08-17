@@ -106,6 +106,7 @@
   "command.less.usage": "Використання: less &lt;файл&gt;",
   "command.file.usage": "Використання: file &lt;файл&gt;",
   "command.hint.usage": "Використання: hint [on|off]",
+  "command.pwd.usage": "Використання: pwd",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Каталог {{name}} створено",
