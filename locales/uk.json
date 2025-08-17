@@ -19,6 +19,7 @@
   "settings.modal.language": "Мова",
   "footer.description": "© 2025 Command Line Trainer - навчальний інструмент для освоєння базових команд терміналу UNIX-подібних систем",
   "footer.by": "Розроблено з ♥ Ростиславом Удовенком",
+  "footer.contribute": "Відгук",
   "footer.contact": "Звʼязатися зі мною",
 
   "modules.1": "Модуль 1 - Операції з директоріями",

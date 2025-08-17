@@ -19,6 +19,7 @@
   "settings.modal.language": "Language",
   "footer.description": "© 2025 Command Line Trainer - an educational tool for learning fundamental UNIX-like terminal commands",
   "footer.by": "Developed with ♥ by Rostyslav Udovenko",
+  "footer.contribute": "Feedback",
   "footer.contact": "Contact me",
 
   "modules.1": "Module 1 - Directory Operations",
