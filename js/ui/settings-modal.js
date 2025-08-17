@@ -117,19 +117,23 @@ export function setupSettingsModal() {
   const hintsBtn = document.getElementById("toggle-hints");
   if (hintsBtn) {
     hintsBtn.addEventListener("click", () => {
-      const progress = JSON.parse(localStorage.getItem("trainerProgress"));
-      const current = progress?.hintsEnabled ?? true;
-      const newValue = !current;
+      if (getStarted()) {
+        const progress = JSON.parse(localStorage.getItem("trainerProgress"));
+        const current = progress?.hintsEnabled ?? true;
+        const newValue = !current;
 
-      setHintsEnabled(newValue);
-      updateSelections();
+        setHintsEnabled(newValue);
+        updateSelections();
 
-      const msg = newValue
-        ? "task.manager.hints.enabled"
-        : "task.manager.hints.disabled";
-      printOutput(t(msg));
-      scrollToBottom();
-
+        const msg = newValue
+          ? "task.manager.hints.enabled"
+          : "task.manager.hints.disabled";
+        printOutput(t(msg));
+        scrollToBottom();
+      } else {
+        printOutput(t("settings.modal.startTrainingHint"));
+        scrollToBottom();
+      }
       modal.classList.add("hidden");
       caret?.focus();
     });
