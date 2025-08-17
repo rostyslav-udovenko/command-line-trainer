@@ -309,6 +309,12 @@ http://localhost:3000
 - **Icons:** [Tabler Icons](https://github.com/tabler/tabler-icons) by Paweł Kuna, used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
 - **Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) by IBM, used under the [SIL Open Font License](https://scripts.sil.org/OFL).
 
+## Contributing
+
+Contributions are welcome! If you have any ideas, improvements, or found a bug, please create a new [GitHub Issue](https://github.com/rostyslav-udovenko/command-line-trainer/issues).
+
+Please check [existing issues](https://github.com/rostyslav-udovenko/command-line-trainer/issues) to avoid duplicates before creating a new one.
+
 ## License
 
 Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
