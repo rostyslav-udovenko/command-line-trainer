@@ -106,6 +106,7 @@
   "command.less.usage": "Usage: less &lt;filename&gt;",
   "command.file.usage": "Usage: file &lt;filename&gt;",
   "command.hint.usage": "Usage: hint [on|off]",
+  "command.pwd.usage": "Usage: pwd",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",

@@ -3,7 +3,8 @@
   "description": "module1.task4.description",
   "type": "pwd",
   "check": {
-    "currentDirectoryIs": "/projects/images"
+    "currentDirectoryIs": "/projects/images",
+    "expectedOutputIncludes": ["/projects/images"]
   },
   "fs": {
     "name": "/",

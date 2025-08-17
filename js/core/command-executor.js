@@ -125,7 +125,10 @@ function createDirectory(name) {
 }
 
 const commands = {
-  pwd: () => virtualFileSystem.currentDirectory,
+  pwd: (args) => {
+    if (args.length > 0) return t("command.pwd.usage");
+    return virtualFileSystem.currentDirectory;
+  },
 
   ls: (args) => {
     const currentDir = getDirectory(virtualFileSystem.currentDirectory);
