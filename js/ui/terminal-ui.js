@@ -173,6 +173,13 @@ export function hideCaret() {
   });
 }
 
+export function clearTerminal() {
+  const output = document.getElementById("output");
+  if (output) {
+    output.innerHTML = "";
+  }
+}
+
 export function setStarted(value) {
   started = value;
 }

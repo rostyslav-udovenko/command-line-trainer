@@ -1,6 +1,11 @@
 import { applyTheme } from "../ui/theme-manager.js";
 import { virtualFileSystem, getDirectory, resolvePath } from "./file-system.js";
-import { printOutput, scrollToBottom, setStarted } from "../ui/terminal-ui.js";
+import {
+  printOutput,
+  scrollToBottom,
+  setStarted,
+  clearTerminal,
+} from "../ui/terminal-ui.js";
 import {
   checkTask,
   tasks,
@@ -34,6 +39,7 @@ const manPages = {
   whoami: "manual.whoami",
   uptime: "manual.uptime",
   mount: "manual.mount",
+  clear: "manual.clear",
 };
 
 export async function executeCommand(command) {
@@ -63,7 +69,15 @@ export async function executeCommand(command) {
   }
 
   // System commands don't count for task validation
-  const systemCmds = ["help", "man", "hint", "theme", "language", "progress"];
+  const systemCmds = [
+    "help",
+    "man",
+    "hint",
+    "theme",
+    "language",
+    "progress",
+    "clear",
+  ];
   const isSystemCmd = systemCmds.includes(cmd);
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -86,6 +100,7 @@ export async function executeCommand(command) {
     t("command.language.usage"),
     t("command.progress.usage"),
     t("command.man.usage"),
+    t("command.clear.usage"),
   ];
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -366,6 +381,12 @@ const commands = {
     ].join("\n");
   },
 
+  clear: (args) => {
+    if (args.length > 0) return t("command.clear.usage");
+    clearTerminal();
+    return null;
+  },
+
   help: () => {
     printOutput(t("command.help.availableCommands"));
     printOutput(t("command.help.userCommandsList"));
@@ -375,6 +396,7 @@ const commands = {
     printOutput(t("command.help.systemCommandsList.theme"));
     printOutput(t("command.help.systemCommandsList.progress.reset"));
     printOutput(t("command.help.systemCommandsList.language"));
+    printOutput(t("command.help.systemCommandsList.clear"));
     printOutput("&nbsp;");
     printOutput(t("command.help.moreInfo"));
   },
