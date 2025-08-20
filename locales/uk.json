@@ -78,6 +78,7 @@
   "manual.uptime": "uptime — показати час роботи системи",
   "manual.mount": "mount — змонтувати файлову систему",
   "manual.clear": "clear — очистити екран терміналу",
+  "manual.task": "task — показати поточне завдання",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -110,6 +111,7 @@
   "command.hint.usage": "Використання: hint [on|off]",
   "command.pwd.usage": "Використання: pwd",
   "command.clear.usage": "Використання: clear",
+  "command.task.usage": "Використання: task",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Каталог {{name}} створено",
@@ -133,6 +135,9 @@
   "command.language.switched": "Мову змінено на {{locale}}.",
   "command.progress.reset": "Прогрес навчання скинуто. Перезапуск...",
 
+  "command.task.allCompleted": "Усі завдання виконано! Введіть `progress reset` для початку спочатку.",
+  "command.task.noTask": "Поточне завдання недоступне.",
+
   "command.help.availableCommands": "Доступні команди:",
   "command.help.userCommandsList": "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
   "command.help.systemCommands": "Системні команди:",
@@ -141,6 +146,7 @@
   "command.help.systemCommandsList.progress.reset": "  progress reset - Скинути прогрес навчання",
   "command.help.systemCommandsList.language": "  language [en|uk] - Змінити мову інтерфейсу",
   "command.help.systemCommandsList.clear": "  clear - Очистити екран терміналу",
+  "command.help.systemCommandsList.task": "  task - Показати поточне завдання",
   "command.help.moreInfo": "Використовуйте man &lt;команда&gt; для детальної інформації.",
 
   "module1.task1.description": "Перейдіть у каталог `projects` за допомогою команди `cd`.",
