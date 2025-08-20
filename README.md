@@ -59,6 +59,8 @@ System commands:
   theme [light|dark] - Switch color theme
   progress reset - Reset learning progress
   language [en|uk] - Switch interface language
+  clear - Clear terminal screen
+  task - Show current task
  
 Use man <command> for more information.
 ```
