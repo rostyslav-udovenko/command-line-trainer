@@ -18,7 +18,6 @@ import {
 import { showMatrix } from "../effects/matrix-mode.js";
 import { switchLocale, t } from "./i18n.js";
 
-// Manual pages - moved from separate file since it's tightly coupled
 const manPages = {
   cd: "manual.cd",
   ls: "manual.ls",
@@ -40,6 +39,7 @@ const manPages = {
   uptime: "manual.uptime",
   mount: "manual.mount",
   clear: "manual.clear",
+  task: "manual.task",
 };
 
 export async function executeCommand(command) {
@@ -77,6 +77,7 @@ export async function executeCommand(command) {
     "language",
     "progress",
     "clear",
+    "task",
   ];
   const isSystemCmd = systemCmds.includes(cmd);
 
@@ -101,6 +102,7 @@ export async function executeCommand(command) {
     t("command.progress.usage"),
     t("command.man.usage"),
     t("command.clear.usage"),
+    t("command.task.usage"),
   ];
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -387,6 +389,27 @@ const commands = {
     return null;
   },
 
+  task: (args) => {
+    if (args.length > 0) return t("command.task.usage");
+
+    if (hasCompletedAllTasks()) {
+      return t("command.task.allCompleted");
+    }
+
+    const currentTask = tasks[currentTaskIndex];
+    if (!currentTask) {
+      return t("command.task.noTask");
+    }
+
+    printOutput(`<strong>${currentTask.moduleName}</strong>`);
+    printOutput(
+      `<strong>${t("task.manager.task.label")} ${currentTask.id}:</strong> ${t(
+        currentTask.description
+      )}`
+    );
+    return null;
+  },
+
   help: () => {
     printOutput(t("command.help.availableCommands"));
     printOutput(t("command.help.userCommandsList"));
@@ -397,6 +420,7 @@ const commands = {
     printOutput(t("command.help.systemCommandsList.progress.reset"));
     printOutput(t("command.help.systemCommandsList.language"));
     printOutput(t("command.help.systemCommandsList.clear"));
+    printOutput(t("command.help.systemCommandsList.task"));
     printOutput("&nbsp;");
     printOutput(t("command.help.moreInfo"));
   },

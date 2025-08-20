@@ -78,6 +78,7 @@
   "manual.uptime": "uptime — tell how long the system has been running",
   "manual.mount": "mount — mount a filesystem",
   "manual.clear": "clear — clear the terminal screen",
+  "manual.task": "task — show current task",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -110,6 +111,7 @@
   "command.hint.usage": "Usage: hint [on|off]",
   "command.pwd.usage": "Usage: pwd",
   "command.clear.usage": "Usage: clear",
+  "command.task.usage": "Usage: task",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
@@ -133,6 +135,9 @@
   "command.language.switched": "Switched language to {{locale}}.",
   "command.progress.reset": "Training progress has been reset. Restarting training...",
 
+  "command.task.allCompleted": "All tasks have been completed! Type `progress reset` to start again.",
+  "command.task.noTask": "No current task available.",
+
   "command.help.availableCommands": "Available commands:",
   "command.help.userCommandsList": "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
   "command.help.systemCommands": "System commands:",
@@ -140,7 +145,8 @@
   "command.help.systemCommandsList.theme": "  theme [light|dark] - Switch color theme",
   "command.help.systemCommandsList.progress.reset": "  progress reset - Reset learning progress",
   "command.help.systemCommandsList.language": "  language [en|uk] - Switch interface language",
-   "command.help.systemCommandsList.clear": "  clear - Clear terminal screen",
+  "command.help.systemCommandsList.clear": "  clear - Clear terminal screen",
+  "command.help.systemCommandsList.task": "  task - Show current task",
   "command.help.moreInfo": "Use man &lt;command&gt; for more information.",
 
   "module1.task1.description": "Navigate to the `projects` directory using the `cd` command.",

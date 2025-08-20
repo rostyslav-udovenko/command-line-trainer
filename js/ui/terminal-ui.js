@@ -138,6 +138,8 @@ export function showWelcomeMessage() {
   printOutput(t("command.help.systemCommandsList.theme"));
   printOutput(t("command.help.systemCommandsList.progress.reset"));
   printOutput(t("command.help.systemCommandsList.language"));
+  printOutput(t("command.help.systemCommandsList.clear"));
+  printOutput(t("command.help.systemCommandsList.task"));
   printOutput("&nbsp;");
   printOutput(t("terminal.ui.welcome.ready"));
 }
