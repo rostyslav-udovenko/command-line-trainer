@@ -12,7 +12,7 @@ Perfect starting point if you've never touched the command line but always wante
 
 ## How It Works
 
-20 practical tasks across 4 modules - from basic navigation to system commands.
+21 practical tasks across 4 modules - from basic navigation to system commands.
 
 Each task:
 - Gives you a clear goal
@@ -23,7 +23,7 @@ Each task:
 Start with `cd` and `ls`, end up comfortable with the command line!
 
 ## Learning Path
-- **Module 1:** Directory Operations. Learn to navigate: `cd`, `mkdir`, `ls`, `pwd`
+- **Module 1:** Directory Operations. Learn to navigate: `cd`, `mkdir`, `ls`, `pwd`, `rmdir`
 - **Module 2:** File Operations. Create, read, copy, move files: `touch`, `cat`, `less`, `file`, `cp`, `mv`, `rm`
 - **Module 3:** File Permissions and Metadata. Make files executable and check details: `chmod`, `stat`, `ls -l`, `touch`
 - **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`
@@ -52,7 +52,7 @@ You can type `help` at any time to get a list of available commands:
 ```
 user@machine:~$ help
 Available commands:
-  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount
+  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount
  
 System commands:
   hint [on|off] - Toggle task hints
@@ -78,7 +78,7 @@ Each task is described as a JSON file and includes:
 
 - `id` – unique task identifier within the module
 - `description` – short instruction for the user
-- `type` – expected command (e.g. `cd`, `mkdir`, `touch`, etc.)
+- `type` – expected command (e.g. `cd`, `mkdir`, `rmdir`, `touch`, etc.)
 - `fs` – starting virtual file system structure with directories and files
 - `startDirectory` – path where the user starts the task
 - `check` – validation rules to determine if the task is complete
@@ -91,7 +91,8 @@ tasks/
 │   ├── task-1.json                 # Navigate to the `projects` directory
 │   ├── task-2.json                 # Create a directory named `images`
 │   ├── task-3.json                 # List contents using `ls`
-│   └── task-4.json                 # Display current path using `pwd`
+│   ├── task-4.json                 # Display current path using `pwd`
+│   └── task-5.json                 # Remove empty directory using `rmdir`
 ├── module-2/                       # File Operations
 │   ├── task-1.json                 # Create `index.html` in `projects`
 │   ├── task-2.json                 # Read `note.txt` using `cat`
@@ -119,6 +120,7 @@ tasks/
 - `currentDirectoryEndsWith` – ends with a specific folder
 - `fileExists` – checks for presence of a file
 - `dirExists` – checks for presence of a directory
+- `dirDoesNotExist` – confirms that a directory has been removed
 - `fileInDir` – checks that a file exists inside a specific directory
 - `fileExecutable` – verifies that a file is marked as executable
 - `fileDoesNotExist` – confirms that a file has been removed
@@ -254,7 +256,8 @@ project-root/
 │   │   ├── task-1.json             # Navigate to the `projects` directory
 │   │   ├── task-2.json             # Create a directory named `images`
 │   │   ├── task-3.json             # List contents using `ls`
-│   │   └── task-4.json             # Display current path using `pwd`
+│   │   ├── task-4.json             # Display current path using `pwd`
+│   │   └── task-5.json             # Remove empty directory using `rmdir`
 │   ├── module-2/                   # File Operations
 │   │   ├── task-1.json             # Create `index.html` in `projects`
 │   │   ├── task-2.json             # Read `note.txt` using `cat`

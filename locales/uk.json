@@ -79,6 +79,7 @@
   "manual.mount": "mount — змонтувати файлову систему",
   "manual.clear": "clear — очистити екран терміналу",
   "manual.task": "task — показати поточне завдання",
+  "manual.rmdir": "rmdir — видалити порожні каталоги",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -112,6 +113,7 @@
   "command.pwd.usage": "Використання: pwd",
   "command.clear.usage": "Використання: clear",
   "command.task.usage": "Використання: task",
+  "command.rmdir.usage": "Використання: rmdir &lt;каталог&gt;",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Каталог {{name}} створено",
@@ -131,6 +133,10 @@
   "command.stat.lastModified": "Остання зміна: {{modified}}",
   "log.txt": "log.txt",
 
+  "command.rmdir.removed": "Каталог {{name}} видалено",
+  "command.rmdir.notDirectory": "{{name}} не є каталогом",
+  "command.rmdir.notEmpty": "Каталог {{name}} не порожній",
+
   "command.theme.switched": "Переключено на тему {{option}}.",
   "command.language.switched": "Мову змінено на {{locale}}.",
   "command.progress.reset": "Прогрес навчання скинуто. Перезапуск...",
@@ -139,7 +145,7 @@
   "command.task.noTask": "Поточне завдання недоступне.",
 
   "command.help.availableCommands": "Доступні команди:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
   "command.help.systemCommands": "Системні команди:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
   "command.help.systemCommandsList.theme": "  theme [light|dark] - Перемкнути кольорову тему",
@@ -164,6 +170,10 @@
   "module1.task4.description": "Використайте команду `pwd` для відображення поточного каталогу.",
   "module1.task4.hint": "Спробуйте `pwd`",
   "module1.task4.explanation": "Команда `pwd` (print working directory) показує повний шлях до поточного каталогу.",
+
+  "module1.task5.description": "Видаліть порожній каталог `temp` за допомогою команди `rmdir`.",
+  "module1.task5.hint": "Спробуйте `rmdir temp`",
+  "module1.task5.explanation": "Команда `rmdir` (remove directory) видаляє порожні каталоги. На відміну від `rm`, вона працює тільки з каталогами і вимагає, щоб вони були порожніми.",
 
   "module2.task1.description": "Створіть файл з назвою `index.html` у каталозі `projects` за допомогою команди `touch`.",
   "module2.task1.hint": "Спробуйте `touch index.html`",

@@ -1,0 +1,30 @@
+{
+  "id": 5,
+  "description": "module1.task5.description",
+  "type": "rmdir",
+  "check": {
+    "dirDoesNotExist": "temp"
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "temp": {
+        "name": "temp",
+        "type": "dir",
+        "children": {},
+        "meta": {}
+      },
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {},
+        "meta": {}
+      }
+    },
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "module1.task5.hint",
+  "explanation": "module1.task5.explanation"
+}
