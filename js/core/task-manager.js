@@ -114,7 +114,7 @@ export async function loadTasks() {
     {
       name: t("modules.1"),
       path: "tasks/module-1",
-      count: 4,
+      count: 5,
     },
     {
       name: t("modules.2"),
@@ -237,6 +237,10 @@ export function checkTask(command, cmd, result, isErrorOutput = false) {
 
   if (check.dirExists) {
     success = success && currentDir?.children[check.dirExists]?.type === "dir";
+  }
+
+  if (check.dirDoesNotExist) {
+    success = success && !currentDir?.children[check.dirDoesNotExist];
   }
 
   if (check.fileInDir) {

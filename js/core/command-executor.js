@@ -23,6 +23,7 @@ const manPages = {
   ls: "manual.ls",
   pwd: "manual.pwd",
   mkdir: "manual.mkdir",
+  rmdir: "manual.rmdir",
   touch: "manual.touch",
   help: "manual.help",
   man: "manual.man",
@@ -87,6 +88,7 @@ export async function executeCommand(command) {
     t("command.ls.usage"),
     t("command.cd.usage"),
     t("command.mkdir.usage"),
+    t("command.rmdir.usage"),
     t("command.touch.usage"),
     t("command.cp.usage"),
     t("command.mv.usage"),
@@ -141,6 +143,25 @@ function createDirectory(name) {
   return t("command.mkdir.exists", { name });
 }
 
+function removeDirectory(name) {
+  const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+  if (!currentDir || !currentDir.children[name]) {
+    return t("command.error.dirNotFound", { dir: name });
+  }
+
+  const dir = currentDir.children[name];
+  if (dir.type !== "dir") {
+    return t("command.rmdir.notDirectory", { name });
+  }
+
+  if (Object.keys(dir.children).length > 0) {
+    return t("command.rmdir.notEmpty", { name });
+  }
+
+  delete currentDir.children[name];
+  return t("command.rmdir.removed", { name });
+}
+
 const commands = {
   pwd: (args) => {
     if (args.length > 0) return t("command.pwd.usage");
@@ -172,6 +193,8 @@ const commands = {
   cd: ([dir]) => (dir ? changeDirectory(dir) : t("command.cd.usage")),
 
   mkdir: ([name]) => (name ? createDirectory(name) : t("command.mkdir.usage")),
+
+  rmdir: ([name]) => (name ? removeDirectory(name) : t("command.rmdir.usage")),
 
   touch: ([name]) => {
     if (!name) return t("command.touch.usage");

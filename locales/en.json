@@ -79,6 +79,7 @@
   "manual.mount": "mount — mount a filesystem",
   "manual.clear": "clear — clear the terminal screen",
   "manual.task": "task — show current task",
+  "manual.rmdir": "rmdir — remove empty directories",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -112,6 +113,7 @@
   "command.pwd.usage": "Usage: pwd",
   "command.clear.usage": "Usage: clear",
   "command.task.usage": "Usage: task",
+  "command.rmdir.usage": "Usage: rmdir &lt;directory&gt;",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
@@ -131,6 +133,10 @@
   "command.stat.lastModified": "Last modified: {{modified}}",
   "log.txt": "log.txt",
 
+  "command.rmdir.removed": "Directory {{name}} removed",
+  "command.rmdir.notDirectory": "{{name}} is not a directory",
+  "command.rmdir.notEmpty": "Directory {{name}} is not empty",
+
   "command.theme.switched": "Switched to {{option}} theme.",
   "command.language.switched": "Switched language to {{locale}}.",
   "command.progress.reset": "Training progress has been reset. Restarting training...",
@@ -139,7 +145,7 @@
   "command.task.noTask": "No current task available.",
 
   "command.help.availableCommands": "Available commands:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
   "command.help.systemCommands": "System commands:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
   "command.help.systemCommandsList.theme": "  theme [light|dark] - Switch color theme",
@@ -164,6 +170,10 @@
   "module1.task4.description": "Use the `pwd` command to display the current directory.",
   "module1.task4.hint": "Try `pwd`",
   "module1.task4.explanation": "The `pwd` (print working directory) command displays the full path of the current directory you are in.",
+
+  "module1.task5.description": "Remove the empty `temp` directory using the `rmdir` command.",
+  "module1.task5.hint": "Try `rmdir temp`",
+  "module1.task5.explanation": "The `rmdir` (remove directory) command removes empty directories. Unlike `rm`, it only works on directories and requires them to be empty first.",
 
   "module2.task1.description": "Create a file named `index.html` inside the `projects` directory using the `touch` command.",
   "module2.task1.hint": "Try `touch index.html`",
