@@ -24,3 +24,37 @@
 
   --icon-filter: invert(0%) brightness(90%);
 }
+
+:root[data-theme="amber"] {
+  --color-bg: #1a0f00;
+  --color-fg: #ffb000;
+  --color-muted: #cc8800;
+  --color-accent: #ffdd44;
+  --color-terminal-bg: #0f0600;
+  --color-matrix-bg: rgba(255, 176, 0, 0.02);
+  --color-hover-bg: rgba(255, 176, 0, 0.1);
+
+  --icon-filter: brightness(0) saturate(100%) invert(65%) sepia(96%)
+    saturate(3000%) hue-rotate(25deg) brightness(102%) contrast(101%);
+}
+
+[data-theme="amber"] {
+  #terminal {
+    text-shadow: 0 0 3px rgba(255, 176, 0, 0.6);
+    box-shadow: inset 0 0 20px rgba(255, 176, 0, 0.1),
+      0 0 20px rgba(255, 176, 0, 0.2);
+  }
+
+  .terminal-line {
+    text-shadow: 0 0 2px rgba(255, 176, 0, 0.4);
+  }
+
+  .icon-button {
+    filter: var(--icon-filter) brightness(1.2);
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
