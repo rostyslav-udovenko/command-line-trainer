@@ -1,4 +1,4 @@
-import { applyTheme } from "./theme-manager.js";
+import { applyTheme, getCurrentTheme } from "./theme-manager.js";
 import { setHintsEnabled } from "../core/task-manager.js";
 import { executeCommand } from "../core/command-executor.js";
 import { switchLocale, t } from "../core/i18n.js";
@@ -20,7 +20,8 @@ function positionModal() {
 }
 
 function updateSelections() {
-  const currentTheme = localStorage.getItem("theme") || "dark";
+  const currentTheme = getCurrentTheme();
+
   document.querySelectorAll("[data-theme]").forEach((btn) => {
     btn.classList.toggle("selected", btn.dataset.theme === currentTheme);
   });

@@ -511,7 +511,7 @@ const commands = {
 
     const option = arg.toLowerCase();
 
-    if (option === "light" || option === "dark") {
+    if (option === "light" || option === "dark" || option === "amber") {
       applyTheme(option);
       return t("command.theme.switched", { option });
     }

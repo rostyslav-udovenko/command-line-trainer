@@ -56,7 +56,7 @@ Available commands:
  
 System commands:
   hint [on|off] - Toggle task hints
-  theme [light|dark] - Switch color theme
+  theme [light|dark|amber] - Switch color theme
   progress reset - Reset learning progress
   language [en|uk] - Switch interface language
   clear - Clear terminal screen
@@ -174,7 +174,7 @@ scss/
 ├── media/                          # Media queries and breakpoints
 │   └── _responsive.scss            # Responsive adjustments
 ├── themes/                         # Theme system with CSS variables
-│   └── _themes.scss                # Defines dark and light theme variables using :root and [data-theme]
+│   └── _themes.scss                # Defines dark, light and amber theme variables using :root and [data-theme]
 └── main.scss                       # UI Entry point
 ```
 
@@ -249,7 +249,7 @@ project-root/
 │   ├── media/                      # Media queries and breakpoints
 │   │   └── _responsive.scss        # Responsive adjustments
 │   ├── themes/                     # Theme system with CSS variables
-│   │   └── _themes.scss            # Defines dark and light theme variables using :root and [data-theme]
+│   │   └── _themes.scss            # Defines dark, light and amber theme variables using :root and [data-theme]
 │   └── main.scss                   # UI Entry point
 ├── tasks/
 │   ├── module-1/                   # Directory Operations
