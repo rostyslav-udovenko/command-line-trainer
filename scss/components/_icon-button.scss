@@ -10,14 +10,17 @@
 }
 
 .icon-button {
-  width: 20px;
-  height: 20px;
+  font-size: 30px;
+  color: var(--color-fg);
   cursor: pointer;
-  filter: var(--icon-filter);
   transition: filter 0.2s, transform 0.2s;
+  line-height: 1;
+  user-select: none;
+  display: inline-block;
+  transform: translateY(-2px);
 }
 
 .icon-button:hover {
-  filter: var(--icon-filter) brightness(1.2);
-  transform: scale(1.1);
+  transform: translateY(-2px) scale(1.1);
+  color: var(--color-fg);
 }
