@@ -213,8 +213,6 @@ project-root/
 ├── css/
 │   ├── styles.css                  # Generated from SCSS (do not edit manually)
 │   └── styles.css.map              # Source map for dev tools
-├── icons/
-│   └── settings.svg                # Icon representing settings
 ├── js/
 │   ├── core/                       # Core logic and virtual file system operations
 │   │   ├── command-executor.js     # Command definitions and execution logic
@@ -311,7 +309,6 @@ http://localhost:3000
 
 ## Third-party Assets
 
-- **Icons:** [Tabler Icons](https://github.com/tabler/tabler-icons) by Paweł Kuna, used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
 - **Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) by IBM, used under the [SIL Open Font License](https://scripts.sil.org/OFL).
 
 ## Contributing

@@ -9,8 +9,6 @@
 
   --font-main: "IBM Plex Mono", monospace;
   --font-size-base: 14px;
-
-  --icon-filter: invert(100%) brightness(110%);
 }
 
 :root[data-theme="light"] {
@@ -21,8 +19,6 @@
   --color-terminal-bg: #f3f3f3;
   --color-matrix-bg: rgba(255, 255, 255, 0.08);
   --color-hover-bg: rgba(0, 0, 0, 0.05);
-
-  --icon-filter: invert(0%) brightness(90%);
 }
 
 :root[data-theme="amber"] {
@@ -33,9 +29,6 @@
   --color-terminal-bg: #0f0600;
   --color-matrix-bg: rgba(255, 176, 0, 0.02);
   --color-hover-bg: rgba(255, 176, 0, 0.1);
-
-  --icon-filter: brightness(0) saturate(100%) invert(65%) sepia(96%)
-    saturate(3000%) hue-rotate(25deg) brightness(102%) contrast(101%);
 }
 
 [data-theme="amber"] {
@@ -47,14 +40,5 @@
 
   .terminal-line {
     text-shadow: 0 0 2px rgba(255, 176, 0, 0.4);
-  }
-
-  .icon-button {
-    filter: var(--icon-filter) brightness(1.2);
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
   }
 }

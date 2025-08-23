@@ -8,6 +8,10 @@
   .header__menu {
     margin-left: 0;
   }
+
+  .icon-button {
+    font-size: 24px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -43,8 +47,7 @@
   }
 
   .icon-button {
-    width: 24px;
-    height: 24px;
+    font-size: 32px;
   }
 
   .settings-modal,
