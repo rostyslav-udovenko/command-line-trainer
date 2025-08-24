@@ -309,7 +309,7 @@ http://localhost:3000
 
 ## Third-party Assets
 
-- **Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) by IBM, used under the [SIL Open Font License](https://scripts.sil.org/OFL).
+**Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) by IBM, used under the [SIL Open Font License](https://scripts.sil.org/OFL).
 
 ## Contributing
 
