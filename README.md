@@ -57,7 +57,7 @@ Available commands:
 System commands:
   hint [on|off] - Toggle task hints
   theme [light|dark|amber] - Switch color theme
-  progress reset - Reset learning progress
+  progress [status|reset] - Show/reset learning progress
   language [en|uk] - Switch interface language
   clear - Clear terminal screen
   task - Show current task
