@@ -17,6 +17,7 @@ const SUCCESS_MESSAGES = [
 ];
 
 export let tasks = [];
+export let tasksByModule = {};
 
 export let currentTaskIndex =
   JSON.parse(localStorage.getItem("trainerProgress"))?.currentTaskIndex || 0;
@@ -35,6 +36,25 @@ export function setCurrentTaskIndex(index) {
 
 export function getCurrentTaskIndex() {
   return currentTaskIndex;
+}
+
+export function getModuleProgress() {
+  const progress = {};
+
+  Object.entries(tasksByModule).forEach(([moduleName, moduleTasks]) => {
+    const moduleTaskIds = moduleTasks.map((task) => task.globalIndex);
+    const completedInModule = moduleTaskIds.filter(
+      (id) => id < currentTaskIndex
+    ).length;
+
+    progress[moduleName] = {
+      completed: completedInModule,
+      total: moduleTasks.length,
+      percentage: Math.round((completedInModule / moduleTasks.length) * 100),
+    };
+  });
+
+  return progress;
 }
 
 function saveProgress() {
@@ -88,9 +108,6 @@ function printHintsStatus() {
   }
 }
 
-/**
- * Handles welcome input from the user.
- */
 export async function handleWelcome(command, loadCallback) {
   if (command.toLowerCase() === "y") {
     printOutput(`${t("task.manager.training.started")}`);
@@ -135,6 +152,7 @@ export async function loadTasks() {
 
   try {
     const taskPromises = [];
+    let globalIndex = 0;
 
     for (const module of modules) {
       for (let i = 1; i <= module.count; i++) {
@@ -148,6 +166,7 @@ export async function loadTasks() {
           })
           .then((task) => {
             task.moduleName = module.name;
+            task.globalIndex = globalIndex++;
             return task;
           })
           .catch((error) => {
@@ -162,6 +181,8 @@ export async function loadTasks() {
     const validTasks = loadedTasks.filter(Boolean);
 
     tasks.splice(0, tasks.length, ...validTasks);
+
+    tasksByModule = Object.groupBy(tasks, (task) => task.moduleName);
 
     printOutput(t("task.manager.loadingDone"));
 
@@ -183,9 +204,6 @@ export async function loadTasks() {
   }
 }
 
-/**
- * Checks whether the current task is completed.
- */
 export function checkTask(command, cmd, result, isErrorOutput = false) {
   // TODO: refactor this monster later
   const task = tasks[currentTaskIndex];

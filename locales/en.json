@@ -18,6 +18,7 @@
   "settings.modal.theme.light": "Light",
   "settings.modal.theme.amber": "Amber",
   "settings.modal.language": "Language",
+  
   "footer.description": "© 2025 Command Line Trainer - an educational tool for learning fundamental UNIX-like terminal commands",
   "footer.by": "Developed with ♥ by Rostyslav Udovenko",
   "footer.contribute": "Feedback",
@@ -81,6 +82,7 @@
   "manual.clear": "clear — clear the terminal screen",
   "manual.task": "task — show current task",
   "manual.rmdir": "rmdir — remove empty directories",
+  "manual.progress": "progress — manage learning progress. Use `progress status` to see detailed progress or `progress reset` to restart training",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -106,7 +108,7 @@
   "command.mount.usage": "Usage: mount",
   "command.theme.usage": "Usage: theme [light|dark|amber]",
   "command.language.usage": "Usage: language [en|uk]",
-  "command.progress.usage": "Usage: progress reset",
+  "command.progress.usage": "Usage: progress [reset|status]",
   "command.cat.usage": "Usage: cat &lt;filename&gt;",
   "command.less.usage": "Usage: less &lt;filename&gt;",
   "command.file.usage": "Usage: file &lt;filename&gt;",
@@ -140,7 +142,10 @@
 
   "command.theme.switched": "Switched to {{option}} theme.",
   "command.language.switched": "Switched language to {{locale}}.",
+
   "command.progress.reset": "Training progress has been reset. Restarting training...",
+  "command.progress.status.overall": "Overall progress",
+  "command.progress.status.allCompleted": "All tasks completed!",
 
   "command.task.allCompleted": "All tasks have been completed! Type `progress reset` to start again.",
   "command.task.noTask": "No current task available.",
@@ -150,7 +155,7 @@
   "command.help.systemCommands": "System commands:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
-  "command.help.systemCommandsList.progress.reset": "  progress reset - Reset learning progress",
+  "command.help.systemCommandsList.progress": "  progress [status|reset] - Show/reset learning progress",
   "command.help.systemCommandsList.language": "  language [en|uk] - Switch interface language",
   "command.help.systemCommandsList.clear": "  clear - Clear terminal screen",
   "command.help.systemCommandsList.task": "  task - Show current task",
