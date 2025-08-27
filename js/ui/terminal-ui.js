@@ -136,7 +136,7 @@ export function showWelcomeMessage() {
   printOutput(t("command.help.systemCommands"));
   printOutput(t("command.help.systemCommandsList.hint"));
   printOutput(t("command.help.systemCommandsList.theme"));
-  printOutput(t("command.help.systemCommandsList.progress.reset"));
+  printOutput(t("command.help.systemCommandsList.progress"));
   printOutput(t("command.help.systemCommandsList.language"));
   printOutput(t("command.help.systemCommandsList.clear"));
   printOutput(t("command.help.systemCommandsList.task"));

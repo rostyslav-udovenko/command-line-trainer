@@ -14,6 +14,7 @@ import {
   setHintsEnabled,
   hasCompletedAllTasks,
   loadTasks,
+  getModuleProgress,
 } from "./task-manager.js";
 import { showMatrix } from "../effects/matrix-mode.js";
 import { switchLocale, t } from "./i18n.js";
@@ -41,6 +42,7 @@ const manPages = {
   mount: "manual.mount",
   clear: "manual.clear",
   task: "manual.task",
+  progress: "manual.progress",
 };
 
 export async function executeCommand(command) {
@@ -160,6 +162,12 @@ function removeDirectory(name) {
 
   delete currentDir.children[name];
   return t("command.rmdir.removed", { name });
+}
+
+function createProgressBar(percentage, width = 12) {
+  const filled = Math.round((percentage / 100) * width);
+  const empty = width - filled;
+  return "[" + "█".repeat(filled) + "░".repeat(empty) + "]";
 }
 
 const commands = {
@@ -440,7 +448,7 @@ const commands = {
     printOutput(t("command.help.systemCommands"));
     printOutput(t("command.help.systemCommandsList.hint"));
     printOutput(t("command.help.systemCommandsList.theme"));
-    printOutput(t("command.help.systemCommandsList.progress.reset"));
+    printOutput(t("command.help.systemCommandsList.progress"));
     printOutput(t("command.help.systemCommandsList.language"));
     printOutput(t("command.help.systemCommandsList.clear"));
     printOutput(t("command.help.systemCommandsList.task"));
@@ -476,6 +484,10 @@ const commands = {
   },
 
   progress: async ([arg]) => {
+    if (!arg) {
+      return t("command.progress.usage");
+    }
+
     if (arg === "reset") {
       localStorage.removeItem("trainerProgress");
       setCurrentTaskIndex(0);
@@ -486,6 +498,44 @@ const commands = {
       setStarted(true);
       return null;
     }
+
+    if (arg === "status") {
+      if (hasCompletedAllTasks()) {
+        printOutput(
+          `<strong>${t("command.progress.status.allCompleted")}</strong>`
+        );
+        return null;
+      }
+
+      const moduleProgress = getModuleProgress();
+      const totalTasks = tasks.length;
+      const overallProgress = Math.round((currentTaskIndex / totalTasks) * 100);
+
+      printOutput(
+        `${t(
+          "command.progress.status.overall"
+        )}: ${currentTaskIndex}/${totalTasks} (${overallProgress}%)`
+      );
+      printOutput("&nbsp;");
+
+      const moduleNames = Object.keys(moduleProgress);
+      const maxNameLength = Math.max(...moduleNames.map((name) => name.length));
+
+      Object.entries(moduleProgress).forEach(([moduleName, progress]) => {
+        const paddedName = moduleName.padEnd(maxNameLength);
+        const progressText = `${progress.completed}/${progress.total}`;
+        const paddedProgress = progressText.padStart(5);
+        const percentText = `${progress.percentage}%`;
+        const paddedPercent = percentText.padStart(4);
+        const progressBar = createProgressBar(progress.percentage);
+
+        const line = `${paddedName} ${paddedProgress} ${progressBar} ${paddedPercent}`;
+        printOutput(`<span style="font-family: monospace;">${line}</span>`);
+      });
+
+      return null;
+    }
+
     return t("command.progress.usage");
   },
 

@@ -18,6 +18,7 @@
   "settings.modal.theme.light": "Світла",
   "settings.modal.theme.amber": "Бурштинова",
   "settings.modal.language": "Мова",
+  
   "footer.description": "© 2025 Command Line Trainer - навчальний інструмент для освоєння базових команд терміналу UNIX-подібних систем",
   "footer.by": "Розроблено з ♥ Ростиславом Удовенком",
   "footer.contribute": "Відгук",
@@ -81,6 +82,7 @@
   "manual.clear": "clear — очистити екран терміналу",
   "manual.task": "task — показати поточне завдання",
   "manual.rmdir": "rmdir — видалити порожні каталоги",
+  "manual.progress": "progress — управління прогресом навчання. Використовуйте `progress status` для перегляду детального прогресу або `progress reset` для перезапуску навчання",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -106,7 +108,7 @@
   "command.mount.usage": "Використання: mount",
   "command.theme.usage": "Використання: theme [light|dark|amber]",
   "command.language.usage": "Використання: language [en|uk]",
-  "command.progress.usage": "Використання: progress reset",
+  "command.progress.usage": "Використання: progress [reset|status]",
   "command.cat.usage": "Використання: cat &lt;файл&gt;",
   "command.less.usage": "Використання: less &lt;файл&gt;",
   "command.file.usage": "Використання: file &lt;файл&gt;",
@@ -140,7 +142,10 @@
 
   "command.theme.switched": "Переключено на тему {{option}}.",
   "command.language.switched": "Мову змінено на {{locale}}.",
+
   "command.progress.reset": "Прогрес навчання скинуто. Перезапуск...",
+  "command.progress.status.overall": "Загальний прогрес",
+  "command.progress.status.allCompleted": "Усі завдання виконано!",
 
   "command.task.allCompleted": "Усі завдання виконано! Введіть `progress reset` для початку спочатку.",
   "command.task.noTask": "Поточне завдання недоступне.",
@@ -150,7 +155,7 @@
   "command.help.systemCommands": "Системні команди:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Перемкнути кольорову тему",
-  "command.help.systemCommandsList.progress.reset": "  progress reset - Скинути прогрес навчання",
+  "command.help.systemCommandsList.progress": "  progress [status|reset] - Показати/скинути прогрес навчання",
   "command.help.systemCommandsList.language": "  language [en|uk] - Змінити мову інтерфейсу",
   "command.help.systemCommandsList.clear": "  clear - Очистити екран терміналу",
   "command.help.systemCommandsList.task": "  task - Показати поточне завдання",
