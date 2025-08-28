@@ -111,11 +111,11 @@ export async function executeCommand(command) {
 
   // Check if command failed or showed usage - these don't count as task progress
   const isError =
-    (typeof result === "string" &&
-      usageMessages.some((usage) => result.startsWith(usage))) ||
-    result.startsWith(t("command.error.notFound")) ||
-    result.startsWith(t("command.error.noSuchFile")) ||
-    result.startsWith(t("command.error.dirNotFound"));
+    typeof result === "string" &&
+    (usageMessages.some((usage) => result.startsWith(usage)) ||
+      result.startsWith(t("command.error.notFound")) ||
+      result.startsWith(t("command.error.noSuchFile")) ||
+      result.startsWith(t("command.error.dirNotFound")));
 
   if (!isSystemCmd) {
     checkTask(command, cmd, result, isError);

@@ -18,7 +18,7 @@
   "settings.modal.theme.light": "Light",
   "settings.modal.theme.amber": "Amber",
   "settings.modal.language": "Language",
-  
+
   "footer.description": "© 2025 Command Line Trainer - an educational tool for learning fundamental UNIX-like terminal commands",
   "footer.by": "Developed with ♥ by Rostyslav Udovenko",
   "footer.contribute": "Feedback",
@@ -33,7 +33,7 @@
   "task.manager.loadingDone": "Tasks loaded!",
 
   "task.manager.error.taskDataMissing": "Error: task data is missing.",
-  "task.manager.error.noTasksLoaded": "Error: No tasks loaded or invalid progress.",
+  "task.manager.error.noTasksLoaded": "Error: no tasks loaded or invalid progress.",
   "task.manager.error.taskDataMissingCheck": "Error: task data missing.",
   "task.manager.error.failedToLoadTasks": "Failed to load tasks:",
 
@@ -89,6 +89,7 @@
   "command.error.dirNotFound": "Directory not found",
   "command.error.sourceNotFound": "Source file not found: {{src}}",
   "command.error.noSuchFile": "No such file: {{name}}",
+  "command.error.languageSwitch": "Failed to switch language.",
 
   "command.ls.empty": "No files or directories",
   "command.ls.usage": "Usage: ls [-l]",

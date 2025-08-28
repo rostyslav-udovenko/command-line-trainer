@@ -27,6 +27,18 @@ let attemptCount = 0;
 let hintsEnabled =
   JSON.parse(localStorage.getItem("trainerProgress"))?.hintsEnabled ?? true;
 
+function getTranslatedModuleName(moduleName) {
+  const moduleKeyMap = {
+    "Module 1 - Directory Operations": "modules.1",
+    "Module 2 - File Operations": "modules.2",
+    "Module 3 - File Permissions and Metadata": "modules.3",
+    "Module 4 - System Commands": "modules.4",
+  };
+
+  const key = moduleKeyMap[moduleName];
+  return key ? t(key) : moduleName;
+}
+
 export function setCurrentTaskIndex(index) {
   if (typeof index === "number" && index >= 0 && index < tasks.length) {
     currentTaskIndex = index;
@@ -47,7 +59,9 @@ export function getModuleProgress() {
       (id) => id < currentTaskIndex
     ).length;
 
-    progress[moduleName] = {
+    const translatedName = getTranslatedModuleName(moduleName);
+
+    progress[translatedName] = {
       completed: completedInModule,
       total: moduleTasks.length,
       percentage: Math.round((completedInModule / moduleTasks.length) * 100),
