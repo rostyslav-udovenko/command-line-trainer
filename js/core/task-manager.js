@@ -27,18 +27,6 @@ let attemptCount = 0;
 let hintsEnabled =
   JSON.parse(localStorage.getItem("trainerProgress"))?.hintsEnabled ?? true;
 
-function getTranslatedModuleName(moduleName) {
-  const moduleKeyMap = {
-    "Module 1 - Directory Operations": "modules.1",
-    "Module 2 - File Operations": "modules.2",
-    "Module 3 - File Permissions and Metadata": "modules.3",
-    "Module 4 - System Commands": "modules.4",
-  };
-
-  const key = moduleKeyMap[moduleName];
-  return key ? t(key) : moduleName;
-}
-
 export function setCurrentTaskIndex(index) {
   if (typeof index === "number" && index >= 0 && index < tasks.length) {
     currentTaskIndex = index;
@@ -53,13 +41,21 @@ export function getCurrentTaskIndex() {
 export function getModuleProgress() {
   const progress = {};
 
-  Object.entries(tasksByModule).forEach(([moduleName, moduleTasks]) => {
+  const moduleKeyMap = {
+    "Module 1 - Directory Operations": "modules.1",
+    "Module 2 - File Operations": "modules.2",
+    "Module 3 - File Permissions and Metadata": "modules.3",
+    "Module 4 - System Commands": "modules.4",
+  };
+
+  Object.entries(tasksByModule).forEach(([originalModuleName, moduleTasks]) => {
     const moduleTaskIds = moduleTasks.map((task) => task.globalIndex);
     const completedInModule = moduleTaskIds.filter(
       (id) => id < currentTaskIndex
     ).length;
 
-    const translatedName = getTranslatedModuleName(moduleName);
+    const moduleKey = moduleKeyMap[originalModuleName];
+    const translatedName = moduleKey ? t(moduleKey) : originalModuleName;
 
     progress[translatedName] = {
       completed: completedInModule,

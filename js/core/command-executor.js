@@ -530,7 +530,7 @@ const commands = {
         const progressBar = createProgressBar(progress.percentage);
 
         const line = `${paddedName} ${paddedProgress} ${progressBar} ${paddedPercent}`;
-        printOutput(`<span style="font-family: monospace;">${line}</span>`);
+        printOutput(line);
       });
 
       return null;
