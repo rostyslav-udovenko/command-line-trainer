@@ -15,6 +15,7 @@ Perfect starting point if you've never touched the command line but always wante
 21 practical tasks across 4 modules - from basic navigation to system commands.
 
 Each task:
+
 - Gives you a clear goal
 - Checks your work automatically
 - Shows hints when you're stuck
@@ -23,6 +24,7 @@ Each task:
 Start with `cd` and `ls`, end up comfortable with the command line!
 
 ## Learning Path
+
 - **Module 1:** Directory Operations. Learn to navigate: `cd`, `mkdir`, `ls`, `pwd`, `rmdir`
 - **Module 2:** File Operations. Create, read, copy, move files: `touch`, `cat`, `less`, `file`, `cp`, `mv`, `rm`
 - **Module 3:** File Permissions and Metadata. Make files executable and check details: `chmod`, `stat`, `ls -l`, `touch`
@@ -53,7 +55,7 @@ You can type `help` at any time to get a list of available commands:
 user@machine:~$ help
 Available commands:
   pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount
- 
+
 System commands:
   hint [on|off] - Toggle task hints
   theme [light|dark|amber] - Switch color theme
@@ -61,7 +63,7 @@ System commands:
   language [en|uk] - Switch interface language
   clear - Clear terminal screen
   task - Show current task
- 
+
 Use man <command> for more information.
 ```
 
@@ -85,6 +87,7 @@ Each task is described as a JSON file and includes:
 - `hint` – helpful tip shown after several failed attempts
 
 Tasks are organized into modules in the `tasks/` directory:
+
 ```
 tasks/
 ├── module-1/                       # Directory Operations
@@ -112,9 +115,9 @@ tasks/
     ├── task-2.json                 # Display current username using `whoami`
     ├── task-3.json                 # Check system uptime using `uptime`
     └── task-4.json                 # List mounted filesystems using `mount`
- ```
+```
 
- Validation rules (`check`) may include:
+Validation rules (`check`) may include:
 
 - `currentDirectoryIs` – matches the current path exactly
 - `currentDirectoryEndsWith` – ends with a specific folder
@@ -131,8 +134,9 @@ tasks/
 ## Modular JavaScript Structure
 
 The application code is organized into well-structured ES module files to enhance both scalability and clarity:
+
 ```
-js/ 
+js/
 ├── core/                           # Core logic and virtual file system operations
 │   ├── command-executor.js         # Command definitions and execution logic
 │   ├── file-system.js              # Virtual file system operations
@@ -141,12 +145,11 @@ js/
 ├── effects/                        # Visual effects and easter eggs
 │   └── matrix-mode.js              # Matrix Rain mode
 ├── ui/                             # Terminal user interface logic
-│   ├── settings-modal.js           # Settings modal functionality and event handlers
 │   ├── terminal-ui.js              # Handles UI: output, input, scrolling
 │   ├── theme-manager-init.js       # Sets initial theme on first page load based on localStorage
 │   └── theme-manager.js            # Handles theme initialization and application
 └── main.js                         # Entry point, initializes everything
- ```
+```
 
 ## SCSS Structure
 
@@ -163,10 +166,8 @@ scss/
 │   ├── _reset.scss                 # Reset and normalize styles
 │   └── _typography.scss            # Typography rules
 ├── components/                     # Reusable UI components
-│   ├── _icon-button.scss           # Icon button styles
 │   ├── _input.scss                 # Input field styling
-│   ├── _prompt.scss                # Prompt symbol and input wrapper
-│   └── _settings-modal.scss        # Settings modal dropdown styles
+│   └── _prompt.scss                # Prompt symbol and input wrapper
 ├── layout/                         # Structural layout sections
 │   ├── _footer.scss                # Footer styling
 │   ├── _header.scss                # Header styling
@@ -222,7 +223,6 @@ project-root/
 │   ├── effects/                    # Visual effects and easter eggs
 │   │   └── matrix-mode.js          # Matrix Rain mode
 │   ├── ui/                         # Terminal user interface logic
-│   │   ├── settings-modal.js       # Settings modal functionality and event handlers
 │   │   ├── terminal-ui.js          # Handles UI: output, input, scrolling
 │   │   ├── theme-manager-init.js   # Sets initial theme on first page load based on localStorage
 │   │   └── theme-manager.js        # Handles theme initialization and application
@@ -236,10 +236,8 @@ project-root/
 │   │   ├── _reset.scss             # Reset and normalize styles
 │   │   └── _typography.scss        # Typography rules
 │   ├── components/                 # Reusable UI components
-│   │   ├── _icon-button.scss       # Icon button styles
 │   │   ├── _input.scss             # Input field styling
-│   │   ├── _prompt.scss            # Prompt symbol and input wrapper
-│   │   └── _settings-modal.scss    # Settings modal dropdown styles
+│   │   └── _prompt.scss            # Prompt symbol and input wrapper
 │   ├── layout/                     # Structural layout sections
 │   │   ├── _footer.scss            # Footer styling
 │   │   ├── _header.scss            # Header styling
@@ -322,4 +320,5 @@ Please check [existing issues](https://github.com/rostyslav-udovenko/command-lin
 Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
+
 Made with ❤️ by [Rostyslav Udovenko](mailto:rostyslav.udovenko@gmail.com)
