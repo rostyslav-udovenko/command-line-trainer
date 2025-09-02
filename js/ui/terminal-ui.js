@@ -14,6 +14,7 @@ export class TerminalCaret {
     this.inputField = document.getElementById(inputId);
     this.rendered = document.getElementById(renderedId);
     this.output = document.getElementById(outputId);
+    this.isUserSelecting = false;
 
     this._bindEvents();
     this._render();
@@ -31,30 +32,92 @@ export class TerminalCaret {
     );
     this.inputField.addEventListener("focus", () => this._render());
 
-    // Focus input if user starts typing anywhere
-    document.addEventListener("keydown", (e) => {
-      if (e.key.length === 1 && document.activeElement !== this.inputField) {
-        e.preventDefault();
-        this.inputField.focus();
+    // Track selection state
+    document.addEventListener("selectstart", () => {
+      this.isUserSelecting = true;
+    });
+
+    document.addEventListener("selectionchange", () => {
+      const selection = window.getSelection();
+      if (!selection || selection.toString().length === 0) {
+        // TODO: 100ms might be too much, but works for now
+        setTimeout(() => {
+          this.isUserSelecting = false;
+        }, 100);
       }
     });
 
-    // Close modal if open when user starts typing
     document.addEventListener("keydown", (e) => {
-      if (e.key.length === 1 || e.key === "Enter") {
-        const settingsModal = document.getElementById("settings-modal");
-        if (settingsModal && !settingsModal.classList.contains("hidden")) {
-          settingsModal.classList.add("hidden");
+      if (this.isUserSelecting) return;
 
+      const selection = window.getSelection();
+      const hasSelection = selection && selection.toString().length > 0;
+
+      if (hasSelection) return;
+
+      const settingsModal = document.getElementById("settings-modal");
+      const isModalOpen =
+        settingsModal && !settingsModal.classList.contains("hidden");
+
+      if (isModalOpen) {
+        if (e.key.length === 1 || e.key === "Enter") {
+          settingsModal.classList.add("hidden");
           if (e.key.length === 1) {
+            e.preventDefault();
+            this.inputField.focus();
             this.inputField.value += e.key;
             this._render();
           }
         }
+        return;
+      }
+
+      if (e.key.length === 1 && document.activeElement !== this.inputField) {
+        e.preventDefault();
+        this.inputField.focus();
+        this.inputField.value += e.key;
+        this._render();
       }
     });
 
-    // Handle Enter to run command
+    let clickTimeout;
+    document.addEventListener("mousedown", (e) => {
+      const settingsModal = document.getElementById("settings-modal");
+      if (
+        (settingsModal && settingsModal.contains(e.target)) ||
+        this.inputField.contains(e.target)
+      ) {
+        return;
+      }
+
+      if (clickTimeout) {
+        clearTimeout(clickTimeout);
+        clickTimeout = null;
+      }
+    });
+
+    document.addEventListener("mouseup", (e) => {
+      const settingsModal = document.getElementById("settings-modal");
+      if (
+        (settingsModal && settingsModal.contains(e.target)) ||
+        this.inputField.contains(e.target)
+      ) {
+        return;
+      }
+
+      clickTimeout = setTimeout(() => {
+        const selection = window.getSelection();
+        const hasSelection = selection && selection.toString().length > 0;
+
+        if (!hasSelection && !this.isUserSelecting) {
+          const modal = document.getElementById("settings-modal");
+          if (!modal || modal.classList.contains("hidden")) {
+            this.inputField.focus();
+          }
+        }
+      }, 50); // Small delay to allow selection to register
+    });
+
     this.inputField.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -73,18 +136,60 @@ export class TerminalCaret {
 
         this._scrollToBottom();
       }
+
+      if (
+        event.key === "ArrowLeft" ||
+        event.key === "ArrowRight" ||
+        event.key === "ArrowUp" ||
+        event.key === "ArrowDown" ||
+        event.key === "Home" ||
+        event.key === "End"
+      ) {
+        setTimeout(() => this._render(), 0);
+      }
+
+      if (event.key === "Backspace" || event.key === "Delete") {
+        setTimeout(() => this._render(), 0);
+      }
     });
   }
 
   _render() {
     const value = this.inputField.value;
-    const chars = value
-      .split("")
-      .map((char) => `<span>${char}</span>`)
-      .join("");
+    const selectionStart = this.inputField.selectionStart;
+    const selectionEnd = this.inputField.selectionEnd;
+    const hasSelection = selectionStart !== selectionEnd;
+    const cursorPosition = selectionStart;
 
-    this.rendered.innerHTML =
-      chars + `<span class="custom-caret">&nbsp;</span>`;
+    if (value.length === 0) {
+      const caretClass = hasSelection
+        ? "custom-caret custom-caret--selected"
+        : "custom-caret";
+      this.rendered.innerHTML = `<span class="${caretClass}">&nbsp;</span>`;
+    } else {
+      const chars = value.split("").map((char, index) => {
+        let className = "";
+
+        if (hasSelection && index >= selectionStart && index < selectionEnd) {
+          className = "selected";
+        }
+
+        if (!hasSelection && index === cursorPosition) {
+          className = "custom-caret";
+        }
+
+        return `<span${
+          className ? ` class="${className}"` : ""
+        }>${char}</span>`;
+      });
+
+      this.rendered.innerHTML = chars.join("");
+
+      if (!hasSelection && cursorPosition >= value.length) {
+        this.rendered.innerHTML += `<span class="custom-caret">&nbsp;</span>`;
+      }
+    }
+
     this._scrollToBottom();
   }
 
