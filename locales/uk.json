@@ -8,17 +8,6 @@
   "terminal.ui.welcome.followTasks": "  Слідуйте інструкціям завдань для проходження модулів",
   "terminal.ui.welcome.ready": "Готові розпочати? Введіть `y` для початку або `n` для виходу.",
 
-  "settings.modal.startTrainingHint": "Щоб використовувати команди, спочатку почніть навчання, ввівши 'y'. Якщо хочете вийти — введіть 'n'.",
-
-  "settings.modal.help": "Довідка",
-  "settings.modal.hints": "Підказки",
-  "settings.modal.reset": "Скинути прогрес",
-  "settings.modal.theme": "Тема",
-  "settings.modal.theme.dark": "Темна",
-  "settings.modal.theme.light": "Світла",
-  "settings.modal.theme.amber": "Бурштинова",
-  "settings.modal.language": "Мова",
-
   "footer.description": "© 2025 Command Line Trainer - навчальний інструмент для освоєння базових команд терміналу UNIX-подібних систем",
   "footer.by": "Розроблено з ♥ Ростиславом Удовенком",
   "footer.contribute": "Відгук",

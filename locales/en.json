@@ -8,17 +8,6 @@
   "terminal.ui.welcome.followTasks": "  Follow the task instructions to progress through modules",
   "terminal.ui.welcome.ready": "Ready to begin? Type `y` to begin or `n` to exit.",
 
-  "settings.modal.startTrainingHint": "To use commands, please start the training by entering 'y' first. If you want to exit, type `n`.",
-
-  "settings.modal.help": "Help",
-  "settings.modal.hints": "Hints",
-  "settings.modal.reset": "Reset progress",
-  "settings.modal.theme": "Theme",
-  "settings.modal.theme.dark": "Dark",
-  "settings.modal.theme.light": "Light",
-  "settings.modal.theme.amber": "Amber",
-  "settings.modal.language": "Language",
-
   "footer.description": "© 2025 Command Line Trainer - an educational tool for learning fundamental UNIX-like terminal commands",
   "footer.by": "Developed with ♥ by Rostyslav Udovenko",
   "footer.contribute": "Feedback",
