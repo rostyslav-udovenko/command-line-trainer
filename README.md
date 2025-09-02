@@ -74,6 +74,50 @@ user@machine:~$ man touch
 touch — create a new file
 ```
 
+## Getting Started
+
+### Prerequisites
+
+To compile SCSS styles, you'll need Node.js and npm installed on your system.
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/rostyslav-udovenko/command-line-trainer.git
+cd command-line-trainer
+```
+
+2. Install Sass
+
+```
+npm install -g sass
+```
+
+3. Compile SCSS to CSS
+
+
+```
+sass scss/main.scss css/styles.css
+```
+
+4. Start a local web server:
+
+```
+npx serve .
+```
+
+### Development Workflow
+
+For active development, use the watch mode to automatically recompile CSS when SCSS files change:
+
+```
+sass --watch scss/main.scss:css/styles.css
+```
+
+**Important:** Do not edit `css/styles.css` manually — all changes should be made in SCSS files. The CSS files are generated and excluded from version control via `.gitignore`.
+
 ## Tasks
 
 Each task is described as a JSON file and includes:
@@ -156,10 +200,6 @@ js/
 This project uses a modular SCSS structure for better scalability and organization.
 
 ```
-css/
-├── styles.css                      # Generated from SCSS (do not edit manually)
-└── styles.css.map                  # Source map for dev tools
-
 scss/
 ├── base/                           # Base settings and resets
 │   ├── _globals.scss               # Global element styles
@@ -179,39 +219,13 @@ scss/
 └── main.scss                       # UI Entry point
 ```
 
-## Install Sass
-
-You can install Sass globally using npm:
-
-```
-npm install -g sass
-```
-
-## Compile SCSS to CSS
-
-From the root directory of the project, run:
-
-```
-sass --watch scss/main.scss:css/styles.css
-```
-
-This will **watch** for changes and automatically update the `styles.css` file in the `css/` folder.
-
-## One-time Compile
-
-If you just want to compile SCSS once without watching:
-
-```
-sass scss/main.scss css/styles.css
-```
-
-**Do not** edit `css/styles.css` manually — all changes should be made in SCSS files.
+The compiled CSS is generated in the `css/` folder and excluded from version control.
 
 ## File Structure
 
 ```
 project-root/
-├── css/
+├── css/                            # Generated CSS (excluded from git)
 │   ├── styles.css                  # Generated from SCSS (do not edit manually)
 │   └── styles.css.map              # Source map for dev tools
 ├── js/
@@ -279,31 +293,6 @@ project-root/
 ├── LICENSE
 └── README.md
 ```
-
-## How to Run Locally
-
-Clone the repository:
-
-```bash
-git clone https://github.com/rostyslav-udovenko/command-line-trainer.git
-cd command-line-trainer
-```
-
-Start a local web server using the built-in static server from Node.js:
-
-```
-npx serve .
-```
-
-> On first run, this will install the serve package temporarily.
-
-Then open your browser and navigate to:
-
-```
-http://localhost:3000
-```
-
-> Or whichever port is printed in your terminal
 
 ## Third-party Assets
 
