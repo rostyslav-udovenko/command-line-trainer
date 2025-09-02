@@ -40,6 +40,19 @@ function updateSelections() {
   }
 }
 
+// TODO: extract this to avoid repetition everywhere
+function focusCaretSafely() {
+  // Small delay to let modal close animation finish
+  setTimeout(() => {
+    const selection = window.getSelection();
+    const hasSelection = selection && selection.toString().length > 0;
+
+    if (!hasSelection) {
+      caret?.focus();
+    }
+  }, 10); // 10ms seems to be enough, don't ask me why
+}
+
 window.addEventListener("resize", () => {
   const modal = document.getElementById("settings-modal");
   if (!modal.classList.contains("hidden")) {
@@ -67,10 +80,16 @@ export function setupSettingsModal() {
     });
   }
 
+  // Simple modal close handler - let terminal-ui handle the focus logic
   document.addEventListener("click", (e) => {
     if (!modal.contains(e.target) && !btn.contains(e.target)) {
-      modal.classList.add("hidden");
-      caret?.focus();
+      // Check if user has selected text - if so, don't interfere
+      const selection = window.getSelection();
+      const hasSelection = selection && selection.toString().length > 0;
+
+      if (!hasSelection) {
+        modal.classList.add("hidden");
+      }
     }
   });
 
@@ -81,7 +100,7 @@ export function setupSettingsModal() {
       localStorage.setItem("theme", theme);
       updateSelections();
       modal.classList.add("hidden");
-      caret?.focus();
+      focusCaretSafely();
     });
   });
 
@@ -111,7 +130,7 @@ export function setupSettingsModal() {
       }
 
       modal.classList.add("hidden");
-      caret?.focus();
+      focusCaretSafely();
     });
   });
 
@@ -136,7 +155,7 @@ export function setupSettingsModal() {
         scrollToBottom();
       }
       modal.classList.add("hidden");
-      caret?.focus();
+      focusCaretSafely();
     });
   }
 
@@ -158,7 +177,7 @@ export function setupSettingsModal() {
         scrollToBottom();
       }
       modal.classList.add("hidden");
-      caret?.focus();
+      focusCaretSafely();
     });
   }
 }
