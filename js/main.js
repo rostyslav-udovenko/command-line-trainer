@@ -5,7 +5,6 @@ import {
   TerminalCaret,
 } from "./ui/terminal-ui.js";
 import { setupI18n, updateUI } from "./core/i18n.js";
-import { setupSettingsModal } from "./ui/settings-modal.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   // First load translations
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateUI();
 
   setupTheme();
-  setupSettingsModal();
   showWelcomeMessage();
 
   const caret = new TerminalCaret({
