@@ -141,21 +141,25 @@ export async function loadTasks() {
     {
       name: t("modules.1"),
       path: "tasks/module-1",
+      originalName: "Module 1 - Directory Operations",
       count: 5,
     },
     {
       name: t("modules.2"),
       path: "tasks/module-2",
+      originalName: "Module 2 - File Operations",
       count: 8,
     },
     {
       name: t("modules.3"),
       path: "tasks/module-3",
+      originalName: "Module 3 - File Permissions and Metadata",
       count: 4,
     },
     {
       name: t("modules.4"),
       path: "tasks/module-4",
+      originalName: "Module 4 - System Commands",
       count: 4,
     },
   ];
@@ -176,6 +180,7 @@ export async function loadTasks() {
           })
           .then((task) => {
             task.moduleName = module.name;
+            task.originalModuleName = module.originalName;
             task.globalIndex = globalIndex++;
             return task;
           })
@@ -192,7 +197,7 @@ export async function loadTasks() {
 
     tasks.splice(0, tasks.length, ...validTasks);
 
-    tasksByModule = Object.groupBy(tasks, (task) => task.moduleName);
+    tasksByModule = Object.groupBy(tasks, (task) => task.originalModuleName);
 
     printOutput(t("task.manager.loadingDone"));
 
@@ -213,6 +218,12 @@ export async function loadTasks() {
     printOutput(`${t("task.manager.error.failedToLoadTasks")} ${error}`);
   }
 }
+
+document.addEventListener("localeChanged", async () => {
+  if (tasks.length > 0) {
+    await loadTasks();
+  }
+});
 
 export function checkTask(command, cmd, result, isErrorOutput = false) {
   // TODO: refactor this monster later
