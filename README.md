@@ -207,7 +207,8 @@ scss/
 │   └── _typography.scss            # Typography rules
 ├── components/                     # Reusable UI components
 │   ├── _input.scss                 # Input field styling
-│   └── _prompt.scss                # Prompt symbol and input wrapper
+│   ├── _prompt.scss                # Prompt symbol and input wrapper
+│   └── _scrollbar.scss             # Custom scrollbar styling with theme
 ├── layout/                         # Structural layout sections
 │   ├── _footer.scss                # Footer styling
 │   ├── _header.scss                # Header styling
@@ -251,7 +252,8 @@ project-root/
 │   │   └── _typography.scss        # Typography rules
 │   ├── components/                 # Reusable UI components
 │   │   ├── _input.scss             # Input field styling
-│   │   └── _prompt.scss            # Prompt symbol and input wrapper
+│   │   ├── _prompt.scss            # Prompt symbol and input wrapper
+│   │   └── _scrollbar.scss         # Custom scrollbar styling with theme
 │   ├── layout/                     # Structural layout sections
 │   │   ├── _footer.scss            # Footer styling
 │   │   ├── _header.scss            # Header styling
