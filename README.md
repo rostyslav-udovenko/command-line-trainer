@@ -229,6 +229,11 @@ project-root/
 ├── css/                            # Generated CSS (excluded from git)
 │   ├── styles.css                  # Generated from SCSS (do not edit manually)
 │   └── styles.css.map              # Source map for dev tools
+├── fonts/
+│   ├── IBMPlexMono-Bold.woff       # IBM Plex Mono Bold font (WOFF format)
+│   ├── IBMPlexMono-Bold.woff2      # IBM Plex Mono Bold font
+│   ├── IBMPlexMono-Regular.woff    # IBM Plex Mono Regular font (WOFF format)
+│   └── IBMPlexMono-Regular.woff2   # IBM Plex Mono Regular font
 ├── js/
 │   ├── core/                       # Core logic and virtual file system operations
 │   │   ├── command-executor.js     # Command definitions and execution logic
@@ -298,7 +303,7 @@ project-root/
 
 ## Third-party Assets
 
-**Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) by [IBM](https://www.ibm.com/plex/), used under the [SIL Open Font License](https://scripts.sil.org/OFL).
+**Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) v0.2.0 by [IBM](https://www.ibm.com/plex/), used under the [SIL Open Font License](https://scripts.sil.org/OFL).
 
 ## Contributing
 
