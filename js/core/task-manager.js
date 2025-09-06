@@ -3,7 +3,7 @@ import {
   getDirectory,
   virtualFileSystem,
 } from "./file-system.js";
-import { printOutput, disableInput, hideCaret } from "../ui/terminal-ui.js";
+import { printOutput, disableInput, hideCaret, scrollToBottom } from "../ui/terminal-ui.js";
 import { t } from "./i18n.js";
 
 const SUCCESS_MESSAGES = [
@@ -124,6 +124,7 @@ export async function handleWelcome(command, loadCallback) {
     printHintsStatus();
     printOutput(t("task.manager.loadingTasks"));
     await loadCallback();
+    scrollToBottom();
     return true;
   } else if (command.toLowerCase() === "n") {
     printOutput(`${t("task.manager.training.canceled")}`);
