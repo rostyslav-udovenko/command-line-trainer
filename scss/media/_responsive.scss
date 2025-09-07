@@ -9,6 +9,17 @@
     margin-left: 0;
     text-align: center;
   }
+
+  .footer__menu {
+    justify-content: center;
+  }             
+}
+
+@media (min-width: 360px) and (max-width: 767px) {
+  .header__menu {
+    margin-left: 0;
+    text-align: center;
+  }
 }
 
 @media (min-width: 768px) {
