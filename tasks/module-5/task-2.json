@@ -1,0 +1,26 @@
+{
+  "id": 2,
+  "description": "module5.task2.description",
+  "type": "sort",
+  "check": {
+    "expectedCommandArgs": ["names.txt"],
+    "expectedOutputIncludes": ["Alice", "Bob", "Charlie"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "names.txt": {
+        "name": "names.txt",
+        "type": "file",
+        "content": "Charlie\nAlice\nDave\nBob\nEve",
+        "meta": {
+          "lastModified": "2025-01-10T09:15:30Z"
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "module5.task2.hint",
+  "explanation": "module5.task2.explanation"
+}

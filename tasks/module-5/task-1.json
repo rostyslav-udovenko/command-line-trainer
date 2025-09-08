@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "description": "module5.task1.description",
+  "type": "grep",
+  "check": {
+    "expectedCommandArgs": ["error", "server.log"],
+    "expectedOutputIncludes": ["ERROR: Database connection failed"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "server.log": {
+        "name": "server.log",
+        "type": "file",
+        "content": "INFO: Server started on port 8080\nWARNING: High memory usage detected\nERROR: Database connection failed\nINFO: User login successful\nERROR: Failed to load configuration\nINFO: Request processed successfully",
+        "meta": {
+          "lastModified": "2025-01-15T14:30:20Z"
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "module5.task1.hint",
+  "explanation": "module5.task1.explanation"
+}

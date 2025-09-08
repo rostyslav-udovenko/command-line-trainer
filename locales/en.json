@@ -17,6 +17,7 @@
   "modules.2": "Module 2 - File Operations",
   "modules.3": "Module 3 - File Permissions and Metadata",
   "modules.4": "Module 4 - System Commands",
+  "modules.5": "Module 5 - Text Processing",
 
   "task.manager.loadingTasks": "Loading tasks...",
   "task.manager.loadingDone": "Tasks loaded!",
@@ -72,6 +73,8 @@
   "manual.task": "task — show current task",
   "manual.rmdir": "rmdir — remove empty directories",
   "manual.progress": "progress — manage learning progress. Use `progress status` to see detailed progress or `progress reset` to restart training",
+  "manual.grep": "grep — search for patterns in files",
+  "manual.sort": "sort — sort lines in text files",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -107,6 +110,8 @@
   "command.clear.usage": "Usage: clear",
   "command.task.usage": "Usage: task",
   "command.rmdir.usage": "Usage: rmdir &lt;directory&gt;",
+  "command.grep.usage": "Usage: grep &lt;pattern&gt; &lt;filename&gt;",
+  "command.sort.usage": "Usage: sort &lt;filename&gt;",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
@@ -141,7 +146,7 @@
   "command.task.noTask": "No current task available.",
 
   "command.help.availableCommands": "Available commands:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort",
   "command.help.systemCommands": "System commands:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
@@ -233,5 +238,13 @@
 
   "module4.task4.description": "Use the `mount` command to list mounted filesystems.",
   "module4.task4.hint": "Try `mount`",
-  "module4.task4.explanation": "The `mount` command displays all currently mounted filesystems, showing their device names and mount points. This is useful for understanding how storage devices are connected to the system and where they are accessible."
+  "module4.task4.explanation": "The `mount` command displays all currently mounted filesystems, showing their device names and mount points. This is useful for understanding how storage devices are connected to the system and where they are accessible.",
+
+  "module5.task1.description": "Use the `grep` command to search for lines containing 'error' in the file `server.log`.",
+  "module5.task1.hint": "Try `grep error server.log`",
+  "module5.task1.explanation": "The `grep` command searches for text patterns in files. In this case, it finds all lines in `server.log` that contain the word 'error' (case-insensitive). This is very useful for filtering log files and finding specific information.",
+
+  "module5.task2.description": "Use the `sort` command to sort the lines in `names.txt` alphabetically.",
+  "module5.task2.hint": "Try `sort names.txt`",
+  "module5.task2.explanation": "The `sort` command sorts the lines in a text file alphabetically. This is useful for organizing data, creating sorted lists, and preprocessing text for other commands."
 }

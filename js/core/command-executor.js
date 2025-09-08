@@ -43,6 +43,8 @@ const manPages = {
   clear: "manual.clear",
   task: "manual.task",
   progress: "manual.progress",
+  grep: "manual.grep",
+  sort: "manual.sort",
 };
 
 export async function executeCommand(command) {
@@ -107,6 +109,8 @@ export async function executeCommand(command) {
     t("command.man.usage"),
     t("command.clear.usage"),
     t("command.task.usage"),
+    t("command.grep.usage"),
+    t("command.sort.usage"),
   ];
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -571,5 +575,47 @@ const commands = {
 
   man: ([cmd]) => {
     return cmd && manPages[cmd] ? t(manPages[cmd]) : t("command.man.usage");
+  },
+
+  grep: (args) => {
+    if (args.length !== 2) {
+      return t("command.grep.usage");
+    }
+
+    const [pattern, filename] = args;
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[filename];
+
+    if (!file || file.type !== "file") {
+      return t("command.error.noSuchFile", { name: filename });
+    }
+
+    const content = file.content || "";
+    const lines = content.split("\n");
+    const matchingLines = lines.filter((line) =>
+      line.toLowerCase().includes(pattern.toLowerCase())
+    );
+
+    return matchingLines.join("\n");
+  },
+
+  sort: (args) => {
+    if (args.length !== 1) {
+      return t("command.sort.usage");
+    }
+
+    const [filename] = args;
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[filename];
+
+    if (!file || file.type !== "file") {
+      return t("command.error.noSuchFile", { name: filename });
+    }
+
+    const content = file.content || "";
+    const lines = content.split("\n").filter((line) => line.trim() !== "");
+    const sortedLines = lines.sort((a, b) => a.localeCompare(b));
+
+    return sortedLines.join("\n");
   },
 };
