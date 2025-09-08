@@ -3,7 +3,12 @@ import {
   getDirectory,
   virtualFileSystem,
 } from "./file-system.js";
-import { printOutput, disableInput, hideCaret, scrollToBottom } from "../ui/terminal-ui.js";
+import {
+  printOutput,
+  disableInput,
+  hideCaret,
+  scrollToBottom,
+} from "../ui/terminal-ui.js";
 import { t } from "./i18n.js";
 
 const SUCCESS_MESSAGES = [
@@ -46,6 +51,7 @@ export function getModuleProgress() {
     "Module 2 - File Operations": "modules.2",
     "Module 3 - File Permissions and Metadata": "modules.3",
     "Module 4 - System Commands": "modules.4",
+    "Module 5 - Text Processing": "modules.5",
   };
 
   Object.entries(tasksByModule).forEach(([originalModuleName, moduleTasks]) => {
@@ -162,6 +168,12 @@ export async function loadTasks() {
       path: "tasks/module-4",
       originalName: "Module 4 - System Commands",
       count: 4,
+    },
+    {
+      name: t("modules.5"),
+      path: "tasks/module-5",
+      originalName: "Module 5 - Text Processing",
+      count: 2,
     },
   ];
 

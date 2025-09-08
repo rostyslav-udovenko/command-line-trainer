@@ -17,6 +17,7 @@
   "modules.2": "Модуль 2 - Операції з файлами",
   "modules.3": "Модуль 3 - Права доступу та метадані",
   "modules.4": "Модуль 4 - Системні команди",
+  "modules.5": "Модуль 5 - Обробка тексту",
 
   "task.manager.loadingTasks": "Завантаження завдань...",
   "task.manager.loadingDone": "Завдання завантажено!",
@@ -72,6 +73,8 @@
   "manual.task": "task — показати поточне завдання",
   "manual.rmdir": "rmdir — видалити порожні директорії",
   "manual.progress": "progress — управління прогресом навчання. Використовуйте `progress status` для перегляду детального прогресу або `progress reset` для перезапуску навчання",
+  "manual.grep": "grep — пошук шаблонів у файлах",
+  "manual.sort": "sort — сортування рядків у текстових файлах",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -107,6 +110,8 @@
   "command.clear.usage": "Використання: clear",
   "command.task.usage": "Використання: task",
   "command.rmdir.usage": "Використання: rmdir &lt;директорія&gt;",
+  "command.grep.usage": "Використання: grep &lt;шаблон&gt; &lt;файл&gt;",
+  "command.sort.usage": "Використання: sort &lt;файл&gt;",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Директорію {{name}} створено",
@@ -141,7 +146,7 @@
   "command.task.noTask": "Поточне завдання недоступне.",
 
   "command.help.availableCommands": "Доступні команди:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort",
   "command.help.systemCommands": "Системні команди:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Перемкнути кольорову тему",
@@ -233,5 +238,13 @@
 
   "module4.task4.description": "Скористайтеся командою `mount`, щоб переглянути змонтовані файлові системи.",
   "module4.task4.hint": "Спробуйте `mount`",
-  "module4.task4.explanation": "Команда `mount` відображає всі поточно змонтовані файлові системи, показуючи назви пристроїв і точки монтування. Це корисно для розуміння того, як підключені носії та де вони доступні."
+  "module4.task4.explanation": "Команда `mount` відображає всі поточно змонтовані файлові системи, показуючи назви пристроїв і точки монтування. Це корисно для розуміння того, як підключені носії та де вони доступні.",
+
+  "module5.task1.description": "Скористайтеся командою `grep`, щоб знайти рядки, що містять 'error' у файлі `server.log`.",
+  "module5.task1.hint": "Спробуйте `grep error server.log`",
+  "module5.task1.explanation": "Команда `grep` шукає текстові шаблони у файлах. У цьому випадку вона знаходить всі рядки в `server.log`, що містять слово 'error' (без урахування регістру). Це дуже корисно для фільтрації лог-файлів та пошуку конкретної інформації.",
+
+  "module5.task2.description": "Скористайтеся командою `sort`, щоб відсортувати рядки в `names.txt` за алфавітом.",
+  "module5.task2.hint": "Спробуйте `sort names.txt`",
+  "module5.task2.explanation": "Команда `sort` сортує рядки в текстовому файлі за алфавітом. Це корисно для організації даних, створення відсортованих списків та попередньої обробки тексту для інших команд."
 }
