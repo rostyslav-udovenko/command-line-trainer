@@ -186,6 +186,7 @@ The application code is organized into well-structured ES module files to enhanc
 ```
 js/
 ├── core/                           # Core logic and virtual file system operations
+│   ├── cache-buster.js             # Cache busting utilities for fresh content delivery
 │   ├── command-executor.js         # Command definitions and execution logic
 │   ├── file-system.js              # Virtual file system operations
 │   ├── i18n.js                     # Internationalization (i18n): loads and applies translations
@@ -198,6 +199,15 @@ js/
 │   └── theme-manager.js            # Handles theme initialization and application
 └── main.js                         # Entry point, initializes everything
 ```
+
+## Cache Busting System
+
+The `cache-buster.js` module ensures users always receive the latest content:
+
+- Automatic versioning for JSON task files and translation files
+- Manual versioning for CSS and main JavaScript files via HTML
+- Fallback support for older browsers using custom `groupBy` implementation
+- No-cache headers for enhanced cache control
 
 ## SCSS Structure
 
@@ -240,6 +250,7 @@ project-root/
 │   └── IBMPlexMono-Regular.woff2   # IBM Plex Mono Regular font
 ├── js/
 │   ├── core/                       # Core logic and virtual file system operations
+│   │   ├── cache-buster.js         # Cache busting utilities for fresh content delivery
 │   │   ├── command-executor.js     # Command definitions and execution logic
 │   │   ├── file-system.js          # Virtual file system operations
 │   │   ├── i18n.js                 # Internationalization (i18n): loads and applies translations
