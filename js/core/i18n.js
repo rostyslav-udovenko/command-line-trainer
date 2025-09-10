@@ -1,3 +1,5 @@
+import { fetchWithCacheBust } from "./cache-buster.js";
+
 let currentLocale = "en";
 let translations = {};
 let isLoading = false;
@@ -18,7 +20,7 @@ export async function loadLocale(locale) {
   isLoading = true;
 
   try {
-    const response = await fetch(`locales/${locale}.json`);
+    const response = await fetchWithCacheBust(`locales/${locale}.json`);
     if (!response.ok) {
       throw new Error(`Failed to load locale: ${response.status}`);
     }

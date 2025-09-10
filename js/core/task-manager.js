@@ -10,6 +10,7 @@ import {
   scrollToBottom,
 } from "../ui/terminal-ui.js";
 import { t } from "./i18n.js";
+import { fetchWithCacheBust } from "./cache-buster.js";
 
 const SUCCESS_MESSAGES = [
   "task.manager.success.wellDone",
@@ -31,6 +32,17 @@ let attemptCount = 0;
 
 let hintsEnabled =
   JSON.parse(localStorage.getItem("trainerProgress"))?.hintsEnabled ?? true;
+
+function groupBy(array, keyFunction) {
+  return array.reduce((groups, item) => {
+    const key = keyFunction(item);
+    if (!groups[key]) {
+      groups[key] = [];
+    }
+    groups[key].push(item);
+    return groups;
+  }, {});
+}
 
 export function setCurrentTaskIndex(index) {
   if (typeof index === "number" && index >= 0 && index < tasks.length) {
@@ -184,7 +196,7 @@ export async function loadTasks() {
     for (const module of modules) {
       for (let i = 1; i <= module.count; i++) {
         const url = `${module.path}/task-${i}.json`;
-        const promise = fetch(url)
+        const promise = fetchWithCacheBust(url)
           .then((res) => {
             if (!res.ok) {
               throw new Error(`Failed to load task: ${url}`);
@@ -210,7 +222,7 @@ export async function loadTasks() {
 
     tasks.splice(0, tasks.length, ...validTasks);
 
-    tasksByModule = Object.groupBy(tasks, (task) => task.originalModuleName);
+    tasksByModule = groupBy(tasks, (task) => task.originalModuleName);
 
     printOutput(t("task.manager.loadingDone"));
 
