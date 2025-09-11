@@ -1,0 +1,26 @@
+{
+  "id": 4,
+  "description": "module5.task4.description",
+  "type": "tr",
+  "check": {
+    "expectedCommandArgs": ["a-z", "A-Z", "<", "message.txt"],
+    "expectedOutputIncludes": ["HELLO WORLD!", "THIS IS A TEST MESSAGE"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "message.txt": {
+        "name": "message.txt",
+        "type": "file",
+        "content": "hello world!\nthis is a test message\nwith lowercase letters",
+        "meta": {
+          "lastModified": "2025-01-20T16:45:12Z"
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "module5.task4.hint",
+  "explanation": "module5.task4.explanation"
+}

@@ -46,6 +46,7 @@ const manPages = {
   grep: "manual.grep",
   sort: "manual.sort",
   uniq: "manual.uniq",
+  tr: "manual.tr",
 };
 
 export async function executeCommand(command) {
@@ -113,6 +114,7 @@ export async function executeCommand(command) {
     t("command.grep.usage"),
     t("command.sort.usage"),
     t("command.uniq.usage"),
+    t("command.tr.usage"),
   ];
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -648,5 +650,37 @@ const commands = {
     }
 
     return uniqueLines.join("\n");
+  },
+
+  tr: (args) => {
+    if (args.length !== 4 || args[2] !== "<") {
+      return t("command.tr.usage");
+    }
+
+    const [set1, set2, , filename] = args;
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[filename];
+
+    if (!file || file.type !== "file") {
+      return t("command.error.noSuchFile", { name: filename });
+    }
+
+    const content = file.content || "";
+
+    if (set1 === "a-z" && set2 === "A-Z") {
+      return content.toUpperCase();
+    }
+
+    if (set1 === "A-Z" && set2 === "a-z") {
+      return content.toLowerCase();
+    }
+
+    let result = content;
+    for (let i = 0; i < set1.length && i < set2.length; i++) {
+      const regex = new RegExp(set1[i], "g");
+      result = result.replace(regex, set2[i]);
+    }
+
+    return result;
   },
 };
