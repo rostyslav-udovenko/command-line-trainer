@@ -185,7 +185,7 @@ export async function loadTasks() {
       name: t("modules.5"),
       path: "tasks/module-5",
       originalName: "Module 5 - Text Processing",
-      count: 3,
+      count: 4,
     },
   ];
 
