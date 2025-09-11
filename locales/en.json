@@ -75,6 +75,7 @@
   "manual.progress": "progress — manage learning progress. Use `progress status` to see detailed progress or `progress reset` to restart training",
   "manual.grep": "grep — search for patterns in files",
   "manual.sort": "sort — sort lines in text files",
+  "manual.uniq": "uniq — remove duplicate lines from text files",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -112,6 +113,7 @@
   "command.rmdir.usage": "Usage: rmdir &lt;directory&gt;",
   "command.grep.usage": "Usage: grep &lt;pattern&gt; &lt;filename&gt;",
   "command.sort.usage": "Usage: sort &lt;filename&gt;",
+  "command.uniq.usage": "Usage: uniq &lt;filename&gt;",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
@@ -146,7 +148,7 @@
   "command.task.noTask": "No current task available.",
 
   "command.help.availableCommands": "Available commands:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq",
   "command.help.systemCommands": "System commands:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
@@ -246,5 +248,9 @@
 
   "module5.task2.description": "Use the `sort` command to sort the lines in `names.txt` alphabetically.",
   "module5.task2.hint": "Try `sort names.txt`",
-  "module5.task2.explanation": "The `sort` command sorts the lines in a text file alphabetically. This is useful for organizing data, creating sorted lists, and preprocessing text for other commands."
+  "module5.task2.explanation": "The `sort` command sorts the lines in a text file alphabetically. This is useful for organizing data, creating sorted lists, and preprocessing text for other commands.",
+
+  "module5.task3.description": "Use the `uniq` command to remove duplicate lines from `duplicates.txt`.",
+  "module5.task3.hint": "Try `uniq duplicates.txt`",
+  "module5.task3.explanation": "The `uniq` command removes consecutive duplicate lines from a text file, showing only unique lines. This is very useful for cleaning up data files and removing redundant entries."
 }

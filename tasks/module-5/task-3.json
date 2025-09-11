@@ -1,0 +1,30 @@
+{
+  "id": 3,
+  "description": "module5.task3.description",
+  "type": "uniq",
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "duplicates.txt": {
+        "name": "duplicates.txt",
+        "type": "file",
+        "content": "apple\nbanana\napple\ncherry\nbanana\napple\ndate\ncherry",
+        "meta": {
+          "lastModified": "2024-01-15T10:30:00Z"
+        }
+      },
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {}
+      }
+    }
+  },
+  "startDirectory": "/",
+  "check": {
+    "expectedOutputIncludes": ["apple", "banana", "cherry", "date"]
+  },
+  "hint": "module5.task3.hint",
+  "explanation": "module5.task3.explanation"
+}

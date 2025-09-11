@@ -12,7 +12,7 @@ Perfect starting point if you've never touched the command line but always wante
 
 ## How It Works
 
-23 practical tasks across 5 modules - from basic navigation to system commands.
+24 practical tasks across 5 modules - from basic navigation to system commands.
 
 Each task:
 
@@ -29,7 +29,7 @@ Start with `cd` and `ls`, end up comfortable with the command line!
 - **Module 2:** File Operations. Create, read, copy, move files: `touch`, `cat`, `less`, `file`, `cp`, `mv`, `rm`
 - **Module 3:** File Permissions and Metadata. Make files executable and check details: `chmod`, `stat`, `ls -l`, `touch`
 - **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`
-- **Module 5:** Text Processing. Search and sort text files: `grep`, `sort`
+- **Module 5:** Text Processing. Search and sort text files: `grep`, `sort`, `uniq`
 
 Plus `help` and `man` commands to guide you along the way!
 
@@ -55,7 +55,7 @@ You can type `help` at any time to get a list of available commands:
 ```
 user@machine:~$ help
 Available commands:
-  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort
+  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq
 
 System commands:
   hint [on|off] - Toggle task hints
@@ -162,7 +162,8 @@ tasks/
 │   └── task-4.json                 # List mounted filesystems using `mount`
 └──module-5/                        # Text Processing
     ├── task-1.json                 # Search for 'error' in `server.log` using `grep`
-    └── task-2.json                 # Sort lines in `names.txt` using `sort`
+    ├── task-2.json                 # Sort lines in `names.txt` using `sort`
+    └── task-3.json                 # Remove duplicate lines in `duplicates.txt` `uniq`
 ```
 
 Validation rules (`check`) may include:
@@ -311,7 +312,8 @@ project-root/
 │   │   └── task-4.json             # List mounted filesystems using `mount`
 │   └── module-5/                   # Text Processing
 │       ├── task-1.json             # Search for 'error' in `server.log` using `grep`
-│       └── task-2.json             # Sort lines in `names.txt` using `sort`
+│       ├── task-2.json             # Sort lines in `names.txt` using `sort`
+│       └── task-3.json             # Remove duplicate lines in `duplicates.txt` `uniq`
 ├── 404.html
 ├── 500.html
 ├── index.html                      # UI shell and entry point
