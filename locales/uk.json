@@ -75,6 +75,7 @@
   "manual.progress": "progress — управління прогресом навчання. Використовуйте `progress status` для перегляду детального прогресу або `progress reset` для перезапуску навчання",
   "manual.grep": "grep — пошук шаблонів у файлах",
   "manual.sort": "sort — сортування рядків у текстових файлах",
+  "manual.uniq": "uniq — видалити дублікати рядків з текстових файлів",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -112,6 +113,7 @@
   "command.rmdir.usage": "Використання: rmdir &lt;директорія&gt;",
   "command.grep.usage": "Використання: grep &lt;шаблон&gt; &lt;файл&gt;",
   "command.sort.usage": "Використання: sort &lt;файл&gt;",
+  "command.uniq.usage": "Використання: uniq &lt;файл&gt;",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Директорію {{name}} створено",
@@ -146,7 +148,7 @@
   "command.task.noTask": "Поточне завдання недоступне.",
 
   "command.help.availableCommands": "Доступні команди:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq",
   "command.help.systemCommands": "Системні команди:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Перемкнути кольорову тему",
@@ -246,5 +248,9 @@
 
   "module5.task2.description": "Скористайтеся командою `sort`, щоб відсортувати рядки в `names.txt` за алфавітом.",
   "module5.task2.hint": "Спробуйте `sort names.txt`",
-  "module5.task2.explanation": "Команда `sort` сортує рядки в текстовому файлі за алфавітом. Це корисно для організації даних, створення відсортованих списків та попередньої обробки тексту для інших команд."
+  "module5.task2.explanation": "Команда `sort` сортує рядки в текстовому файлі за алфавітом. Це корисно для організації даних, створення відсортованих списків та попередньої обробки тексту для інших команд.",
+
+  "module5.task3.description": "Скористайтеся командою `uniq`, щоб видалити дублікати рядків з файлу `duplicates.txt`.",
+  "module5.task3.hint": "Спробуйте `uniq duplicates.txt`",
+  "module5.task3.explanation": "Команда `uniq` видаляє послідовні дублікати рядків з текстового файлу, показуючи тільки унікальні рядки. Це дуже корисно для очищення файлів даних і видалення зайвих записів."
 }

@@ -45,6 +45,7 @@ const manPages = {
   progress: "manual.progress",
   grep: "manual.grep",
   sort: "manual.sort",
+  uniq: "manual.uniq",
 };
 
 export async function executeCommand(command) {
@@ -111,6 +112,7 @@ export async function executeCommand(command) {
     t("command.task.usage"),
     t("command.grep.usage"),
     t("command.sort.usage"),
+    t("command.uniq.usage"),
   ];
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -617,5 +619,34 @@ const commands = {
     const sortedLines = lines.sort((a, b) => a.localeCompare(b));
 
     return sortedLines.join("\n");
+  },
+
+  uniq: (args) => {
+    if (args.length !== 1) {
+      return t("command.uniq.usage");
+    }
+
+    const [filename] = args;
+    const currentDir = getDirectory(virtualFileSystem.currentDirectory);
+    const file = currentDir?.children[filename];
+
+    if (!file || file.type !== "file") {
+      return t("command.error.noSuchFile", { name: filename });
+    }
+
+    const content = file.content || "";
+    const lines = content.split("\n").filter((line) => line.trim() !== "");
+    const uniqueLines = [];
+    const seen = new Set();
+
+    for (const line of lines) {
+      const trimmedLine = line.trim();
+      if (!seen.has(trimmedLine)) {
+        seen.add(trimmedLine);
+        uniqueLines.push(trimmedLine);
+      }
+    }
+
+    return uniqueLines.join("\n");
   },
 };
