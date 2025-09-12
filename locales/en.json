@@ -150,7 +150,7 @@
   "command.task.noTask": "No current task available.",
 
   "command.help.availableCommands": "Available commands:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr",
   "command.help.systemCommands": "System commands:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
