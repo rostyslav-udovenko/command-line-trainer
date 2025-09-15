@@ -8,6 +8,11 @@ css/
 *.swp
 *.swo
 
+node_modules
+dist
+dist-ssr
+*.local
+
 # OS generated files
 .DS_Store
 .DS_Store?
@@ -18,4 +23,10 @@ ehthumbs.db
 Thumbs.db
 
 # Logs
+logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*

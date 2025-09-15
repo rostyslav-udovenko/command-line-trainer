@@ -10,7 +10,6 @@ import {
   scrollToBottom,
 } from "../ui/terminal-ui.js";
 import { t } from "./i18n.js";
-import { fetchWithCacheBust } from "./cache-buster.js";
 
 const SUCCESS_MESSAGES = [
   "task.manager.success.wellDone",
@@ -159,31 +158,26 @@ export async function loadTasks() {
   const modules = [
     {
       name: t("modules.1"),
-      path: "tasks/module-1",
       originalName: "Module 1 - Directory Operations",
       count: 5,
     },
     {
       name: t("modules.2"),
-      path: "tasks/module-2",
       originalName: "Module 2 - File Operations",
       count: 8,
     },
     {
       name: t("modules.3"),
-      path: "tasks/module-3",
       originalName: "Module 3 - File Permissions and Metadata",
       count: 4,
     },
     {
       name: t("modules.4"),
-      path: "tasks/module-4",
       originalName: "Module 4 - System Commands",
       count: 4,
     },
     {
       name: t("modules.5"),
-      path: "tasks/module-5",
       originalName: "Module 5 - Text Processing",
       count: 4,
     },
@@ -193,26 +187,96 @@ export async function loadTasks() {
     const taskPromises = [];
     let globalIndex = 0;
 
-    for (const module of modules) {
-      for (let i = 1; i <= module.count; i++) {
-        const url = `${module.path}/task-${i}.json`;
-        const promise = fetchWithCacheBust(url)
-          .then((res) => {
-            if (!res.ok) {
-              throw new Error(`Failed to load task: ${url}`);
+    for (let moduleIndex = 0; moduleIndex < modules.length; moduleIndex++) {
+      const module = modules[moduleIndex];
+
+      for (let taskIndex = 1; taskIndex <= module.count; taskIndex++) {
+        const promise = (async () => {
+          try {
+            let taskData;
+
+            if (moduleIndex === 0) {
+              // Module 1
+              if (taskIndex === 1)
+                taskData = await import("../../tasks/module-1/task-1.json");
+              else if (taskIndex === 2)
+                taskData = await import("../../tasks/module-1/task-2.json");
+              else if (taskIndex === 3)
+                taskData = await import("../../tasks/module-1/task-3.json");
+              else if (taskIndex === 4)
+                taskData = await import("../../tasks/module-1/task-4.json");
+              else if (taskIndex === 5)
+                taskData = await import("../../tasks/module-1/task-5.json");
+            } else if (moduleIndex === 1) {
+              // Module 2
+              if (taskIndex === 1)
+                taskData = await import("../../tasks/module-2/task-1.json");
+              else if (taskIndex === 2)
+                taskData = await import("../../tasks/module-2/task-2.json");
+              else if (taskIndex === 3)
+                taskData = await import("../../tasks/module-2/task-3.json");
+              else if (taskIndex === 4)
+                taskData = await import("../../tasks/module-2/task-4.json");
+              else if (taskIndex === 5)
+                taskData = await import("../../tasks/module-2/task-5.json");
+              else if (taskIndex === 6)
+                taskData = await import("../../tasks/module-2/task-6.json");
+              else if (taskIndex === 7)
+                taskData = await import("../../tasks/module-2/task-7.json");
+              else if (taskIndex === 8)
+                taskData = await import("../../tasks/module-2/task-8.json");
+            } else if (moduleIndex === 2) {
+              // Module 3
+              if (taskIndex === 1)
+                taskData = await import("../../tasks/module-3/task-1.json");
+              else if (taskIndex === 2)
+                taskData = await import("../../tasks/module-3/task-2.json");
+              else if (taskIndex === 3)
+                taskData = await import("../../tasks/module-3/task-3.json");
+              else if (taskIndex === 4)
+                taskData = await import("../../tasks/module-3/task-4.json");
+            } else if (moduleIndex === 3) {
+              // Module 4
+              if (taskIndex === 1)
+                taskData = await import("../../tasks/module-4/task-1.json");
+              else if (taskIndex === 2)
+                taskData = await import("../../tasks/module-4/task-2.json");
+              else if (taskIndex === 3)
+                taskData = await import("../../tasks/module-4/task-3.json");
+              else if (taskIndex === 4)
+                taskData = await import("../../tasks/module-4/task-4.json");
+            } else if (moduleIndex === 4) {
+              // Module 5
+              if (taskIndex === 1)
+                taskData = await import("../../tasks/module-5/task-1.json");
+              else if (taskIndex === 2)
+                taskData = await import("../../tasks/module-5/task-2.json");
+              else if (taskIndex === 3)
+                taskData = await import("../../tasks/module-5/task-3.json");
+              else if (taskIndex === 4)
+                taskData = await import("../../tasks/module-5/task-4.json");
             }
-            return res.json();
-          })
-          .then((task) => {
+
+            if (!taskData) {
+              throw new Error(
+                `Task not found: module-${moduleIndex + 1}/task-${taskIndex}`
+              );
+            }
+
+            const task = taskData.default || taskData;
             task.moduleName = module.name;
             task.originalModuleName = module.originalName;
             task.globalIndex = globalIndex++;
             return task;
-          })
-          .catch((error) => {
-            console.error(`Error loading task ${url}:`, error);
+          } catch (error) {
+            console.error(
+              `Error loading task module-${moduleIndex + 1}/task-${taskIndex}:`,
+              error
+            );
             return null;
-          });
+          }
+        })();
+
         taskPromises.push(promise);
       }
     }
