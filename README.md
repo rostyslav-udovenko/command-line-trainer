@@ -108,10 +108,10 @@ The application will automatically open in your browser at `http://localhost:300
 
 ### Development Commands
 
-`npm run dev` - Start development server with hot reload
-`npm run build` - Build for production
-`npm run preview` - Preview production build locally
-`npm run serve` - Serve production build on port 3000
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run serve` - Serve production build on port 3000
 
 **Important:** The project uses Vite as the build tool. SCSS files are automatically processed, and you don't need to manually compile them. All CSS is generated automatically during the build process.
 
