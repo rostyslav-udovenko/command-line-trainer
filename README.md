@@ -79,7 +79,7 @@ touch — create a new file
 
 ### Prerequisites
 
-To compile SCSS styles, you'll need Node.js and npm installed on your system.
+Node.js and npm are required for development.
 
 ### Installation
 
@@ -90,34 +90,30 @@ git clone https://github.com/rostyslav-udovenko/command-line-trainer.git
 cd command-line-trainer
 ```
 
-2. Install Sass
+2. Install dependencies:
 
 ```
-npm install -g sass
+npm install
+npm install -D vite
+npm install -D sass-embedded
 ```
 
-3. Compile SCSS to CSS
-
-
-```
-sass scss/main.scss css/styles.css
-```
-
-4. Start a local web server:
+3. Start the development server:
 
 ```
-npx serve .
+npm run dev
 ```
 
-### Development Workflow
+The application will automatically open in your browser at `http://localhost:3000`.
 
-For active development, use the watch mode to automatically recompile CSS when SCSS files change:
+### Development Commands
 
-```
-sass --watch scss/main.scss:css/styles.css
-```
+`npm run dev` - Start development server with hot reload
+`npm run build` - Build for production
+`npm run preview` - Preview production build locally
+`npm run serve` - Serve production build on port 3000
 
-**Important:** Do not edit `css/styles.css` manually — all changes should be made in SCSS files. The CSS files are generated and excluded from version control via `.gitignore`.
+**Important:** The project uses Vite as the build tool. SCSS files are automatically processed, and you don't need to manually compile them. All CSS is generated automatically during the build process.
 
 ## Tasks
 
@@ -131,41 +127,7 @@ Each task is described as a JSON file and includes:
 - `check` – validation rules to determine if the task is complete
 - `hint` – helpful tip shown after several failed attempts
 
-Tasks are organized into modules in the `tasks/` directory:
-
-```
-tasks/
-├── module-1/                       # Directory Operations
-│   ├── task-1.json                 # Navigate to the `projects` directory
-│   ├── task-2.json                 # Create a directory named `images`
-│   ├── task-3.json                 # List contents using `ls`
-│   ├── task-4.json                 # Display current path using `pwd`
-│   └── task-5.json                 # Remove empty directory using `rmdir`
-├── module-2/                       # File Operations
-│   ├── task-1.json                 # Create `index.html` in `projects`
-│   ├── task-2.json                 # Read `note.txt` using `cat`
-│   ├── task-3.json                 # View `log.txt` using `less`
-│   ├── task-4.json                 # Inspect `script.sh` using `file`
-│   ├── task-5.json                 # Copy `a.txt` to `b.txt` using `cp`
-│   ├── task-6.json                 # Rename `old.txt` to `new.txt` using `mv`
-│   ├── task-7.json                 # Move `note.txt` into `docs/` using `mv`
-│   └── task-8.json                 # Remove `temp.txt` using `rm`
-├── module-3/                       # File Permissions and Metadata
-│   ├── task-1.json                 # Make `run.sh` executable using `chmod`
-│   ├── task-2.json                 # Find executable with `ls -l`
-│   ├── task-3.json                 # Show `log.txt` metadata using `stat`
-│   └── task-4.json                 # Update `todo.txt` timestamp using `touch`
-├── module-4/                       # System Commands
-│   ├── task-1.json                 # Show current time using `date`
-│   ├── task-2.json                 # Display current username using `whoami`
-│   ├── task-3.json                 # Check system uptime using `uptime`
-│   └── task-4.json                 # List mounted filesystems using `mount`
-└──module-5/                        # Text Processing
-    ├── task-1.json                 # Search for 'error' in `server.log` using `grep`
-    ├── task-2.json                 # Sort lines in `names.txt` using `sort`
-    ├── task-3.json                 # Remove duplicate lines in `duplicates.txt` `uniq`
-    └── task-4.json                 # Transform text case in `message.txt` using `tr`
-```
+Tasks are organized into modules in the `tasks/` directory.
 
 Validation rules (`check`) may include:
 
@@ -181,147 +143,93 @@ Validation rules (`check`) may include:
 - `expectedOutputIncludesKeys` – output must include translated strings resolved from localization keys (for multi-language support)
 - `expectedCommandArgs` – checks that the user entered specific command-line arguments (e.g., `["note.txt"]`)
 
-## Modular JavaScript Structure
-
-The application code is organized into well-structured ES module files to enhance both scalability and clarity:
-
-```
-js/
-├── core/                           # Core logic and virtual file system operations
-│   ├── cache-buster.js             # Cache busting utilities for fresh content delivery
-│   ├── command-executor.js         # Command definitions and execution logic
-│   ├── file-system.js              # Virtual file system operations
-│   ├── i18n.js                     # Internationalization (i18n): loads and applies translations
-│   └── task-manager.js             # Task loading, validation and flow control
-├── effects/                        # Visual effects and easter eggs
-│   └── matrix-mode.js              # Matrix Rain mode
-├── ui/                             # Terminal user interface logic
-│   ├── terminal-ui.js              # Handles UI: output, input, scrolling
-│   ├── theme-manager-init.js       # Sets initial theme on first page load based on localStorage
-│   └── theme-manager.js            # Handles theme initialization and application
-└── main.js                         # Entry point, initializes everything
-```
-
-## Cache Busting System
-
-The `cache-buster.js` module ensures users always receive the latest content:
-
-- Automatic versioning for JSON task files and translation files
-- Manual versioning for CSS and main JavaScript files via HTML
-- Fallback support for older browsers using custom `groupBy` implementation
-- No-cache headers for enhanced cache control
-
-## SCSS Structure
-
-This project uses a modular SCSS structure for better scalability and organization.
-
-```
-scss/
-├── base/                           # Base settings and resets
-│   ├── _globals.scss               # Global element styles
-│   ├── _reset.scss                 # Reset and normalize styles
-│   └── _typography.scss            # Typography rules
-├── components/                     # Reusable UI components
-│   ├── _input.scss                 # Input field styling
-│   ├── _prompt.scss                # Prompt symbol and input wrapper
-│   └── _scrollbar.scss             # Custom scrollbar styling with theme
-├── layout/                         # Structural layout sections
-│   ├── _footer.scss                # Footer styling
-│   ├── _header.scss                # Header styling
-│   └── _terminal.scss              # Terminal area styling
-├── media/                          # Media queries and breakpoints
-│   └── _responsive.scss            # Responsive adjustments
-├── themes/                         # Theme system with CSS variables
-│   └── _themes.scss                # Defines dark, light and amber theme variables using :root and [data-theme]
-└── main.scss                       # UI Entry point
-```
-
-The compiled CSS is generated in the `css/` folder and excluded from version control.
-
 ## File Structure
 
 ```
 project-root/
-├── css/                            # Generated CSS (excluded from git)
-│   ├── styles.css                  # Generated from SCSS (do not edit manually)
-│   └── styles.css.map              # Source map for dev tools
-├── fonts/
-│   ├── IBMPlexMono-Bold.woff       # IBM Plex Mono Bold font (WOFF format)
-│   ├── IBMPlexMono-Bold.woff2      # IBM Plex Mono Bold font
-│   ├── IBMPlexMono-Regular.woff    # IBM Plex Mono Regular font (WOFF format)
-│   └── IBMPlexMono-Regular.woff2   # IBM Plex Mono Regular font
+├── dist/                                   # Built application (generated by Vite and excluded from git)
 ├── js/
-│   ├── core/                       # Core logic and virtual file system operations
-│   │   ├── cache-buster.js         # Cache busting utilities for fresh content delivery
-│   │   ├── command-executor.js     # Command definitions and execution logic
-│   │   ├── file-system.js          # Virtual file system operations
-│   │   ├── i18n.js                 # Internationalization (i18n): loads and applies translations
-│   │   └── task-manager.js         # Task loading, validation and flow control
-│   ├── effects/                    # Visual effects and easter eggs
-│   │   └── matrix-mode.js          # Matrix Rain mode
-│   ├── ui/                         # Terminal user interface logic
-│   │   ├── terminal-ui.js          # Handles UI: output, input, scrolling
-│   │   ├── theme-manager-init.js   # Sets initial theme on first page load based on localStorage
-│   │   └── theme-manager.js        # Handles theme initialization and application
-│   └── main.js                     # Entry point, initializes everything
+│   ├── core/                               # Core logic and virtual file system operations
+│   │   ├── command-executor.js             # Command definitions and execution logic
+│   │   ├── file-system.js                  # Virtual file system operations
+│   │   ├── i18n.js                         # Internationalization (i18n): loads and applies translations
+│   │   └── task-manager.js                 # Task loading, validation and flow control
+│   ├── effects/                            # Visual effects and easter eggs
+│   │   └── matrix-mode.js                  # Matrix Rain mode
+│   ├── ui/                                 # Terminal user interface logic
+│   │   ├── terminal-ui.js                  # Handles UI: output, input, scrolling
+│   │   ├── theme-manager-init.js           # Sets initial theme on first page load based on localStorage
+│   │   └── theme-manager.js                # Handles theme initialization and application
+│   └── main.js                             # Entry point, initializes everything
 ├── locales/
-│   ├── en.json                     # English localization file
-│   └── uk.json                     # Ukrainian localization file
+│   ├── en.json                             # English localization file
+│   └── uk.json                             # Ukrainian localization file
+├── public/
+│   └── favicon.svg                         # Application favicon
 ├── scss/
-│   ├── base/                       # Base settings and resets
-│   │   ├── _globals.scss           # Global element styles
-│   │   ├── _reset.scss             # Reset and normalize styles
-│   │   └── _typography.scss        # Typography rules
-│   ├── components/                 # Reusable UI components
-│   │   ├── _input.scss             # Input field styling
-│   │   ├── _prompt.scss            # Prompt symbol and input wrapper
-│   │   └── _scrollbar.scss         # Custom scrollbar styling with theme
-│   ├── layout/                     # Structural layout sections
-│   │   ├── _footer.scss            # Footer styling
-│   │   ├── _header.scss            # Header styling
-│   │   └── _terminal.scss          # Terminal area styling
-│   ├── media/                      # Media queries and breakpoints
-│   │   └── _responsive.scss        # Responsive adjustments
-│   ├── themes/                     # Theme system with CSS variables
-│   │   └── _themes.scss            # Defines dark, light and amber theme variables using :root and [data-theme]
-│   └── main.scss                   # UI Entry point
+│   ├── base/                               # Base settings and resets
+│   │   ├── _globals.scss                   # Global element styles
+│   │   ├── _reset.scss                     # Reset and normalize styles
+│   │   └── _typography.scss                # Typography rules
+│   ├── components/                         # Reusable UI components
+│   │   ├── _input.scss                     # Input field styling
+│   │   ├── _prompt.scss                    # Prompt symbol and input wrapper
+│   │   └── _scrollbar.scss                 # Custom scrollbar styling with theme
+│   ├── layout/                             # Structural layout sections
+│   │   ├── _footer.scss                    # Footer styling
+│   │   ├── _header.scss                    # Header styling
+│   │   └── _terminal.scss                  # Terminal area styling
+│   ├── media/                              # Media queries and breakpoints
+│   │   └── _responsive.scss                # Responsive adjustments
+│   ├── themes/                             # Theme system with CSS variables
+│   │   └── _themes.scss                    # Defines dark, light and amber theme variables using :root and [data-theme]
+│   └── main.scss                           # UI Entry point
+├── src/
+│   └── assets/
+│       └── fonts/
+│           ├── IBMPlexMono-Bold.woff       # IBM Plex Mono Bold font (WOFF format)
+│           ├── IBMPlexMono-Bold.woff2      # IBM Plex Mono Bold font
+│           ├── IBMPlexMono-Regular.woff    # IBM Plex Mono Regular font (WOFF format)
+│           └── IBMPlexMono-Regular.woff2   # IBM Plex Mono Regular font
 ├── tasks/
-│   ├── module-1/                   # Directory Operations
-│   │   ├── task-1.json             # Navigate to the `projects` directory
-│   │   ├── task-2.json             # Create a directory named `images`
-│   │   ├── task-3.json             # List contents using `ls`
-│   │   ├── task-4.json             # Display current path using `pwd`
-│   │   └── task-5.json             # Remove empty directory using `rmdir`
-│   ├── module-2/                   # File Operations
-│   │   ├── task-1.json             # Create `index.html` in `projects`
-│   │   ├── task-2.json             # Read `note.txt` using `cat`
-│   │   ├── task-3.json             # View `log.txt` using `less`
-│   │   ├── task-4.json             # Inspect `script.sh` using `file`
-│   │   ├── task-5.json             # Copy `a.txt` to `b.txt` using `cp`
-│   │   ├── task-6.json             # Rename `old.txt` to `new.txt` using `mv`
-│   │   ├── task-7.json             # Move `note.txt` into `docs/` using `mv`
-│   │   └── task-8.json             # Remove `temp.txt` using `rm`
-│   ├── module-3/                   # File Permissions and Metadata
-│   │   ├── task-1.json             # Make `run.sh` executable using `chmod`
-│   │   ├── task-2.json             # Find executable with `ls -l`
-│   │   ├── task-3.json             # Show `log.txt` metadata using `stat`
-│   │   └── task-4.json             # Update `todo.txt` timestamp using `touch`
-│   ├── module-4/                   # System Commands
-│   │   ├── task-1.json             # Show current time using `date`
-│   │   ├── task-2.json             # Display current username using `whoami`
-│   │   ├── task-3.json             # Check system uptime using `uptime`
-│   │   └── task-4.json             # List mounted filesystems using `mount`
-│   └── module-5/                   # Text Processing
-│       ├── task-1.json             # Search for 'error' in `server.log` using `grep`
-│       ├── task-2.json             # Sort lines in `names.txt` using `sort`
-│       ├── task-3.json             # Remove duplicate lines in `duplicates.txt` `uniq`
-│       └── task-4.json             # Transform text case in `message.txt` using `tr`
+│   ├── module-1/                           # Directory Operations
+│   │   ├── task-1.json                     # Navigate to the `projects` directory
+│   │   ├── task-2.json                     # Create a directory named `images`
+│   │   ├── task-3.json                     # List contents using `ls`
+│   │   ├── task-4.json                     # Display current path using `pwd`
+│   │   └── task-5.json                     # Remove empty directory using `rmdir`
+│   ├── module-2/                           # File Operations
+│   │   ├── task-1.json                     # Create `index.html` in `projects`
+│   │   ├── task-2.json                     # Read `note.txt` using `cat`
+│   │   ├── task-3.json                     # View `log.txt` using `less`
+│   │   ├── task-4.json                     # Inspect `script.sh` using `file`
+│   │   ├── task-5.json                     # Copy `a.txt` to `b.txt` using `cp`
+│   │   ├── task-6.json                     # Rename `old.txt` to `new.txt` using `mv`
+│   │   ├── task-7.json                     # Move `note.txt` into `docs/` using `mv`
+│   │   └── task-8.json                     # Remove `temp.txt` using `rm`
+│   ├── module-3/                           # File Permissions and Metadata
+│   │   ├── task-1.json                     # Make `run.sh` executable using `chmod`
+│   │   ├── task-2.json                     # Find executable with `ls -l`
+│   │   ├── task-3.json                     # Show `log.txt` metadata using `stat`
+│   │   └── task-4.json                     # Update `todo.txt` timestamp using `touch`
+│   ├── module-4/                           # System Commands
+│   │   ├── task-1.json                     # Show current time using `date`
+│   │   ├── task-2.json                     # Display current username using `whoami`
+│   │   ├── task-3.json                     # Check system uptime using `uptime`
+│   │   └── task-4.json                     # List mounted filesystems using `mount`
+│   └── module-5/                           # Text Processing
+│       ├── task-1.json                     # Search for 'error' in `server.log` using `grep`
+│       ├── task-2.json                     # Sort lines in `names.txt` using `sort`
+│       ├── task-3.json                     # Remove duplicate lines in `duplicates.txt` using `uniq`
+│       └── task-4.json                     # Transform text case in `message.txt` using `tr`
 ├── 404.html
 ├── 500.html
-├── favicon.svg
-├── index.html                      # UI shell and entry point
+├── index.html                              # UI shell and entry point
 ├── LICENSE
-└── README.md
+├── package-lock.json                       # Dependency lock file
+├── package.json                            # Project configuration and dependencies
+├── README.md
+└── vite.config.js                          # Vite configuration
 ```
 
 ## Third-party Assets
