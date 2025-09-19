@@ -77,6 +77,7 @@
   "manual.sort": "sort — сортування рядків у текстових файлах",
   "manual.uniq": "uniq — видалити дублікати рядків з текстових файлів",
   "manual.tr": "tr — перекладає символи",
+  "manual.ps": "ps — відображає інформацію про запущені процеси",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -116,6 +117,7 @@
   "command.sort.usage": "Використання: sort &lt;файл&gt;",
   "command.uniq.usage": "Використання: uniq &lt;файл&gt;",
   "command.tr.usage": "Використання: tr SET1 SET2 < FILE",
+  "command.ps.usage": "Використання: ps",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Директорію {{name}} створено",
@@ -150,7 +152,7 @@
   "command.task.noTask": "Поточне завдання недоступне.",
 
   "command.help.availableCommands": "Доступні команди:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps",
   "command.help.systemCommands": "Системні команди:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Перемкнути кольорову тему",
@@ -243,6 +245,10 @@
   "module4.task4.description": "Скористайтеся командою `mount`, щоб переглянути змонтовані файлові системи.",
   "module4.task4.hint": "Спробуйте `mount`",
   "module4.task4.explanation": "Команда `mount` відображає всі поточно змонтовані файлові системи, показуючи назви пристроїв і точки монтування. Це корисно для розуміння того, як підключені носії та де вони доступні.",
+
+  "module4.task5.description": "Скористайтеся командою `ps`, щоб переглянути список запущених процесів.",
+  "module4.task5.hint": "Спробуйте `ps`",
+  "module4.task5.explanation": "Команда `ps` показує інформацію про активні процеси. Це корисно для моніторингу того, що працює у вашій системі.",
 
   "module5.task1.description": "Скористайтеся командою `grep`, щоб знайти рядки, що містять 'error' у файлі `server.log`.",
   "module5.task1.hint": "Спробуйте `grep error server.log`",

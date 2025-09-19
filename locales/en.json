@@ -77,6 +77,7 @@
   "manual.sort": "sort — sort lines in text files",
   "manual.uniq": "uniq — remove duplicate lines from text files",
   "manual.tr": "tr — translate characters",
+  "manual.ps": "ps — display information about running processes",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -116,6 +117,7 @@
   "command.sort.usage": "Usage: sort &lt;filename&gt;",
   "command.uniq.usage": "Usage: uniq &lt;filename&gt;",
   "command.tr.usage": "Usage: tr SET1 SET2 < FILE",
+  "command.ps.usage": "Usage: ps",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
@@ -150,7 +152,7 @@
   "command.task.noTask": "No current task available.",
 
   "command.help.availableCommands": "Available commands:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps",
   "command.help.systemCommands": "System commands:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
@@ -243,6 +245,10 @@
   "module4.task4.description": "Use the `mount` command to list mounted filesystems.",
   "module4.task4.hint": "Try `mount`",
   "module4.task4.explanation": "The `mount` command displays all currently mounted filesystems, showing their device names and mount points. This is useful for understanding how storage devices are connected to the system and where they are accessible.",
+
+  "module4.task5.description": "Use the `ps` command to show the list of running processes.",
+  "module4.task5.hint": "Try `ps`",
+  "module4.task5.explanation": "The `ps` command shows information about active processes. This is useful for monitoring what's running on your system.",
 
   "module5.task1.description": "Use the `grep` command to search for lines containing 'error' in the file `server.log`.",
   "module5.task1.hint": "Try `grep error server.log`",

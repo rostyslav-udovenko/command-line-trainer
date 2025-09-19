@@ -47,6 +47,7 @@ const manPages = {
   sort: "manual.sort",
   uniq: "manual.uniq",
   tr: "manual.tr",
+  ps: "manual.ps",
 };
 
 export async function executeCommand(command) {
@@ -682,5 +683,43 @@ const commands = {
     }
 
     return result;
+  },
+
+  ps: (args) => {
+    if (args.length > 0) return t("command.ps.usage");
+
+    const basePid = Math.floor(Math.random() * 1000) + 1500;
+
+    const processes = [
+      { pid: basePid, tty: "pts/0", time: "00:00:00", cmd: "bash" },
+      { pid: basePid + 15, tty: "pts/1", time: "00:00:01", cmd: "ssh" },
+      { pid: basePid + 23, tty: "pts/0", time: "00:00:00", cmd: "vim" },
+      { pid: basePid + 31, tty: "pts/2", time: "00:00:00", cmd: "nano" },
+      { pid: basePid + 42, tty: "pts/0", time: "00:00:00", cmd: "top" },
+      { pid: basePid + 58, tty: "pts/1", time: "00:00:02", cmd: "wget" },
+      { pid: basePid + 67, tty: "pts/0", time: "00:00:00", cmd: "cat" },
+      { pid: basePid + 78, tty: "pts/0", time: "00:00:00", cmd: "ps" },
+    ];
+
+    const numProcesses = Math.floor(Math.random() * 4) + 3;
+    const selectedProcesses = processes.slice(0, numProcesses);
+
+    const psPid = selectedProcesses[selectedProcesses.length - 1].pid + 1;
+    selectedProcesses[selectedProcesses.length - 1] = {
+      pid: psPid,
+      tty: "pts/0",
+      time: "00:00:00",
+      cmd: "ps",
+    };
+
+    const header = "    PID TTY          TIME     CMD";
+    const lines = selectedProcesses.map(
+      (proc) =>
+        `${proc.pid.toString().padStart(7)} ${proc.tty.padEnd(12)} ${
+          proc.time
+        } ${proc.cmd}`
+    );
+
+    return [header, ...lines].join("\n");
   },
 };

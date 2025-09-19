@@ -1,0 +1,17 @@
+{
+  "id": 5,
+  "description": "module4.task5.description",
+  "type": "ps",
+  "check": {
+    "expectedOutputIncludes": ["PID", "TTY", "TIME", "CMD", "ps"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "module4.task5.hint",
+  "explanation": "module4.task5.explanation"
+}
