@@ -262,7 +262,7 @@
   "module5.task3.hint": "Try `uniq duplicates.txt`",
   "module5.task3.explanation": "The `uniq` command removes consecutive duplicate lines from a text file, showing only unique lines. This is very useful for cleaning up data files and removing redundant entries.",
 
-  "module5.task4.description": "Transform lowercase to uppercase in message.txt using tr with input redirection",
-  "module5.task4.hint": "Use tr a-z A-Z < message.txt to convert lowercase to uppercase using input redirection",
-  "module5.task4.explanation": "The tr command reads from stdin. Use < to redirect file content as input: tr a-z A-Z < file.txt"
+  "module5.task4.description": "Transform lowercase to uppercase in message.txt using `tr` with input redirection",
+  "module5.task4.hint": "Try `tr a-z A-Z < message.txt`",
+  "module5.task4.explanation": "The `tr` command reads from stdin. Use < to redirect file content as input: tr a-z A-Z < file.txt"
 }
