@@ -1,4 +1,4 @@
-import "../scss/main.scss";
+import "../src/ui/styles/main.scss";
 import { setupTheme } from "./ui/theme-manager.js";
 import {
   setCaret,
