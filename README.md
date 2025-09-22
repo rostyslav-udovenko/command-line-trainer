@@ -12,7 +12,7 @@ Perfect starting point if you've never touched the command line but always wante
 
 ## How It Works
 
-25 practical tasks across 5 modules - from basic navigation to system commands.
+26 practical tasks across 5 modules - from basic navigation to system commands.
 
 Each task:
 
@@ -216,7 +216,8 @@ project-root/
 │   │   ├── task-1.json                     # Show current time using `date`
 │   │   ├── task-2.json                     # Display current username using `whoami`
 │   │   ├── task-3.json                     # Check system uptime using `uptime`
-│   │   └── task-4.json                     # List mounted filesystems using `mount`
+│   │   ├── task-4.json                     # List mounted filesystems using `mount`
+│   │   └── task-5.json                     # Check the list of running processes using `ps`
 │   └── module-5/                           # Text Processing
 │       ├── task-1.json                     # Search for 'error' in `server.log` using `grep`
 │       ├── task-2.json                     # Sort lines in `names.txt` using `sort`
