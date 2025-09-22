@@ -55,7 +55,7 @@ You can type `help` at any time to get a list of available commands:
 ```
 user@machine:~$ help
 Available commands:
-  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr
+  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps
 
 System commands:
   hint [on|off] - Toggle task hints
