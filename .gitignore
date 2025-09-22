@@ -1,7 +1,3 @@
-# Compiled CSS (generated from SCSS)
-css/
-*.css.map
-
 # IDE and editor files
 .vscode/
 .idea/
