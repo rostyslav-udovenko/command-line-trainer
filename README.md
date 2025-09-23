@@ -28,7 +28,7 @@ Start with `cd` and `ls`, end up comfortable with the command line!
 - **Module 1:** Directory Operations. Learn to navigate: `cd`, `mkdir`, `ls`, `pwd`, `rmdir`
 - **Module 2:** File Operations. Create, read, copy, move files: `touch`, `cat`, `less`, `file`, `cp`, `mv`, `rm`
 - **Module 3:** File Permissions and Metadata. Make files executable and check details: `chmod`, `stat`, `ls -l`, `touch`
-- **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`
+- **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`, `ps`
 - **Module 5:** Text Processing. Search and sort text files: `grep`, `sort`, `uniq`, `tr`
 
 Plus `help` and `man` commands to guide you along the way!
