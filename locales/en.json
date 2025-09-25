@@ -18,6 +18,7 @@
   "modules.3": "Module 3 - File Permissions and Metadata",
   "modules.4": "Module 4 - System Commands",
   "modules.5": "Module 5 - Text Processing",
+  "modules.6": "Module 6 - File Search & Navigation",
 
   "task.manager.loadingTasks": "Loading tasks...",
   "task.manager.loadingDone": "Tasks loaded!",
@@ -78,6 +79,7 @@
   "manual.uniq": "uniq — remove duplicate lines from text files",
   "manual.tr": "tr — translate characters",
   "manual.ps": "ps — display information about running processes",
+  "manual.find": "find — search for files and directories by name, type, or other criteria",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -118,6 +120,7 @@
   "command.uniq.usage": "Usage: uniq &lt;filename&gt;",
   "command.tr.usage": "Usage: tr SET1 SET2 < FILE",
   "command.ps.usage": "Usage: ps",
+  "command.find.usage": "Usage: find &lt;path&gt; [-name pattern] [-type f|d]",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
@@ -152,7 +155,7 @@
   "command.task.noTask": "No current task available.",
 
   "command.help.availableCommands": "Available commands:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find",
   "command.help.systemCommands": "System commands:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
@@ -264,5 +267,9 @@
 
   "module5.task4.description": "Transform lowercase to uppercase in message.txt using `tr` with input redirection",
   "module5.task4.hint": "Try `tr a-z A-Z < message.txt`",
-  "module5.task4.explanation": "The `tr` command reads from stdin. Use < to redirect file content as input: tr a-z A-Z < file.txt"
+  "module5.task4.explanation": "The `tr` command reads from stdin. Use < to redirect file content as input: tr a-z A-Z < file.txt",
+
+  "module6.task1.description": "Use the `find` command to search for all `.txt` files starting from the current directory.",
+  "module6.task1.hint": "Try `find . -name *.txt`",
+  "module6.task1.explanation": "The `find` command searches for files and directories. The `-name` option allows you to search by filename pattern using wildcards like `*.txt` to find all files ending with `.txt`."
 }

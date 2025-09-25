@@ -48,6 +48,7 @@ const manPages = {
   uniq: "manual.uniq",
   tr: "manual.tr",
   ps: "manual.ps",
+  find: "manual.find",
 };
 
 export async function executeCommand(command) {
@@ -721,5 +722,111 @@ const commands = {
     );
 
     return [header, ...lines].join("\n");
+  },
+
+  find: (args) => {
+    if (args.length === 0) {
+      return "Usage: find <path> [-name pattern] [-type f|d]";
+    }
+
+    const searchPath = args[0];
+    let searchType = null;
+    let namePattern = null;
+
+    // Parse arguments
+    for (let i = 1; i < args.length; i++) {
+      if (args[i] === "-type" && i + 1 < args.length) {
+        searchType = args[i + 1];
+        i++; // Skip the next argument as it's the type value
+      } else if (args[i] === "-name" && i + 1 < args.length) {
+        namePattern = args[i + 1];
+        i++; // Skip the next argument as it's the name pattern
+      }
+    }
+
+    // Get the starting directory
+    let startDir;
+    if (searchPath === ".") {
+      startDir = getDirectory(virtualFileSystem.currentDirectory);
+      if (!startDir) {
+        return t("command.error.dirNotFound");
+      }
+    } else {
+      const fullPath = resolvePath(
+        virtualFileSystem.currentDirectory,
+        searchPath
+      );
+      startDir = getDirectory(fullPath);
+      if (!startDir) {
+        return t("command.error.dirNotFound");
+      }
+    }
+
+    const results = [];
+
+    // Helper function to match glob patterns
+    function matchesPattern(filename, pattern) {
+      if (!pattern) return true;
+
+      // Convert glob pattern to regex
+      const regexPattern = pattern
+        .replace(/\./g, "\\.") // Escape dots
+        .replace(/\*/g, ".*") // Convert * to .*
+        .replace(/\?/g, "."); // Convert ? to .
+
+      const regex = new RegExp(`^${regexPattern}$`);
+      return regex.test(filename);
+    }
+
+    function searchRecursively(dir, relativePath) {
+      // For "." path, include the current directory in results for type d
+      if (
+        searchPath === "." &&
+        relativePath === "." &&
+        (searchType === "d" || searchType === null) &&
+        (!namePattern || matchesPattern(".", namePattern))
+      ) {
+        results.push(".");
+      }
+
+      // Search through children
+      if (dir.children) {
+        for (const [childName, child] of Object.entries(dir.children)) {
+          const childRelativePath =
+            relativePath === "."
+              ? `./${childName}`
+              : `${relativePath}/${childName}`;
+
+          if (child.type === "file") {
+            // Check if file matches criteria
+            if (
+              (searchType === "f" || searchType === null) &&
+              (!namePattern || matchesPattern(childName, namePattern))
+            ) {
+              results.push(childRelativePath);
+            }
+          } else if (child.type === "dir") {
+            // Add directory if searching for directories and matches pattern
+            if (
+              (searchType === "d" || searchType === null) &&
+              (!namePattern || matchesPattern(childName, namePattern))
+            ) {
+              results.push(childRelativePath);
+            }
+            // Recursively search subdirectory
+            searchRecursively(child, childRelativePath);
+          }
+        }
+      }
+    }
+
+    // Start the search
+    if (searchPath === ".") {
+      searchRecursively(startDir, ".");
+    } else {
+      searchRecursively(startDir, searchPath);
+    }
+
+    return results.length > 0 ? results.join("\n") : "";
   },
 };

@@ -18,6 +18,7 @@
   "modules.3": "Модуль 3 - Права доступу та метадані",
   "modules.4": "Модуль 4 - Системні команди",
   "modules.5": "Модуль 5 - Обробка тексту",
+  "modules.6": "Модуль 6 - Пошук файлів та навігація",
 
   "task.manager.loadingTasks": "Завантаження завдань...",
   "task.manager.loadingDone": "Завдання завантажено!",
@@ -78,6 +79,7 @@
   "manual.uniq": "uniq — видалити дублікати рядків з текстових файлів",
   "manual.tr": "tr — перекладає символи",
   "manual.ps": "ps — відображає інформацію про запущені процеси",
+  "manual.find": "find — пошук файлів та директорій за іменем, типом або іншими критеріями",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -118,6 +120,7 @@
   "command.uniq.usage": "Використання: uniq &lt;файл&gt;",
   "command.tr.usage": "Використання: tr SET1 SET2 < FILE",
   "command.ps.usage": "Використання: ps",
+  "command.find.usage": "Використання: find &lt;шлях&gt; [-name шаблон] [-type f|d]",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Директорію {{name}} створено",
@@ -152,7 +155,7 @@
   "command.task.noTask": "Поточне завдання недоступне.",
 
   "command.help.availableCommands": "Доступні команди:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find",
   "command.help.systemCommands": "Системні команди:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Перемкнути кольорову тему",
@@ -264,5 +267,9 @@
 
   "module5.task4.description": "Перетворіть малі літери у великі в message.txt використовуючи `tr` з перенаправленням вводу",
   "module5.task4.hint": "Спробуйте `tr a-z A-Z < message.txt`",
-  "module5.task4.explanation": "Команда `tr` читає зі stdin. Використовуйте < щоб перенаправити вміст файлу як ввід: tr a-z A-Z < file.txt"
+  "module5.task4.explanation": "Команда `tr` читає зі stdin. Використовуйте < щоб перенаправити вміст файлу як ввід: tr a-z A-Z < file.txt",
+
+  "module6.task1.description": "Використайте команду `find` для пошуку всіх файлів `.txt` починаючи з поточної директорії.",
+  "module6.task1.hint": "Спробуйте `find . -name *.txt`",
+  "module6.task1.explanation": "Команда `find` шукає файли та директорії. Опція `-name` дозволяє шукати за шаблоном імені файлу використовуючи символи підстановки як `*.txt` для пошуку всіх файлів що закінчуються на `.txt`."
 }
