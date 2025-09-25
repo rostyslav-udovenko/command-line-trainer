@@ -1,0 +1,102 @@
+{
+  "id": 1,
+  "description": "module6.task1.description",
+  "type": "find",
+  "check": {
+    "expectedCommandArgs": [".", "-name", "*.txt"],
+    "expectedOutputIncludes": [
+      "./documents/report.txt",
+      "./backup/old.txt",
+      "./notes.txt"
+    ]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "notes.txt": {
+        "name": "notes.txt",
+        "type": "file",
+        "content": "Personal notes",
+        "meta": {
+          "lastModified": "2025-01-15T10:30:00Z"
+        }
+      },
+      "script.sh": {
+        "name": "script.sh",
+        "type": "file",
+        "content": "#!/bin/bash\necho 'Hello'",
+        "meta": {
+          "lastModified": "2025-01-15T11:00:00Z"
+        }
+      },
+      "documents": {
+        "name": "documents",
+        "type": "dir",
+        "children": {
+          "report.txt": {
+            "name": "report.txt",
+            "type": "file",
+            "content": "Monthly report",
+            "meta": {
+              "lastModified": "2025-01-14T15:20:00Z"
+            }
+          },
+          "presentation.pptx": {
+            "name": "presentation.pptx",
+            "type": "file",
+            "content": "",
+            "meta": {
+              "lastModified": "2025-01-13T09:45:00Z"
+            }
+          }
+        }
+      },
+      "backup": {
+        "name": "backup",
+        "type": "dir",
+        "children": {
+          "old.txt": {
+            "name": "old.txt",
+            "type": "file",
+            "content": "Old backup file",
+            "meta": {
+              "lastModified": "2024-12-01T08:30:00Z"
+            }
+          },
+          "config.conf": {
+            "name": "config.conf",
+            "type": "file",
+            "content": "Configuration settings",
+            "meta": {
+              "lastModified": "2024-12-15T14:20:00Z"
+            }
+          }
+        }
+      },
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {
+          "web": {
+            "name": "web",
+            "type": "dir",
+            "children": {
+              "index.html": {
+                "name": "index.html",
+                "type": "file",
+                "content": "<!DOCTYPE html>",
+                "meta": {
+                  "lastModified": "2025-01-10T16:30:00Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "module6.task1.hint",
+  "explanation": "module6.task1.explanation"
+}
