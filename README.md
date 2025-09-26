@@ -12,7 +12,7 @@ Perfect starting point if you've never touched the command line but always wante
 
 ## How It Works
 
-26 practical tasks across 5 modules - from basic navigation to system commands.
+27 practical tasks across 6 modules - from basic navigation to file search & navigation.
 
 Each task:
 
@@ -30,6 +30,7 @@ Start with `cd` and `ls`, end up comfortable with the command line!
 - **Module 3:** File Permissions and Metadata. Make files executable and check details: `chmod`, `stat`, `ls -l`, `touch`
 - **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`, `ps`
 - **Module 5:** Text Processing. Search and sort text files: `grep`, `sort`, `uniq`, `tr`
+- **Module 6:** File Search & Navigation. Find files and directories by name or type: `find`
 
 Plus `help` and `man` commands to guide you along the way!
 
@@ -237,9 +238,8 @@ project-root/
 
 ## Third-party Assets
 
-**Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) v0.2.0 by [IBM](https://www.ibm.com/plex/), used under the [SIL Open Font License](https://scripts.sil.org/OFL).
-
-**Icon** based on [Tabler Icons](https://github.com/tabler/tabler-icons), used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
+- **Typography:** [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) v0.2.0 by [IBM](https://www.ibm.com/plex/), used under the [SIL Open Font License](https://scripts.sil.org/OFL).
+- **Icon** based on [Tabler Icons](https://github.com/tabler/tabler-icons), used under the [MIT License](https://github.com/tabler/tabler-icons/blob/main/LICENSE).
 
 
 ## Contributing
