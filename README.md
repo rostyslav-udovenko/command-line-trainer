@@ -55,7 +55,7 @@ You can type `help` at any time to get a list of available commands:
 ```
 user@machine:~$ help
 Available commands:
-  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps
+  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find
 
 System commands:
   hint [on|off] - Toggle task hints
@@ -218,11 +218,13 @@ project-root/
 │   │   ├── task-3.json                     # Check system uptime using `uptime`
 │   │   ├── task-4.json                     # List mounted filesystems using `mount`
 │   │   └── task-5.json                     # Check the list of running processes using `ps`
-│   └── module-5/                           # Text Processing
-│       ├── task-1.json                     # Search for 'error' in `server.log` using `grep`
-│       ├── task-2.json                     # Sort lines in `names.txt` using `sort`
-│       ├── task-3.json                     # Remove duplicate lines in `duplicates.txt` using `uniq`
-│       └── task-4.json                     # Transform text case in `message.txt` using `tr`
+│   ├── module-5/                           # Text Processing
+│   │   ├── task-1.json                     # Search for 'error' in `server.log` using `grep`
+│   │   ├── task-2.json                     # Sort lines in `names.txt` using `sort`
+│   │   ├── task-3.json                     # Remove duplicate lines in `duplicates.txt` using `uniq`
+│   │   └── task-4.json                     # Transform text case in `message.txt` using `tr`
+│   └── module-6/                           # File Search & Navigation
+│       └── task-1.json                     # Search for all `.txt` files using `find . -name *.txt`
 ├── 404.html
 ├── 500.html
 ├── index.html                              # UI shell and entry point
