@@ -167,24 +167,6 @@ project-root/
 │   └── uk.json                             # Ukrainian localization file
 ├── public/
 │   └── favicon.svg                         # Application favicon
-├── scss/
-│   ├── base/                               # Base settings and resets
-│   │   ├── _globals.scss                   # Global element styles
-│   │   ├── _reset.scss                     # Reset and normalize styles
-│   │   └── _typography.scss                # Typography rules
-│   ├── components/                         # Reusable UI components
-│   │   ├── _input.scss                     # Input field styling
-│   │   ├── _prompt.scss                    # Prompt symbol and input wrapper
-│   │   └── _scrollbar.scss                 # Custom scrollbar styling with theme
-│   ├── layout/                             # Structural layout sections
-│   │   ├── _footer.scss                    # Footer styling
-│   │   ├── _header.scss                    # Header styling
-│   │   └── _terminal.scss                  # Terminal area styling
-│   ├── media/                              # Media queries and breakpoints
-│   │   └── _responsive.scss                # Responsive adjustments
-│   ├── themes/                             # Theme system with CSS variables
-│   │   └── _themes.scss                    # Defines dark, light and amber theme variables using :root and [data-theme]
-│   └── main.scss                           # UI Entry point
 ├── src/
 │   ├── assets/
 │   │   └── fonts/
@@ -192,41 +174,60 @@ project-root/
 │   │       ├── IBMPlexMono-Bold.woff2      # IBM Plex Mono Bold font
 │   │       ├── IBMPlexMono-Regular.woff    # IBM Plex Mono Regular font (WOFF format)
 │   │       └── IBMPlexMono-Regular.woff2   # IBM Plex Mono Regular font
-│   └── data/
-│       └── tasks/
-│           ├── module-1/                   # Directory Operations
-│           │   ├── task-1.json             # Navigate to the `projects` directory
-│           │   ├── task-2.json             # Create a directory named `images`
-│           │   ├── task-3.json             # List contents using `ls`
-│           │   ├── task-4.json             # Display current path using `pwd`
-│           │   └── task-5.json             # Remove empty directory using `rmdir`
-│           ├── module-2/                   # File Operations
-│           │   ├── task-1.json             # Create `index.html` in `projects`
-│           │   ├── task-2.json             # Read `note.txt` using `cat`
-│           │   ├── task-3.json             # View `log.txt` using `less`
-│           │   ├── task-4.json             # Inspect `script.sh` using `file`
-│           │   ├── task-5.json             # Copy `a.txt` to `b.txt` using `cp`
-│           │   ├── task-6.json             # Rename `old.txt` to `new.txt` using `mv`
-│           │   ├── task-7.json             # Move `note.txt` into `docs/` using `mv`
-│           │   └── task-8.json             # Remove `temp.txt` using `rm`
-│           ├── module-3/                   # File Permissions and Metadata
-│           │   ├── task-1.json             # Make `run.sh` executable using `chmod`
-│           │   ├── task-2.json             # Find executable with `ls -l`
-│           │   ├── task-3.json             # Show `log.txt` metadata using `stat`
-│           │   └── task-4.json             # Update `todo.txt` timestamp using `touch`
-│           ├── module-4/                   # System Commands
-│           │   ├── task-1.json             # Show current time using `date`
-│           │   ├── task-2.json             # Display current username using `whoami`
-│           │   ├── task-3.json             # Check system uptime using `uptime`
-│           │   ├── task-4.json             # List mounted filesystems using `mount`
-│           │   └── task-5.json             # Check the list of running processes using `ps`
-│           ├── module-5/                   # Text Processing
-│           │   ├── task-1.json             # Search for 'error' in `server.log` using `grep`
-│           │   ├── task-2.json             # Sort lines in `names.txt` using `sort`
-│           │   ├── task-3.json             # Remove duplicate lines in `duplicates.txt` using `uniq`
-│           │   └── task-4.json             # Transform text case in `message.txt` using `tr`
-│           └── module-6/                   # File Search & Navigation
-│               └── task-1.json             # Search for all `.txt` files using `find . -name *.txt`
+│   ├── data/
+│   │   └── tasks/
+│   │       ├── module-1/                   # Directory Operations
+│   │       │   ├── task-1.json             # Navigate to the `projects` directory
+│   │       │   ├── task-2.json             # Create a directory named `images`
+│   │       │   ├── task-3.json             # List contents using `ls`
+│   │       │   ├── task-4.json             # Display current path using `pwd`
+│   │       │   └── task-5.json             # Remove empty directory using `rmdir`
+│   │       ├── module-2/                   # File Operations
+│   │       │   ├── task-1.json             # Create `index.html` in `projects`
+│   │       │   ├── task-2.json             # Read `note.txt` using `cat`
+│   │       │   ├── task-3.json             # View `log.txt` using `less`
+│   │       │   ├── task-4.json             # Inspect `script.sh` using `file`
+│   │       │   ├── task-5.json             # Copy `a.txt` to `b.txt` using `cp`
+│   │       │   ├── task-6.json             # Rename `old.txt` to `new.txt` using `mv`
+│   │       │   ├── task-7.json             # Move `note.txt` into `docs/` using `mv`
+│   │       │   └── task-8.json             # Remove `temp.txt` using `rm`
+│   │       ├── module-3/                   # File Permissions and Metadata
+│   │       │   ├── task-1.json             # Make `run.sh` executable using `chmod`
+│   │       │   ├── task-2.json             # Find executable with `ls -l`
+│   │       │   ├── task-3.json             # Show `log.txt` metadata using `stat`
+│   │       │   └── task-4.json             # Update `todo.txt` timestamp using `touch`
+│   │       ├── module-4/                   # System Commands
+│   │       │   ├── task-1.json             # Show current time using `date`
+│   │       │   ├── task-2.json             # Display current username using `whoami`
+│   │       │   ├── task-3.json             # Check system uptime using `uptime`
+│   │       │   ├── task-4.json             # List mounted filesystems using `mount`
+│   │       │   └── task-5.json             # Check the list of running processes using `ps`
+│   │       ├── module-5/                   # Text Processing
+│   │       │   ├── task-1.json             # Search for 'error' in `server.log` using `grep`
+│   │       │   ├── task-2.json             # Sort lines in `names.txt` using `sort`
+│   │       │   ├── task-3.json             # Remove duplicate lines in `duplicates.txt` using `uniq`
+│   │       │   └── task-4.json             # Transform text case in `message.txt` using `tr`
+│   │       └── module-6/                   # File Search & Navigation
+│   │           └── task-1.json             # Search for all `.txt` files using `find . -name *.txt`
+│   └── ui/
+│       └── styles/
+│           ├── base/                       # Base settings and resets
+│           │   ├── _globals.scss           # Global element styles
+│           │   ├── _reset.scss             # Reset and normalize styles
+│           │   └── _typography.scss        # Typography rules
+│           ├── components/                 # Reusable UI components
+│           │   ├── _input.scss             # Input field styling
+│           │   ├── _prompt.scss            # Prompt symbol and input wrapper
+│           │   └── _scrollbar.scss         # Custom scrollbar styling with theme
+│           ├── layout/                     # Structural layout sections
+│           │   ├── _footer.scss            # Footer styling
+│           │   ├── _header.scss            # Header styling
+│           │   └── _terminal.scss          # Terminal area styling
+│           ├── media/                      # Media queries and breakpoints
+│           │   └── _responsive.scss        # Responsive adjustments
+│           ├── themes/                     # Theme system with CSS variables
+│           │   └── _themes.scss            # Defines dark, light and amber theme variables using :root and [data-theme]
+│           └── main.scss                   # UI Entry point
 ├── 404.html
 ├── 500.html
 ├── index.html                              # UI shell and entry point
