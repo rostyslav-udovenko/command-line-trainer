@@ -1,11 +1,11 @@
-import "../src/ui/styles/main.scss";
-import { setupTheme } from "./ui/theme-manager.js";
+import "./ui/styles/main.scss";
+import { setupTheme } from "../js/ui/theme-manager.js";
 import {
   setCaret,
   showWelcomeMessage,
   TerminalCaret,
-} from "./ui/terminal-ui.js";
-import { setupI18n, updateUI } from "./core/i18n.js";
+} from "../js/ui/terminal-ui.js";
+import { setupI18n, updateUI } from "./core/i18n/i18n.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   // First load translations

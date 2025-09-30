@@ -1,11 +1,11 @@
-import { applyTheme } from "../ui/theme-manager.js";
+import { applyTheme } from "../../js/ui/theme-manager.js";
 import { virtualFileSystem, getDirectory, resolvePath } from "./file-system.js";
 import {
   printOutput,
   scrollToBottom,
   setStarted,
   clearTerminal,
-} from "../ui/terminal-ui.js";
+} from "../../js/ui/terminal-ui.js";
 import {
   checkTask,
   tasks,
@@ -16,8 +16,8 @@ import {
   loadTasks,
   getModuleProgress,
 } from "./task-manager.js";
-import { showMatrix } from "../effects/matrix-mode.js";
-import { switchLocale, t } from "./i18n.js";
+import { showMatrix } from "../../js/effects/matrix-mode.js";
+import { switchLocale, t } from "./i18n/i18n.js";
 
 const manPages = {
   cd: "manual.cd",
