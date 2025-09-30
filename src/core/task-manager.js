@@ -8,8 +8,8 @@ import {
   disableInput,
   hideCaret,
   scrollToBottom,
-} from "../ui/terminal-ui.js";
-import { t } from "./i18n.js";
+} from "../../js/ui/terminal-ui.js";
+import { t } from "./i18n/i18n.js";
 
 const SUCCESS_MESSAGES = [
   "task.manager.success.wellDone",
@@ -205,121 +205,121 @@ export async function loadTasks() {
               // Module 1
               if (taskIndex === 1)
                 taskData = await import(
-                  "../../src/data/tasks/module-1/task-1.json"
+                  "../data/tasks/module-1/task-1.json"
                 );
               else if (taskIndex === 2)
                 taskData = await import(
-                  "../../src/data/tasks/module-1/task-2.json"
+                  "../data/tasks/module-1/task-2.json"
                 );
               else if (taskIndex === 3)
                 taskData = await import(
-                  "../../src/data/tasks/module-1/task-3.json"
+                  "../data/tasks/module-1/task-3.json"
                 );
               else if (taskIndex === 4)
                 taskData = await import(
-                  "../../src/data/tasks/module-1/task-4.json"
+                  "../data/tasks/module-1/task-4.json"
                 );
               else if (taskIndex === 5)
                 taskData = await import(
-                  "../../src/data/tasks/module-1/task-5.json"
+                  "../data/tasks/module-1/task-5.json"
                 );
             } else if (moduleIndex === 1) {
               // Module 2
               if (taskIndex === 1)
                 taskData = await import(
-                  "../../src/data/tasks/module-2/task-1.json"
+                  "../data/tasks/module-2/task-1.json"
                 );
               else if (taskIndex === 2)
                 taskData = await import(
-                  "../../src/data/tasks/module-2/task-2.json"
+                  "../data/tasks/module-2/task-2.json"
                 );
               else if (taskIndex === 3)
                 taskData = await import(
-                  "../../src/data/tasks/module-2/task-3.json"
+                  "../data/tasks/module-2/task-3.json"
                 );
               else if (taskIndex === 4)
                 taskData = await import(
-                  "../../src/data/tasks/module-2/task-4.json"
+                  "../data/tasks/module-2/task-4.json"
                 );
               else if (taskIndex === 5)
                 taskData = await import(
-                  "../../src/data/tasks/module-2/task-5.json"
+                  "../data/tasks/module-2/task-5.json"
                 );
               else if (taskIndex === 6)
                 taskData = await import(
-                  "../../src/data/tasks/module-2/task-6.json"
+                  "../data/tasks/module-2/task-6.json"
                 );
               else if (taskIndex === 7)
                 taskData = await import(
-                  "../../src/data/tasks/module-2/task-7.json"
+                  "../data/tasks/module-2/task-7.json"
                 );
               else if (taskIndex === 8)
                 taskData = await import(
-                  "../../src/data/tasks/module-2/task-8.json"
+                  "../data/tasks/module-2/task-8.json"
                 );
             } else if (moduleIndex === 2) {
               // Module 3
               if (taskIndex === 1)
                 taskData = await import(
-                  "../../src/data/tasks/module-3/task-1.json"
+                  "../data/tasks/module-3/task-1.json"
                 );
               else if (taskIndex === 2)
                 taskData = await import(
-                  "../../src/data/tasks/module-3/task-2.json"
+                  "../data/tasks/module-3/task-2.json"
                 );
               else if (taskIndex === 3)
                 taskData = await import(
-                  "../../src/data/tasks/module-3/task-3.json"
+                  "../data/tasks/module-3/task-3.json"
                 );
               else if (taskIndex === 4)
                 taskData = await import(
-                  "../../src/data/tasks/module-3/task-4.json"
+                  "../data/tasks/module-3/task-4.json"
                 );
             } else if (moduleIndex === 3) {
               // Module 4
               if (taskIndex === 1)
                 taskData = await import(
-                  "../../src/data/tasks/module-4/task-1.json"
+                  "../data/tasks/module-4/task-1.json"
                 );
               else if (taskIndex === 2)
                 taskData = await import(
-                  "../../src/data/tasks/module-4/task-2.json"
+                  "../data/tasks/module-4/task-2.json"
                 );
               else if (taskIndex === 3)
                 taskData = await import(
-                  "../../src/data/tasks/module-4/task-3.json"
+                  "../data/tasks/module-4/task-3.json"
                 );
               else if (taskIndex === 4)
                 taskData = await import(
-                  "../../src/data/tasks/module-4/task-4.json"
+                  "../data/tasks/module-4/task-4.json"
                 );
               else if (taskIndex === 5)
                 taskData = await import(
-                  "../../src/data/tasks/module-4/task-5.json"
+                  "../data/tasks/module-4/task-5.json"
                 );
             } else if (moduleIndex === 4) {
               // Module 5
               if (taskIndex === 1)
                 taskData = await import(
-                  "../../src/data/tasks/module-5/task-1.json"
+                  "../data/tasks/module-5/task-1.json"
                 );
               else if (taskIndex === 2)
                 taskData = await import(
-                  "../../src/data/tasks/module-5/task-2.json"
+                  "../data/tasks/module-5/task-2.json"
                 );
               else if (taskIndex === 3)
                 taskData = await import(
-                  "../../src/data/tasks/module-5/task-3.json"
+                  "../data/tasks/module-5/task-3.json"
                 );
               else if (taskIndex === 4)
                 taskData = await import(
-                  "../../src/data/tasks/module-5/task-4.json"
+                  "../data/tasks/module-5/task-4.json"
                 );
             } else if (moduleIndex === 5) {
               // Module 6
               if (taskIndex === 1)
                 taskData = await import(
-                  "../../src/data/tasks/module-6/task-1.json"
+                  "../data/tasks/module-6/task-1.json"
                 );
             }
 

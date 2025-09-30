@@ -1,6 +1,6 @@
-import { executeCommand } from "../core/command-executor.js";
-import { handleWelcome, loadTasks } from "../core/task-manager.js";
-import { t } from "../core/i18n.js";
+import { executeCommand } from "../../src/core/command-executor.js";
+import { handleWelcome, loadTasks } from "../../src/core/task-manager.js";
+import { t } from "../../src/core/i18n/i18n.js";
 
 export let started = false;
 export let caret;

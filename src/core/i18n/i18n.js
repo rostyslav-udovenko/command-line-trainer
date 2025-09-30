@@ -21,9 +21,9 @@ export async function loadLocale(locale) {
     let localeData;
 
     if (locale === "en") {
-      localeData = await import("../../locales/en.json");
+      localeData = await import("../../../locales/en.json");
     } else if (locale === "uk") {
-      localeData = await import("../../locales/uk.json");
+      localeData = await import("../../../locales/uk.json");
     } else {
       throw new Error(`Unsupported locale: ${locale}`);
     }
