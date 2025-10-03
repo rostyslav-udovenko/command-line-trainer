@@ -16,7 +16,7 @@ import {
   loadTasks,
   getModuleProgress,
 } from "./task-manager.js";
-import { showMatrix } from "../../js/effects/matrix-mode.js";
+import { showMatrix } from "../effects/matrix-mode.js";
 import { switchLocale, t } from "./i18n/i18n.js";
 
 const manPages = {
