@@ -156,9 +156,6 @@ project-root/
 │       ├── terminal-ui.js                  # Handles UI: output, input, scrolling
 │       ├── theme-manager-init.js           # Sets initial theme on first page load based on localStorage
 │       └── theme-manager.js                # Handles theme initialization and application
-├── locales/
-│   ├── en.json                             # English localization file
-│   └── uk.json                             # Ukrainian localization file
 ├── public/
 │   └── favicon.svg                         # Application favicon
 ├── src/
@@ -170,6 +167,9 @@ project-root/
 │   │       └── IBMPlexMono-Regular.woff2   # IBM Plex Mono Regular font
 │   ├── core/                               # Core logic and virtual file system operations
 │   │   ├── i18n/
+│   │   │   ├── locales/
+│   │   │   │   ├── en.json                 # English localization file
+│   │   │   │   └── uk.json                 # Ukrainian localization file
 │   │   │   └── i18n.js                     # Internationalization (i18n): loads and applies translations
 │   │   ├── command-executor.js             # Command definitions and execution logic
 │   │   ├── file-system.js                  # Virtual file system operations
