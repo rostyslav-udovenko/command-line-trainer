@@ -1,4 +1,4 @@
-import { applyTheme } from "../../js/ui/theme-manager.js";
+import { applyTheme } from "../ui/components/themes/theme-manager.js";
 import { virtualFileSystem, getDirectory, resolvePath } from "./file-system.js";
 import {
   printOutput,
