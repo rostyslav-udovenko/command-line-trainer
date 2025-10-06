@@ -1,5 +1,5 @@
 import "./ui/styles/main.scss";
-import { setupTheme } from "../js/ui/theme-manager.js";
+import { setupTheme } from "./ui/components/themes/theme-manager.js";
 import {
   setCaret,
   showWelcomeMessage,
