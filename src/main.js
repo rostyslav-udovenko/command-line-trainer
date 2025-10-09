@@ -4,7 +4,7 @@ import {
   setCaret,
   showWelcomeMessage,
   TerminalCaret,
-} from "../js/ui/terminal-ui.js";
+} from "./ui/components/terminal-ui.js";
 import { setupI18n, updateUI } from "./core/i18n/i18n.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
