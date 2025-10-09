@@ -8,7 +8,7 @@ import {
   disableInput,
   hideCaret,
   scrollToBottom,
-} from "../../js/ui/terminal-ui.js";
+} from "../ui/components/terminal-ui.js";
 import { t } from "./i18n/i18n.js";
 
 const SUCCESS_MESSAGES = [

@@ -5,7 +5,7 @@ import {
   scrollToBottom,
   setStarted,
   clearTerminal,
-} from "../../js/ui/terminal-ui.js";
+} from "../ui/components/terminal-ui.js";
 import {
   checkTask,
   tasks,
