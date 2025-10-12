@@ -185,7 +185,7 @@ export async function loadTasks() {
     {
       name: t("modules.6"),
       originalName: "Module 6 - File Search & Navigation",
-      count: 1,
+      count: 2,
     },
   ];
 
@@ -320,6 +320,10 @@ export async function loadTasks() {
               if (taskIndex === 1)
                 taskData = await import(
                   "../data/tasks/module-6/task-1.json"
+                );
+              else if (taskIndex === 2)
+                taskData = await import(
+                  "../data/tasks/module-6/task-2.json"
                 );
             }
 
