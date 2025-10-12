@@ -12,7 +12,7 @@ Perfect starting point if you've never touched the command line but always wante
 
 ## How It Works
 
-27 practical tasks across 6 modules - from basic navigation to file search & navigation.
+28 practical tasks across 6 modules - from basic navigation to file search & navigation.
 
 Each task:
 
@@ -204,7 +204,8 @@ project-root/
 │   │       │   ├── task-3.json             # Remove duplicate lines in `duplicates.txt` using `uniq`
 │   │       │   └── task-4.json             # Transform text case in `message.txt` using `tr`
 │   │       └── module-6/                   # File Search & Navigation
-│   │           └── task-1.json             # Search for all `.txt` files using `find . -name *.txt`
+│   │           ├── task-1.json             # Search for all `.txt` files using `find . -name *.txt`
+│   │           └── task-2.json             # Find all directories using `find . -type d`
 │   ├── effects/                            # Visual effects and easter eggs
 │   │   └── matrix-mode.js                  # Matrix Rain mode
 │   ├── ui/

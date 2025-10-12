@@ -271,5 +271,9 @@
 
   "module6.task1.description": "Use the `find` command to search for all `.txt` files starting from the current directory.",
   "module6.task1.hint": "Try `find . -name *.txt`",
-  "module6.task1.explanation": "The `find` command searches for files and directories. The `-name` option allows you to search by filename pattern using wildcards like `*.txt` to find all files ending with `.txt`."
+  "module6.task1.explanation": "The `find` command searches for files and directories. The `-name` option allows you to search by filename pattern using wildcards like `*.txt` to find all files ending with `.txt`.",
+
+  "module6.task2.description": "Use the `find` command to list all directories starting from the current directory.",
+  "module6.task2.hint": "Try `find . -type d`",
+  "module6.task2.explanation": "The `find` command with `-type d` searches specifically for directories. This is useful for exploring the directory structure of your filesystem."
 }

@@ -1,0 +1,68 @@
+{
+  "id": 2,
+  "description": "module6.task2.description",
+  "type": "find",
+  "check": {
+    "expectedCommandArgs": [".", "-type", "d"],
+    "expectedOutputIncludes": [
+      ".",
+      "./documents",
+      "./backup",
+      "./projects",
+      "./projects/web"
+    ]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "readme.txt": {
+        "name": "readme.txt",
+        "type": "file",
+        "content": "Project readme",
+        "meta": {
+          "lastModified": "2025-01-15T10:30:00Z"
+        }
+      },
+      "documents": {
+        "name": "documents",
+        "type": "dir",
+        "children": {
+          "report.pdf": {
+            "name": "report.pdf",
+            "type": "file",
+            "content": "",
+            "meta": {
+              "lastModified": "2025-01-14T15:20:00Z"
+            }
+          }
+        }
+      },
+      "backup": {
+        "name": "backup",
+        "type": "dir",
+        "children": {}
+      },
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {
+          "web": {
+            "name": "web",
+            "type": "dir",
+            "children": {
+              "css": {
+                "name": "css",
+                "type": "dir",
+                "children": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "module6.task2.hint",
+  "explanation": "module6.task2.explanation"
+}
