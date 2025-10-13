@@ -1,0 +1,79 @@
+{
+  "id": 3,
+  "description": "module6.task3.description",
+  "type": "find",
+  "check": {
+    "expectedCommandArgs": ["documents", "-name", "*.pdf"],
+    "expectedOutputIncludes": [
+      "documents/report.pdf",
+      "documents/archive/old.pdf"
+    ]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "documents": {
+        "name": "documents",
+        "type": "dir",
+        "children": {
+          "report.pdf": {
+            "name": "report.pdf",
+            "type": "file",
+            "content": "",
+            "meta": {
+              "lastModified": "2025-01-14T15:20:00Z"
+            }
+          },
+          "notes.txt": {
+            "name": "notes.txt",
+            "type": "file",
+            "content": "Meeting notes",
+            "meta": {
+              "lastModified": "2025-01-13T14:15:00Z"
+            }
+          },
+          "archive": {
+            "name": "archive",
+            "type": "dir",
+            "children": {
+              "old.pdf": {
+                "name": "old.pdf",
+                "type": "file",
+                "content": "",
+                "meta": {
+                  "lastModified": "2024-11-20T10:00:00Z"
+                }
+              },
+              "backup.zip": {
+                "name": "backup.zip",
+                "type": "file",
+                "content": "",
+                "meta": {
+                  "lastModified": "2024-12-01T08:30:00Z"
+                }
+              }
+            }
+          }
+        }
+      },
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {
+          "manual.pdf": {
+            "name": "manual.pdf",
+            "type": "file",
+            "content": "",
+            "meta": {
+              "lastModified": "2025-01-05T12:00:00Z"
+            }
+          }
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "module6.task3.hint",
+  "explanation": "module6.task3.explanation"
+}

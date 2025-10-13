@@ -275,5 +275,9 @@
 
   "module6.task2.description": "Use the `find` command to list all directories starting from the current directory.",
   "module6.task2.hint": "Try `find . -type d`",
-  "module6.task2.explanation": "The `find` command with `-type d` searches specifically for directories. This is useful for exploring the directory structure of your filesystem."
+  "module6.task2.explanation": "The `find` command with `-type d` searches specifically for directories. This is useful for exploring the directory structure of your filesystem.",
+
+  "module6.task3.description": "Use the `find` command to search for all `.pdf` files in the `documents` directory.",
+  "module6.task3.hint": "Try `find documents -name *.pdf`",
+  "module6.task3.explanation": "The `find` command can search within specific directories. By specifying `documents` as the starting path, it will only search within that directory and its subdirectories for files matching the pattern."
 }
