@@ -60,10 +60,10 @@ export function getModuleProgress() {
   const moduleKeyMap = {
     "Module 1 - Directory Operations": "modules.1",
     "Module 2 - File Operations": "modules.2",
-    "Module 3 - File Permissions and Metadata": "modules.3",
+    "Module 3 - File Permissions & Metadata": "modules.3",
     "Module 4 - System Commands": "modules.4",
     "Module 5 - Text Processing": "modules.5",
-    "Module 6 - File Searching": "modules.6",
+    "Module 6 - File Search & Navigation": "modules.6",
   };
 
   Object.entries(tasksByModule).forEach(([originalModuleName, moduleTasks]) => {
@@ -169,7 +169,7 @@ export async function loadTasks() {
     },
     {
       name: t("modules.3"),
-      originalName: "Module 3 - File Permissions and Metadata",
+      originalName: "Module 3 - File Permissions & Metadata",
       count: 4,
     },
     {
