@@ -80,6 +80,7 @@
   "manual.tr": "tr — translate characters",
   "manual.ps": "ps — display information about running processes",
   "manual.find": "find — search for files and directories by name, type, or other criteria",
+  "manual.du": "du — estimate file space usage",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -121,6 +122,7 @@
   "command.tr.usage": "Usage: tr SET1 SET2 < FILE",
   "command.ps.usage": "Usage: ps",
   "command.find.usage": "Usage: find &lt;path&gt; [-name pattern] [-type f|d]",
+  "command.du.usage": "Usage: du [-s] [-h] [path]",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
@@ -155,7 +157,7 @@
   "command.task.noTask": "No current task available.",
 
   "command.help.availableCommands": "Available commands:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du",
   "command.help.systemCommands": "System commands:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
@@ -279,5 +281,9 @@
 
   "module6.task3.description": "Use the `find` command to search for all `.pdf` files in the `documents` directory.",
   "module6.task3.hint": "Try `find documents -name *.pdf`",
-  "module6.task3.explanation": "The `find` command can search within specific directories. By specifying `documents` as the starting path, it will only search within that directory and its subdirectories for files matching the pattern."
+  "module6.task3.explanation": "The `find` command can search within specific directories. By specifying `documents` as the starting path, it will only search within that directory and its subdirectories for files matching the pattern.",
+
+  "module6.task4.description": "Use the `du` command with `-s` and `-h` flags to show the total disk usage of the `projects` directory in human-readable format.",
+  "module6.task4.hint": "Try `du -s -h projects`",
+  "module6.task4.explanation": "The `du` command estimates disk space usage. The `-s` flag shows only the total (summary), and `-h` makes the output human-readable (K, M, G instead of bytes). This is useful for finding which directories are using the most space."
 }

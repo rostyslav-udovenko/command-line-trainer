@@ -49,6 +49,7 @@ const manPages = {
   tr: "manual.tr",
   ps: "manual.ps",
   find: "manual.find",
+  du: "manual.du",
 };
 
 export async function executeCommand(command) {
@@ -117,6 +118,7 @@ export async function executeCommand(command) {
     t("command.sort.usage"),
     t("command.uniq.usage"),
     t("command.tr.usage"),
+    t("command.du.usage"),
   ];
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -828,5 +830,123 @@ const commands = {
     }
 
     return results.length > 0 ? results.join("\n") : "";
+  },
+
+  du: (args) => {
+    // Parse arguments
+    let summarize = false;
+    let humanReadable = false;
+    let targetPath = ".";
+
+    for (let i = 0; i < args.length; i++) {
+      if (args[i] === "-s") {
+        summarize = true;
+      } else if (args[i] === "-h") {
+        humanReadable = true;
+      } else if (args[i].startsWith("-")) {
+        // Invalid flag
+        return t("command.du.usage");
+      } else if (!args[i].startsWith("-")) {
+        targetPath = args[i];
+      }
+    }
+
+    // Get the target directory
+    let startDir;
+    if (targetPath === ".") {
+      startDir = getDirectory(virtualFileSystem.currentDirectory);
+      if (!startDir) {
+        return t("command.error.dirNotFound");
+      }
+    } else {
+      const fullPath = resolvePath(
+        virtualFileSystem.currentDirectory,
+        targetPath
+      );
+      startDir = getDirectory(fullPath);
+      if (!startDir) {
+        return t("command.error.dirNotFound");
+      }
+    }
+
+    // Helper to format size
+    function formatSize(bytes, human) {
+      if (!human) {
+        // Return in KB (4K blocks like real du)
+        return Math.ceil(bytes / 1024) * 4;
+      }
+
+      const units = ["B", "K", "M", "G"];
+      let size = bytes;
+      let unitIndex = 0;
+
+      while (size >= 1024 && unitIndex < units.length - 1) {
+        size /= 1024;
+        unitIndex++;
+      }
+
+      return `${Math.ceil(size)}${units[unitIndex]}`;
+    }
+
+    // Helper to calculate directory size
+    function calculateSize(dir) {
+      let totalSize = 0;
+
+      if (dir.children) {
+        for (const child of Object.values(dir.children)) {
+          if (child.type === "file") {
+            // Estimate file size based on content length
+            const contentSize = child.content ? child.content.length : 0;
+            totalSize += Math.max(contentSize, 4096); // Minimum 4KB
+          } else if (child.type === "dir") {
+            totalSize += calculateSize(child);
+          }
+        }
+      }
+
+      return totalSize;
+    }
+
+    // Helper to build directory tree with sizes
+    function buildDirTree(dir, path, results) {
+      let totalSize = 0;
+
+      if (dir.children) {
+        for (const [childName, child] of Object.entries(dir.children)) {
+          const childPath =
+            path === "." ? `./${childName}` : `${path}/${childName}`;
+
+          if (child.type === "file") {
+            const contentSize = child.content ? child.content.length : 0;
+            totalSize += Math.max(contentSize, 4096);
+          } else if (child.type === "dir") {
+            const childSize = buildDirTree(child, childPath, results);
+            totalSize += childSize;
+          }
+        }
+      }
+
+      results.push({ path, size: totalSize });
+      return totalSize;
+    }
+
+    if (summarize) {
+      // Only show total for the specified directory
+      const totalSize = calculateSize(startDir);
+      const displaySize = formatSize(totalSize, humanReadable);
+      const displayPath = targetPath === "." ? "." : targetPath;
+      return `${displaySize}\t${displayPath}`;
+    } else {
+      // Show size for each subdirectory
+      const results = [];
+      buildDirTree(startDir, targetPath === "." ? "." : targetPath, results);
+
+      return results
+        .map(({ path, size }) => {
+          const displaySize = formatSize(size, humanReadable);
+          return `${displaySize}\t${path}`;
+        })
+        .join("\n");
+    }
   },
 };
