@@ -1,0 +1,98 @@
+{
+  "id": 4,
+  "description": "module6.task4.description",
+  "type": "du",
+  "check": {
+    "expectedCommandArgs": ["-s", "-h", "projects"],
+    "expectedOutputIncludes": ["projects"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "readme.txt": {
+        "name": "readme.txt",
+        "type": "file",
+        "content": "Welcome to the system!",
+        "meta": {
+          "lastModified": "2025-01-15T10:30:00Z"
+        }
+      },
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {
+          "web": {
+            "name": "web",
+            "type": "dir",
+            "children": {
+              "index.html": {
+                "name": "index.html",
+                "type": "file",
+                "content": "<!DOCTYPE html><html><head><title>My Site</title></head><body><h1>Welcome</h1><p>This is my website with lots of content to make the file bigger.</p></body></html>",
+                "meta": {
+                  "lastModified": "2025-01-10T16:30:00Z"
+                }
+              },
+              "style.css": {
+                "name": "style.css",
+                "type": "file",
+                "content": "body { margin: 0; padding: 20px; font-family: Arial; background: #f5f5f5; }",
+                "meta": {
+                  "lastModified": "2025-01-12T14:20:00Z"
+                }
+              }
+            }
+          },
+          "docs": {
+            "name": "docs",
+            "type": "dir",
+            "children": {
+              "manual.txt": {
+                "name": "manual.txt",
+                "type": "file",
+                "content": "User manual with detailed instructions for using the application. This document contains many pages of information.",
+                "meta": {
+                  "lastModified": "2024-12-20T11:00:00Z"
+                }
+              },
+              "readme.md": {
+                "name": "readme.md",
+                "type": "file",
+                "content": "# Project Documentation\n\nThis project is awesome!",
+                "meta": {
+                  "lastModified": "2025-01-05T09:30:00Z"
+                }
+              }
+            }
+          },
+          "data.json": {
+            "name": "data.json",
+            "type": "file",
+            "content": "{\"users\": [{\"id\": 1, \"name\": \"Alice\"}, {\"id\": 2, \"name\": \"Bob\"}]}",
+            "meta": {
+              "lastModified": "2025-01-14T13:45:00Z"
+            }
+          }
+        }
+      },
+      "backup": {
+        "name": "backup",
+        "type": "dir",
+        "children": {
+          "old.zip": {
+            "name": "old.zip",
+            "type": "file",
+            "content": "",
+            "meta": {
+              "lastModified": "2024-11-01T08:00:00Z"
+            }
+          }
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "module6.task4.hint",
+  "explanation": "module6.task4.explanation"
+}

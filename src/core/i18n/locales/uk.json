@@ -80,6 +80,7 @@
   "manual.tr": "tr — перекладає символи",
   "manual.ps": "ps — відображає інформацію про запущені процеси",
   "manual.find": "find — пошук файлів та директорій за іменем, типом або іншими критеріями",
+  "manual.du": "du — оцінити використання дискового простору",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -121,6 +122,7 @@
   "command.tr.usage": "Використання: tr SET1 SET2 < FILE",
   "command.ps.usage": "Використання: ps",
   "command.find.usage": "Використання: find &lt;шлях&gt; [-name шаблон] [-type f|d]",
+  "command.du.usage": "Використання: du [-s] [-h] [шлях]",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Директорію {{name}} створено",
@@ -155,7 +157,7 @@
   "command.task.noTask": "Поточне завдання недоступне.",
 
   "command.help.availableCommands": "Доступні команди:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find",
+  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du",
   "command.help.systemCommands": "Системні команди:",
   "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Перемкнути кольорову тему",
@@ -279,5 +281,9 @@
 
   "module6.task3.description": "Використайте команду `find` для пошуку всіх файлів `.pdf` в директорії `documents`.",
   "module6.task3.hint": "Спробуйте `find documents -name *.pdf`",
-  "module6.task3.explanation": "Команда `find` може шукати у конкретних директоріях. Вказавши `documents` як початковий шлях, вона буде шукати лише в цій директорії та її піддиректоріях файли що відповідають шаблону."
+  "module6.task3.explanation": "Команда `find` може шукати у конкретних директоріях. Вказавши `documents` як початковий шлях, вона буде шукати лише в цій директорії та її піддиректоріях файли що відповідають шаблону.",
+
+  "module6.task4.description": "Використайте команду `du` з прапорцями `-s` та `-h` щоб показати загальне використання диска директорією `projects` у зручному для читання форматі.",
+  "module6.task4.hint": "Спробуйте `du -s -h projects`",
+  "module6.task4.explanation": "Команда `du` оцінює використання дискового простору. Прапорець `-s` показує тільки загальну суму, а `-h` робить вивід зручним для читання (K, M, G замість байтів). Це корисно для знаходження директорій, які використовують найбільше місця."
 }
