@@ -12,7 +12,7 @@ Perfect starting point if you've never touched the command line but always wante
 
 ## How It Works
 
-29 practical tasks across 6 modules - from basic navigation to file search & navigation.
+30 practical tasks across 6 modules - from basic navigation to file search & navigation.
 
 Each task:
 
@@ -30,7 +30,7 @@ Start with `cd` and `ls`, end up comfortable with the command line!
 - **Module 3:** File Permissions and Metadata. Make files executable and check details: `chmod`, `stat`, `ls -l`, `touch`
 - **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`, `ps`
 - **Module 5:** Text Processing. Search and sort text files: `grep`, `sort`, `uniq`, `tr`
-- **Module 6:** File Search & Navigation. Find files and directories by name or type: `find`
+- **Module 6:** File Search & Navigation. Find files and directories by name or type: `find`, `du`
 
 Plus `help` and `man` commands to guide you along the way!
 
@@ -56,7 +56,7 @@ You can type `help` at any time to get a list of available commands:
 ```
 user@machine:~$ help
 Available commands:
-  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find
+  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du
 
 System commands:
   hint [on|off] - Toggle task hints
@@ -206,7 +206,8 @@ project-root/
 │   │       └── module-6/                   # File Search & Navigation
 │   │           ├── task-1.json             # Search for all `.txt` files using `find . -name *.txt`
 │   │           ├── task-2.json             # Find all directories using `find . -type d`
-│   │           └── task-3.json             # Search for `.pdf` files in `documents` using `find documents -name *.pdf`
+│   │           ├── task-3.json             # Search for `.pdf` files in `documents` using `find documents -name *.pdf`
+│   │           └── task-4.json             # Check disk usage of `projects` directory using `du -s -h projects`
 │   ├── effects/                            # Visual effects and easter eggs
 │   │   └── matrix-mode.js                  # Matrix Rain mode
 │   ├── ui/
