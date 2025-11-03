@@ -38,7 +38,7 @@ function disableFullscreen() {
   const footer = document.querySelector(".footer");
 
   if (header) header.style.display = "";
-  if (footer) header.style.display = "";
+  if (footer) footer.style.display = "";
 
   localStorage.setItem('fullscreenMode', 'false');
 }
