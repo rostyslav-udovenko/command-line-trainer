@@ -19,6 +19,30 @@ import {
 import { showMatrix } from "../effects/matrix-mode.js";
 import { switchLocale, t } from "./i18n/i18n.js";
 
+function enableFullscreen() {
+  document.body.classList.add("fullscreen-mode");
+
+  const header = document.querySelector(".header");
+  const footer = document.querySelector(".footer");
+
+  if (header) header.style.display = "none";
+  if (footer) footer.style.display = "none";
+
+  localStorage.setItem("fullscreenMode", "true");
+}
+
+function disableFullscreen() {
+  document.body.classList.remove("fullscreen-mode");
+
+  const header = document.querySelector(".header");
+  const footer = document.querySelector(".footer");
+
+  if (header) header.style.display = "";
+  if (footer) header.style.display = "";
+
+  localStorage.setItem('fullscreenMode', 'false');
+}
+
 const manPages = {
   cd: "manual.cd",
   ls: "manual.ls",
@@ -50,6 +74,7 @@ const manPages = {
   ps: "manual.ps",
   find: "manual.find",
   du: "manual.du",
+  fullscreen: "manual.fullscreen",
 };
 
 export async function executeCommand(command) {
@@ -88,6 +113,7 @@ export async function executeCommand(command) {
     "progress",
     "clear",
     "task",
+    "fullscreen",
   ];
   const isSystemCmd = systemCmds.includes(cmd);
 
@@ -462,6 +488,7 @@ const commands = {
     printOutput(t("command.help.systemCommandsList.theme"));
     printOutput(t("command.help.systemCommandsList.progress"));
     printOutput(t("command.help.systemCommandsList.language"));
+    printOutput(t("command.help.systemCommandsList.fullscreen"));
     printOutput(t("command.help.systemCommandsList.clear"));
     printOutput(t("command.help.systemCommandsList.task"));
     printOutput("&nbsp;");
@@ -948,5 +975,23 @@ const commands = {
         })
         .join("\n");
     }
+  },
+
+  fullscreen: ([arg]) => {
+    if (!arg) return t("command.fullscreen.usage");
+
+    const option = arg.toLowerCase();
+
+    if (option === "on") {
+      enableFullscreen();
+      return t("command.fullscreen.enabled");
+    }
+
+    if (option === "off") {
+      disableFullscreen();
+      return t("command.fullscreen.disabled");
+    }
+
+    return t("command.fullscreen.usage");
   },
 };

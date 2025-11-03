@@ -81,6 +81,7 @@
   "manual.ps": "ps — display information about running processes",
   "manual.find": "find — search for files and directories by name, type, or other criteria",
   "manual.du": "du — estimate file space usage",
+  "manual.fullscreen": "fullscreen — toggle fullscreen terminal mode",
 
   "command.error.enterCommand": "Please enter a command.",
   "command.error.notFound": "Command not found:",
@@ -123,6 +124,7 @@
   "command.ps.usage": "Usage: ps",
   "command.find.usage": "Usage: find &lt;path&gt; [-name pattern] [-type f|d]",
   "command.du.usage": "Usage: du [-s] [-h] [path]",
+  "command.fullscreen.usage": "Usage: fullscreen [on|off]",
 
   "command.hint.noHint": "No hint available for this task.",
   "command.mkdir.success": "Directory {{name}} created",
@@ -137,6 +139,8 @@
   "command.cd.changed": "Changed directory to {{path}}",
   "command.file.isDirectory": "{{name}}: directory",
   "command.file.isFile": "{{name}}: regular file",
+  "command.fullscreen.enabled": "Fullscreen mode enabled.",
+  "command.fullscreen.disabled": "Fullscreen mode disabled.",
 
   "command.stat.type": "Type: file",
   "command.stat.lastModified": "Last modified: {{modified}}",
@@ -163,6 +167,7 @@
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
   "command.help.systemCommandsList.progress": "  progress [status|reset] - Show/reset learning progress",
   "command.help.systemCommandsList.language": "  language [en|uk] - Switch interface language",
+  "command.help.systemCommandsList.fullscreen": "  fullscreen [on|off] - Toggle fullscreen terminal mode",
   "command.help.systemCommandsList.clear": "  clear - Clear terminal screen",
   "command.help.systemCommandsList.task": "  task - Show current task",
   "command.help.moreInfo": "Use man &lt;command&gt; for more information.",

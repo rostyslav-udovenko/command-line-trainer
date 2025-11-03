@@ -81,6 +81,7 @@
   "manual.ps": "ps — відображає інформацію про запущені процеси",
   "manual.find": "find — пошук файлів та директорій за іменем, типом або іншими критеріями",
   "manual.du": "du — оцінити використання дискового простору",
+  "manual.fullscreen": "fullscreen — перемкнути повноекранний режим терміналу",
 
   "command.error.enterCommand": "Будь ласка, введіть команду.",
   "command.error.notFound": "Команду не знайдено:",
@@ -123,6 +124,7 @@
   "command.ps.usage": "Використання: ps",
   "command.find.usage": "Використання: find &lt;шлях&gt; [-name шаблон] [-type f|d]",
   "command.du.usage": "Використання: du [-s] [-h] [шлях]",
+  "command.fullscreen.usage": "Використання: fullscreen [on|off]",
 
   "command.hint.noHint": "Підказка для цього завдання недоступна.",
   "command.mkdir.success": "Директорію {{name}} створено",
@@ -137,6 +139,8 @@
   "command.cd.changed": "Перейдено до директорії {{path}}",
   "command.file.isDirectory": "{{name}}: директорія",
   "command.file.isFile": "{{name}}: звичайний файл",
+  "command.fullscreen.enabled": "Повноекранний режим увімкнено.",
+  "command.fullscreen.disabled": "Повноекранний режим вимкнено.",
 
   "command.stat.type": "Тип: файл",
   "command.stat.lastModified": "Остання зміна: {{modified}}",
@@ -163,6 +167,7 @@
   "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Перемкнути кольорову тему",
   "command.help.systemCommandsList.progress": "  progress [status|reset] - Показати/скинути прогрес навчання",
   "command.help.systemCommandsList.language": "  language [en|uk] - Змінити мову інтерфейсу",
+  "command.help.systemCommandsList.fullscreen": "  fullscreen [on|off] - Перемкнути повноекранний режим терміналу",
   "command.help.systemCommandsList.clear": "  clear - Очистити екран терміналу",
   "command.help.systemCommandsList.task": "  task - Показати поточне завдання",
   "command.help.moreInfo": "Використовуйте man &lt;команда&gt; для детальної інформації.",
