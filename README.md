@@ -63,6 +63,7 @@ System commands:
   theme [light|dark|amber] - Switch color theme
   progress [status|reset] - Show/reset learning progress
   language [en|uk] - Switch interface language
+  fullscreen [on|off] - Toggle fullscreen terminal mode
   clear - Clear terminal screen
   task - Show current task
 
