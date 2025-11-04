@@ -18,30 +18,7 @@ import {
 } from "./task-manager.js";
 import { showMatrix } from "../effects/matrix-mode.js";
 import { switchLocale, t } from "./i18n/i18n.js";
-
-function enableFullscreen() {
-  document.body.classList.add("fullscreen-mode");
-
-  const header = document.querySelector(".header");
-  const footer = document.querySelector(".footer");
-
-  if (header) header.style.display = "none";
-  if (footer) footer.style.display = "none";
-
-  localStorage.setItem("fullscreenMode", "true");
-}
-
-function disableFullscreen() {
-  document.body.classList.remove("fullscreen-mode");
-
-  const header = document.querySelector(".header");
-  const footer = document.querySelector(".footer");
-
-  if (header) header.style.display = "";
-  if (footer) footer.style.display = "";
-
-  localStorage.setItem('fullscreenMode', 'false');
-}
+import { enableFullscreen, disableFullscreen } from "../ui/components/fullscreen-manager.js";
 
 const manPages = {
   cd: "manual.cd",
