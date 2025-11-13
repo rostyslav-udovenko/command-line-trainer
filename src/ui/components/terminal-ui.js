@@ -230,22 +230,22 @@ export class TerminalCaret {
 export function showWelcomeMessage() {
   printOutput(`<strong>${t("terminal.ui.welcome.title")}</strong>`);
   printOutput("&nbsp;");
-  printOutput(t("terminal.ui.welcome.intro.1"));
-  printOutput(t("terminal.ui.welcome.intro.2"));
+  printOutput(t("terminal.ui.welcome.intro.line1"));
+  printOutput(t("terminal.ui.welcome.intro.line2"));
   printOutput("&nbsp;");
-  printOutput(t("terminal.ui.welcome.gettingStarted"));
-  printOutput(t("terminal.ui.welcome.help"));
-  printOutput(t("terminal.ui.welcome.man"));
-  printOutput(t("terminal.ui.welcome.followTasks"));
+  printOutput(t("terminal.ui.welcome.gettingStarted.title"));
+  printOutput(t("terminal.ui.welcome.gettingStarted.help"));
+  printOutput(t("terminal.ui.welcome.gettingStarted.man"));
+  printOutput(t("terminal.ui.welcome.gettingStarted.followTasks"));
   printOutput("&nbsp;");
-  printOutput(t("command.help.systemCommands"));
-  printOutput(t("command.help.systemCommandsList.hint"));
-  printOutput(t("command.help.systemCommandsList.theme"));
-  printOutput(t("command.help.systemCommandsList.progress"));
-  printOutput(t("command.help.systemCommandsList.language"));
-  printOutput(t("command.help.systemCommandsList.fullscreen"));
-  printOutput(t("command.help.systemCommandsList.clear"));
-  printOutput(t("command.help.systemCommandsList.task"));
+  printOutput(t("command.help.systemCommands.title"));
+  printOutput(t("command.help.systemCommands.hint"));
+  printOutput(t("command.help.systemCommands.theme"));
+  printOutput(t("command.help.systemCommands.progress"));
+  printOutput(t("command.help.systemCommands.language"));
+  printOutput(t("command.help.systemCommands.fullscreen"));
+  printOutput(t("command.help.systemCommands.clear"));
+  printOutput(t("command.help.systemCommands.task"));
   printOutput("&nbsp;");
   printOutput(t("terminal.ui.welcome.ready"));
 }
