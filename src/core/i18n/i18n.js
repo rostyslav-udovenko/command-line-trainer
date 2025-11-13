@@ -46,15 +46,33 @@ export async function loadLocale(locale) {
   }
 }
 
+/**
+ * Get translation by nested key path
+ * @param {string} key - Dot-separated path (e.g., "command.help.availableCommands")
+ * @param {object} params - Parameters for interpolation
+ * @returns {string} - Translated text
+ */
 export function t(key, params = {}) {
   if (!key) {
     return "";
   }
 
-  let text = translations[key];
+  // Navigate through nested object using dot notation
+  const keys = key.split(".");
+  let text = translations;
 
-  if (!text) {
-    console.warn(`Missing translation: ${key}`);
+  for (const k of keys) {
+    if (text && typeof text === "object" && k in text) {
+      text = text[k];
+    } else {
+      console.warn(`Missing translation: ${key}`);
+      return key;
+    }
+  }
+
+  // If we ended up with an object instead of string, return the key
+  if (typeof text !== "string") {
+    console.warn(`Translation key "${key}" does not point to a string value`);
     return key;
   }
 

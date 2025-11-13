@@ -18,7 +18,10 @@ import {
 } from "./task-manager.js";
 import { showMatrix } from "../effects/matrix-mode.js";
 import { switchLocale, t } from "./i18n/i18n.js";
-import { enableFullscreen, disableFullscreen } from "../ui/components/fullscreen-manager.js";
+import {
+  enableFullscreen,
+  disableFullscreen,
+} from "../ui/components/fullscreen-manager.js";
 
 const manPages = {
   cd: "manual.cd",
@@ -449,7 +452,7 @@ const commands = {
 
     printOutput(`<strong>${currentTask.moduleName}</strong>`);
     printOutput(
-      `<strong>${t("task.manager.task.label")} ${currentTask.id}:</strong> ${t(
+      `<strong>${t("task.manager.label")} ${currentTask.id}:</strong> ${t(
         currentTask.description
       )}`
     );
@@ -458,16 +461,16 @@ const commands = {
 
   help: () => {
     printOutput(t("command.help.availableCommands"));
-    printOutput(t("command.help.userCommandsList"));
+    printOutput(t("command.help.userCommands.list"));
     printOutput("&nbsp;");
-    printOutput(t("command.help.systemCommands"));
-    printOutput(t("command.help.systemCommandsList.hint"));
-    printOutput(t("command.help.systemCommandsList.theme"));
-    printOutput(t("command.help.systemCommandsList.progress"));
-    printOutput(t("command.help.systemCommandsList.language"));
-    printOutput(t("command.help.systemCommandsList.fullscreen"));
-    printOutput(t("command.help.systemCommandsList.clear"));
-    printOutput(t("command.help.systemCommandsList.task"));
+    printOutput(t("command.help.systemCommands.title"));
+    printOutput(t("command.help.systemCommands.hint"));
+    printOutput(t("command.help.systemCommands.theme"));
+    printOutput(t("command.help.systemCommands.progress"));
+    printOutput(t("command.help.systemCommands.language"));
+    printOutput(t("command.help.systemCommands.fullscreen"));
+    printOutput(t("command.help.systemCommands.clear"));
+    printOutput(t("command.help.systemCommands.task"));
     printOutput("&nbsp;");
     printOutput(t("command.help.moreInfo"));
   },

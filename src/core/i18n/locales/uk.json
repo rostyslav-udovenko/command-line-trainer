@@ -1,294 +1,483 @@
 {
-  "terminal.ui.welcome.title": "Ласкаво просимо до Command Line Trainer!",
-  "terminal.ui.welcome.intro.1": "Ця інтерактивна симуляція допоможе вам освоїти",
-  "terminal.ui.welcome.intro.2": "основи команд UNIX-подібного терміналу через практичні завдання.",
-  "terminal.ui.welcome.gettingStarted": "Початок роботи:",
-  "terminal.ui.welcome.help": "  Введіть `help` для перегляду доступних команд",
-  "terminal.ui.welcome.man": "  Введіть `man &lt;команда&gt;` для детальної інформації",
-  "terminal.ui.welcome.followTasks": "  Слідуйте інструкціям завдань для проходження модулів",
-  "terminal.ui.welcome.ready": "Готові розпочати? Введіть `y` для початку або `n` для виходу.",
+  "terminal": {
+    "ui": {
+      "welcome": {
+        "title": "Ласкаво просимо до Command Line Trainer!",
+        "intro": {
+          "line1": "Ця інтерактивна симуляція допоможе вам освоїти",
+          "line2": "основи команд UNIX-подібного терміналу через практичні завдання."
+        },
+        "gettingStarted": {
+          "title": "Початок роботи:",
+          "help": "Введіть `help` для перегляду доступних команд",
+          "man": "Введіть `man &lt;команда&gt;` для детальної інформації",
+          "followTasks": "Слідуйте інструкціям завдань для проходження модулів"
+        },
+        "ready": "Готові розпочати? Введіть `y` для початку або `n` для виходу."
+      }
+    }
+  },
 
-  "footer.description": "© 2025 Command Line Trainer - навчальний інструмент для освоєння базових команд терміналу UNIX-подібних систем",
-  "footer.by": "Розроблено з ♥ Ростиславом Удовенком",
-  "footer.feedback": "Відгук",
-  "footer.contact": "Звʼязатися зі мною",
+  "footer": {
+    "description": "© 2025 Command Line Trainer - навчальний інструмент для освоєння базових команд терміналу UNIX-подібних систем",
+    "by": "Розроблено з ♥ Ростиславом Удовенком",
+    "feedback": "Відгук",
+    "contact": "Звʼязатися зі мною"
+  },
 
-  "modules.1": "Модуль 1 - Операції з директоріями",
-  "modules.2": "Модуль 2 - Операції з файлами",
-  "modules.3": "Модуль 3 - Права доступу та метадані",
-  "modules.4": "Модуль 4 - Системні команди",
-  "modules.5": "Модуль 5 - Обробка тексту",
-  "modules.6": "Модуль 6 - Пошук файлів та навігація",
+  "modules": {
+    "1": "Модуль 1 - Операції з директоріями",
+    "2": "Модуль 2 - Операції з файлами",
+    "3": "Модуль 3 - Права доступу та метадані",
+    "4": "Модуль 4 - Системні команди",
+    "5": "Модуль 5 - Обробка тексту",
+    "6": "Модуль 6 - Пошук файлів та навігація"
+  },
 
-  "task.manager.loadingTasks": "Завантаження завдань...",
-  "task.manager.loadingDone": "Завдання завантажено!",
+  "task": {
+    "manager": {
+      "loading": {
+        "tasks": "Завантаження завдань...",
+        "done": "Завдання завантажено!"
+      },
+      "error": {
+        "taskDataMissing": "Помилка: дані завдання відсутні.",
+        "noTasksLoaded": "Помилка: жодне завдання не завантажене або неправильний прогрес.",
+        "taskDataMissingCheck": "Помилка: дані завдання відсутні.",
+        "failedToLoadTasks": "Не вдалося завантажити завдання:"
+      },
+      "training": {
+        "started": "Навчання розпочато!",
+        "canceled": "Навчання скасовано. До побачення!",
+        "enterYorN": "Будь ласка, введіть `y` або `n`.",
+        "allTasksCompleted": {
+          "line1": "Усі завдання виконано!",
+          "line2": "Введіть `progress reset` для початку спочатку."
+        },
+        "congratulations": {
+          "line1": "Вітаємо!",
+          "line2": "Ви завершили всі завдання."
+        },
+        "resetToStart": "Введіть `progress reset` для початку спочатку."
+      },
+      "hints": {
+        "enabled": "Підказки увімкнені. Використовуйте `hint off` для їх вимкнення.",
+        "disabled": "Підказки вимкнені. Використовуйте `hint on` для їх увімкнення.",
+        "label": "Підказка:"
+      },
+      "success": {
+        "wellDone": "Чудово!",
+        "taskComplete": "Завдання виконано!",
+        "niceJob": "Гарна робота!",
+        "youNailedIt": "Ви впоралися!",
+        "taskSolved": "Завдання вирішено!",
+        "greatWork": "Відмінна робота!",
+        "youDidIt": "Ви зробили це!"
+      },
+      "label": "Завдання"
+    }
+  },
 
-  "task.manager.error.taskDataMissing": "Помилка: дані завдання відсутні.",
-  "task.manager.error.noTasksLoaded": "Помилка: жодне завдання не завантажене або неправильний прогрес.",
-  "task.manager.error.taskDataMissingCheck": "Помилка: дані завдання відсутні.",
-  "task.manager.error.failedToLoadTasks": "Не вдалося завантажити завдання:",
+  "manual": {
+    "pwd": "pwd — показати поточну робочу директорію",
+    "ls": "ls — показати вміст директорії, ls -l — показати вміст з деталями (наприклад, прапорець виконуваного файлу)",
+    "cd": "cd — змінити директорію",
+    "mkdir": "mkdir — створити директорію",
+    "touch": "touch — створити новий файл або оновити час модифікації",
+    "help": "help — показати загальну довідку по командам",
+    "man": "man — інтерфейс для перегляду системних мануалів",
+    "cat": "cat — обʼєднати файли та вивести на екран",
+    "less": "less — посторінковий перегляд файлу",
+    "file": "file — визначити тип файлу",
+    "cp": "cp — копіювати файли та директорії",
+    "mv": "mv — перемістити або перейменувати файли",
+    "rm": "rm — видалити файли або директорії",
+    "chmod": "chmod — змінити права доступу до файлу",
+    "stat": "stat — показати метадані файлу, наприклад, час останньої модифікації",
+    "date": "date — показати або встановити дату та час системи",
+    "whoami": "whoami — показати ім'я поточного користувача",
+    "uptime": "uptime — показати час роботи системи",
+    "mount": "mount — змонтувати файлову систему",
+    "clear": "clear — очистити екран терміналу",
+    "task": "task — показати поточне завдання",
+    "rmdir": "rmdir — видалити порожні директорії",
+    "progress": "progress — управління прогресом навчання. Використовуйте `progress status` для перегляду детального прогресу або `progress reset` для перезапуску навчання",
+    "grep": "grep — пошук шаблонів у файлах",
+    "sort": "sort — сортування рядків у текстових файлах",
+    "uniq": "uniq — видалити дублікати рядків з текстових файлів",
+    "tr": "tr — перекладає символи",
+    "ps": "ps — відображає інформацію про запущені процеси",
+    "find": "find — пошук файлів та директорій за іменем, типом або іншими критеріями",
+    "du": "du — оцінити використання дискового простору",
+    "fullscreen": "fullscreen — перемкнути повноекранний режим терміналу"
+  },
 
-  "task.manager.training.started": "Навчання розпочато!",
-  "task.manager.training.canceled": "Навчання скасовано. До побачення!",
-  "task.manager.training.enterYorN": "Будь ласка, введіть `y` або `n`.",
-  "task.manager.training.allTasksCompleted.1": "Усі завдання виконано!",
-  "task.manager.training.allTasksCompleted.2": " Введіть `progress reset` для початку спочатку.",
-  "task.manager.training.congratulations.1": "Вітаємо!",
-  "task.manager.training.congratulations.2": "Ви завершили всі завдання.",
-  "task.manager.training.resetToStart": "Введіть `progress reset` для початку спочатку.",
+  "command": {
+    "error": {
+      "enterCommand": "Будь ласка, введіть команду.",
+      "notFound": "Команду не знайдено:",
+      "dirNotFound": "Директорію не знайдено",
+      "sourceNotFound": "Файл джерела не знайдено: {{src}}",
+      "noSuchFile": "Файл не знайдено: {{name}}",
+      "languageSwitch": "Не вдалося змінити мову."
+    },
 
-  "task.manager.hints.enabled": "Підказки увімкнені. Використовуйте `hint off` для їх вимкнення.",
-  "task.manager.hints.disabled": "Підказки вимкнені. Використовуйте `hint on` для їх увімкнення.",
-  "task.manager.hints.label": "Підказка:",
+    "ls": {
+      "empty": "Немає файлів або директорій",
+      "usage": "Використання: ls [-l]"
+    },
 
-  "task.manager.success.wellDone": "Чудово!",
-  "task.manager.success.taskComplete": "Завдання виконано!",
-  "task.manager.success.niceJob": "Гарна робота!",
-  "task.manager.success.youNailedIt": "Ви впоралися!",
-  "task.manager.success.taskSolved": "Завдання вирішено!",
-  "task.manager.success.greatWork": "Відмінна робота!",
-  "task.manager.success.youDidIt": "Ви зробили це!",
+    "pwd": {
+      "usage": "Використання: pwd"
+    },
 
-  "task.manager.task.label": "Завдання",
+    "cd": {
+      "usage": "Використання: cd &lt;директорія&gt;",
+      "changed": "Перейдено до директорії {{path}}"
+    },
 
-  "manual.pwd": "pwd — показати поточну робочу директорію",
-  "manual.ls": "ls — показати вміст директорії, ls -l — показати вміст з деталями (наприклад, прапорець виконуваного файлу)",
-  "manual.cd": "cd — змінити директорію",
-  "manual.mkdir": "mkdir — створити директорію",
-  "manual.touch": "touch — створити новий файл або оновити час модифікації",
-  "manual.help": "help — показати загальну довідку по командам",
-  "manual.man": "man — інтерфейс для перегляду системних мануалів",
-  "manual.cat": "cat — обʼєднати файли та вивести на екран",
-  "manual.less": "less — посторінковий перегляд файлу",
-  "manual.file": "file — визначити тип файлу",
-  "manual.cp": "cp — копіювати файли та директорії",
-  "manual.mv": "mv — перемістити або перейменувати файли",
-  "manual.rm": "rm — видалити файли або директорії",
-  "manual.chmod": "chmod — змінити права доступу до файлу",
-  "manual.stat": "stat — показати метадані файлу, наприклад, час останньої модифікації",
-  "manual.date": "date — показати або встановити дату та час системи",
-  "manual.whoami": "whoami — показати ім'я поточного користувача",
-  "manual.uptime": "uptime — показати час роботи системи",
-  "manual.mount": "mount — змонтувати файлову систему",
-  "manual.clear": "clear — очистити екран терміналу",
-  "manual.task": "task — показати поточне завдання",
-  "manual.rmdir": "rmdir — видалити порожні директорії",
-  "manual.progress": "progress — управління прогресом навчання. Використовуйте `progress status` для перегляду детального прогресу або `progress reset` для перезапуску навчання",
-  "manual.grep": "grep — пошук шаблонів у файлах",
-  "manual.sort": "sort — сортування рядків у текстових файлах",
-  "manual.uniq": "uniq — видалити дублікати рядків з текстових файлів",
-  "manual.tr": "tr — перекладає символи",
-  "manual.ps": "ps — відображає інформацію про запущені процеси",
-  "manual.find": "find — пошук файлів та директорій за іменем, типом або іншими критеріями",
-  "manual.du": "du — оцінити використання дискового простору",
-  "manual.fullscreen": "fullscreen — перемкнути повноекранний режим терміналу",
+    "mkdir": {
+      "usage": "Використання: mkdir &lt;директорія&gt;",
+      "success": "Директорію {{name}} створено",
+      "exists": "Директорія {{name}} вже існує або неправильний шлях"
+    },
 
-  "command.error.enterCommand": "Будь ласка, введіть команду.",
-  "command.error.notFound": "Команду не знайдено:",
-  "command.error.dirNotFound": "Директорію не знайдено",
-  "command.error.sourceNotFound": "Файл джерела не знайдено: {{src}}",
-  "command.error.noSuchFile": "Файл не знайдено: {{name}}",
-  "command.error.languageSwitch": "Не вдалося змінити мову.",
+    "rmdir": {
+      "usage": "Використання: rmdir &lt;директорія&gt;",
+      "removed": "Директорію {{name}} видалено",
+      "notDirectory": "{{name}} не є директорією",
+      "notEmpty": "Директорія {{name}} не порожня"
+    },
 
-  "command.ls.empty": "Немає файлів або директорій",
-  "command.ls.usage": "Використання: ls [-l]",
+    "touch": {
+      "usage": "Використання: touch &lt;файл&gt;",
+      "touched": "Оновлено час зміни для {{name}}",
+      "created": "Файл {{name}} створено"
+    },
 
-  "command.man.usage": "Використання: man &lt;команда&gt;",
-  "command.cd.usage": "Використання: cd &lt;директорія&gt;",
-  "command.mkdir.usage": "Використання: mkdir &lt;директорія&gt;",
-  "command.touch.usage": "Використання: touch &lt;файл&gt;",
-  "command.cp.usage": "Використання: cp &lt;джерело&gt; &lt;призначення&gt;",
-  "command.mv.usage": "Використання: mv &lt;джерело&gt; &lt;призначення&gt;",
-  "command.rm.usage": "Використання: rm &lt;файл&gt;",
-  "command.chmod.usage": "Використання: chmod +x &lt;файл&gt;",
-  "command.stat.usage": "Використання: stat &lt;файл&gt;",
-  "command.date.usage": "Використання: date",
-  "command.whoami.usage": "Використання: whoami",
-  "command.uptime.usage": "Використання: uptime",
-  "command.mount.usage": "Використання: mount",
-  "command.theme.usage": "Використання: theme [light|dark|amber]",
-  "command.language.usage": "Використання: language [en|uk]",
-  "command.progress.usage": "Використання: progress [reset|status]",
-  "command.cat.usage": "Використання: cat &lt;файл&gt;",
-  "command.less.usage": "Використання: less &lt;файл&gt;",
-  "command.file.usage": "Використання: file &lt;файл&gt;",
-  "command.hint.usage": "Використання: hint [on|off]",
-  "command.pwd.usage": "Використання: pwd",
-  "command.clear.usage": "Використання: clear",
-  "command.task.usage": "Використання: task",
-  "command.rmdir.usage": "Використання: rmdir &lt;директорія&gt;",
-  "command.grep.usage": "Використання: grep &lt;шаблон&gt; &lt;файл&gt;",
-  "command.sort.usage": "Використання: sort &lt;файл&gt;",
-  "command.uniq.usage": "Використання: uniq &lt;файл&gt;",
-  "command.tr.usage": "Використання: tr SET1 SET2 < FILE",
-  "command.ps.usage": "Використання: ps",
-  "command.find.usage": "Використання: find &lt;шлях&gt; [-name шаблон] [-type f|d]",
-  "command.du.usage": "Використання: du [-s] [-h] [шлях]",
-  "command.fullscreen.usage": "Використання: fullscreen [on|off]",
+    "cat": {
+      "usage": "Використання: cat &lt;файл&gt;"
+    },
 
-  "command.hint.noHint": "Підказка для цього завдання недоступна.",
-  "command.mkdir.success": "Директорію {{name}} створено",
-  "command.mkdir.exists": "Директорія {{name}} вже існує або неправильний шлях",
-  "command.touch.touched": "Оновлено час зміни для {{name}}",
-  "command.touch.created": "Файл {{name}} створено",
-  "command.cp.copied": "Скопійовано {{src}} у {{dest}}",
-  "command.mv.moved": "Переміщено {{src}} у {{dest}}/",
-  "command.mv.renamed": "Перейменовано {{src}} у {{dest}}",
-  "command.rm.removed": "{{name}} видалено",
-  "command.chmod.success": "Додано дозвіл на виконання для {{name}}",
-  "command.cd.changed": "Перейдено до директорії {{path}}",
-  "command.file.isDirectory": "{{name}}: директорія",
-  "command.file.isFile": "{{name}}: звичайний файл",
-  "command.fullscreen.enabled": "Повноекранний режим увімкнено.",
-  "command.fullscreen.disabled": "Повноекранний режим вимкнено.",
+    "less": {
+      "usage": "Використання: less &lt;файл&gt;"
+    },
 
-  "command.stat.type": "Тип: файл",
-  "command.stat.lastModified": "Остання зміна: {{modified}}",
-  "log.txt": "log.txt",
+    "file": {
+      "usage": "Використання: file &lt;файл&gt;",
+      "isDirectory": "{{name}}: директорія",
+      "isFile": "{{name}}: звичайний файл"
+    },
 
-  "command.rmdir.removed": "Директорію {{name}} видалено",
-  "command.rmdir.notDirectory": "{{name}} не є директорією",
-  "command.rmdir.notEmpty": "Директорія {{name}} не порожня",
+    "cp": {
+      "usage": "Використання: cp &lt;джерело&gt; &lt;призначення&gt;",
+      "copied": "Скопійовано {{src}} у {{dest}}"
+    },
 
-  "command.theme.switched": "Переключено на тему {{option}}.",
-  "command.language.switched": "Мову змінено на {{locale}}.",
+    "mv": {
+      "usage": "Використання: mv &lt;джерело&gt; &lt;призначення&gt;",
+      "moved": "Переміщено {{src}} у {{dest}}/",
+      "renamed": "Перейменовано {{src}} у {{dest}}"
+    },
 
-  "command.progress.reset": "Прогрес навчання скинуто. Перезапуск...",
-  "command.progress.status.overall": "Загальний прогрес",
-  "command.progress.status.allCompleted": "Усі завдання виконано!",
+    "rm": {
+      "usage": "Використання: rm &lt;файл&gt;",
+      "removed": "{{name}} видалено"
+    },
 
-  "command.task.allCompleted": "Усі завдання виконано! Введіть `progress reset` для початку спочатку.",
-  "command.task.noTask": "Поточне завдання недоступне.",
+    "chmod": {
+      "usage": "Використання: chmod +x &lt;файл&gt;",
+      "success": "Додано дозвіл на виконання для {{name}}"
+    },
 
-  "command.help.availableCommands": "Доступні команди:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du",
-  "command.help.systemCommands": "Системні команди:",
-  "command.help.systemCommandsList.hint": "  hint [on|off] - Увімкнути/вимкнути підказки завдань",
-  "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Перемкнути кольорову тему",
-  "command.help.systemCommandsList.progress": "  progress [status|reset] - Показати/скинути прогрес навчання",
-  "command.help.systemCommandsList.language": "  language [en|uk] - Змінити мову інтерфейсу",
-  "command.help.systemCommandsList.fullscreen": "  fullscreen [on|off] - Перемкнути повноекранний режим терміналу",
-  "command.help.systemCommandsList.clear": "  clear - Очистити екран терміналу",
-  "command.help.systemCommandsList.task": "  task - Показати поточне завдання",
-  "command.help.moreInfo": "Використовуйте man &lt;команда&gt; для детальної інформації.",
+    "stat": {
+      "usage": "Використання: stat &lt;файл&gt;",
+      "type": "Тип: файл",
+      "lastModified": "Остання зміна: {{modified}}"
+    },
 
-  "module1.task1.description": "Перейдіть у директорію `projects` за допомогою команди `cd`.",
-  "module1.task1.hint": "Спробуйте `cd projects`",
-  "module1.task1.explanation": "Команда `cd` (change directory) дозволяє перейти в іншу директорію файлової системи.",
+    "date": {
+      "usage": "Використання: date"
+    },
 
-  "module1.task2.description": "Створіть директорію з назвою `images` у корені файлової системи за допомогою команди `mkdir`.",
-  "module1.task2.hint": "Спробуйте `mkdir images`",
-  "module1.task2.explanation": "Команда `mkdir` (make directory) дозволяє створити нову директорію у файловій системі.",
+    "whoami": {
+      "usage": "Використання: whoami"
+    },
 
-  "module1.task3.description": "Використайте команду `ls` для перегляду вмісту поточної директорії.",
-  "module1.task3.hint": "Спробуйте `ls`",
-  "module1.task3.explanation": "Команда `ls` виводить список файлів та піддиректорій поточної директорії.",
+    "uptime": {
+      "usage": "Використання: uptime"
+    },
 
-  "module1.task4.description": "Використайте команду `pwd` для відображення поточної директорії.",
-  "module1.task4.hint": "Спробуйте `pwd`",
-  "module1.task4.explanation": "Команда `pwd` (print working directory) показує повний шлях до поточної директорії.",
+    "mount": {
+      "usage": "Використання: mount"
+    },
 
-  "module1.task5.description": "Видаліть порожню директорію `temp` за допомогою команди `rmdir`.",
-  "module1.task5.hint": "Спробуйте `rmdir temp`",
-  "module1.task5.explanation": "Команда `rmdir` (remove directory) видаляє порожні директорії. На відміну від `rm`, вона працює тільки з директоріями і вимагає, щоб вони були порожніми.",
+    "ps": {
+      "usage": "Використання: ps"
+    },
 
-  "module2.task1.description": "Створіть файл з назвою `index.html` у директорії `projects` за допомогою команди `touch`.",
-  "module2.task1.hint": "Спробуйте `touch index.html`",
-  "module2.task1.explanation": "Команда `touch` створює новий порожній файл або оновлює час модифікації існуючого. У цьому випадку вона створює `index.html` у директорії `projects`.",
+    "grep": {
+      "usage": "Використання: grep &lt;шаблон&gt; &lt;файл&gt;"
+    },
 
-  "module2.task2.description": "Скористайтеся командою `cat`, щоб переглянути вміст файлу `note.txt`.",
-  "module2.task2.hint": "Спробуйте `cat note.txt`",
-  "module2.task2.explanation": "Команда `cat` читає вміст файлу і виводить його в терміналі. У цьому випадку показує вміст файлу `note.txt`.",
+    "sort": {
+      "usage": "Використання: sort &lt;файл&gt;"
+    },
 
-  "module2.task3.description": "Скористайтеся командою `less`, щоб переглянути файл `log.txt`.",
-  "module2.task3.hint": "Спробуйте `less log.txt`",
-  "module2.task3.explanation": "Команда `less` дозволяє переглядати вміст файлу по екрану. Це зручно для великих файлів без відкривання в редакторі.",
+    "uniq": {
+      "usage": "Використання: uniq &lt;файл&gt;"
+    },
 
-  "module2.task4.description": "Скористайтеся командою `file`, щоб перевірити `script.sh`.",
-  "module2.task4.hint": "Спробуйте `file script.sh`",
-  "module2.task4.explanation": "Команда `file` визначає тип файлу. У цьому випадку вона визначає, що `script.sh` є звичайним файлом, що містить shell-скрипт.",
+    "tr": {
+      "usage": "Використання: tr SET1 SET2 < FILE"
+    },
 
-  "module2.task5.description": "Скопіюйте файл `a.txt` у `b.txt` за допомогою команди `cp`.",
-  "module2.task5.hint": "Спробуйте `cp a.txt b.txt`",
-  "module2.task5.explanation": "Команда `cp` використовується для копіювання файлів або директорій. У цьому випадку вона копіює вміст `a.txt` у новий файл `b.txt`. Якщо `b.txt` вже існує, він буде перезаписаний.",
+    "find": {
+      "usage": "Використання: find &lt;шлях&gt; [-name шаблон] [-type f|d]"
+    },
 
-  "module2.task6.description": "Перейменуйте `old.txt` у `new.txt` за допомогою команди `mv`.",
-  "module2.task6.hint": "Спробуйте `mv old.txt new.txt`",
-  "module2.task6.explanation": "Команда `mv` використовується для переміщення або перейменування файлів і директорій. У цьому випадку вона перейменовує `old.txt` у `new.txt`. Якщо `new.txt` вже існує, він буде перезаписаний.",
+    "du": {
+      "usage": "Використання: du [-s] [-h] [шлях]"
+    },
 
-  "module2.task7.description": "Перемістіть файл `note.txt` у директорію `docs/` за допомогою команди `mv`.",
-  "module2.task7.hint": "Спробуйте `mv note.txt docs`",
-  "module2.task7.explanation": "Команда `mv` використовується для переміщення або перейменування файлів і директорій. У цьому випадку вона переміщує `note.txt` у директорію `docs/`. Якщо директорії `docs/` немає, створіть її спочатку за допомогою `mkdir docs`.",
+    "man": {
+      "usage": "Використання: man &lt;команда&gt;"
+    },
 
-  "module2.task8.description": "Видаліть файл `temp.txt` за допомогою команди `rm`.",
-  "module2.task8.hint": "Спробуйте `rm temp.txt`",
-  "module2.task8.explanation": "Команда `rm` використовується для видалення файлів або директорій. У цьому випадку вона видаляє файл `temp.txt`. Будьте обережні: `rm` назавжди видаляє файли без переміщення до кошика.",
+    "hint": {
+      "usage": "Використання: hint [on|off]",
+      "noHint": "Підказка для цього завдання недоступна."
+    },
 
-  "module3.task1.description": "Зробіть файл `run.sh` виконуваним за допомогою команди `chmod`.",
-  "module3.task1.hint": "Спробуйте `chmod +x run.sh`",
-  "module3.task1.explanation": "Команда `chmod` змінює режим доступу (права) файлу. У цьому випадку вона робить `run.sh` виконуваним, додаючи дозвіл на виконання для користувача.",
+    "theme": {
+      "usage": "Використання: theme [light|dark|amber]",
+      "switched": "Переключено на тему {{option}}."
+    },
 
-  "module3.task2.description": "Перегляньте деталі файлів за допомогою `ls -l` і знайдіть назву виконуваного файлу.",
-  "module3.task2.hint": "Спробуйте `ls -l` і подивіться, де є зірочка.",
-  "module3.task2.explanation": "Команда `ls -l` показує файли у розширеному форматі, включаючи права доступу, власника, розмір та дату зміни. Зірочка `*` в кінці імені файлу вказує, що файл є виконуваним.",
+    "language": {
+      "usage": "Використання: language [en|uk]",
+      "switched": "Мову змінено на {{locale}}."
+    },
 
-  "module3.task3.description": "Перегляньте метадані файлу `log.txt` за допомогою команди `stat`.",
-  "module3.task3.hint": "Спробуйте `stat log.txt`",
-  "module3.task3.explanation": "Команда `stat` показує детальну інформацію про файл, зокрема розмір, права доступу та час останньої зміни. У цьому випадку вона показує метадані файлу `log.txt`.",
+    "progress": {
+      "usage": "Використання: progress [reset|status]",
+      "reset": "Прогрес навчання скинуто. Перезапуск...",
+      "status": {
+        "overall": "Загальний прогрес",
+        "allCompleted": "Усі завдання виконано!"
+      }
+    },
 
-  "module3.task4.description": "Оновіть часову мітку файлу `todo.txt` за допомогою команди `touch`.",
-  "module3.task4.hint": "Спробуйте `touch todo.txt`",
-  "module3.task4.explanation": "Команда `touch` створює новий порожній файл або оновлює часову мітку існуючого файлу. У цьому випадку вона оновлює дату зміни файлу `todo.txt` на поточний час.",
+    "task": {
+      "usage": "Використання: task",
+      "allCompleted": "Усі завдання виконано! Введіть `progress reset` для початку спочатку.",
+      "noTask": "Поточне завдання недоступне."
+    },
 
-  "module4.task1.description": "Скористайтеся командою `date`, щоб вивести поточний системний час.",
-  "module4.task1.hint": "Спробуйте `date`",
-  "module4.task1.explanation": "Команда `date` відображає поточну дату та час системи. Корисно для перевірки системного часу та налаштувань часової зони.",
+    "clear": {
+      "usage": "Використання: clear"
+    },
 
-  "module4.task2.description": "Скористайтеся командою `whoami`, щоб дізнатися імʼя поточного користувача.",
-  "module4.task2.hint": "Спробуйте `whoami`",
-  "module4.task2.explanation": "Команда `whoami` показує імʼя користувача, під яким ви зараз увійшли в систему. Це зручно для перевірки, під яким обліковим записом ви працюєте.",
+    "fullscreen": {
+      "usage": "Використання: fullscreen [on|off]",
+      "enabled": "Повноекранний режим увімкнено.",
+      "disabled": "Повноекранний режим вимкнено."
+    },
 
-  "module4.task3.description": "Скористайтеся командою `uptime`, щоб дізнатися, скільки часу працює система.",
-  "module4.task3.hint": "Спробуйте `uptime`",
-  "module4.task3.explanation": "Команда `uptime` показує, скільки часу система працює з моменту останнього завантаження, поточний час, кількість користувачів і середнє навантаження на систему. Це корисно для моніторингу стабільності та продуктивності системи.",
+    "help": {
+      "availableCommands": "Доступні команди:",
+      "userCommands": {
+        "list": "pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du"
+      },
+      "systemCommands": {
+        "title": "Системні команди:",
+        "hint": "hint [on|off] - Увімкнути/вимкнути підказки завдань",
+        "theme": "theme [light|dark|amber] - Перемкнути кольорову тему",
+        "progress": "progress [status|reset] - Показати/скинути прогрес навчання",
+        "language": "language [en|uk] - Змінити мову інтерфейсу",
+        "fullscreen": "fullscreen [on|off] - Перемкнути повноекранний режим терміналу",
+        "clear": "clear - Очистити екран терміналу",
+        "task": "task - Показати поточне завдання"
+      },
+      "moreInfo": "Використовуйте man &lt;команда&gt; для детальної інформації."
+    }
+  },
 
-  "module4.task4.description": "Скористайтеся командою `mount`, щоб переглянути змонтовані файлові системи.",
-  "module4.task4.hint": "Спробуйте `mount`",
-  "module4.task4.explanation": "Команда `mount` відображає всі поточно змонтовані файлові системи, показуючи назви пристроїв і точки монтування. Це корисно для розуміння того, як підключені носії та де вони доступні.",
+  "module1": {
+    "task1": {
+      "description": "Перейдіть у директорію `projects` за допомогою команди `cd`.",
+      "hint": "Спробуйте `cd projects`",
+      "explanation": "Команда `cd` (change directory) дозволяє перейти в іншу директорію файлової системи."
+    },
+    "task2": {
+      "description": "Створіть директорію з назвою `images` у корені файлової системи за допомогою команди `mkdir`.",
+      "hint": "Спробуйте `mkdir images`",
+      "explanation": "Команда `mkdir` (make directory) дозволяє створити нову директорію у файловій системі."
+    },
+    "task3": {
+      "description": "Використайте команду `ls` для перегляду вмісту поточної директорії.",
+      "hint": "Спробуйте `ls`",
+      "explanation": "Команда `ls` виводить список файлів та піддиректорій поточної директорії."
+    },
+    "task4": {
+      "description": "Використайте команду `pwd` для відображення поточної директорії.",
+      "hint": "Спробуйте `pwd`",
+      "explanation": "Команда `pwd` (print working directory) показує повний шлях до поточної директорії."
+    },
+    "task5": {
+      "description": "Видаліть порожню директорію `temp` за допомогою команди `rmdir`.",
+      "hint": "Спробуйте `rmdir temp`",
+      "explanation": "Команда `rmdir` (remove directory) видаляє порожні директорії. На відміну від `rm`, вона працює тільки з директоріями і вимагає, щоб вони були порожніми."
+    }
+  },
 
-  "module4.task5.description": "Скористайтеся командою `ps`, щоб переглянути список запущених процесів.",
-  "module4.task5.hint": "Спробуйте `ps`",
-  "module4.task5.explanation": "Команда `ps` показує інформацію про активні процеси. Це корисно для моніторингу того, що працює у вашій системі.",
+  "module2": {
+    "task1": {
+      "description": "Створіть файл з назвою `index.html` у директорії `projects` за допомогою команди `touch`.",
+      "hint": "Спробуйте `touch index.html`",
+      "explanation": "Команда `touch` створює новий порожній файл або оновлює час модифікації існуючого. У цьому випадку вона створює `index.html` у директорії `projects`."
+    },
+    "task2": {
+      "description": "Скористайтеся командою `cat`, щоб переглянути вміст файлу `note.txt`.",
+      "hint": "Спробуйте `cat note.txt`",
+      "explanation": "Команда `cat` читає вміст файлу і виводить його в терміналі. У цьому випадку показує вміст файлу `note.txt`."
+    },
+    "task3": {
+      "description": "Скористайтеся командою `less`, щоб переглянути файл `log.txt`.",
+      "hint": "Спробуйте `less log.txt`",
+      "explanation": "Команда `less` дозволяє переглядати вміст файлу по екрану. Це зручно для великих файлів без відкривання в редакторі."
+    },
+    "task4": {
+      "description": "Скористайтеся командою `file`, щоб перевірити `script.sh`.",
+      "hint": "Спробуйте `file script.sh`",
+      "explanation": "Команда `file` визначає тип файлу. У цьому випадку вона визначає, що `script.sh` є звичайним файлом, що містить shell-скрипт."
+    },
+    "task5": {
+      "description": "Скопіюйте файл `a.txt` у `b.txt` за допомогою команди `cp`.",
+      "hint": "Спробуйте `cp a.txt b.txt`",
+      "explanation": "Команда `cp` використовується для копіювання файлів або директорій. У цьому випадку вона копіює вміст `a.txt` у новий файл `b.txt`. Якщо `b.txt` вже існує, він буде перезаписаний."
+    },
+    "task6": {
+      "description": "Перейменуйте `old.txt` у `new.txt` за допомогою команди `mv`.",
+      "hint": "Спробуйте `mv old.txt new.txt`",
+      "explanation": "Команда `mv` використовується для переміщення або перейменування файлів і директорій. У цьому випадку вона перейменовує `old.txt` у `new.txt`. Якщо `new.txt` вже існує, він буде перезаписаний."
+    },
+    "task7": {
+      "description": "Перемістіть файл `note.txt` у директорію `docs/` за допомогою команди `mv`.",
+      "hint": "Спробуйте `mv note.txt docs`",
+      "explanation": "Команда `mv` використовується для переміщення або перейменування файлів і директорій. У цьому випадку вона переміщує `note.txt` у директорію `docs/`. Якщо директорії `docs/` немає, створіть її спочатку за допомогою `mkdir docs`."
+    },
+    "task8": {
+      "description": "Видаліть файл `temp.txt` за допомогою команди `rm`.",
+      "hint": "Спробуйте `rm temp.txt`",
+      "explanation": "Команда `rm` використовується для видалення файлів або директорій. У цьому випадку вона видаляє файл `temp.txt`. Будьте обережні: `rm` назавжди видаляє файли без переміщення до кошика."
+    }
+  },
 
-  "module5.task1.description": "Скористайтеся командою `grep`, щоб знайти рядки, що містять 'error' у файлі `server.log`.",
-  "module5.task1.hint": "Спробуйте `grep error server.log`",
-  "module5.task1.explanation": "Команда `grep` шукає текстові шаблони у файлах. У цьому випадку вона знаходить всі рядки в `server.log`, що містять слово 'error' (без урахування регістру). Це дуже корисно для фільтрації лог-файлів та пошуку конкретної інформації.",
+  "module3": {
+    "task1": {
+      "description": "Зробіть файл `run.sh` виконуваним за допомогою команди `chmod`.",
+      "hint": "Спробуйте `chmod +x run.sh`",
+      "explanation": "Команда `chmod` змінює режим доступу (права) файлу. У цьому випадку вона робить `run.sh` виконуваним, додаючи дозвіл на виконання для користувача."
+    },
+    "task2": {
+      "description": "Перегляньте деталі файлів за допомогою `ls -l` і знайдіть назву виконуваного файлу.",
+      "hint": "Спробуйте `ls -l` і подивіться, де є зірочка.",
+      "explanation": "Команда `ls -l` показує файли у розширеному форматі, включаючи права доступу, власника, розмір та дату зміни. Зірочка `*` в кінці імені файлу вказує, що файл є виконуваним."
+    },
+    "task3": {
+      "description": "Перегляньте метадані файлу `log.txt` за допомогою команди `stat`.",
+      "hint": "Спробуйте `stat log.txt`",
+      "explanation": "Команда `stat` показує детальну інформацію про файл, зокрема розмір, права доступу та час останньої зміни. У цьому випадку вона показує метадані файлу `log.txt`."
+    },
+    "task4": {
+      "description": "Оновіть часову мітку файлу `todo.txt` за допомогою команди `touch`.",
+      "hint": "Спробуйте `touch todo.txt`",
+      "explanation": "Команда `touch` створює новий порожній файл або оновлює часову мітку існуючого файлу. У цьому випадку вона оновлює дату зміни файлу `todo.txt` на поточний час."
+    }
+  },
 
-  "module5.task2.description": "Скористайтеся командою `sort`, щоб відсортувати рядки в `names.txt` за алфавітом.",
-  "module5.task2.hint": "Спробуйте `sort names.txt`",
-  "module5.task2.explanation": "Команда `sort` сортує рядки в текстовому файлі за алфавітом. Це корисно для організації даних, створення відсортованих списків та попередньої обробки тексту для інших команд.",
+  "module4": {
+    "task1": {
+      "description": "Скористайтеся командою `date`, щоб вивести поточний системний час.",
+      "hint": "Спробуйте `date`",
+      "explanation": "Команда `date` відображає поточну дату та час системи. Корисно для перевірки системного часу та налаштувань часової зони."
+    },
+    "task2": {
+      "description": "Скористайтеся командою `whoami`, щоб дізнатися імʼя поточного користувача.",
+      "hint": "Спробуйте `whoami`",
+      "explanation": "Команда `whoami` показує імʼя користувача, під яким ви зараз увійшли в систему. Це зручно для перевірки, під яким обліковим записом ви працюєте."
+    },
+    "task3": {
+      "description": "Скористайтеся командою `uptime`, щоб дізнатися, скільки часу працює система.",
+      "hint": "Спробуйте `uptime`",
+      "explanation": "Команда `uptime` показує, скільки часу система працює з моменту останнього завантаження, поточний час, кількість користувачів і середнє навантаження на систему. Це корисно для моніторингу стабільності та продуктивності системи."
+    },
+    "task4": {
+      "description": "Скористайтеся командою `mount`, щоб переглянути змонтовані файлові системи.",
+      "hint": "Спробуйте `mount`",
+      "explanation": "Команда `mount` відображає всі поточно змонтовані файлові системи, показуючи назви пристроїв і точки монтування. Це корисно для розуміння того, як підключені носії та де вони доступні."
+    },
+    "task5": {
+      "description": "Скористайтеся командою `ps`, щоб переглянути список запущених процесів.",
+      "hint": "Спробуйте `ps`",
+      "explanation": "Команда `ps` показує інформацію про активні процеси. Це корисно для моніторингу того, що працює у вашій системі."
+    }
+  },
 
-  "module5.task3.description": "Скористайтеся командою `uniq`, щоб видалити дублікати рядків з файлу `duplicates.txt`.",
-  "module5.task3.hint": "Спробуйте `uniq duplicates.txt`",
-  "module5.task3.explanation": "Команда `uniq` видаляє послідовні дублікати рядків з текстового файлу, показуючи тільки унікальні рядки. Це дуже корисно для очищення файлів даних і видалення зайвих записів.",
+  "module5": {
+    "task1": {
+      "description": "Скористайтеся командою `grep`, щоб знайти рядки, що містять 'error' у файлі `server.log`.",
+      "hint": "Спробуйте `grep error server.log`",
+      "explanation": "Команда `grep` шукає текстові шаблони у файлах. У цьому випадку вона знаходить всі рядки в `server.log`, що містять слово 'error' (без урахування регістру). Це дуже корисно для фільтрації лог-файлів та пошуку конкретної інформації."
+    },
+    "task2": {
+      "description": "Скористайтеся командою `sort`, щоб відсортувати рядки в `names.txt` за алфавітом.",
+      "hint": "Спробуйте `sort names.txt`",
+      "explanation": "Команда `sort` сортує рядки в текстовому файлі за алфавітом. Це корисно для організації даних, створення відсортованих списків та попередньої обробки тексту для інших команд."
+    },
+    "task3": {
+      "description": "Скористайтеся командою `uniq`, щоб видалити дублікати рядків з файлу `duplicates.txt`.",
+      "hint": "Спробуйте `uniq duplicates.txt`",
+      "explanation": "Команда `uniq` видаляє послідовні дублікати рядків з текстового файлу, показуючи тільки унікальні рядки. Це дуже корисно для очищення файлів даних і видалення зайвих записів."
+    },
+    "task4": {
+      "description": "Перетворіть малі літери у великі в message.txt використовуючи `tr` з перенаправленням вводу",
+      "hint": "Спробуйте `tr a-z A-Z < message.txt`",
+      "explanation": "Команда `tr` читає зі stdin. Використовуйте < щоб перенаправити вміст файлу як ввід: tr a-z A-Z < file.txt"
+    }
+  },
 
-  "module5.task4.description": "Перетворіть малі літери у великі в message.txt використовуючи `tr` з перенаправленням вводу",
-  "module5.task4.hint": "Спробуйте `tr a-z A-Z < message.txt`",
-  "module5.task4.explanation": "Команда `tr` читає зі stdin. Використовуйте < щоб перенаправити вміст файлу як ввід: tr a-z A-Z < file.txt",
+  "module6": {
+    "task1": {
+      "description": "Використайте команду `find` для пошуку всіх файлів `.txt` починаючи з поточної директорії.",
+      "hint": "Спробуйте `find . -name *.txt`",
+      "explanation": "Команда `find` шукає файли та директорії. Опція `-name` дозволяє шукати за шаблоном імені файлу використовуючи символи підстановки як `*.txt` для пошуку всіх файлів що закінчуються на `.txt`."
+    },
+    "task2": {
+      "description": "Використайте команду `find` для отримання списку всіх директорій починаючи з поточної директорії.",
+      "hint": "Спробуйте `find . -type d`",
+      "explanation": "Команда `find` з опцією `-type d` шукає виключно директорії. Це корисно для дослідження структури директорій вашої файлової системи."
+    },
+    "task3": {
+      "description": "Використайте команду `find` для пошуку всіх файлів `.pdf` в директорії `documents`.",
+      "hint": "Спробуйте `find documents -name *.pdf`",
+      "explanation": "Команда `find` може шукати у конкретних директоріях. Вказавши `documents` як початковий шлях, вона буде шукати лише в цій директорії та її піддиректоріях файли що відповідають шаблону."
+    },
+    "task4": {
+      "description": "Використайте команду `du` з прапорцями `-s` та `-h` щоб показати загальне використання диска директорією `projects` у зручному для читання форматі.",
+      "hint": "Спробуйте `du -s -h projects`",
+      "explanation": "Команда `du` оцінює використання дискового простору. Прапорець `-s` показує тільки загальну суму, а `-h` робить вивід зручним для читання (K, M, G замість байтів). Це корисно для знаходження директорій, які використовують найбільше місця."
+    }
+  },
 
-  "module6.task1.description": "Використайте команду `find` для пошуку всіх файлів `.txt` починаючи з поточної директорії.",
-  "module6.task1.hint": "Спробуйте `find . -name *.txt`",
-  "module6.task1.explanation": "Команда `find` шукає файли та директорії. Опція `-name` дозволяє шукати за шаблоном імені файлу використовуючи символи підстановки як `*.txt` для пошуку всіх файлів що закінчуються на `.txt`.",
-
-  "module6.task2.description": "Використайте команду `find` для отримання списку всіх директорій починаючи з поточної директорії.",
-  "module6.task2.hint": "Спробуйте `find . -type d`",
-  "module6.task2.explanation": "Команда `find` з опцією `-type d` шукає виключно директорії. Це корисно для дослідження структури директорій вашої файлової системи.",
-
-  "module6.task3.description": "Використайте команду `find` для пошуку всіх файлів `.pdf` в директорії `documents`.",
-  "module6.task3.hint": "Спробуйте `find documents -name *.pdf`",
-  "module6.task3.explanation": "Команда `find` може шукати у конкретних директоріях. Вказавши `documents` як початковий шлях, вона буде шукати лише в цій директорії та її піддиректоріях файли що відповідають шаблону.",
-
-  "module6.task4.description": "Використайте команду `du` з прапорцями `-s` та `-h` щоб показати загальне використання диска директорією `projects` у зручному для читання форматі.",
-  "module6.task4.hint": "Спробуйте `du -s -h projects`",
-  "module6.task4.explanation": "Команда `du` оцінює використання дискового простору. Прапорець `-s` показує тільки загальну суму, а `-h` робить вивід зручним для читання (K, M, G замість байтів). Це корисно для знаходження директорій, які використовують найбільше місця."
+  "files": {
+    "log": {
+      "txt": "log.txt"
+    },
+    "project": {
+      "txt": "project.txt"
+    },
+    "images": "images"
+  }
 }

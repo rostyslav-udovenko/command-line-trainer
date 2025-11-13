@@ -1,294 +1,483 @@
 {
-  "terminal.ui.welcome.title": "Welcome to the Command Line Trainer!",
-  "terminal.ui.welcome.intro.1": "This interactive simulation will help you master",
-  "terminal.ui.welcome.intro.2": "the basics of UNIX-like terminal commands through hands-on tasks.",
-  "terminal.ui.welcome.gettingStarted": "Getting started:",
-  "terminal.ui.welcome.help": "  Type `help` to see available commands",
-  "terminal.ui.welcome.man": "  Type `man &lt;command&gt;` for detailed information",
-  "terminal.ui.welcome.followTasks": "  Follow the task instructions to progress through modules",
-  "terminal.ui.welcome.ready": "Ready to begin? Type `y` to begin or `n` to exit.",
+  "terminal": {
+    "ui": {
+      "welcome": {
+        "title": "Welcome to the Command Line Trainer!",
+        "intro": {
+          "line1": "This interactive simulation will help you master",
+          "line2": "the basics of UNIX-like terminal commands through hands-on tasks."
+        },
+        "gettingStarted": {
+          "title": "Getting started:",
+          "help": "Type `help` to see available commands",
+          "man": "Type `man &lt;command&gt;` for detailed information",
+          "followTasks": "Follow the task instructions to progress through modules"
+        },
+        "ready": "Ready to begin? Type `y` to begin or `n` to exit."
+      }
+    }
+  },
 
-  "footer.description": "© 2025 Command Line Trainer - an educational tool for learning fundamental UNIX-like terminal commands",
-  "footer.by": "Developed with ♥ by Rostyslav Udovenko",
-  "footer.feedback": "Feedback",
-  "footer.contact": "Contact me",
+  "footer": {
+    "description": "© 2025 Command Line Trainer - an educational tool for learning fundamental UNIX-like terminal commands",
+    "by": "Developed with ♥ by Rostyslav Udovenko",
+    "feedback": "Feedback",
+    "contact": "Contact me"
+  },
 
-  "modules.1": "Module 1 - Directory Operations",
-  "modules.2": "Module 2 - File Operations",
-  "modules.3": "Module 3 - File Permissions & Metadata",
-  "modules.4": "Module 4 - System Commands",
-  "modules.5": "Module 5 - Text Processing",
-  "modules.6": "Module 6 - File Search & Navigation",
+  "modules": {
+    "1": "Module 1 - Directory Operations",
+    "2": "Module 2 - File Operations",
+    "3": "Module 3 - File Permissions & Metadata",
+    "4": "Module 4 - System Commands",
+    "5": "Module 5 - Text Processing",
+    "6": "Module 6 - File Search & Navigation"
+  },
 
-  "task.manager.loadingTasks": "Loading tasks...",
-  "task.manager.loadingDone": "Tasks loaded!",
+  "task": {
+    "manager": {
+      "loading": {
+        "tasks": "Loading tasks...",
+        "done": "Tasks loaded!"
+      },
+      "error": {
+        "taskDataMissing": "Error: task data is missing.",
+        "noTasksLoaded": "Error: no tasks loaded or invalid progress.",
+        "taskDataMissingCheck": "Error: task data missing.",
+        "failedToLoadTasks": "Failed to load tasks:"
+      },
+      "training": {
+        "started": "Training started!",
+        "canceled": "Training canceled. See you next time!",
+        "enterYorN": "Please enter `y` or `n`.",
+        "allTasksCompleted": {
+          "line1": "All tasks completed!",
+          "line2": "Type `progress reset` to start again."
+        },
+        "congratulations": {
+          "line1": "Congratulations!",
+          "line2": "You have completed all tasks."
+        },
+        "resetToStart": "Type `progress reset` to start again."
+      },
+      "hints": {
+        "enabled": "Hints are enabled. Use `hint off` to disable them if you like.",
+        "disabled": "Hints are disabled. Use `hint on` to enable them if you like.",
+        "label": "Hint:"
+      },
+      "success": {
+        "wellDone": "Well done!",
+        "taskComplete": "Task complete!",
+        "niceJob": "Nice job!",
+        "youNailedIt": "You nailed it!",
+        "taskSolved": "Task solved!",
+        "greatWork": "Great work!",
+        "youDidIt": "You did it!"
+      },
+      "label": "Task"
+    }
+  },
 
-  "task.manager.error.taskDataMissing": "Error: task data is missing.",
-  "task.manager.error.noTasksLoaded": "Error: no tasks loaded or invalid progress.",
-  "task.manager.error.taskDataMissingCheck": "Error: task data missing.",
-  "task.manager.error.failedToLoadTasks": "Failed to load tasks:",
+  "manual": {
+    "pwd": "pwd — print working directory",
+    "ls": "ls — list directory contents, ls -l — list directory contents with extra details (e.g. executable flag)",
+    "cd": "cd — change directory",
+    "mkdir": "mkdir — make directory",
+    "touch": "touch — create a new file or update timestamp",
+    "help": "help — show general command help",
+    "man": "man — an interface to the system reference manuals",
+    "cat": "cat — concatenate files and print on the standard output",
+    "less": "less — opposite of more",
+    "file": "file — determine file type",
+    "cp": "cp — copy files and directories",
+    "mv": "mv — move (rename) files",
+    "rm": "rm — remove files or directories",
+    "chmod": "chmod — change file permissions",
+    "stat": "stat — display file metadata like last modification time",
+    "date": "date — display or set the system date and time",
+    "whoami": "whoami — print effective user ID",
+    "uptime": "uptime — tell how long the system has been running",
+    "mount": "mount — mount a filesystem",
+    "clear": "clear — clear the terminal screen",
+    "task": "task — show current task",
+    "rmdir": "rmdir — remove empty directories",
+    "progress": "progress — manage learning progress. Use `progress status` to see detailed progress or `progress reset` to restart training",
+    "grep": "grep — search for patterns in files",
+    "sort": "sort — sort lines in text files",
+    "uniq": "uniq — remove duplicate lines from text files",
+    "tr": "tr — translate characters",
+    "ps": "ps — display information about running processes",
+    "find": "find — search for files and directories by name, type, or other criteria",
+    "du": "du — estimate file space usage",
+    "fullscreen": "fullscreen — toggle fullscreen terminal mode"
+  },
 
-  "task.manager.training.started": "Training started!",
-  "task.manager.training.canceled": "Training canceled. See you next time!",
-  "task.manager.training.enterYorN": "Please enter `y` or `n`.",
-  "task.manager.training.allTasksCompleted.1": "All tasks completed!",
-  "task.manager.training.allTasksCompleted.2": " Type `progress reset` to start again.",
-  "task.manager.training.congratulations.1": "Congratulations!",
-  "task.manager.training.congratulations.2": "You have completed all tasks.",
-  "task.manager.training.resetToStart": "Type `progress reset` to start again.",
+  "command": {
+    "error": {
+      "enterCommand": "Please enter a command.",
+      "notFound": "Command not found:",
+      "dirNotFound": "Directory not found",
+      "sourceNotFound": "Source file not found: {{src}}",
+      "noSuchFile": "No such file: {{name}}",
+      "languageSwitch": "Failed to switch language."
+    },
 
-  "task.manager.hints.enabled": "Hints are enabled. Use `hint off` to disable them if you like.",
-  "task.manager.hints.disabled": "Hints are disabled. Use `hint on` to enable them if you like.",
-  "task.manager.hints.label": "Hint:",
+    "ls": {
+      "empty": "No files or directories",
+      "usage": "Usage: ls [-l]"
+    },
 
-  "task.manager.success.wellDone": "Well done!",
-  "task.manager.success.taskComplete": "Task complete!",
-  "task.manager.success.niceJob": "Nice job!",
-  "task.manager.success.youNailedIt": "You nailed it!",
-  "task.manager.success.taskSolved": "Task solved!",
-  "task.manager.success.greatWork": "Great work!",
-  "task.manager.success.youDidIt": "You did it!",
+    "pwd": {
+      "usage": "Usage: pwd"
+    },
 
-  "task.manager.task.label": "Task",
+    "cd": {
+      "usage": "Usage: cd &lt;directory&gt;",
+      "changed": "Changed directory to {{path}}"
+    },
 
-  "manual.pwd": "pwd — print working directory",
-  "manual.ls": "ls — list directory contents, ls -l — list directory contents with extra details (e.g. executable flag)",
-  "manual.cd": "cd — change directory",
-  "manual.mkdir": "mkdir — make directory",
-  "manual.touch": "touch — create a new file or update timestamp",
-  "manual.help": "help — show general command help",
-  "manual.man": "man — an interface to the system reference manuals",
-  "manual.cat": "cat — concatenate files and print on the standard output",
-  "manual.less": "less — opposite of more",
-  "manual.file": "file — determine file type",
-  "manual.cp": "cp — copy files and directories",
-  "manual.mv": "mv — move (rename) files",
-  "manual.rm": "rm — remove files or directories",
-  "manual.chmod": "chmod — change file permissions",
-  "manual.stat": "stat — display file metadata like last modification time",
-  "manual.date": "date — display or set the system date and time",
-  "manual.whoami": "whoami — print effective user ID",
-  "manual.uptime": "uptime — tell how long the system has been running",
-  "manual.mount": "mount — mount a filesystem",
-  "manual.clear": "clear — clear the terminal screen",
-  "manual.task": "task — show current task",
-  "manual.rmdir": "rmdir — remove empty directories",
-  "manual.progress": "progress — manage learning progress. Use `progress status` to see detailed progress or `progress reset` to restart training",
-  "manual.grep": "grep — search for patterns in files",
-  "manual.sort": "sort — sort lines in text files",
-  "manual.uniq": "uniq — remove duplicate lines from text files",
-  "manual.tr": "tr — translate characters",
-  "manual.ps": "ps — display information about running processes",
-  "manual.find": "find — search for files and directories by name, type, or other criteria",
-  "manual.du": "du — estimate file space usage",
-  "manual.fullscreen": "fullscreen — toggle fullscreen terminal mode",
+    "mkdir": {
+      "usage": "Usage: mkdir &lt;directory&gt;",
+      "success": "Directory {{name}} created",
+      "exists": "Directory {{name}} already exists or invalid path"
+    },
 
-  "command.error.enterCommand": "Please enter a command.",
-  "command.error.notFound": "Command not found:",
-  "command.error.dirNotFound": "Directory not found",
-  "command.error.sourceNotFound": "Source file not found: {{src}}",
-  "command.error.noSuchFile": "No such file: {{name}}",
-  "command.error.languageSwitch": "Failed to switch language.",
+    "rmdir": {
+      "usage": "Usage: rmdir &lt;directory&gt;",
+      "removed": "Directory {{name}} removed",
+      "notDirectory": "{{name}} is not a directory",
+      "notEmpty": "Directory {{name}} is not empty"
+    },
 
-  "command.ls.empty": "No files or directories",
-  "command.ls.usage": "Usage: ls [-l]",
+    "touch": {
+      "usage": "Usage: touch &lt;filename&gt;",
+      "touched": "Touched {{name}}",
+      "created": "File {{name}} created"
+    },
 
-  "command.man.usage": "Usage: man &lt;command&gt;",
-  "command.cd.usage": "Usage: cd &lt;directory&gt;",
-  "command.mkdir.usage": "Usage: mkdir &lt;directory&gt;",
-  "command.touch.usage": "Usage: touch &lt;filename&gt;",
-  "command.cp.usage": "Usage: cp &lt;source&gt; &lt;destination&gt;",
-  "command.mv.usage": "Usage: mv &lt;source&gt; &lt;destination&gt;",
-  "command.rm.usage": "Usage: rm &lt;filename&gt;",
-  "command.chmod.usage": "Usage: chmod +x &lt;filename&gt;",
-  "command.stat.usage": "Usage: stat &lt;filename&gt;",
-  "command.date.usage": "Usage: date",
-  "command.whoami.usage": "Usage: whoami",
-  "command.uptime.usage": "Usage: uptime",
-  "command.mount.usage": "Usage: mount",
-  "command.theme.usage": "Usage: theme [light|dark|amber]",
-  "command.language.usage": "Usage: language [en|uk]",
-  "command.progress.usage": "Usage: progress [reset|status]",
-  "command.cat.usage": "Usage: cat &lt;filename&gt;",
-  "command.less.usage": "Usage: less &lt;filename&gt;",
-  "command.file.usage": "Usage: file &lt;filename&gt;",
-  "command.hint.usage": "Usage: hint [on|off]",
-  "command.pwd.usage": "Usage: pwd",
-  "command.clear.usage": "Usage: clear",
-  "command.task.usage": "Usage: task",
-  "command.rmdir.usage": "Usage: rmdir &lt;directory&gt;",
-  "command.grep.usage": "Usage: grep &lt;pattern&gt; &lt;filename&gt;",
-  "command.sort.usage": "Usage: sort &lt;filename&gt;",
-  "command.uniq.usage": "Usage: uniq &lt;filename&gt;",
-  "command.tr.usage": "Usage: tr SET1 SET2 < FILE",
-  "command.ps.usage": "Usage: ps",
-  "command.find.usage": "Usage: find &lt;path&gt; [-name pattern] [-type f|d]",
-  "command.du.usage": "Usage: du [-s] [-h] [path]",
-  "command.fullscreen.usage": "Usage: fullscreen [on|off]",
+    "cat": {
+      "usage": "Usage: cat &lt;filename&gt;"
+    },
 
-  "command.hint.noHint": "No hint available for this task.",
-  "command.mkdir.success": "Directory {{name}} created",
-  "command.mkdir.exists": "Directory {{name}} already exists or invalid path",
-  "command.touch.touched": "Touched {{name}}",
-  "command.touch.created": "File {{name}} created",
-  "command.cp.copied": "Copied {{src}} to {{dest}}",
-  "command.mv.moved": "Moved {{src}} to {{dest}}/",
-  "command.mv.renamed": "Renamed {{src}} to {{dest}}",
-  "command.rm.removed": "{{name}} removed",
-  "command.chmod.success": "Added executable permission to {{name}}",
-  "command.cd.changed": "Changed directory to {{path}}",
-  "command.file.isDirectory": "{{name}}: directory",
-  "command.file.isFile": "{{name}}: regular file",
-  "command.fullscreen.enabled": "Fullscreen mode enabled.",
-  "command.fullscreen.disabled": "Fullscreen mode disabled.",
+    "less": {
+      "usage": "Usage: less &lt;filename&gt;"
+    },
 
-  "command.stat.type": "Type: file",
-  "command.stat.lastModified": "Last modified: {{modified}}",
-  "log.txt": "log.txt",
+    "file": {
+      "usage": "Usage: file &lt;filename&gt;",
+      "isDirectory": "{{name}}: directory",
+      "isFile": "{{name}}: regular file"
+    },
 
-  "command.rmdir.removed": "Directory {{name}} removed",
-  "command.rmdir.notDirectory": "{{name}} is not a directory",
-  "command.rmdir.notEmpty": "Directory {{name}} is not empty",
+    "cp": {
+      "usage": "Usage: cp &lt;source&gt; &lt;destination&gt;",
+      "copied": "Copied {{src}} to {{dest}}"
+    },
 
-  "command.theme.switched": "Switched to {{option}} theme.",
-  "command.language.switched": "Switched language to {{locale}}.",
+    "mv": {
+      "usage": "Usage: mv &lt;source&gt; &lt;destination&gt;",
+      "moved": "Moved {{src}} to {{dest}}/",
+      "renamed": "Renamed {{src}} to {{dest}}"
+    },
 
-  "command.progress.reset": "Training progress has been reset. Restarting training...",
-  "command.progress.status.overall": "Overall progress",
-  "command.progress.status.allCompleted": "All tasks completed!",
+    "rm": {
+      "usage": "Usage: rm &lt;filename&gt;",
+      "removed": "{{name}} removed"
+    },
 
-  "command.task.allCompleted": "All tasks have been completed! Type `progress reset` to start again.",
-  "command.task.noTask": "No current task available.",
+    "chmod": {
+      "usage": "Usage: chmod +x &lt;filename&gt;",
+      "success": "Added executable permission to {{name}}"
+    },
 
-  "command.help.availableCommands": "Available commands:",
-  "command.help.userCommandsList": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du",
-  "command.help.systemCommands": "System commands:",
-  "command.help.systemCommandsList.hint": "  hint [on|off] - Toggle task hints",
-  "command.help.systemCommandsList.theme": "  theme [light|dark|amber] - Switch color theme",
-  "command.help.systemCommandsList.progress": "  progress [status|reset] - Show/reset learning progress",
-  "command.help.systemCommandsList.language": "  language [en|uk] - Switch interface language",
-  "command.help.systemCommandsList.fullscreen": "  fullscreen [on|off] - Toggle fullscreen terminal mode",
-  "command.help.systemCommandsList.clear": "  clear - Clear terminal screen",
-  "command.help.systemCommandsList.task": "  task - Show current task",
-  "command.help.moreInfo": "Use man &lt;command&gt; for more information.",
+    "stat": {
+      "usage": "Usage: stat &lt;filename&gt;",
+      "type": "Type: file",
+      "lastModified": "Last modified: {{modified}}"
+    },
 
-  "module1.task1.description": "Navigate to the `projects` directory using the `cd` command.",
-  "module1.task1.hint": "Try `cd projects`",
-  "module1.task1.explanation": "The `cd` (change directory) command allows you to move into a different directory in the filesystem.",
+    "date": {
+      "usage": "Usage: date"
+    },
 
-  "module1.task2.description": "Create a directory named `images` in the root of the file system using the `mkdir` command.",
-  "module1.task2.hint": "Try `mkdir images`",
-  "module1.task2.explanation": "The `mkdir` (make directory) command allows you to create a new directory in the filesystem.",
+    "whoami": {
+      "usage": "Usage: whoami"
+    },
 
-  "module1.task3.description": "Use the `ls` command to list the contents of the current directory.",
-  "module1.task3.hint": "Try `ls`",
-  "module1.task3.explanation": "The `ls` command lists the contents of the current directory, showing files and subdirectories.",
+    "uptime": {
+      "usage": "Usage: uptime"
+    },
 
-  "module1.task4.description": "Use the `pwd` command to display the current directory.",
-  "module1.task4.hint": "Try `pwd`",
-  "module1.task4.explanation": "The `pwd` (print working directory) command displays the full path of the current directory you are in.",
+    "mount": {
+      "usage": "Usage: mount"
+    },
 
-  "module1.task5.description": "Remove the empty `temp` directory using the `rmdir` command.",
-  "module1.task5.hint": "Try `rmdir temp`",
-  "module1.task5.explanation": "The `rmdir` (remove directory) command removes empty directories. Unlike `rm`, it only works on directories and requires them to be empty first.",
+    "ps": {
+      "usage": "Usage: ps"
+    },
 
-  "module2.task1.description": "Create a file named `index.html` inside the `projects` directory using the `touch` command.",
-  "module2.task1.hint": "Try `touch index.html`",
-  "module2.task1.explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it creates `index.html` in the `projects` directory.",
+    "grep": {
+      "usage": "Usage: grep &lt;pattern&gt; &lt;filename&gt;"
+    },
 
-  "module2.task2.description": "Use the `cat` command to read the contents of `note.txt`.",
-  "module2.task2.hint": "Try `cat note.txt`",
-  "module2.task2.explanation": "The `cat` command reads the contents of a file and displays it in the terminal. In this case, it shows the contents of `note.txt`.",
+    "sort": {
+      "usage": "Usage: sort &lt;filename&gt;"
+    },
 
-  "module2.task3.description": "Use the `less` command to view `log.txt`.",
-  "module2.task3.hint": "Try `less log.txt`",
-  "module2.task3.explanation": "The `less` command allows you to view the contents of a file one screen at a time. It is useful for reading large files without opening them in an editor.",
+    "uniq": {
+      "usage": "Usage: uniq &lt;filename&gt;"
+    },
 
-  "module2.task4.description": "Use the `file` command to inspect `script.sh`.",
-  "module2.task4.hint": "Try `file script.sh`",
-  "module2.task4.explanation": "The `file` command determines the type of a file. In this case, it identifies `script.sh` as a regular file containing a shell script.",
+    "tr": {
+      "usage": "Usage: tr SET1 SET2 < FILE"
+    },
 
-  "module2.task5.description": "Copy the file `a.txt` to `b.txt` using the `cp` command.",
-  "module2.task5.hint": "Try `cp a.txt b.txt`",
-  "module2.task5.explanation": "The `cp` command is used to copy files or directories. In this case, it copies the contents of `a.txt` to a new file `b.txt`. If `b.txt` already exists, it will be overwritten.",
+    "find": {
+      "usage": "Usage: find &lt;path&gt; [-name pattern] [-type f|d]"
+    },
 
-  "module2.task6.description": "Rename `old.txt` to `new.txt` using the `mv` command.",
-  "module2.task6.hint": "Try `mv old.txt new.txt`",
-  "module2.task6.explanation": "The `mv` command is used to move or rename files and directories. In this case, it renames `old.txt` to `new.txt`. If `new.txt` already exists, it will be overwritten.",
+    "du": {
+      "usage": "Usage: du [-s] [-h] [path]"
+    },
 
-  "module2.task7.description": "Move the file `note.txt` into the `docs/` directory using the `mv` command.",
-  "module2.task7.hint": "Try `mv note.txt docs`",
-  "module2.task7.explanation": "The `mv` command is used to move or rename files and directories. In this case, it moves `note.txt` into the `docs/` directory. If `docs/` does not exist, you need to create it first using `mkdir docs`.",
+    "man": {
+      "usage": "Usage: man &lt;command&gt;"
+    },
 
-  "module2.task8.description": "Remove the file `temp.txt` using the `rm` command.",
-  "module2.task8.hint": "Try `rm temp.txt`",
-  "module2.task8.explanation": "The `rm` command is used to remove files or directories. In this case, it deletes the file `temp.txt`. Be cautious when using `rm`, as it permanently deletes files without moving them to a trash or recycle bin.",
+    "hint": {
+      "usage": "Usage: hint [on|off]",
+      "noHint": "No hint available for this task."
+    },
 
-  "module3.task1.description": "Make the file `run.sh` executable using the `chmod` command.",
-  "module3.task1.hint": "Try `chmod +x run.sh`",
-  "module3.task1.explanation": "The `chmod` command changes the file mode (permissions) of a file. In this case, it makes `run.sh` executable by adding the execute permission for the user.",
+    "theme": {
+      "usage": "Usage: theme [light|dark|amber]",
+      "switched": "Switched to {{option}} theme."
+    },
 
-  "module3.task2.description": "List details of files using `ls -l` and find the name of the executable.",
-  "module3.task2.hint": "Try `ls -l` and look for the executable.",
-  "module3.task2.explanation": "The `ls -l` command lists files in long format, showing details like permissions, ownership, size, and modification date. The `*` at the end of the file name indicates that it is executable.",
+    "language": {
+      "usage": "Usage: language [en|uk]",
+      "switched": "Switched language to {{locale}}."
+    },
 
-  "module3.task3.description": "Check metadata of `log.txt` using the `stat` command.",
-  "module3.task3.hint": "Try `stat log.txt`",
-  "module3.task3.explanation": "The `stat` command displays detailed information about a file, including its size, permissions, and last modification time. In this case, it shows the metadata of `log.txt`.",
+    "progress": {
+      "usage": "Usage: progress [reset|status]",
+      "reset": "Training progress has been reset. Restarting training...",
+      "status": {
+        "overall": "Overall progress",
+        "allCompleted": "All tasks completed!"
+      }
+    },
 
-  "module3.task4.description": "Update the timestamp of `todo.txt` using the `touch` command.",
-  "module3.task4.hint": "Try `touch todo.txt`",
-  "module3.task4.explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it updates the timestamp of `todo.txt` to the current time.",
+    "task": {
+      "usage": "Usage: task",
+      "allCompleted": "All tasks have been completed! Type `progress reset` to start again.",
+      "noTask": "No current task available."
+    },
 
-  "module4.task1.description": "Use the `date` command to display the current system time.",
-  "module4.task1.hint": "Try `date`",
-  "module4.task1.explanation": "The `date` command displays the current date and time of the system. It is useful for checking the system's clock and timezone settings.",
+    "clear": {
+      "usage": "Usage: clear"
+    },
 
-  "module4.task2.description": "Use the `whoami` command to show the current username.",
-  "module4.task2.hint": "Try `whoami`",
-  "module4.task2.explanation": "The `whoami` command displays the username of the current user logged into the system. It is useful for confirming which user account you are operating under.",
+    "fullscreen": {
+      "usage": "Usage: fullscreen [on|off]",
+      "enabled": "Fullscreen mode enabled.",
+      "disabled": "Fullscreen mode disabled."
+    },
 
-  "module4.task3.description": "Use the `uptime` command to check how long the system has been running.",
-  "module4.task3.hint": "Try `uptime`",
-  "module4.task3.explanation": "The `uptime` command shows how long the system has been running since the last boot, along with the current time, number of users logged in, and system load averages. It is useful for monitoring system performance and stability.",
+    "help": {
+      "availableCommands": "Available commands:",
+      "userCommands": {
+        "list": "pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du"
+      },
+      "systemCommands": {
+        "title": "System commands:",
+        "hint": "hint [on|off] - Toggle task hints",
+        "theme": "theme [light|dark|amber] - Switch color theme",
+        "progress": "progress [status|reset] - Show/reset learning progress",
+        "language": "language [en|uk] - Switch interface language",
+        "fullscreen": "fullscreen [on|off] - Toggle fullscreen terminal mode",
+        "clear": "clear - Clear terminal screen",
+        "task": "task - Show current task"
+      },
+      "moreInfo": "Use man &lt;command&gt; for more information."
+    }
+  },
 
-  "module4.task4.description": "Use the `mount` command to list mounted filesystems.",
-  "module4.task4.hint": "Try `mount`",
-  "module4.task4.explanation": "The `mount` command displays all currently mounted filesystems, showing their device names and mount points. This is useful for understanding how storage devices are connected to the system and where they are accessible.",
+  "module1": {
+    "task1": {
+      "description": "Navigate to the `projects` directory using the `cd` command.",
+      "hint": "Try `cd projects`",
+      "explanation": "The `cd` (change directory) command allows you to move into a different directory in the filesystem."
+    },
+    "task2": {
+      "description": "Create a directory named `images` in the root of the file system using the `mkdir` command.",
+      "hint": "Try `mkdir images`",
+      "explanation": "The `mkdir` (make directory) command allows you to create a new directory in the filesystem."
+    },
+    "task3": {
+      "description": "Use the `ls` command to list the contents of the current directory.",
+      "hint": "Try `ls`",
+      "explanation": "The `ls` command lists the contents of the current directory, showing files and subdirectories."
+    },
+    "task4": {
+      "description": "Use the `pwd` command to display the current directory.",
+      "hint": "Try `pwd`",
+      "explanation": "The `pwd` (print working directory) command displays the full path of the current directory you are in."
+    },
+    "task5": {
+      "description": "Remove the empty `temp` directory using the `rmdir` command.",
+      "hint": "Try `rmdir temp`",
+      "explanation": "The `rmdir` (remove directory) command removes empty directories. Unlike `rm`, it only works on directories and requires them to be empty first."
+    }
+  },
 
-  "module4.task5.description": "Use the `ps` command to show the list of running processes.",
-  "module4.task5.hint": "Try `ps`",
-  "module4.task5.explanation": "The `ps` command shows information about active processes. This is useful for monitoring what's running on your system.",
+  "module2": {
+    "task1": {
+      "description": "Create a file named `index.html` inside the `projects` directory using the `touch` command.",
+      "hint": "Try `touch index.html`",
+      "explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it creates `index.html` in the `projects` directory."
+    },
+    "task2": {
+      "description": "Use the `cat` command to read the contents of `note.txt`.",
+      "hint": "Try `cat note.txt`",
+      "explanation": "The `cat` command reads the contents of a file and displays it in the terminal. In this case, it shows the contents of `note.txt`."
+    },
+    "task3": {
+      "description": "Use the `less` command to view `log.txt`.",
+      "hint": "Try `less log.txt`",
+      "explanation": "The `less` command allows you to view the contents of a file one screen at a time. It is useful for reading large files without opening them in an editor."
+    },
+    "task4": {
+      "description": "Use the `file` command to inspect `script.sh`.",
+      "hint": "Try `file script.sh`",
+      "explanation": "The `file` command determines the type of a file. In this case, it identifies `script.sh` as a regular file containing a shell script."
+    },
+    "task5": {
+      "description": "Copy the file `a.txt` to `b.txt` using the `cp` command.",
+      "hint": "Try `cp a.txt b.txt`",
+      "explanation": "The `cp` command is used to copy files or directories. In this case, it copies the contents of `a.txt` to a new file `b.txt`. If `b.txt` already exists, it will be overwritten."
+    },
+    "task6": {
+      "description": "Rename `old.txt` to `new.txt` using the `mv` command.",
+      "hint": "Try `mv old.txt new.txt`",
+      "explanation": "The `mv` command is used to move or rename files and directories. In this case, it renames `old.txt` to `new.txt`. If `new.txt` already exists, it will be overwritten."
+    },
+    "task7": {
+      "description": "Move the file `note.txt` into the `docs/` directory using the `mv` command.",
+      "hint": "Try `mv note.txt docs`",
+      "explanation": "The `mv` command is used to move or rename files and directories. In this case, it moves `note.txt` into the `docs/` directory. If `docs/` does not exist, you need to create it first using `mkdir docs`."
+    },
+    "task8": {
+      "description": "Remove the file `temp.txt` using the `rm` command.",
+      "hint": "Try `rm temp.txt`",
+      "explanation": "The `rm` command is used to remove files or directories. In this case, it deletes the file `temp.txt`. Be cautious when using `rm`, as it permanently deletes files without moving them to a trash or recycle bin."
+    }
+  },
 
-  "module5.task1.description": "Use the `grep` command to search for lines containing 'error' in the file `server.log`.",
-  "module5.task1.hint": "Try `grep error server.log`",
-  "module5.task1.explanation": "The `grep` command searches for text patterns in files. In this case, it finds all lines in `server.log` that contain the word 'error' (case-insensitive). This is very useful for filtering log files and finding specific information.",
+  "module3": {
+    "task1": {
+      "description": "Make the file `run.sh` executable using the `chmod` command.",
+      "hint": "Try `chmod +x run.sh`",
+      "explanation": "The `chmod` command changes the file mode (permissions) of a file. In this case, it makes `run.sh` executable by adding the execute permission for the user."
+    },
+    "task2": {
+      "description": "List details of files using `ls -l` and find the name of the executable.",
+      "hint": "Try `ls -l` and look for the executable.",
+      "explanation": "The `ls -l` command lists files in long format, showing details like permissions, ownership, size, and modification date. The `*` at the end of the file name indicates that it is executable."
+    },
+    "task3": {
+      "description": "Check metadata of `log.txt` using the `stat` command.",
+      "hint": "Try `stat log.txt`",
+      "explanation": "The `stat` command displays detailed information about a file, including its size, permissions, and last modification time. In this case, it shows the metadata of `log.txt`."
+    },
+    "task4": {
+      "description": "Update the timestamp of `todo.txt` using the `touch` command.",
+      "hint": "Try `touch todo.txt`",
+      "explanation": "The `touch` command creates a new empty file or updates the timestamp of an existing file. In this case, it updates the timestamp of `todo.txt` to the current time."
+    }
+  },
 
-  "module5.task2.description": "Use the `sort` command to sort the lines in `names.txt` alphabetically.",
-  "module5.task2.hint": "Try `sort names.txt`",
-  "module5.task2.explanation": "The `sort` command sorts the lines in a text file alphabetically. This is useful for organizing data, creating sorted lists, and preprocessing text for other commands.",
+  "module4": {
+    "task1": {
+      "description": "Use the `date` command to display the current system time.",
+      "hint": "Try `date`",
+      "explanation": "The `date` command displays the current date and time of the system. It is useful for checking the system's clock and timezone settings."
+    },
+    "task2": {
+      "description": "Use the `whoami` command to show the current username.",
+      "hint": "Try `whoami`",
+      "explanation": "The `whoami` command displays the username of the current user logged into the system. It is useful for confirming which user account you are operating under."
+    },
+    "task3": {
+      "description": "Use the `uptime` command to check how long the system has been running.",
+      "hint": "Try `uptime`",
+      "explanation": "The `uptime` command shows how long the system has been running since the last boot, along with the current time, number of users logged in, and system load averages. It is useful for monitoring system performance and stability."
+    },
+    "task4": {
+      "description": "Use the `mount` command to list mounted filesystems.",
+      "hint": "Try `mount`",
+      "explanation": "The `mount` command displays all currently mounted filesystems, showing their device names and mount points. This is useful for understanding how storage devices are connected to the system and where they are accessible."
+    },
+    "task5": {
+      "description": "Use the `ps` command to show the list of running processes.",
+      "hint": "Try `ps`",
+      "explanation": "The `ps` command shows information about active processes. This is useful for monitoring what's running on your system."
+    }
+  },
 
-  "module5.task3.description": "Use the `uniq` command to remove duplicate lines from `duplicates.txt`.",
-  "module5.task3.hint": "Try `uniq duplicates.txt`",
-  "module5.task3.explanation": "The `uniq` command removes consecutive duplicate lines from a text file, showing only unique lines. This is very useful for cleaning up data files and removing redundant entries.",
+  "module5": {
+    "task1": {
+      "description": "Use the `grep` command to search for lines containing 'error' in the file `server.log`.",
+      "hint": "Try `grep error server.log`",
+      "explanation": "The `grep` command searches for text patterns in files. In this case, it finds all lines in `server.log` that contain the word 'error' (case-insensitive). This is very useful for filtering log files and finding specific information."
+    },
+    "task2": {
+      "description": "Use the `sort` command to sort the lines in `names.txt` alphabetically.",
+      "hint": "Try `sort names.txt`",
+      "explanation": "The `sort` command sorts the lines in a text file alphabetically. This is useful for organizing data, creating sorted lists, and preprocessing text for other commands."
+    },
+    "task3": {
+      "description": "Use the `uniq` command to remove duplicate lines from `duplicates.txt`.",
+      "hint": "Try `uniq duplicates.txt`",
+      "explanation": "The `uniq` command removes consecutive duplicate lines from a text file, showing only unique lines. This is very useful for cleaning up data files and removing redundant entries."
+    },
+    "task4": {
+      "description": "Transform lowercase to uppercase in message.txt using `tr` with input redirection",
+      "hint": "Try `tr a-z A-Z < message.txt`",
+      "explanation": "The `tr` command reads from stdin. Use < to redirect file content as input: tr a-z A-Z < file.txt"
+    }
+  },
 
-  "module5.task4.description": "Transform lowercase to uppercase in message.txt using `tr` with input redirection",
-  "module5.task4.hint": "Try `tr a-z A-Z < message.txt`",
-  "module5.task4.explanation": "The `tr` command reads from stdin. Use < to redirect file content as input: tr a-z A-Z < file.txt",
+  "module6": {
+    "task1": {
+      "description": "Use the `find` command to search for all `.txt` files starting from the current directory.",
+      "hint": "Try `find . -name *.txt`",
+      "explanation": "The `find` command searches for files and directories. The `-name` option allows you to search by filename pattern using wildcards like `*.txt` to find all files ending with `.txt`."
+    },
+    "task2": {
+      "description": "Use the `find` command to list all directories starting from the current directory.",
+      "hint": "Try `find . -type d`",
+      "explanation": "The `find` command with `-type d` searches specifically for directories. This is useful for exploring the directory structure of your filesystem."
+    },
+    "task3": {
+      "description": "Use the `find` command to search for all `.pdf` files in the `documents` directory.",
+      "hint": "Try `find documents -name *.pdf`",
+      "explanation": "The `find` command can search within specific directories. By specifying `documents` as the starting path, it will only search within that directory and its subdirectories for files matching the pattern."
+    },
+    "task4": {
+      "description": "Use the `du` command with `-s` and `-h` flags to show the total disk usage of the `projects` directory in human-readable format.",
+      "hint": "Try `du -s -h projects`",
+      "explanation": "The `du` command estimates disk space usage. The `-s` flag shows only the total (summary), and `-h` makes the output human-readable (K, M, G instead of bytes). This is useful for finding which directories are using the most space."
+    }
+  },
 
-  "module6.task1.description": "Use the `find` command to search for all `.txt` files starting from the current directory.",
-  "module6.task1.hint": "Try `find . -name *.txt`",
-  "module6.task1.explanation": "The `find` command searches for files and directories. The `-name` option allows you to search by filename pattern using wildcards like `*.txt` to find all files ending with `.txt`.",
-
-  "module6.task2.description": "Use the `find` command to list all directories starting from the current directory.",
-  "module6.task2.hint": "Try `find . -type d`",
-  "module6.task2.explanation": "The `find` command with `-type d` searches specifically for directories. This is useful for exploring the directory structure of your filesystem.",
-
-  "module6.task3.description": "Use the `find` command to search for all `.pdf` files in the `documents` directory.",
-  "module6.task3.hint": "Try `find documents -name *.pdf`",
-  "module6.task3.explanation": "The `find` command can search within specific directories. By specifying `documents` as the starting path, it will only search within that directory and its subdirectories for files matching the pattern.",
-
-  "module6.task4.description": "Use the `du` command with `-s` and `-h` flags to show the total disk usage of the `projects` directory in human-readable format.",
-  "module6.task4.hint": "Try `du -s -h projects`",
-  "module6.task4.explanation": "The `du` command estimates disk space usage. The `-s` flag shows only the total (summary), and `-h` makes the output human-readable (K, M, G instead of bytes). This is useful for finding which directories are using the most space."
+  "files": {
+    "log": {
+      "txt": "log.txt"
+    },
+    "project": {
+      "txt": "project.txt"
+    },
+    "images": "images"
+  }
 }
