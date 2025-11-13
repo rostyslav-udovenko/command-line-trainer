@@ -287,7 +287,7 @@
     "help": {
       "availableCommands": "Доступні команди:",
       "userCommands": {
-        "list": "pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du"
+        "list": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du"
       },
       "systemCommands": {
         "title": "Системні команди:",
