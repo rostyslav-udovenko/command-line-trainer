@@ -9,9 +9,9 @@
         },
         "gettingStarted": {
           "title": "Getting started:",
-          "help": "Type `help` to see available commands",
-          "man": "Type `man &lt;command&gt;` for detailed information",
-          "followTasks": "Follow the task instructions to progress through modules"
+          "help": "  Type `help` to see available commands",
+          "man": "  Type `man &lt;command&gt;` for detailed information",
+          "followTasks": "  Follow the task instructions to progress through modules"
         },
         "ready": "Ready to begin? Type `y` to begin or `n` to exit."
       }
@@ -291,13 +291,13 @@
       },
       "systemCommands": {
         "title": "System commands:",
-        "hint": "hint [on|off] - Toggle task hints",
-        "theme": "theme [light|dark|amber] - Switch color theme",
-        "progress": "progress [status|reset] - Show/reset learning progress",
-        "language": "language [en|uk] - Switch interface language",
-        "fullscreen": "fullscreen [on|off] - Toggle fullscreen terminal mode",
-        "clear": "clear - Clear terminal screen",
-        "task": "task - Show current task"
+        "hint": "  hint [on|off] - Toggle task hints",
+        "theme": "  theme [light|dark|amber] - Switch color theme",
+        "progress": "  progress [status|reset] - Show/reset learning progress",
+        "language": "  language [en|uk] - Switch interface language",
+        "fullscreen": "  fullscreen [on|off] - Toggle fullscreen terminal mode",
+        "clear": "  clear - Clear terminal screen",
+        "task": "  task - Show current task"
       },
       "moreInfo": "Use man &lt;command&gt; for more information."
     }
