@@ -1,0 +1,86 @@
+{
+  "id": 5,
+  "description": "module6.task5.description",
+  "type": "locate",
+  "check": {
+    "expectedCommandArgs": ["config.conf"],
+    "expectedOutputIncludes": [
+      "/backup/config.conf"
+    ]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {
+      "readme.txt": {
+        "name": "readme.txt",
+        "type": "file",
+        "content": "Welcome to the system!",
+        "meta": {
+          "lastModified": "2025-01-15T10:30:00Z"
+        }
+      },
+      "projects": {
+        "name": "projects",
+        "type": "dir",
+        "children": {
+          "index.html": {
+            "name": "index.html",
+            "type": "file",
+            "content": "<!DOCTYPE html>",
+            "meta": {
+              "lastModified": "2025-01-10T16:30:00Z"
+            }
+          },
+          "style.css": {
+            "name": "style.css",
+            "type": "file",
+            "content": "body { margin: 0; }",
+            "meta": {
+              "lastModified": "2025-01-12T14:20:00Z"
+            }
+          }
+        }
+      },
+      "backup": {
+        "name": "backup",
+        "type": "dir",
+        "children": {
+          "config.conf": {
+            "name": "config.conf",
+            "type": "file",
+            "content": "# System configuration\nhost=localhost\nport=8080",
+            "meta": {
+              "lastModified": "2024-12-15T14:20:00Z"
+            }
+          },
+          "data.bak": {
+            "name": "data.bak",
+            "type": "file",
+            "content": "backup data",
+            "meta": {
+              "lastModified": "2024-11-01T08:00:00Z"
+            }
+          }
+        }
+      },
+      "logs": {
+        "name": "logs",
+        "type": "dir",
+        "children": {
+          "app.log": {
+            "name": "app.log",
+            "type": "file",
+            "content": "Application log entries",
+            "meta": {
+              "lastModified": "2025-01-14T22:00:00Z"
+            }
+          }
+        }
+      }
+    }
+  },
+  "startDirectory": "/",
+  "hint": "module6.task5.hint",
+  "explanation": "module6.task5.explanation"
+}

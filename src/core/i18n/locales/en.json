@@ -109,7 +109,8 @@
     "ps": "ps — display information about running processes",
     "find": "find — search for files and directories by name, type, or other criteria",
     "du": "du — estimate file space usage",
-    "fullscreen": "fullscreen — toggle fullscreen terminal mode"
+    "fullscreen": "fullscreen — toggle fullscreen terminal mode",
+    "locate": "locate — find files by name across the entire filesystem"
   },
 
   "command": {
@@ -240,6 +241,11 @@
       "usage": "Usage: du [-s] [-h] [path]"
     },
 
+    "locate": {
+      "usage": "Usage: locate &lt;name&gt;",
+      "notFound": "locate: no results for '{{pattern}}'"
+    },
+
     "man": {
       "usage": "Usage: man &lt;command&gt;"
     },
@@ -287,7 +293,7 @@
     "help": {
       "availableCommands": "Available commands:",
       "userCommands": {
-        "list": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du"
+        "list": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du, locate"
       },
       "systemCommands": {
         "title": "System commands:",
@@ -468,6 +474,11 @@
       "description": "Use the `du` command with `-s` and `-h` flags to show the total disk usage of the `projects` directory in human-readable format.",
       "hint": "Try `du -s -h projects`",
       "explanation": "The `du` command estimates disk space usage. The `-s` flag shows only the total (summary), and `-h` makes the output human-readable (K, M, G instead of bytes). This is useful for finding which directories are using the most space."
+    },
+    "task5": {
+      "description": "Use the `locate` command to quickly find the file `config.conf` anywhere in the filesystem.",
+      "hint": "Try `locate config.conf`",
+      "explanation": "The `locate` command searches the entire filesystem for files whose names contain the given pattern. Unlike `find`, it searches from the root regardless of your current directory — making it much faster for locating files by name."
     }
   },
 
