@@ -55,6 +55,7 @@ const manPages = {
   find: "manual.find",
   du: "manual.du",
   fullscreen: "manual.fullscreen",
+  locate: "manual.locate",
 };
 
 export async function executeCommand(command) {
@@ -125,6 +126,8 @@ export async function executeCommand(command) {
     t("command.uniq.usage"),
     t("command.tr.usage"),
     t("command.du.usage"),
+    t("command.fullscreen.usage"),
+    t("command.locate.usage"),
   ];
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -383,7 +386,7 @@ const commands = {
       const modified = file.meta?.lastModified || "unknown";
       return `${name}\n${t("command.stat.type")}\n${t(
         "command.stat.lastModified",
-        { modified }
+        { modified },
       )}`;
     }
 
@@ -407,7 +410,7 @@ const commands = {
     const pad = (n) => n.toString().padStart(2, "0");
 
     const time = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(
-      now.getSeconds()
+      now.getSeconds(),
     )}`;
     const uptimeHours = Math.floor(Math.random() * 5);
     const uptimeMinutes = Math.floor(Math.random() * 60);
@@ -417,7 +420,7 @@ const commands = {
     const load15 = (Math.random() * 0.5).toFixed(2);
 
     return `${time} up ${uptimeHours}:${pad(
-      uptimeMinutes
+      uptimeMinutes,
     )},  ${users} user,  load average: ${load1}, ${load5}, ${load15}`;
   },
 
@@ -453,8 +456,8 @@ const commands = {
     printOutput(`<strong>${currentTask.moduleName}</strong>`);
     printOutput(
       `<strong>${t("task.manager.label")} ${currentTask.id}:</strong> ${t(
-        currentTask.description
-      )}`
+        currentTask.description,
+      )}`,
     );
     return null;
   },
@@ -521,7 +524,7 @@ const commands = {
     if (arg === "status") {
       if (hasCompletedAllTasks()) {
         printOutput(
-          `<strong>${t("command.progress.status.allCompleted")}</strong>`
+          `<strong>${t("command.progress.status.allCompleted")}</strong>`,
         );
         return null;
       }
@@ -532,8 +535,8 @@ const commands = {
 
       printOutput(
         `${t(
-          "command.progress.status.overall"
-        )}: ${currentTaskIndex}/${totalTasks} (${overallProgress}%)`
+          "command.progress.status.overall",
+        )}: ${currentTaskIndex}/${totalTasks} (${overallProgress}%)`,
       );
       printOutput("&nbsp;");
 
@@ -608,7 +611,7 @@ const commands = {
     const content = file.content || "";
     const lines = content.split("\n");
     const matchingLines = lines.filter((line) =>
-      line.toLowerCase().includes(pattern.toLowerCase())
+      line.toLowerCase().includes(pattern.toLowerCase()),
     );
 
     return matchingLines.join("\n");
@@ -727,7 +730,7 @@ const commands = {
       (proc) =>
         `${proc.pid.toString().padStart(7)} ${proc.tty.padEnd(12)} ${
           proc.time
-        } ${proc.cmd}`
+        } ${proc.cmd}`,
     );
 
     return [header, ...lines].join("\n");
@@ -763,7 +766,7 @@ const commands = {
     } else {
       const fullPath = resolvePath(
         virtualFileSystem.currentDirectory,
-        searchPath
+        searchPath,
       );
       startDir = getDirectory(fullPath);
       if (!startDir) {
@@ -868,7 +871,7 @@ const commands = {
     } else {
       const fullPath = resolvePath(
         virtualFileSystem.currentDirectory,
-        targetPath
+        targetPath,
       );
       startDir = getDirectory(fullPath);
       if (!startDir) {
@@ -973,5 +976,36 @@ const commands = {
     }
 
     return t("command.fullscreen.usage");
+  },
+
+  locate: (args) => {
+    if (args.length !== 1) {
+      return t("command.locate.usage");
+    }
+    const [pattern] = args;
+    const results = [];
+
+    function searchAll(dir, currentPath) {
+      if (!dir.children) return;
+
+      for (const [name, node] of Object.entries(dir.children)) {
+        const nodePath =
+          currentPath === "/" ? `/${name}` : `${currentPath}/${name}`;
+
+        if (name.toLowerCase().includes(pattern.toLowerCase())) {
+          results.push(nodePath);
+        }
+
+        if (node.type === "dir") {
+          searchAll(node, nodePath);
+        }
+      }
+    }
+
+    searchAll(virtualFileSystem.root, "/");
+
+    return results.length > 0
+      ? results.join("\n")
+      : t("command.locate.notFound", { pattern });
   },
 };
