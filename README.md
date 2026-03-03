@@ -12,7 +12,7 @@ Perfect starting point if you've never touched the command line but always wante
 
 ## How It Works
 
-31 practical tasks across 6 modules - from basic navigation to file search & navigation.
+34 practical tasks across 6 modules - from basic navigation to file search & navigation.
 
 Each task:
 
@@ -28,7 +28,7 @@ Start with `cd` and `ls`, end up comfortable with the command line!
 - **Module 1:** Directory Operations. Learn to navigate: `cd`, `mkdir`, `ls`, `pwd`, `rmdir`
 - **Module 2:** File Operations. Create, read, copy, move files: `touch`, `cat`, `less`, `file`, `cp`, `mv`, `rm`
 - **Module 3:** File Permissions and Metadata. Make files executable and check details: `chmod`, `stat`, `ls -l`, `touch`
-- **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`, `ps`
+- **Module 4:** System Commands. Check time, user, system status: `date`, `whoami`, `uptime`, `mount`, `ps`, `df`, `free`, `uname`
 - **Module 5:** Text Processing. Search and sort text files: `grep`, `sort`, `uniq`, `tr`
 - **Module 6:** File Search & Navigation. Find files and directories by name or type: `find`, `du`, `locate`
 
@@ -195,7 +195,10 @@ project-root/
 │   │       │   ├── task-2.json             # Display current username using `whoami`
 │   │       │   ├── task-3.json             # Check system uptime using `uptime`
 │   │       │   ├── task-4.json             # List mounted filesystems using `mount`
-│   │       │   └── task-5.json             # Check the list of running processes using `ps`
+│   │       │   ├── task-5.json             # Check the list of running processes using `ps`
+│   │       │   ├── task-6.json             # Display disk space usage using `df`
+│   │       │   ├── task-7.json             # Display memory usage using `free`
+│   │       │   └── task-8.json             # Print system information using `uname`
 │   │       ├── module-5/                   # Text Processing
 │   │       │   ├── task-1.json             # Search for 'error' in `server.log` using `grep`
 │   │       │   ├── task-2.json             # Sort lines in `names.txt` using `sort`

@@ -1,0 +1,17 @@
+{
+  "id": 7,
+  "description": "module4.task7.description",
+  "type": "free",
+  "check": {
+    "expectedOutputIncludes": ["Mem:", "total", "used", "free"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "module4.task7.hint",
+  "explanation": "module4.task7.explanation"
+}

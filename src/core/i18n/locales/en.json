@@ -110,7 +110,10 @@
     "find": "find — search for files and directories by name, type, or other criteria",
     "du": "du — estimate file space usage",
     "fullscreen": "fullscreen — toggle fullscreen terminal mode",
-    "locate": "locate — find files by name across the entire filesystem"
+    "locate": "locate — find files by name across the entire filesystem",
+    "df": "df — report file system disk space usage",
+    "free": "free — display amount of free and used memory in the system",
+    "uname": "uname — print system information"
   },
 
   "command": {
@@ -246,6 +249,18 @@
       "notFound": "locate: no results for '{{pattern}}'"
     },
 
+    "df": {
+      "usage": "Usage: df"
+    },
+
+    "free": {
+      "usage": "Usage: free"
+    },
+
+    "uname": {
+      "usage": "Usage: uname"
+    },
+
     "man": {
       "usage": "Usage: man &lt;command&gt;"
     },
@@ -293,7 +308,7 @@
     "help": {
       "availableCommands": "Available commands:",
       "userCommands": {
-        "list": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du, locate"
+        "list": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du, locate, df, free, uname"
       },
       "systemCommands": {
         "title": "System commands:",
@@ -428,6 +443,21 @@
       "description": "Use the `ps` command to show the list of running processes.",
       "hint": "Try `ps`",
       "explanation": "The `ps` command shows information about active processes. This is useful for monitoring what's running on your system."
+    },
+    "task6": {
+      "description": "Use the `df` command to display disk space usage.",
+      "hint": "Try `df`",
+      "explanation": "The `df` command reports the amount of disk space used and available on filesystems. It shows device names, total/used/available space, and mount points — useful for monitoring storage capacity."
+    },
+    "task7": {
+      "description": "Use the `free` command to display memory usage.",
+      "hint": "Try `free`",
+      "explanation": "The `free` command displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel."
+    },
+    "task8": {
+      "description": "Use the `uname` command to display system information.",
+      "hint": "Try `uname`",
+      "explanation": "The `uname` command prints system information such as the kernel name, version, machine hardware name, and operating system. It is useful for identifying the system environment."
     }
   },
 
