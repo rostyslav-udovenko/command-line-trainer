@@ -1,0 +1,17 @@
+{
+  "id": 8,
+  "description": "module4.task8.description",
+  "type": "uname",
+  "check": {
+    "expectedOutputIncludes": ["Linux"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "module4.task8.hint",
+  "explanation": "module4.task8.explanation"
+}

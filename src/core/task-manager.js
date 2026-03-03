@@ -69,7 +69,7 @@ export function getModuleProgress() {
   Object.entries(tasksByModule).forEach(([originalModuleName, moduleTasks]) => {
     const moduleTaskIds = moduleTasks.map((task) => task.globalIndex);
     const completedInModule = moduleTaskIds.filter(
-      (id) => id < currentTaskIndex
+      (id) => id < currentTaskIndex,
     ).length;
 
     const moduleKey = moduleKeyMap[originalModuleName];
@@ -91,7 +91,7 @@ function saveProgress() {
     JSON.stringify({
       currentTaskIndex,
       hintsEnabled,
-    })
+    }),
   );
 }
 
@@ -110,7 +110,7 @@ function showTask(index) {
     const lines = [
       `<strong>${task.moduleName}</strong>`,
       `<strong>${t("task.manager.label")} ${task.id}:</strong> ${t(
-        task.description
+        task.description,
       )}`,
     ];
 
@@ -175,7 +175,7 @@ export async function loadTasks() {
     {
       name: t("modules.4"),
       originalName: "Module 4 - System Commands",
-      count: 5,
+      count: 8,
     },
     {
       name: t("modules.5"),
@@ -253,6 +253,12 @@ export async function loadTasks() {
                 taskData = await import("../data/tasks/module-4/task-4.json");
               else if (taskIndex === 5)
                 taskData = await import("../data/tasks/module-4/task-5.json");
+              else if (taskIndex === 6)
+                taskData = await import("../data/tasks/module-4/task-6.json");
+              else if (taskIndex === 7)
+                taskData = await import("../data/tasks/module-4/task-7.json");
+              else if (taskIndex === 8)
+                taskData = await import("../data/tasks/module-4/task-8.json");
             } else if (moduleIndex === 4) {
               // Module 5
               if (taskIndex === 1)
@@ -279,7 +285,7 @@ export async function loadTasks() {
 
             if (!taskData) {
               throw new Error(
-                `Task not found: module-${moduleIndex + 1}/task-${taskIndex}`
+                `Task not found: module-${moduleIndex + 1}/task-${taskIndex}`,
               );
             }
 
@@ -291,7 +297,7 @@ export async function loadTasks() {
           } catch (error) {
             console.error(
               `Error loading task module-${moduleIndex + 1}/task-${taskIndex}:`,
-              error
+              error,
             );
             return null;
           }
@@ -314,8 +320,8 @@ export async function loadTasks() {
       if (currentTaskIndex >= tasks.length) {
         printOutput(
           `<strong>${t(
-            "task.manager.training.allTasksCompleted.line1"
-          )}</strong> ${t("task.manager.training.allTasksCompleted.line2")}`
+            "task.manager.training.allTasksCompleted.line1",
+          )}</strong> ${t("task.manager.training.allTasksCompleted.line2")}`,
         );
       } else {
         showTask(currentTaskIndex);
@@ -355,7 +361,7 @@ export function checkTask(command, cmd, result, isErrorOutput = false) {
     success =
       success &&
       virtualFileSystem.currentDirectory.endsWith(
-        check.currentDirectoryEndsWith
+        check.currentDirectoryEndsWith,
       );
   }
 
@@ -458,14 +464,14 @@ export function checkTask(command, cmd, result, isErrorOutput = false) {
       virtualFileSystem.currentDirectory = nextTask.startDirectory || "/";
       printOutput(
         `<strong>${t("task.manager.label")} ${nextTask.id}:</strong> ${t(
-          nextTask.description
-        )}`
+          nextTask.description,
+        )}`,
       );
     } else {
       printOutput(
         `<strong>${t(
-          "task.manager.training.congratulations.line1"
-        )}</strong> ${t("task.manager.training.congratulations.line2")}`
+          "task.manager.training.congratulations.line1",
+        )}</strong> ${t("task.manager.training.congratulations.line2")}`,
       );
       printOutput(`${t("task.manager.training.resetToStart")}`);
     }
@@ -474,7 +480,7 @@ export function checkTask(command, cmd, result, isErrorOutput = false) {
 
     if (task.hint && attemptCount >= 3 && hintsEnabled) {
       printOutput(
-        `<strong>${t("task.manager.hints.label")}</strong> ${t(task.hint)}`
+        `<strong>${t("task.manager.hints.label")}</strong> ${t(task.hint)}`,
       );
     }
   }

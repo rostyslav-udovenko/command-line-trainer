@@ -56,6 +56,9 @@ const manPages = {
   du: "manual.du",
   fullscreen: "manual.fullscreen",
   locate: "manual.locate",
+  df: "manual.df",
+  free: "manual.free",
+  uname: "manual.uname",
 };
 
 export async function executeCommand(command) {
@@ -128,6 +131,9 @@ export async function executeCommand(command) {
     t("command.du.usage"),
     t("command.fullscreen.usage"),
     t("command.locate.usage"),
+    t("command.df.usage"),
+    t("command.free.usage"),
+    t("command.uname.usage"),
   ];
 
   // Check if command failed or showed usage - these don't count as task progress
@@ -433,6 +439,43 @@ const commands = {
       "sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)",
       "tmpfs on /run type tmpfs (rw,nosuid,nodev,size=1638400k,mode=755)",
     ].join("\n");
+  },
+
+  df: (args) => {
+    if (args.length > 0) return t("command.df.usage");
+
+    const total = 20480;
+    const used = Math.floor(Math.random() * 10000) + 5000;
+    const available = total - used;
+    const usePercent = Math.round((used / total) * 100);
+
+    const header = "Filesystem     1K-blocks    Used Available Use% Mounted on";
+    const row = `/dev/sda1      ${total.toString().padStart(9)} ${used.toString().padStart(7)} ${available.toString().padStart(9)}  ${usePercent}% /`;
+
+    return [header, row].join("\n");
+  },
+
+  free: (args) => {
+    if (args.length > 0) return t("command.free.usage");
+
+    const total = 8192;
+    const used = Math.floor(Math.random() * 4000) + 1000;
+    const free = total - used;
+    const shared = Math.floor(Math.random() * 100) + 10;
+    const buffCache = Math.floor(Math.random() * 1000) + 200;
+    const available = free + buffCache;
+
+    const header =
+      "               total        used        free      shared  buff/cache   available";
+    const mem = `Mem:         ${total.toString().padStart(7)}     ${used.toString().padStart(7)}     ${free.toString().padStart(7)}     ${shared.toString().padStart(7)}     ${buffCache.toString().padStart(7)}     ${available.toString().padStart(7)}`;
+    const swap = `Swap:           2048           0        2048`;
+
+    return [header, mem, swap].join("\n");
+  },
+
+  uname: (args) => {
+    if (args.length > 0) return t("command.uname.usage");
+    return "Linux machine 5.15.0-91-generic #101-Ubuntu SMP x86_64 GNU/Linux";
   },
 
   clear: (args) => {

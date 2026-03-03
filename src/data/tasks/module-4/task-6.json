@@ -1,0 +1,17 @@
+{
+  "id": 6,
+  "description": "module4.task6.description",
+  "type": "df",
+  "check": {
+    "expectedOutputIncludes": ["/dev/sda1", "Use%"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "module4.task6.hint",
+  "explanation": "module4.task6.explanation"
+}
