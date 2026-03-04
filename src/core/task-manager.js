@@ -175,7 +175,7 @@ export async function loadTasks() {
     {
       name: t("modules.4"),
       originalName: "Module 4 - System Commands",
-      count: 8,
+      count: 9,
     },
     {
       name: t("modules.5"),
@@ -259,6 +259,8 @@ export async function loadTasks() {
                 taskData = await import("../data/tasks/module-4/task-7.json");
               else if (taskIndex === 8)
                 taskData = await import("../data/tasks/module-4/task-8.json");
+              else if (taskIndex === 9)
+                taskData = await import("../data/tasks/module-4/task-9.json");
             } else if (moduleIndex === 4) {
               // Module 5
               if (taskIndex === 1)

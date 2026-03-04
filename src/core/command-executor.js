@@ -474,8 +474,17 @@ const commands = {
   },
 
   uname: (args) => {
-    if (args.length > 0) return t("command.uname.usage");
-    return "Linux machine 5.15.0-91-generic #101-Ubuntu SMP x86_64 GNU/Linux";
+    if (args.length > 1) return t("command.uname.usage");
+
+    if (args[0] === "-a") {
+      return "Linux machine 5.15.0-91-generic #101-Ubuntu SMP PREEMPT_DYNAMIC x86_64 GNU/Linux";
+    }
+
+    if (args.length === 0) {
+      return "Linux";
+    }
+
+    return t("command.uname.usage");
   },
 
   clear: (args) => {

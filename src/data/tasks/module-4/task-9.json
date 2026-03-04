@@ -1,0 +1,18 @@
+{
+  "id": 9,
+  "description": "module4.task9.description",
+  "type": "uname",
+  "check": {
+    "expectedCommandArgs": ["-a"],
+    "expectedOutputIncludes": ["Linux", "GNU/Linux"]
+  },
+  "fs": {
+    "name": "/",
+    "type": "dir",
+    "children": {},
+    "meta": {}
+  },
+  "startDirectory": "/",
+  "hint": "module4.task9.hint",
+  "explanation": "module4.task9.explanation"
+}
