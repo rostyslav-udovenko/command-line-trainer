@@ -113,7 +113,7 @@
     "locate": "locate — find files by name across the entire filesystem",
     "df": "df — report file system disk space usage",
     "free": "free — display amount of free and used memory in the system",
-    "uname": "uname — print system information"
+    "uname": "uname — print system information, uname -a — print all system information"
   },
 
   "command": {
@@ -258,7 +258,7 @@
     },
 
     "uname": {
-      "usage": "Usage: uname"
+      "usage": "Usage: uname [-a]"
     },
 
     "man": {
@@ -308,7 +308,7 @@
     "help": {
       "availableCommands": "Available commands:",
       "userCommands": {
-        "list": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du, locate, df, free, uname"
+        "list": "  pwd, ls, cd, mkdir, rmdir, touch, cat, less, file, cp, mv, rm, chmod, ls -l, stat, date, whoami, uptime, mount, grep, sort, uniq, tr, ps, find, du, locate, df, free, uname, uname -a"
       },
       "systemCommands": {
         "title": "System commands:",
@@ -455,9 +455,14 @@
       "explanation": "The `free` command displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel."
     },
     "task8": {
-      "description": "Use the `uname` command to display system information.",
+      "description": "Use the `uname` command to display the operating system name.",
       "hint": "Try `uname`",
-      "explanation": "The `uname` command prints system information such as the kernel name, version, machine hardware name, and operating system. It is useful for identifying the system environment."
+      "explanation": "The `uname` command prints the operating system name (Linux). Use `uname -a` to see full system details including kernel version, hostname, and architecture."
+    },
+    "task9": {
+      "description": "Use the `uname -a` command to display full system information.",
+      "hint": "Try `uname -a`",
+      "explanation": "The `uname -a` command prints all available system information at once: kernel name, hostname, kernel version, build date, machine hardware, and operating system."
     }
   },
 
